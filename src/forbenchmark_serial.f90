@@ -44,7 +44,7 @@ contains
       logical                              :: exist
       integer                              :: iostat
 
-      this%filename = trim(filename)
+      this%filename = trim(filename//'.data')
       this%nloops   = nloops
 
       inquire(file=this%filename, exist=exist, iostat=iostat)

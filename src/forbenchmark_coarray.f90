@@ -47,8 +47,10 @@ contains
       integer                              :: nunit
       logical                              :: exist
       integer                              :: iostat
+      character(10)                        :: im_chr
 
-      this%filename = trim(filename)
+      write (im_chr, '(i0)') this_image()
+      this%filename = trim(filename//trim(im_chr)//'.data')
       this%nloops   = nloops
 
       allocate(this%time[*])
