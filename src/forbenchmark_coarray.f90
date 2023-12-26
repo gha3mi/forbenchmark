@@ -130,7 +130,7 @@ contains
          end function Fun
       end interface
 
-      procedure(Fun) :: flops
+      procedure(Fun), optional :: flops
 
       class(benchmark), intent(inout) :: this
       real(rk)                        :: elapsed_time_average
@@ -139,30 +139,39 @@ contains
 
       call this%time[this_image()]%timer_stop(message=' Elapsed time :',nloops=this%nloops)
 
-      this%gflops[this_image()] = flops(this%argi,this%argr)/this%time[this_image()]%elapsed_time
-
-      print'(a,f6.2,a)', ' Performance  : ', this%gflops[this_image()],' [GFLOPS/image]'
+      if (present(flops)) then
+         this%gflops[this_image()] = flops(this%argi,this%argr)/this%time[this_image()]%elapsed_time
+         print'(a,f6.2,a)', ' Performance  : ', this%gflops[this_image()],' [GFLOPS/image]'
+      else
+         this%gflops[this_image()] = 0.0_rk
+      end if
 
       sync all
 
       if (this_image() == 1) then
          elapsed_time_average = 0.0_rk
-         gflops_total = 0.0_rk
+         if (present(flops)) gflops_total = 0.0_rk
          do i = 1,num_images()
             elapsed_time_average = elapsed_time_average + this%time[i]%elapsed_time
-            gflops_total = gflops_total + this%gflops[i]
+            if (present(flops)) gflops_total = gflops_total + this%gflops[i]
          end do
          elapsed_time_average = elapsed_time_average/num_images()
          print'(a,f7.3,a)', colorize(' Elapsed time (average) :', color_fg='blue'),&
             elapsed_time_average, ' [s]'
-         print'(a,f6.2,a)', colorize(' Performance  (total)   : ', color_fg='cyan'),&
+         if (present(flops)) print'(a,f6.2,a)', colorize(' Performance  (total)   : ', color_fg='cyan'),&
             gflops_total, ' [GFLOPS]'
          print'(a)', ''
       end if
       call co_broadcast(elapsed_time_average, 1)
-      call co_broadcast(gflops_total, 1)
+      if (present(flops)) call co_broadcast(gflops_total, 1)
       this%elapsed_time_average = elapsed_time_average
-      this%gflops_total = gflops_total
+      
+      if (present(flops)) then
+         this%gflops_total = gflops_total
+      else
+         this%gflops_total = 0.0_rk
+      end if
+
       call this%write_benchmark()
    end subroutine stop_benchmark
    !===============================================================================

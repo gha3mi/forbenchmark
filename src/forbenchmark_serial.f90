@@ -116,15 +116,18 @@ contains
          end function Fun
       end interface
 
-      procedure(Fun) :: flops
+      procedure(Fun), optional :: flops
 
       class(benchmark), intent(inout) :: this
 
       call this%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
 
-      this%gflops = flops(this%argi,this%argr)/this%time%elapsed_time
-
-      print'(a,f6.2,a)', ' Performance  : ', this%gflops,' [GFLOPS]'
+      if (present(flops)) then
+         this%gflops = flops(this%argi,this%argr)/this%time%elapsed_time
+         print'(a,f6.2,a)', ' Performance  : ', this%gflops,' [GFLOPS]'
+      else
+         this%gflops = 0.0_rk
+      endif
       print'(a)', ''
 
       call this%write_benchmark()
