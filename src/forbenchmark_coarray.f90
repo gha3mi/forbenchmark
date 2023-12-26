@@ -3,7 +3,7 @@ module forbenchmark_coarray
 #if defined(USE_COARRAY)
 
    use kinds
-   use fortime,  only: timer
+   use fortime, only: timer
 
    implicit none
 
@@ -37,14 +37,16 @@ contains
 
    !===============================================================================
    !> author: Seyed Ali Ghasemi
-   subroutine init(this, title, filename, nloops)
+   elemental impure subroutine init(this, title, filename, nloops)
       use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
 
       class(benchmark),      intent(inout) :: this
       character(*),          intent(in)    :: title
       character(*),          intent(in)    :: filename
       integer,               intent(in)    :: nloops
-      integer                              :: unit_num
+      integer                              :: nunit
+      logical                              :: exist
+      integer                              :: iostat
 
       this%filename = trim(filename)
       this%nloops   = nloops
@@ -52,17 +54,20 @@ contains
       allocate(this%time[*])
       allocate(this%gflops[*])
 
-      open (newunit = unit_num, file = this%filename)
-      write(unit_num,'(a)') '-----------------------------------------------------'
-      write(unit_num,'(a)') 'ForBenchmark - https://github.com/gha3mi/forbenchmark'
-      write(unit_num,'(a)') '-----------------------------------------------------'
-      write(unit_num,'(a)') ''
-      write(unit_num,'(a)') trim(title)
-      write(unit_num,'(a)') ''
-      write(unit_num,'(a,a)') 'compiler_version: ', compiler_version()
-      write(unit_num,'(a,a)') 'compiler_options: ', compiler_options()
-      write(unit_num,'(a)') ''
-      write(unit_num,'(a)') &
+      inquire(file=this%filename, exist=exist, iostat=iostat)
+      if (iostat /= 0) error stop 'file '//trim(this%filename)//' does not exist.'
+      open (newunit = nunit, file = this%filename)
+      write(nunit,'(a)') '-----------------------------------------------------'
+      write(nunit,'(a)') 'ForBenchmark - https://github.com/gha3mi/forbenchmark'
+      write(nunit,'(a)') '-----------------------------------------------------'
+      write(nunit,'(a)') ''
+      write(nunit,'(a)') trim(title)
+      write(nunit,'(a)') current_date_and_time()
+      write(nunit,'(a)') ''
+      write(nunit,'(a,a)') 'compiler_version: ', compiler_version()
+      write(nunit,'(a,a)') 'compiler_options: ', compiler_options()
+      write(nunit,'(a)') ''
+      write(nunit,'(a)') &
       &'       METHOD        |&
       &      TIME(avg)       |&
       &     GFLOPS(tot)      |&
@@ -70,14 +75,14 @@ contains
       &    GFLOPS(image)     |&
       &  NLOOPS  |&
       &   ARGS  '
-      close(unit_num)
+      close(nunit)
    end subroutine init
    !===============================================================================
 
 
    !===============================================================================
    !> author: Seyed Ali Ghasemi
-   subroutine start_benchmark(this, method, description, argi, argr)
+   impure subroutine start_benchmark(this, method, description, argi, argr)
       use face
 
       class(benchmark),       intent(inout)        :: this
@@ -111,7 +116,7 @@ contains
 
    !===============================================================================
    !> author: Seyed Ali Ghasemi
-   subroutine stop_benchmark(this, flops)
+   impure subroutine stop_benchmark(this, flops)
       use face
 
       interface
@@ -126,9 +131,9 @@ contains
       procedure(Fun) :: flops
 
       class(benchmark), intent(inout) :: this
-      real(rk)                   :: elapsed_time_average
-      real(rk)                   :: gflops_total
-      integer                    :: i
+      real(rk)                        :: elapsed_time_average
+      real(rk)                        :: gflops_total
+      integer                         :: i
 
       call this%time[this_image()]%timer_stop(message=' Elapsed time :',nloops=this%nloops)
 
@@ -163,15 +168,19 @@ contains
 
    !===============================================================================
    !> author: Seyed Ali Ghasemi
-   subroutine write_benchmark(this)
+   impure subroutine write_benchmark(this)
       class(benchmark), intent(inout) :: this
       integer                         :: nunit
       character(len=75)               :: fmt
       integer                         :: lm
+      logical                         :: exist
+      integer                         :: iostat
 
       lm = 20-len_trim(this%method)
       write(fmt,'(a,g0,a)') '(a,',lm,'x,3x,E20.14,3x,E20.14,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g8.0,3x))'
 
+      inquire(file=this%filename, exist=exist, iostat=iostat)
+      if (iostat /= 0) error stop 'file '//trim(this%filename)//' does not exist.'
       open (newunit = nunit, file = this%filename, access = 'append')
       write(nunit,fmt) &
          this%method,&
@@ -188,9 +197,11 @@ contains
 
    !===============================================================================
    !> author: Seyed Ali Ghasemi
-   subroutine finalize(this)
+   elemental impure subroutine finalize(this)
       class(benchmark), intent(inout) :: this
       integer                         :: nunit
+      logical                         :: exist
+      integer                         :: iostat
 
       if (allocated(this%argi)) deallocate(this%argi)
       if (allocated(this%argr)) deallocate(this%argr)
@@ -199,11 +210,37 @@ contains
 
       if (this_image() == 1) print'(a)', 'end of benchmark'
 
+      inquire(file=this%filename, exist=exist, iostat=iostat)
+      if (iostat /= 0) error stop 'file '//trim(this%filename)//' does not exist.'
       open (newunit = nunit, file = this%filename, access = 'append')
       write(nunit,'(a)') 'end of benchmark'
       close(nunit)
-
    end subroutine finalize
+   !===============================================================================
+
+
+   !===============================================================================
+   !> author: Seyed Ali Ghasemi
+   impure function current_date_and_time() result(datetime)
+      character(21) :: datetime
+      character(10) :: date
+      character(8)  :: time
+      integer       :: values(8)
+      character(4)  :: year
+      character(2)  :: month, day, hour, minute, second
+      
+      call date_and_time(values=values)
+
+      write(year,'(i4)')   values(1)
+      write(month,'(i2)')  values(2)
+      write(day,'(i2)')    values(3)
+      write(hour,'(i2)')   values(5)
+      write(minute,'(i2)') values(6)
+      write(second,'(i2)') values(7)
+      date=year//'.'//month//'.'//day
+      time=hour//':'//minute//':'//second
+      datetime = date//' - '//time
+   end function current_date_and_time
    !===============================================================================
 
 #endif
