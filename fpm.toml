@@ -24,3 +24,7 @@ kinds   = {git="https://github.com/gha3mi/kinds.git"}
 fortime = {git="https://github.com/gha3mi/fortime.git"}
 FACE    = {git="https://github.com/szaghi/FACE.git"}
 
+[[example]]
+name       = "demo"
+source-dir = "example"
+main       = "demo.f90"
