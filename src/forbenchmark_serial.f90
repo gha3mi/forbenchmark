@@ -36,15 +36,20 @@ contains
    elemental impure subroutine init(this, title, filename, nloops)
       use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
 
-      class(benchmark),      intent(inout) :: this
-      character(*),          intent(in)    :: title
-      character(*),          intent(in)    :: filename
-      integer,               intent(in)    :: nloops
-      integer                              :: nunit
-      logical                              :: exist
-      integer                              :: iostat
+      class(benchmark),      intent(inout)        :: this
+      character(*),          intent(in), optional :: title
+      character(*),          intent(in), optional :: filename
+      integer,               intent(in)           :: nloops
+      integer                                     :: nunit
+      logical                                     :: exist
+      integer                                     :: iostat
 
-      this%filename = trim(filename//'.data')
+      if (present(filename)) then
+         this%filename = trim(filename//'.data')
+      else
+         this%filename = 'benchmark.data'
+      endif
+      
       this%nloops   = nloops
 
       inquire(file=this%filename, exist=exist, iostat=iostat)
@@ -54,7 +59,11 @@ contains
       write(nunit,'(a)') 'ForBenchmark - https://github.com/gha3mi/forbenchmark'
       write(nunit,'(a)') '-----------------------------------------------------'
       write(nunit,'(a)') ''
+      if (present(title)) then
       write(nunit,'(a)') trim(title)
+      else
+      write(nunit,'(a)') 'ForBenchmark'
+      endif
       write(nunit,'(a)') current_date_and_time()
       write(nunit,'(a)') ''
       write(nunit,'(a,a)') 'compiler_version: ', compiler_version()
