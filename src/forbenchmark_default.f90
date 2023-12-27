@@ -41,7 +41,6 @@ contains
       character(*),     intent(in), optional :: filename
       integer,          intent(in), optional :: nloops
       integer                                :: nunit
-      logical                                :: exist
       integer                                :: iostat
 
       if (present(filename)) then
@@ -57,9 +56,9 @@ contains
          this%nloops = 10
       end if
 
-      inquire(file=this%filename, exist=exist, iostat=iostat)
-      if (iostat /= 0 .or. .not. exist) then
-         error stop 'file '//trim(this%filename)//' does not exist or cannot be accessed.'
+      inquire(file=this%filename, iostat=iostat)
+      if (iostat /= 0) then
+         error stop 'file '//trim(this%filename)//' cannot be accessed.'
       end if
       open (newunit = nunit, file = this%filename)
       write(nunit,'(a)') '-----------------------------------------------------'
