@@ -41,9 +41,11 @@ jobs:
     - name: Run Demo (Debug)
       run: fpm run --example demo --profile debug --compiler ${{ env.FC}}
       env:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         FC: ${{ steps.setup-fortran.outputs.fc }}
 
     - name: Run Demo (Release)
       run: fpm run --example --profile release --compiler ${{ env.FC}}
       env:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         FC: ${{ steps.setup-fortran.outputs.fc }}
