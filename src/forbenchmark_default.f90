@@ -76,6 +76,7 @@ contains
       write(nunit,'(a,a)') 'compiler_version: ', compiler_version()
       write(nunit,'(a,a)') 'compiler_options: ', compiler_options()
       write(nunit,'(a)') ''
+      write(nunit,'(a)') ''
       write(nunit,'(a)') &
       &'       METHOD        |&
       &         TIME         |&
@@ -94,28 +95,42 @@ contains
 
       class(benchmark),       intent(inout)        :: this
       character(*),           intent(in)           :: method
-      integer,  dimension(:), intent(in)           :: argi
+      integer,  dimension(:), intent(in), optional :: argi
       real(rk), dimension(:), intent(in), optional :: argr
       character(*),           intent(in), optional :: description
 
       this%description = description
       this%method      = method
-      this%argi        = argi
+
+      if (present(argi)) then
+         this%argi = argi
+      else
+         if(.not. allocated(this%argi)) allocate(this%argi(0))
+      endif
+
       if (present(argr)) then
          this%argr = argr
       else
          if(.not. allocated(this%argr)) allocate(this%argr(0))
       endif
 
-      if (present(description)) then
+      if (present(description) .and. present(argi)) then
          print'(a,a," ",a,*(g0,1x))',&
          colorize('Meth.: '//this%method, color_fg='green',style='bold_on'),&
          colorize('; Des.: '//this%description, color_fg='green_intense'),&
          '; Args.:',&
          this%argi
+      elseif (present(description) .and. .not. present(argi)) then
+         print'(a,a," ",a)',&
+         colorize('Meth.: '//this%method, color_fg='green',style='bold_on'),&
+         colorize('; Des.: '//this%description, color_fg='green_intense')
+      elseif (.not. present(description) .and. present(argi)) then
+         print'(a,a,*(g0,1x))',&
+         colorize('Meth.: '//this%method, color_fg='green',style='bold_on'),&
+         '; Args.:',&
+         this%argi
       else
-         print'(a," ",*(g0,1x))',&
-         colorize('Meth.: '//this%method, color_fg='green',style='bold_on'), this%argi
+         print'(a)', colorize('Meth.: '//this%method, color_fg='green',style='bold_on')
       end if
 
       call this%time%timer_start()
@@ -130,7 +145,7 @@ contains
       interface
          impure function Fun(argi, argr)
             import rk
-            integer,  dimension(:), intent(in)           :: argi
+            integer,  dimension(:), intent(in), optional :: argi
             real(rk), dimension(:), intent(in), optional :: argr
             real(rk)                                     :: Fun
          end function Fun

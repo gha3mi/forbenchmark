@@ -40,8 +40,9 @@ program demo
       ! start benchmark for method 1
       ! method is a string to identify the method
       ! description is optional
-      ! argi is an integer array of arguments, to write in the output file
-      ! argr is a real array of arguments, optional
+      ! argi is an optional integer array of arguments to write in the output file and to compute gflops
+      ! argr is an optional real array of arguments to compute gflops
+      ! loop over nloops
       call bench%start_benchmark(method='matmul_m1', description='intrinsic, C = matmul(A,B)', argi=[p,p,p])
       ! loop over nloops
       do nl = 1, bench%nloops
@@ -89,7 +90,7 @@ contains
    !===============================================================================
    ! define an optional function to compute gflops
    function cmp_gflops(argi,argr) result(gflops)
-      integer,  dimension(:), intent(in)           :: argi
+      integer,  dimension(:), intent(in), optional :: argi
       real(rk), dimension(:), intent(in), optional :: argr
       real(rk)                                     :: gflops
 
