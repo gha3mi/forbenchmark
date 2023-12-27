@@ -18,7 +18,7 @@ program demo
    ! title: optional
    ! filename: optional. make sure directory exists
    ! nloops: optional. number of loops for each benchmark. default is 10.
-   call bench%init(title='MatMul Benchmark', filename='results/demo_matmul', nloops=10)
+   call bench%init(title='Demo Benchmark', filename='results/demo', nloops=10)
 
    ! start the benchmark
    do p = 100,400, 100 ! loop over problem size
@@ -41,9 +41,10 @@ program demo
       ! method is a string to identify the method
       ! description is optional
       ! argi is an optional integer array of arguments to write in the output file and to compute gflops
+      ! the first element in argi is used for x-axis in the plot
       ! argr is an optional real array of arguments to compute gflops
       ! loop over nloops
-      call bench%start_benchmark(method='matmul_m1', description='intrinsic, C = matmul(A,B)', argi=[p,p,p])
+      call bench%start_benchmark(method='m1', description='intrinsic, C = matmul(A,B)', argi=[p,p,p])
       ! loop over nloops
       do nl = 1, bench%nloops
 
@@ -60,7 +61,7 @@ program demo
 
       !===============================================================================
       ! start benchmark for method 2, same as above.
-      call bench%start_benchmark('matmul_m2', 'my_matmul, C = matmul(A,B)', [p,p,p])
+      call bench%start_benchmark('m2', 'my_matmul, C = matmul(A,B)', [p,p,p])
       do nl = 1, bench%nloops
 
          ! call your function or subroutine or ...
@@ -85,6 +86,13 @@ program demo
    ! finalize the benchmark
    call bench%finalize()
 
+   ! you can use a python script to plot the results as follows:
+   ! python results/plot.py demo_matmul.data
+   ! for coarray benchmarks, utilize:
+   ! TODO: python results/plot_co.py demo_matmul.data
+   ! by default, the script generates two plots: one for elapsed time and one for performance.
+   ! the x-axis corresponds to the first argument in argi, while the y-axis displays elapsed time and performance.
+   
 contains
 
    !===============================================================================
