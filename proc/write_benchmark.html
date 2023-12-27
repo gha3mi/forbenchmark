@@ -75,7 +75,7 @@
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title=" 3.8% of total for procedures.">15 statements</a>
+                 title=" 4.2% of total for procedures.">17 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -343,8 +343,10 @@ large graphs.</div>
 <span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span><span class="s1">&#39;(a,g0,a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;(a,&#39;</span><span class="p">,</span><span class="n">lm</span><span class="p">,</span><span class="s1">&#39;x,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g8.0,3x))&#39;</span>
 
 <span class="w">      </span><span class="k">inquire</span><span class="p">(</span><span class="k">file</span><span class="o">=</span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">exist</span><span class="o">=</span><span class="n">exist</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">iostat</span><span class="p">)</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iostat</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">error stop</span><span class="w"> </span><span class="s1">&#39;file &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; does not exist.&#39;</span>
-<span class="w">      </span><span class="k">open</span><span class="w"> </span><span class="p">(</span><span class="n">newunit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nunit</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="nb">access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;append&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iostat</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">exist</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">         error stop</span><span class="w"> </span><span class="s1">&#39;file &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; does not exist or cannot be accessed.&#39;</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      open</span><span class="w"> </span><span class="p">(</span><span class="n">newunit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nunit</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="nb">access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;append&#39;</span><span class="p">)</span>
 <span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="n">fmt</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="nb">time</span><span class="p">%</span><span class="n">elapsed_time</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="n">gflops</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="n">nloops</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="n">argi</span>
 <span class="w">      </span><span class="k">close</span><span class="p">(</span><span class="n">nunit</span><span class="p">)</span>
@@ -369,7 +371,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-12-27T12:51:47.515568             </p>
+ on 2023-12-27T13:09:18.180175             </p>
           </div>
         </div>
         <br>
