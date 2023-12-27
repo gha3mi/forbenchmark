@@ -1,4 +1,4 @@
-module forbenchmark_serial
+module forbenchmark_default
 
    use kinds
    use fortime, only: timer
@@ -228,4 +228,4 @@ contains
    end function current_date_and_time
    !===============================================================================
 
-end module forbenchmark_serial
+end module forbenchmark_default

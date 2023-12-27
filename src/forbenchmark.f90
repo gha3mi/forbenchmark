@@ -3,7 +3,7 @@ module forbenchmark
 #if defined(USE_COARRAY)
    use forbenchmark_coarray
 #else
-   use forbenchmark_serial
+   use forbenchmark_default
 #endif
 
    public benchmark
