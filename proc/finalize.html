@@ -75,7 +75,7 @@
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title=" 3.9% of total for procedures.">16 statements</a>
+                 title=" 4.6% of total for procedures.">19 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -318,11 +318,6 @@ large graphs.</div>
 <span class="w">      </span><span class="kt">logical</span><span class="w">                         </span><span class="kd">::</span><span class="w"> </span><span class="n">exist</span>
 <span class="w">      </span><span class="kt">integer</span><span class="w">                         </span><span class="kd">::</span><span class="w"> </span><span class="n">iostat</span>
 
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">argi</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">argi</span><span class="p">)</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">argr</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">argr</span><span class="p">)</span>
-
-<span class="w">      </span><span class="k">print</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;end of benchmark&#39;</span>
-
 <span class="w">      </span><span class="k">inquire</span><span class="p">(</span><span class="k">file</span><span class="o">=</span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">exist</span><span class="o">=</span><span class="n">exist</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">iostat</span><span class="p">)</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iostat</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">exist</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
 <span class="k">         error stop</span><span class="w"> </span><span class="s1">&#39;file &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; does not exist or cannot be accessed.&#39;</span>
@@ -330,6 +325,15 @@ large graphs.</div>
 <span class="k">      open</span><span class="w"> </span><span class="p">(</span><span class="n">newunit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nunit</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="nb">access</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;append&#39;</span><span class="p">)</span>
 <span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;end of benchmark&#39;</span>
 <span class="w">      </span><span class="k">close</span><span class="p">(</span><span class="n">nunit</span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">method</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">method</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">description</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">description</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">argi</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">argi</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">allocated</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">argr</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">argr</span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">print</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;end of benchmark&#39;</span>
+
 <span class="w">   </span><span class="k">end subroutine </span><span class="n">finalize</span>
 </pre></div>
 
@@ -351,7 +355,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-12-27T14:09:33.262440             </p>
+ on 2023-12-27T14:16:53.403268             </p>
           </div>
         </div>
         <br>
