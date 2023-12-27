@@ -19,7 +19,7 @@ type(benchmark) :: bench
 call bench%init()
 
 ! start benchmark
-call bench%start_benchmark(method, argi)
+call bench%start_benchmark(method)
 ! loop over nloops
 do nl = 1, bench%nloops
 
@@ -77,7 +77,7 @@ After execution, the results will be displayed in the terminal and stored in the
 
 ## TODO
 - [ ] Add MPI module.
-- [ ] Write a Fortran/Python script to plot the benchmark results.
+- [ ] Add plot_co.py similar to plot.py.
 - [ ] Add CI_test.yml
 
 ## API documentation
