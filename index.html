@@ -73,7 +73,82 @@
       <div class="row" id='text'>
         <div class=col-md-8>
           <h1>ForBenchmark</h1>
-          
+          <p><a href="https://github.com/gha3mi/forbenchmark"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-ForBenchmark-blue.svg?style=social&amp;logo=github"></a>
+<a href="https://github.com/gha3mi/forbenchmark/releases/latest"><img alt="Version" src="https://img.shields.io/github/release/gha3mi/forbenchmark.svg"></a>
+<a href="https://gha3mi.github.io/forbenchmark/"><img alt="Documentation" src="https://img.shields.io/badge/ford-Documentation%20-blueviolet.svg"></a>
+<a href="https://github.com/gha3mi/forbenchmark/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/gha3mi/forbenchmark?color=green"></a></p>
+<!-- [![Build](https://github.com/gha3mi/forbenchmark/actions/workflows/CI_test.yml/badge.svg)](https://github.com/gha3mi/forbenchmark/actions/workflows/CI_test.yml) -->
+
+<!-- <img alt="ForBenchmark" src="https://github.com/gha3mi/forbenchmark/raw/main/media/logo.png" width="750"> -->
+
+<p><strong>ForBenchmark</strong>: A Fortran library for benchmarking serial and coarray-based codes.</p>
+<h2>Usage</h2>
+<div class="codehilite"><pre><span></span><code><span class="k">use </span><span class="n">forbenchmark</span>
+
+<span class="k">type</span><span class="p">(</span><span class="n">benchmark</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bench</span>
+
+<span class="c">! initialize the benchmark</span>
+<span class="k">call </span><span class="n">bench</span><span class="p">%</span><span class="n">init</span><span class="p">()</span>
+
+<span class="c">! start benchmark</span>
+<span class="k">call </span><span class="n">bench</span><span class="p">%</span><span class="n">start_benchmark</span><span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">argi</span><span class="p">)</span>
+<span class="c">! loop over nloops</span>
+<span class="k">do </span><span class="n">nl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">bench</span><span class="p">%</span><span class="n">nloops</span>
+
+<span class="w">    </span><span class="c">! call your function or subroutine or ...</span>
+
+<span class="k">end do</span>
+<span class="c">! stop benchmark</span>
+<span class="k">call </span><span class="n">bench</span><span class="p">%</span><span class="n">stop_benchmark</span><span class="p">()</span>
+
+<span class="c">! finalize the benchmark</span>
+<span class="k">call </span><span class="n">bench</span><span class="p">%</span><span class="n">finalize</span><span class="p">()</span>
+</code></pre></div>
+
+<p>See <code>example/demo.f90</code> for a complete example.</p>
+<h2>fpm dependency</h2>
+<p>To use <code>ForBenchmark</code> as a dependency in your fpm project, include the following line in your <code>fpm.toml</code> file:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">[dependencies]</span>
+<span class="n">forbenchmark</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">git</span><span class="p">=</span><span class="s2">&quot;https://github.com/gha3mi/forbenchmark.git&quot;</span><span class="p">}</span>
+</code></pre></div>
+
+<h2>How to Run the Demo</h2>
+<p><strong>Clone the repository:</strong></p>
+<p>Clone the <code>ForBenchmark</code> repository from GitHub using:</p>
+<div class="codehilite"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/gha3mi/forbenchmark.git
+<span class="nb">cd</span><span class="w"> </span>forbenchmark
+</code></pre></div>
+
+<p><strong>Run the demo:</strong></p>
+<p>For serial benchmarking:</p>
+<div class="codehilite"><pre><span></span><code>fpm<span class="w"> </span>run<span class="w"> </span>--example<span class="w"> </span>demo
+</code></pre></div>
+
+<p>For coarray programs benchmarking using the Intel Fortran compiler:</p>
+<div class="codehilite"><pre><span></span><code>fpm<span class="w"> </span>run<span class="w"> </span>--example<span class="w"> </span>demo<span class="w"> </span>--compiler<span class="w"> </span>ifx<span class="w"> </span>--flag<span class="w"> </span><span class="s2">&quot;-coarray -coarray-num-images=4 -DUSE_COARRAY&quot;</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>fpm<span class="w"> </span>run<span class="w"> </span>--example<span class="w"> </span>demo<span class="w"> </span>--compiler<span class="w"> </span>ifort<span class="w"> </span>--flag<span class="w"> </span><span class="s2">&quot;-coarray -coarray-num-images=4 -DUSE_COARRAY&quot;</span>
+</code></pre></div>
+
+<p>After execution, the results will be displayed in the terminal and stored in the results folder.</p>
+<h2>TODO</h2>
+<ul>
+<li>[ ] Write a Fortran/Python script to plot the benchmark results.</li>
+<li>[ ] Add CI_test.yml</li>
+</ul>
+<h2>API documentation</h2>
+<p>The most up-to-date API documentation for the main branch is available
+<a href="https://gha3mi.github.io/forbenchmark/">here</a>.
+To generate the API documentation for <code>ForBenchmark</code> using
+<a href="https://github.com/Fortran-FOSS-Programmers/ford">ford</a> run the following
+command:</p>
+<div class="codehilite"><pre><span></span><code>ford<span class="w"> </span>ford.yml
+</code></pre></div>
+
+<h2>Contributing</h2>
+<p>Contributions to <code>ForBenchmark</code> are welcome!
+If you find any issues or would like to suggest improvements, please open an issue.</p>
         </div>
           <div class="col-md-4">
 	        <div class="card card-body bg-light">
@@ -146,7 +221,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-12-27T01:36:19.456792             </p>
+ on 2023-12-27T01:37:03.523372             </p>
           </div>
         </div>
         <br>
