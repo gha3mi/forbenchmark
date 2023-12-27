@@ -6,7 +6,7 @@
 
 <!-- <img alt="ForBenchmark" src="https://github.com/gha3mi/forbenchmark/raw/main/media/logo.png" width="750"> -->
 
-**ForBenchmark**: A Fortran library for benchmarking serial and coarray-based codes.
+**ForBenchmark**: A Fortran library for benchmarking (with support for coarrays).
 
 ## Usage
 
