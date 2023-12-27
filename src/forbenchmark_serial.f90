@@ -99,7 +99,11 @@ contains
       this%description = description
       this%method      = method
       this%argi        = argi
-      if (present(argr)) this%argr = argr
+      if (present(argr)) then
+         this%argr = argr
+      else
+         if(.not. allocated(this%argr)) allocate(this%argr(0))
+      endif
 
       if (present(description)) then
          print'(a,a," ",a,*(g0,1x))',&
