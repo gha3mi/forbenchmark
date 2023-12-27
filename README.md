@@ -76,6 +76,7 @@ fpm run --example demo --compiler ifort --flag "-coarray -coarray-num-images=4 -
 After execution, the results will be displayed in the terminal and stored in the results folder.
 
 ## TODO
+- [ ] Add MPI module.
 - [ ] Write a Fortran/Python script to plot the benchmark results.
 - [ ] Add CI_test.yml
 
