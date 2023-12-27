@@ -236,13 +236,6 @@ contains
       logical                         :: exist
       integer                         :: iostat
 
-      if (allocated(this%argi)) deallocate(this%argi)
-      if (allocated(this%argr)) deallocate(this%argr)
-      if (allocated(this%time)) deallocate(this%time)
-      if (allocated(this%gflops)) deallocate(this%gflops)
-
-      if (this_image() == 1) print'(a)', 'end of benchmark'
-
       inquire(file=this%filename, exist=exist, iostat=iostat)
       if (iostat /= 0 .or. .not. exist) then
          error stop 'file '//trim(this%filename)//' does not exist or cannot be accessed.'
@@ -250,6 +243,17 @@ contains
       open (newunit = nunit, file = this%filename, access = 'append')
       write(nunit,'(a)') 'end of benchmark'
       close(nunit)
+
+      if (allocated(this%filename)) deallocate(this%filename)
+      if (allocated(this%method)) deallocate(this%method)
+      if (allocated(this%description)) deallocate(this%description)
+      if (allocated(this%argi)) deallocate(this%argi)
+      if (allocated(this%argr)) deallocate(this%argr)
+      if (allocated(this%time)) deallocate(this%time)
+      if (allocated(this%gflops)) deallocate(this%gflops)
+
+      if (this_image() == 1) print'(a)', 'end of benchmark'
+
    end subroutine finalize
    !===============================================================================
 
