@@ -36,12 +36,12 @@ jobs:
         compiler: ${{ matrix.toolchain.compiler }}
         version: ${{ matrix.toolchain.version }}
 
-    - name: Run Tests (Debug)
-      run: fpm test --profile debug --compiler ${{ env.FC}}
+    - name: Run Demo (Debug)
+      run: fpm run --example demo --profile debug --compiler ${{ env.FC}}
       env:
         FC: ${{ steps.setup-fortran.outputs.fc }}
 
-    - name: Run Tests (Release)
-      run: fpm test --profile release --compiler ${{ env.FC}}
+    - name: Run Demo (Release)
+      run: fpm run --example --profile release --compiler ${{ env.FC}}
       env:
         FC: ${{ steps.setup-fortran.outputs.fc }}
