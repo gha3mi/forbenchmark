@@ -67,7 +67,9 @@ contains
       allocate(this%gflops[*])
 
       inquire(file=this%filename, exist=exist, iostat=iostat)
-      if (iostat /= 0) error stop 'file '//trim(this%filename)//' does not exist.'
+      if (iostat /= 0 .or. .not. exist) then
+         error stop 'file '//trim(this%filename)//' does not exist or cannot be accessed.'
+      end if
       open (newunit = nunit, file = this%filename)
       write(nunit,'(a)') '-----------------------------------------------------'
       write(nunit,'(a)') 'ForBenchmark - https://github.com/gha3mi/forbenchmark'
@@ -209,7 +211,9 @@ contains
       write(fmt,'(a,g0,a)') '(a,',lm,'x,3x,E20.14,3x,E20.14,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g8.0,3x))'
 
       inquire(file=this%filename, exist=exist, iostat=iostat)
-      if (iostat /= 0) error stop 'file '//trim(this%filename)//' does not exist.'
+      if (iostat /= 0 .or. .not. exist) then
+         error stop 'file '//trim(this%filename)//' does not exist or cannot be accessed.'
+      end if
       open (newunit = nunit, file = this%filename, access = 'append')
       write(nunit,fmt) &
          this%method,&
@@ -240,7 +244,9 @@ contains
       if (this_image() == 1) print'(a)', 'end of benchmark'
 
       inquire(file=this%filename, exist=exist, iostat=iostat)
-      if (iostat /= 0) error stop 'file '//trim(this%filename)//' does not exist.'
+      if (iostat /= 0 .or. .not. exist) then
+         error stop 'file '//trim(this%filename)//' does not exist or cannot be accessed.'
+      end if
       open (newunit = nunit, file = this%filename, access = 'append')
       write(nunit,'(a)') 'end of benchmark'
       close(nunit)
