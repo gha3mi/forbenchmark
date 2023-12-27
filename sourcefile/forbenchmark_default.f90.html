@@ -339,7 +339,7 @@ large graphs.</div>
 <a id="ln-82" name="ln-82" href="#ln-82"></a><span class="s1">      &amp;         TIME         |&amp;</span>
 <a id="ln-83" name="ln-83" href="#ln-83"></a><span class="s1">      &amp;        GFLOPS        |&amp;</span>
 <a id="ln-84" name="ln-84" href="#ln-84"></a><span class="s1">      &amp;  NLOOPS  |&amp;</span>
-<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="s1">      &amp;   ARGS  &#39;</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="s1">      &amp;   ARGI  &#39;</span>
 <a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">      </span><span class="k">close</span><span class="p">(</span><span class="n">nunit</span><span class="p">)</span>
 <a id="ln-87" name="ln-87" href="#ln-87"></a><span class="w">   </span><span class="k">end subroutine </span><span class="n">init</span>
 <a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">   </span><span class="c">!===============================================================================</span>
@@ -375,7 +375,7 @@ large graphs.</div>
 <a id="ln-118" name="ln-118" href="#ln-118"></a><span class="k">         print</span><span class="s1">&#39;(a,a,&quot; &quot;,a,*(g0,1x))&#39;</span><span class="p">,&amp;</span>
 <a id="ln-119" name="ln-119" href="#ln-119"></a><span class="w">         </span><span class="n">colorize</span><span class="p">(</span><span class="s1">&#39;Meth.: &#39;</span><span class="o">//</span><span class="n">this</span><span class="p">%</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">color_fg</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;bold_on&#39;</span><span class="p">),&amp;</span>
 <a id="ln-120" name="ln-120" href="#ln-120"></a><span class="w">         </span><span class="n">colorize</span><span class="p">(</span><span class="s1">&#39;; Des.: &#39;</span><span class="o">//</span><span class="n">this</span><span class="p">%</span><span class="n">description</span><span class="p">,</span><span class="w"> </span><span class="n">color_fg</span><span class="o">=</span><span class="s1">&#39;green_intense&#39;</span><span class="p">),&amp;</span>
-<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="w">         </span><span class="s1">&#39;; Args.:&#39;</span><span class="p">,&amp;</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="w">         </span><span class="s1">&#39;; Argi.:&#39;</span><span class="p">,&amp;</span>
 <a id="ln-122" name="ln-122" href="#ln-122"></a><span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">argi</span>
 <a id="ln-123" name="ln-123" href="#ln-123"></a><span class="w">      </span><span class="k">elseif</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">description</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">argi</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
 <a id="ln-124" name="ln-124" href="#ln-124"></a><span class="k">         print</span><span class="s1">&#39;(a,a,&quot; &quot;,a)&#39;</span><span class="p">,&amp;</span>
@@ -384,7 +384,7 @@ large graphs.</div>
 <a id="ln-127" name="ln-127" href="#ln-127"></a><span class="w">      </span><span class="k">elseif</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">description</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">argi</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
 <a id="ln-128" name="ln-128" href="#ln-128"></a><span class="k">         print</span><span class="s1">&#39;(a,a,*(g0,1x))&#39;</span><span class="p">,&amp;</span>
 <a id="ln-129" name="ln-129" href="#ln-129"></a><span class="w">         </span><span class="n">colorize</span><span class="p">(</span><span class="s1">&#39;Meth.: &#39;</span><span class="o">//</span><span class="n">this</span><span class="p">%</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">color_fg</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;bold_on&#39;</span><span class="p">),&amp;</span>
-<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="w">         </span><span class="s1">&#39;; Args.:&#39;</span><span class="p">,&amp;</span>
+<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="w">         </span><span class="s1">&#39;; Argi.:&#39;</span><span class="p">,&amp;</span>
 <a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">argi</span>
 <a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">      </span><span class="k">else</span>
 <a id="ln-133" name="ln-133" href="#ln-133"></a><span class="k">         print</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">colorize</span><span class="p">(</span><span class="s1">&#39;Meth.: &#39;</span><span class="o">//</span><span class="n">this</span><span class="p">%</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">color_fg</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;bold_on&#39;</span><span class="p">)</span>
@@ -523,7 +523,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-12-27T14:50:41.556608             </p>
+ on 2023-12-27T15:09:53.982279             </p>
           </div>
         </div>
         <br>

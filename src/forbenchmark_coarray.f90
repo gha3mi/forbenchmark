@@ -93,7 +93,7 @@ contains
       &     TIME(image)      |&
       &    GFLOPS(image)     |&
       &  NLOOPS  |&
-      &   ARGS  '
+      &   ARGI  '
       close(nunit)
    end subroutine init
    !===============================================================================
@@ -131,12 +131,12 @@ contains
          print'(a,a," ",a,*(g0,1x))',&
             colorize('Meth.: '//this%method, color_fg='green',style='bold_on'),&
             colorize('; Des.: '//this%description, color_fg='green_intense'),&
-            '; Args.:',&
+            '; Argi.:',&
             this%argi
       elseif (.not. present(description) .and. present(argi) .and. this_image() == 1) then
          print'(a," ",a,*(g0,1x))',&
             colorize('Meth.: '//this%method, color_fg='green',style='bold_on'),&
-            '; Args.:',&
+            '; Argi.:',&
             this%argi
       elseif (present(description) .and. .not. present(argi) .and. this_image() == 1) then
          print'(a,a)',&
