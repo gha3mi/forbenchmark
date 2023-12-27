@@ -110,8 +110,12 @@ contains
       this%description = description
       this%method      = method
       this%argi        = argi
-      if (present(argr)) this%argr = argr
-
+      if (present(argr)) then
+         this%argr = argr
+      else
+         if(.not. allocated(this%argr)) allocate(this%argr(0))
+      endif
+      
       sync all
 
       if (present(description) .and. this_image() == 1) then
