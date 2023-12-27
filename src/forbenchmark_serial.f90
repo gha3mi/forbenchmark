@@ -36,13 +36,13 @@ contains
    elemental impure subroutine init(this, title, filename, nloops)
       use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
 
-      class(benchmark),      intent(inout)        :: this
-      character(*),          intent(in), optional :: title
-      character(*),          intent(in), optional :: filename
-      integer,               intent(in)           :: nloops
-      integer                                     :: nunit
-      logical                                     :: exist
-      integer                                     :: iostat
+      class(benchmark), intent(inout)        :: this
+      character(*),     intent(in), optional :: title
+      character(*),     intent(in), optional :: filename
+      integer,          intent(in), optional :: nloops
+      integer                                :: nunit
+      logical                                :: exist
+      integer                                :: iostat
 
       if (present(filename)) then
          this%filename = trim(filename//'.data')
@@ -50,7 +50,12 @@ contains
          this%filename = 'benchmark.data'
       endif
       
-      this%nloops   = nloops
+      if (present(nloops)) then
+         if (nloops <= 0) error stop 'nloops must be greater than zero.'
+         this%nloops = nloops
+      else
+         this%nloops = 10
+      end if
 
       inquire(file=this%filename, exist=exist, iostat=iostat)
       if (iostat /= 0) error stop 'file '//trim(this%filename)//' does not exist.'

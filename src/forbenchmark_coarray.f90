@@ -40,14 +40,14 @@ contains
    elemental impure subroutine init(this, title, filename, nloops)
       use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
 
-      class(benchmark),      intent(inout)        :: this
-      character(*),          intent(in), optional :: title
-      character(*),          intent(in), optional :: filename
-      integer,               intent(in)           :: nloops
-      integer                                     :: nunit
-      logical                                     :: exist
-      integer                                     :: iostat
-      character(10)                               :: im_chr
+      class(benchmark), intent(inout)        :: this
+      character(*),     intent(in), optional :: title
+      character(*),     intent(in), optional :: filename
+      integer,          intent(in), optional :: nloops
+      integer                                :: nunit
+      logical                                :: exist
+      integer                                :: iostat
+      character(10)                          :: im_chr
 
       write (im_chr, '(i0)') this_image()
       if (present(filename)) then
@@ -56,7 +56,12 @@ contains
          this%filename = trim('benchmark'//'_im'//trim(im_chr)//'.data')
       end if
 
-      this%nloops   = nloops
+      if (present(nloops)) then
+         if (nloops <= 0) error stop 'nloops must be greater than zero.'
+         this%nloops = nloops
+      else
+         this%nloops = 10
+      end if
 
       allocate(this%time[*])
       allocate(this%gflops[*])

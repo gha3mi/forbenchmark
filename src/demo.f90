@@ -15,9 +15,9 @@ program demo
    integer                               :: nl, p, i, j, k
 
    ! initialize the benchmark
-   ! title is optional
-   ! filename is optional. make sure directory exists
-   ! nloops is the number of loops to run for each benchmark
+   ! title: optional
+   ! filename: optional. make sure directory exists
+   ! nloops: optional. number of loops for each benchmark. default is 10.
    call bench%init(title='MatMul Benchmark', filename='results/demo_matmul', nloops=10)
 
    ! start the benchmark
