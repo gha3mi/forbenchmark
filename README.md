@@ -73,7 +73,18 @@ fpm run --example demo --compiler ifx --flag "-coarray -coarray-num-images=4 -DU
 fpm run --example demo --compiler ifort --flag "-coarray -coarray-num-images=4 -DUSE_COARRAY"
 ```
 
-After execution, the results will be displayed in the terminal and stored in the results folder.
+After execution, the results will be displayed in the terminal and stored in the 'results' folder. See `results/demo.data`, `results/demo_im1.data` for instance.
+
+**Visualizing demo results:**
+
+To visualize benchmarking results, execute the following command in Python, passing the relevant data file as an argument:
+
+`python results/plot.py demo.data`
+
+The output includes graphical representations of benchmarking metrics:
+
+<img alt="ForBenchmark" src="results/demo_time.png" width="350"> <img alt="ForBenchmark" src="results/demo_perf.png" width="350">
+
 
 ## TODO
 - [ ] Add MPI module.

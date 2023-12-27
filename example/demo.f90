@@ -87,9 +87,9 @@ program demo
    call bench%finalize()
 
    ! you can use a python script to plot the results as follows:
-   ! python results/plot.py demo_matmul.data
+   ! python results/plot.py demo.data
    ! for coarray benchmarks, utilize:
-   ! TODO: python results/plot_co.py demo_matmul.data
+   ! TODO: python results/plot_co.py demo.data
    ! by default, the script generates two plots: one for elapsed time and one for performance.
    ! the x-axis corresponds to the first argument in argi, while the y-axis displays elapsed time and performance.
    

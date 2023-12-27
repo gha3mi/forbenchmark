@@ -1,0 +1,21 @@
+-----------------------------------------------------
+ForBenchmark - https://github.com/gha3mi/forbenchmark
+-----------------------------------------------------
+
+Demo Benchmark
+2023.12.27 - 21:16:16
+
+compiler_version: GCC version 13.2.0
+compiler_options: -cpp -I build/gfortran_6E2E351FB09955DB -imultiarch x86_64-linux-gnu -mtune=generic -march=x86-64 -g -Wall -Wextra -Werror=implicit-interface -fPIC -fmax-errors=1 -fbounds-check -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -ffree-form -J build/gfortran_6E2E351FB09955DB -fpre-include=/usr/include/finclude/math-vector-fortran.h
+
+
+       METHOD        |         TIME         |        GFLOPS        |  NLOOPS  |   ARGI  
+m1                     0.10000000000000E-03   0.10000000000000E+02         10        100        100        100
+m2                     0.71000000000000E-02   0.14084507042254E+00         10        100        100        100
+m1                     0.70000000000000E-03   0.11428571428571E+02         10        200        200        200
+m2                     0.54400000000000E-01   0.14705882352941E+00         10        200        200        200
+m1                     0.23000000000000E-02   0.11739130434783E+02         10        300        300        300
+m2                     0.18760000000000E+00   0.14392324093817E+00         10        300        300        300
+m1                     0.51000000000000E-02   0.12549019607843E+02         10        400        400        400
+m2                     0.44990000000000E+00   0.14225383418537E+00         10        400        400        400
+end of benchmark
