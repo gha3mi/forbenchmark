@@ -37,7 +37,7 @@ jobs:
         version: ${{ matrix.toolchain.version }}
 
     - name: Run demo (Debug)
-      run: fpm example --demo --profile debug --compiler ${{ env.FC}}
+      run: fpm run --example demo --profile debug --compiler ${{ env.FC}}
       env:
         FC: ${{ steps.setup-fortran.outputs.fc }}
 
@@ -45,3 +45,6 @@ jobs:
       run: fpm run --example demo --profile release --compiler ${{ env.FC}}
       env:
         FC: ${{ steps.setup-fortran.outputs.fc }}
+
+    - name: Plot results
+      run: python results/plot.py demo.data
