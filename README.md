@@ -2,7 +2,7 @@
 [![Version](https://img.shields.io/github/release/gha3mi/forbenchmark.svg)](https://github.com/gha3mi/forbenchmark/releases/latest)
 [![Documentation](https://img.shields.io/badge/ford-Documentation%20-blueviolet.svg)](https://gha3mi.github.io/forbenchmark/)
 [![License](https://img.shields.io/github/license/gha3mi/forbenchmark?color=green)](https://github.com/gha3mi/forbenchmark/blob/main/LICENSE)
-<!-- [![Build](https://github.com/gha3mi/forbenchmark/actions/workflows/CI_test.yml/badge.svg)](https://github.com/gha3mi/forbenchmark/actions/workflows/CI_test.yml) -->
+[![Build](https://github.com/gha3mi/forbenchmark/actions/workflows/CI_test.yml/badge.svg)](https://github.com/gha3mi/forbenchmark/actions/workflows/CI_test.yml)
 
 <!-- <img alt="ForBenchmark" src="https://github.com/gha3mi/forbenchmark/raw/main/media/logo.png" width="750"> -->
 
@@ -87,9 +87,10 @@ The output includes graphical representations of benchmarking metrics:
 
 
 ## TODO
+- [ ] Add benchmarks for matmul, dot ...
 - [ ] Add MPI module.
 - [ ] Add plot_co.py similar to plot.py.
-- [ ] Add CI_test.yml
+- [x] Add CI_test.yml
 
 ## API documentation
 
