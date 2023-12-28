@@ -75,20 +75,20 @@
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title="<p>47.1% of total for derived types.</p>Including implementation: 145 statements, 44.9% of total for derived types.">16 statements</a>
+                 title="<p>52.9% of total for derived types.</p>Including implementation: 178 statements, 55.1% of total for derived types.">18 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/forbenchmark_default.f90"> Source File</a>
+              <a href="../src/forbenchmark_coarray.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/forbenchmark_default.f90.html'>forbenchmark_default.f90</a></li>
-                <li class="breadcrumb-item"><a href='../module/forbenchmark_default.html'>forbenchmark_default</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/forbenchmark_coarray.f90.html'>forbenchmark_coarray.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/forbenchmark_coarray.html'>forbenchmark_coarray</a></li>
             <li class="breadcrumb-item active" aria-current="page">benchmark</li>
           </ol>
         </nav>
@@ -123,6 +123,8 @@
             <a class="list-group-item" href="../type/benchmark.html#variable-argi">argi</a>
             <a class="list-group-item" href="../type/benchmark.html#variable-argr">argr</a>
             <a class="list-group-item" href="../type/benchmark.html#variable-gflops">gflops</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-elapsed_time_average">elapsed_time_average</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-gflops_total">gflops_total</a>
         </div>
       </div>
     </div>
@@ -282,12 +284,12 @@ large graphs.</div>
               <span class="anchor" id="variable-time"></span>
               type(timer),
             </td>
-              <td>public</td>
+              <td>public,</td>
             <td>
-              
+              allocatable
             </td>
             <td>::</td>
-            <td><strong>time</strong></td>
+            <td><strong>time</strong>[:]</td>
                 <td></td>
                 <td></td>
             <td>
@@ -401,12 +403,46 @@ large graphs.</div>
               <span class="anchor" id="variable-gflops"></span>
               real(kind=rk),
             </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>gflops</strong>[:]</td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elapsed_time_average"></span>
+              real(kind=rk),
+            </td>
               <td>public</td>
             <td>
               
             </td>
             <td>::</td>
-            <td><strong>gflops</strong></td>
+            <td><strong>elapsed_time_average</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-gflops_total"></span>
+              real(kind=rk),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>gflops_total</strong></td>
                 <td></td>
                 <td></td>
             <td>
@@ -833,14 +869,16 @@ large graphs.</div>
     <section>
     <h3><span class="anchor" id="src"></span>Source Code</h3>
     <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">type</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">benchmark</span>
-<span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span><span class="w">                         </span><span class="kd">::</span><span class="w"> </span><span class="nb">time</span>
-<span class="nb">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">filename</span>
+<span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">timer</span><span class="p">),</span><span class="w">  </span><span class="k">allocatable</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="nb">time</span><span class="p">[:]</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">filename</span>
 <span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">method</span>
 <span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">description</span>
 <span class="w">      </span><span class="kt">integer</span><span class="w">                             </span><span class="kd">::</span><span class="w"> </span><span class="n">nloops</span>
 <span class="w">      </span><span class="kt">integer</span><span class="p">,</span><span class="w">  </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">argi</span>
 <span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">argr</span>
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                            </span><span class="kd">::</span><span class="w"> </span><span class="n">gflops</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">gflops</span><span class="p">[:]</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                            </span><span class="kd">::</span><span class="w"> </span><span class="n">elapsed_time_average</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                            </span><span class="kd">::</span><span class="w"> </span><span class="n">gflops_total</span>
 <span class="w">   </span><span class="k">contains</span>
 <span class="k">      procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">init</span>
 <span class="w">      </span><span class="k">procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">start_benchmark</span>
@@ -867,7 +905,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-12-28T12:52:57.493056             </p>
+ on 2023-12-28T13:17:25.834132             </p>
           </div>
         </div>
         <br>
