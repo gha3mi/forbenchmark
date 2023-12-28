@@ -24,6 +24,10 @@ kinds   = {git="https://github.com/gha3mi/kinds.git"}
 fortime = {git="https://github.com/gha3mi/fortime.git"}
 FACE    = {git="https://github.com/szaghi/FACE.git"}
 
+[preprocess]
+[preprocess.cpp]
+[preprocess.fypp]
+
 [[example]]
 name       = "demo"
 source-dir = "example"
