@@ -26,7 +26,6 @@ FACE    = {git="https://github.com/szaghi/FACE.git"}
 
 [preprocess]
 [preprocess.cpp]
-[preprocess.fypp]
 
 [[example]]
 name       = "demo"
