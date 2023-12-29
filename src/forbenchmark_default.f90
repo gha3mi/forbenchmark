@@ -56,6 +56,8 @@ contains
       integer                                :: nunit
       integer                                :: iostat
 
+      if (nmarks <= 0) error stop 'nmarks must be greater than zero.'
+
       allocate(this%marks(nmarks))
 
       if (present(filename)) then
@@ -115,6 +117,8 @@ contains
       real(rk), dimension(:), intent(in), optional :: argr
       character(*),           intent(in), optional :: description
 
+      if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
+
       this%marks(imark)%description = description
       this%marks(imark)%method      = method
 
@@ -172,6 +176,8 @@ contains
       class(benchmark), intent(inout) :: this
       integer,          intent(in)    :: imark
 
+      if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
+
       call this%marks(imark)%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
 
       this%marks(imark)%speedup = this%marks(imark)%time%elapsed_time/this%marks(1)%time%elapsed_time
@@ -201,6 +207,8 @@ contains
       integer                         :: lm
       logical                         :: exist
       integer                         :: iostat
+
+      if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
 
       inquire(file=this%filename, exist=exist, iostat=iostat)
       if (iostat /= 0 .or. .not. exist) then
