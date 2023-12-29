@@ -15,10 +15,11 @@ program demo
    integer                               :: nl, p, i, j, k
 
    ! initialize the benchmark
+   ! nmarks: number of methods to benchmark
    ! title: optional
    ! filename: optional. make sure directory exists
    ! nloops: optional. number of loops for each benchmark. default is 10.
-   call bench%init(title='Demo Benchmark', filename='results/demo', nloops=10)
+   call bench%init(nmarks=2, title='Demo Benchmark', filename='results/demo', nloops=2)
 
    ! start the benchmark
    do p = 100,400, 100 ! loop over problem size
@@ -38,13 +39,14 @@ program demo
 
       !===============================================================================
       ! start benchmark for method 1
+      ! imark is an integer to identify the method, 1 is for reference method
       ! method is a string to identify the method
       ! description is optional
       ! argi is an optional integer array of arguments to write in the output file and to compute gflops
       ! the first element in argi is used for x-axis in the plot
       ! argr is an optional real array of arguments to compute gflops
       ! loop over nloops
-      call bench%start_benchmark(method='m1', description='intrinsic, C = matmul(A,B)', argi=[p,p,p])
+      call bench%start_benchmark(imark=1, method='m1', description='intrinsic, C = matmul(A,B)', argi=[p,p,p])
       ! loop over nloops
       do nl = 1, bench%nloops
 
@@ -54,14 +56,15 @@ program demo
 
       end do
       ! stop benchmark for method 1
-      ! cmp_gflops is an optional function to compute gflops
-      call bench%stop_benchmark(cmp_gflops)
+      ! imark is the same as above
+      ! flops is an optional function to compute flops
+      call bench%stop_benchmark(imark=1, flops=cmp_gflops)
       !===============================================================================
 
 
       !===============================================================================
       ! start benchmark for method 2, same as above.
-      call bench%start_benchmark('m2', 'my_matmul, C = matmul(A,B)', [p,p,p])
+      call bench%start_benchmark(2,'m2', 'my_matmul, C = matmul(A,B)', [p,p,p])
       do nl = 1, bench%nloops
 
          ! call your function or subroutine or ...
@@ -76,7 +79,7 @@ program demo
          end do
 
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark(2,cmp_gflops)
       !===============================================================================
 
       ! you can add more methods ...

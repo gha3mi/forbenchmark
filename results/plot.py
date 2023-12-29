@@ -25,3 +25,9 @@ fpd.plot_performance(file_path, benchmark_data, x_data,
                                    title='Demo Benchmark - Performance',
                                    xlabel='Order of Matrix',
                                    ylabel='Performance [GFLOPS]')
+
+# Plot the performance
+fpd.plot_speedup(file_path, benchmark_data, x_data,
+                                   title='Demo Benchmark - Speedup',
+                                   xlabel='Order of Matrix',
+                                   ylabel='Speedup [-]')

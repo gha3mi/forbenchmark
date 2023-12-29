@@ -11,15 +11,26 @@ module forbenchmark_default
 
    !===============================================================================
    !> author: Seyed Ali Ghasemi
+   type :: mark
+      character(:), allocatable :: method
+      character(:), allocatable :: description
+      type(timer)               :: time
+      real(rk)                  :: speedup
+      real(rk)                  :: gflops
+   contains
+      procedure, private :: finalize_mark
+   end type mark
+   !===============================================================================
+
+
+   !===============================================================================
+   !> author: Seyed Ali Ghasemi
    type :: benchmark
-      type(timer)                         :: time
-      character(:), allocatable           :: filename
-      character(:), allocatable           :: method
-      character(:), allocatable           :: description
-      integer                             :: nloops
-      integer,  dimension(:), allocatable :: argi
-      real(rk), dimension(:), allocatable :: argr
-      real(rk)                            :: gflops
+      type(mark), dimension(:), allocatable :: marks
+      character(:),             allocatable :: filename
+      integer                               :: nloops
+      integer,    dimension(:), allocatable :: argi
+      real(rk),   dimension(:), allocatable :: argr
    contains
       procedure          :: init
       procedure          :: start_benchmark
@@ -33,22 +44,25 @@ contains
 
    !===============================================================================
    !> author: Seyed Ali Ghasemi
-   elemental impure subroutine init(this, title, filename, nloops)
+   elemental impure subroutine init(this, nmarks, title, filename, nloops)
       use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
 
       class(benchmark), intent(inout)        :: this
+      integer,          intent(in)           :: nmarks
       character(*),     intent(in), optional :: title
       character(*),     intent(in), optional :: filename
       integer,          intent(in), optional :: nloops
       integer                                :: nunit
       integer                                :: iostat
 
+      allocate(this%marks(nmarks))
+
       if (present(filename)) then
          this%filename = trim(filename//'.data')
       else
          this%filename = 'benchmark.data'
       endif
-      
+
       if (present(nloops)) then
          if (nloops <= 0) error stop 'nloops must be greater than zero.'
          this%nloops = nloops
@@ -78,6 +92,7 @@ contains
       write(nunit,'(a)') ''
       write(nunit,'(a)') &
       &'       METHOD        |&
+      &   SPEEDUP    |&
       &         TIME         |&
       &        GFLOPS        |&
       &  NLOOPS  |&
@@ -89,17 +104,18 @@ contains
 
    !===============================================================================
    !> author: Seyed Ali Ghasemi
-   impure subroutine start_benchmark(this, method, description, argi, argr)
+   impure subroutine start_benchmark(this, imark, method, description, argi, argr)
       use face
 
       class(benchmark),       intent(inout)        :: this
+      integer,                intent(in)           :: imark
       character(*),           intent(in)           :: method
       integer,  dimension(:), intent(in), optional :: argi
       real(rk), dimension(:), intent(in), optional :: argr
       character(*),           intent(in), optional :: description
 
-      this%description = description
-      this%method      = method
+      this%marks(imark)%description = description
+      this%marks(imark)%method      = method
 
       if (present(argi)) then
          this%argi = argi
@@ -115,31 +131,31 @@ contains
 
       if (present(description) .and. present(argi)) then
          print'(a,a," ",a,*(g0,1x))',&
-         colorize('Meth.: '//this%method, color_fg='green',style='bold_on'),&
-         colorize('; Des.: '//this%description, color_fg='green_intense'),&
+         colorize('Meth.: '//this%marks(imark)%method, color_fg='green',style='bold_on'),&
+         colorize('; Des.: '//this%marks(imark)%description, color_fg='green_intense'),&
          '; Argi.:',&
          this%argi
       elseif (present(description) .and. .not. present(argi)) then
          print'(a,a," ",a)',&
-         colorize('Meth.: '//this%method, color_fg='green',style='bold_on'),&
-         colorize('; Des.: '//this%description, color_fg='green_intense')
+         colorize('Meth.: '//this%marks(imark)%method, color_fg='green',style='bold_on'),&
+         colorize('; Des.: '//this%marks(imark)%description, color_fg='green_intense')
       elseif (.not. present(description) .and. present(argi)) then
          print'(a,a,*(g0,1x))',&
-         colorize('Meth.: '//this%method, color_fg='green',style='bold_on'),&
+         colorize('Meth.: '//this%marks(imark)%method, color_fg='green',style='bold_on'),&
          '; Argi.:',&
          this%argi
       else
-         print'(a)', colorize('Meth.: '//this%method, color_fg='green',style='bold_on')
+         print'(a)', colorize('Meth.: '//this%marks(imark)%method, color_fg='green',style='bold_on')
       end if
 
-      call this%time%timer_start()
+      call this%marks(imark)%time%timer_start()
    end subroutine start_benchmark
    !===============================================================================
 
 
    !===============================================================================
    !> author: Seyed Ali Ghasemi
-   impure subroutine stop_benchmark(this, flops)
+   impure subroutine stop_benchmark(this, imark, flops)
 
       interface
          impure function Fun(argi, argr)
@@ -153,44 +169,68 @@ contains
       procedure(Fun), optional :: flops
 
       class(benchmark), intent(inout) :: this
+      integer,          intent(in)    :: imark
 
-      call this%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
+      call this%marks(imark)%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
+
+      this%marks(imark)%speedup = this%marks(imark)%time%elapsed_time/this%marks(1)%time%elapsed_time
 
       if (present(flops)) then
-         this%gflops = flops(this%argi,this%argr)/this%time%elapsed_time
-         print'(a,f6.2,a)', ' Performance  : ', this%gflops,' [GFLOPS]'
+         print'(a,f7.3,a)', ' Speedup      :', this%marks(imark)%speedup,' [-]'
+         this%marks(imark)%gflops = flops(this%argi,this%argr)/this%marks(imark)%time%elapsed_time
+         print'(a,f7.3,a)', ' Performance  :', this%marks(imark)%gflops,' [GFLOPS]'
       else
-         this%gflops = 0.0_rk
+         this%marks(imark)%gflops = 0.0_rk
       endif
       print'(a)', ''
 
-      call this%write_benchmark()
+
+      call this%write_benchmark(imark)
    end subroutine stop_benchmark
    !===============================================================================
 
 
    !===============================================================================
    !> author: Seyed Ali Ghasemi
-   impure subroutine write_benchmark(this)
+   impure subroutine write_benchmark(this, imark)
       class(benchmark), intent(inout) :: this
+      integer, intent(in)             :: imark
       integer                         :: nunit
-      character(len=55)               :: fmt
+      character(len=65)               :: fmt
       integer                         :: lm
       logical                         :: exist
       integer                         :: iostat
-
-      lm = 20-len_trim(this%method)
-      write(fmt,'(a,g0,a)') '(a,',lm,'x,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g8.0,3x))'
 
       inquire(file=this%filename, exist=exist, iostat=iostat)
       if (iostat /= 0 .or. .not. exist) then
          error stop 'file '//trim(this%filename)//' does not exist or cannot be accessed.'
       end if
       open (newunit = nunit, file = this%filename, access = 'append')
+
+      lm = 20-len_trim(this%marks(imark)%method)
+      write(fmt,'(a,g0,a)') '(a,',lm,'x,3x,F12.6,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g8.0,3x))'
+
       write(nunit,fmt) &
-         this%method, this%time%elapsed_time, this%gflops, this%nloops, this%argi
+         this%marks(imark)%method,&
+         this%marks(imark)%speedup,&
+         this%marks(imark)%time%elapsed_time,&
+         this%marks(imark)%gflops,&
+         this%nloops,&
+         this%argi
+
       close(nunit)
    end subroutine write_benchmark
+   !===============================================================================
+
+
+   !===============================================================================
+   !> author: Seyed Ali Ghasemi
+   elemental pure subroutine finalize_mark(this)
+      class(mark), intent(inout) :: this
+
+      if (allocated(this%method)) deallocate(this%method)
+      if (allocated(this%description)) deallocate(this%description)
+   end subroutine finalize_mark
    !===============================================================================
 
 
@@ -210,9 +250,8 @@ contains
       write(nunit,'(a)') 'end of benchmark'
       close(nunit)
 
+      call this%marks(:)%finalize_mark()
       if (allocated(this%filename)) deallocate(this%filename)
-      if (allocated(this%method)) deallocate(this%method)
-      if (allocated(this%description)) deallocate(this%description)
       if (allocated(this%argi)) deallocate(this%argi)
       if (allocated(this%argr)) deallocate(this%argr)
 

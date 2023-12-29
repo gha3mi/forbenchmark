@@ -3,19 +3,19 @@ ForBenchmark - https://github.com/gha3mi/forbenchmark
 -----------------------------------------------------
 
 Demo Benchmark
-2023.12.27 - 21:16:16
+2023.12.29 - 15:42:54
 
-compiler_version: GCC version 13.2.0
-compiler_options: -cpp -I build/gfortran_6E2E351FB09955DB -imultiarch x86_64-linux-gnu -mtune=generic -march=x86-64 -g -Wall -Wextra -Werror=implicit-interface -fPIC -fmax-errors=1 -fbounds-check -fcheck=array-temps -fbacktrace -fcoarray=single -fimplicit-none -ffree-form -J build/gfortran_6E2E351FB09955DB -fpre-include=/usr/include/finclude/math-vector-fortran.h
+compiler_version: Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 2024.0.2 Build 20231213
+compiler_options: -Ibuild/ifx_612074DB58F8C95F -c -fpp -fp-model precise -pc64 -align all -error-limit 1 -reentrancy threaded -nogen-interfaces -assume byterecl -standard-semantics -free -module build/ifx_612074DB58F8C95F -o build/ifx_612074DB58F8C95F/forbenchmark/src_forbenchmark_default.f90.o 
 
 
-       METHOD        |         TIME         |        GFLOPS        |  NLOOPS  |   ARGI  
-m1                     0.10000000000000E-03   0.10000000000000E+02         10        100        100        100
-m2                     0.71000000000000E-02   0.14084507042254E+00         10        100        100        100
-m1                     0.70000000000000E-03   0.11428571428571E+02         10        200        200        200
-m2                     0.54400000000000E-01   0.14705882352941E+00         10        200        200        200
-m1                     0.23000000000000E-02   0.11739130434783E+02         10        300        300        300
-m2                     0.18760000000000E+00   0.14392324093817E+00         10        300        300        300
-m1                     0.51000000000000E-02   0.12549019607843E+02         10        400        400        400
-m2                     0.44990000000000E+00   0.14225383418537E+00         10        400        400        400
+       METHOD        |   SPEEDUP    |         TIME         |        GFLOPS        |  NLOOPS  |   ARGI  
+m1                         1.000000   0.80000000000000E-03   0.12500000000000E+01          2        100        100        100
+m2                         2.812500   0.22500000000000E-02   0.44444444444444E+00          2        100        100        100
+m1                         1.000000   0.10050000000000E-01   0.79601990049751E+00          2        200        200        200
+m2                         2.636816   0.26500000000000E-01   0.30188679245283E+00          2        200        200        200
+m1                         1.000000   0.30600000000000E-01   0.88235294117647E+00          2        300        300        300
+m2                         2.254902   0.69000000000000E-01   0.39130434782609E+00          2        300        300        300
+m1                         1.000000   0.20200000000000E-01   0.31683168316832E+01          2        400        400        400
+m2                         2.685644   0.54250000000000E-01   0.11797235023041E+01          2        400        400        400
 end of benchmark
