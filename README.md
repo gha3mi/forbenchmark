@@ -75,23 +75,23 @@ fpm run --example demo --compiler ifort --flag "-coarray -coarray-num-images=4 -
 
 After execution, the results will be displayed in the terminal and stored in the 'results' folder. See `results/demo.data`, `results/demo_im1.data` for instance.
 
-**Visualizing demo results:**
+**Visualizing and exporting demo results:**
 
-To visualize benchmarking results, run the following commands in Python, specifying the relevant data files as arguments:
+To visualize and eport benchmarking results, run the following commands in Python, specifying the relevant data files as arguments:
 
 ```shell
-python results/plot.py demo.data
+python results/export.py demo.data
 ```
 
-The output includes graphical representations of benchmarking metrics:
+The output includes graphical representations and html table of benchmarking metrics:
 
 <img alt="demo_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_time.png" width="250"> <img alt="demo_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_perf.png" width="250"> <img alt="demo_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_speedup.png" width="250">
 
 For Coarray:
 
 ```shell
-python results/plot_co.py demo_co.data
-python results/plot_im.py demo_im1.data
+python results/export_co.py demo_co.data
+python results/export_im.py demo_im1.data
 ```
 The outputs can be found in the `results` directory.
 
@@ -99,8 +99,6 @@ The outputs can be found in the `results` directory.
 - [ ] Add settings to set units.
 - [ ] Add benchmarks for matmul, dot ...
 - [ ] Add MPI module.
-- [x] Add plot_co.py similar to plot.py.
-- [x] Add CI_test.yml
 
 ## API documentation
 
