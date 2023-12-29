@@ -1,4 +1,5 @@
 module forbenchmark_default
+   !! author: Seyed Ali Ghasemi
 
    use kinds
    use fortime, only: timer
@@ -10,8 +11,8 @@ module forbenchmark_default
    public benchmark
 
    !===============================================================================
-   !> author: Seyed Ali Ghasemi
    type :: mark
+   !! author: Seyed Ali Ghasemi
       character(:), allocatable :: method
       character(:), allocatable :: description
       type(timer)               :: time
@@ -24,8 +25,8 @@ module forbenchmark_default
 
 
    !===============================================================================
-   !> author: Seyed Ali Ghasemi
    type :: benchmark
+   !! author: Seyed Ali Ghasemi
       type(mark), dimension(:), allocatable :: marks
       character(:),             allocatable :: filename
       integer                               :: nloops
@@ -43,8 +44,8 @@ module forbenchmark_default
 contains
 
    !===============================================================================
-   !> author: Seyed Ali Ghasemi
    elemental impure subroutine init(this, nmarks, title, filename, nloops)
+   !! author: Seyed Ali Ghasemi
       use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
 
       class(benchmark), intent(inout)        :: this
@@ -103,8 +104,8 @@ contains
 
 
    !===============================================================================
-   !> author: Seyed Ali Ghasemi
    impure subroutine start_benchmark(this, imark, method, description, argi, argr)
+   !! author: Seyed Ali Ghasemi
       use face
 
       class(benchmark),       intent(inout)        :: this
@@ -154,8 +155,8 @@ contains
 
 
    !===============================================================================
-   !> author: Seyed Ali Ghasemi
    impure subroutine stop_benchmark(this, imark, flops)
+   !! author: Seyed Ali Ghasemi
 
       interface
          impure function Fun(argi, argr)
@@ -191,8 +192,8 @@ contains
 
 
    !===============================================================================
-   !> author: Seyed Ali Ghasemi
    impure subroutine write_benchmark(this, imark)
+   !! author: Seyed Ali Ghasemi
       class(benchmark), intent(inout) :: this
       integer, intent(in)             :: imark
       integer                         :: nunit
@@ -224,8 +225,8 @@ contains
 
 
    !===============================================================================
-   !> author: Seyed Ali Ghasemi
    elemental pure subroutine finalize_mark(this)
+   !! author: Seyed Ali Ghasemi
       class(mark), intent(inout) :: this
 
       if (allocated(this%method)) deallocate(this%method)
@@ -235,8 +236,8 @@ contains
 
 
    !===============================================================================
-   !> author: Seyed Ali Ghasemi
    elemental impure subroutine finalize(this)
+   !! author: Seyed Ali Ghasemi
       class(benchmark), intent(inout) :: this
       integer                         :: nunit
       logical                         :: exist
@@ -262,8 +263,8 @@ contains
 
 
    !===============================================================================
-   !> author: Seyed Ali Ghasemi
    impure function current_date_and_time() result(datetime)
+   !! author: Seyed Ali Ghasemi
       character(21) :: datetime
       character(10) :: date
       character(8)  :: time
