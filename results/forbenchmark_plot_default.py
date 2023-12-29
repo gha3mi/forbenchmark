@@ -44,7 +44,7 @@ def read_benchmark_data(directory):
 
     # Checking command-line arguments
     if len(sys.argv) != 2:
-        print("Usage: python plot.py <file_name>")
+        print("Usage: python plot.py results/<file_name>")
         sys.exit(1)
 
     # Fetching file name from command-line argument
