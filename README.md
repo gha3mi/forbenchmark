@@ -83,7 +83,7 @@ To visualize benchmarking results, execute the following command in Python, pass
 
 The output includes graphical representations of benchmarking metrics:
 
-<img alt="demo_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_time.png" width="250"> <img alt="demo_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_perf.png" width="250"> <img alt="demo_sppedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_sppedup.png" width="250">
+<img alt="demo_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_time.png" width="250"> <img alt="demo_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_perf.png" width="250"> <img alt="demo_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_speedup.png" width="250">
 
 
 ## TODO

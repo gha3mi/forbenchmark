@@ -1,10 +1,1 @@
 __pycache__
-*.data
-*.png
-!demo.data
-!demo_im1.data
-!demo_im2.data
-!demo_im3.data
-!demo_im4.data
-!demo_time.png
-!demo_perf.png
