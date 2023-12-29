@@ -77,14 +77,23 @@ After execution, the results will be displayed in the terminal and stored in the
 
 **Visualizing demo results:**
 
-To visualize benchmarking results, execute the following command in Python, passing the relevant data file as an argument:
+To visualize benchmarking results, run the following commands in Python, specifying the relevant data files as arguments:
 
-`python results/plot.py demo.data`
+```shell
+python results/plot.py demo.data
+```
 
 The output includes graphical representations of benchmarking metrics:
 
 <img alt="demo_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_time.png" width="250"> <img alt="demo_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_perf.png" width="250"> <img alt="demo_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_speedup.png" width="250">
 
+For Coarray:
+
+```shell
+python results/plot_co.py demo_co.data
+python results/plot_im.py demo_im1.data
+```
+The outputs can be found in the `results` directory.
 
 ## TODO
 - [ ] Add benchmarks for matmul, dot ...
