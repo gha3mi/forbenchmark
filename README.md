@@ -16,10 +16,10 @@ use forbenchmark
 type(benchmark) :: bench
 
 ! initialize the benchmark
-call bench%init()
+call bench%init(nmarks)
 
 ! start benchmark
-call bench%start_benchmark(method)
+call bench%start_benchmark(imark, method)
 ! loop over nloops
 do nl = 1, bench%nloops
 
@@ -27,7 +27,7 @@ do nl = 1, bench%nloops
 
 end do
 ! stop benchmark
-call bench%stop_benchmark()
+call bench%stop_benchmark(imark)
 
 ! finalize the benchmark
 call bench%finalize()
@@ -57,7 +57,7 @@ cd forbenchmark
 
 **Run the demo:**
 
-For serial benchmarking:
+For non-coarray benchmarking:
 
 ```shell
 fpm run --example demo
@@ -83,13 +83,13 @@ To visualize benchmarking results, execute the following command in Python, pass
 
 The output includes graphical representations of benchmarking metrics:
 
-<img alt="demo_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_time.png" width="250"> <img alt="demo_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_perf.png" width="250">
+<img alt="demo_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_time.png" width="250"> <img alt="demo_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_perf.png" width="250"> <img alt="demo_sppedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_sppedup.png" width="250">
 
 
 ## TODO
 - [ ] Add benchmarks for matmul, dot ...
 - [ ] Add MPI module.
-- [ ] Add plot_co.py similar to plot.py.
+- [x] Add plot_co.py similar to plot.py.
 - [x] Add CI_test.yml
 
 ## API documentation
