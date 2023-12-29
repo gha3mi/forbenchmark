@@ -26,7 +26,7 @@
     <div class="container-fluid mb-sm-4 mb-xl-2">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="../index.html">ForBenchmark <small>0.2.0</small></a>
+          <a class="navbar-brand" href="../index.html">ForBenchmark <small>0.2.1</small></a>
           <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
                   aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon">
@@ -116,11 +116,11 @@
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
             <a class="list-group-item" href="../type/benchmark.html#variable-marks_co">marks_co</a>
-            <a class="list-group-item" href="../type/benchmark.html#variable-marks~2">marks</a>
-            <a class="list-group-item" href="../type/benchmark.html#variable-filename~3">filename</a>
-            <a class="list-group-item" href="../type/benchmark.html#variable-nloops~3">nloops</a>
-            <a class="list-group-item" href="../type/benchmark.html#variable-argi~3">argi</a>
-            <a class="list-group-item" href="../type/benchmark.html#variable-argr~3">argr</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-marks">marks</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-filename">filename</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-nloops">nloops</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-argi">argi</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-argr">argr</a>
         </div>
       </div>
     </div>
@@ -147,11 +147,11 @@
       </a>
       <div id="boundprocs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-init~2">init</a>
-            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-start_benchmark~2">start_benchmark</a>
-            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-stop_benchmark~2">stop_benchmark</a>
-            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-write_benchmark~2">write_benchmark</a>
-            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-finalize~2">finalize</a>
+            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-init">init</a>
+            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-start_benchmark">start_benchmark</a>
+            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-stop_benchmark">stop_benchmark</a>
+            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-write_benchmark">write_benchmark</a>
+            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-finalize">finalize</a>
         </div>
       </div>
     </div>
@@ -326,7 +326,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-marks~2"></span>
+              <span class="anchor" id="variable-marks"></span>
               type(<a href='../type/mark.html'>mark</a>),
             </td>
               <td>public,</td>
@@ -343,7 +343,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-filename~3"></span>
+              <span class="anchor" id="variable-filename"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -360,7 +360,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nloops~3"></span>
+              <span class="anchor" id="variable-nloops"></span>
               integer,
             </td>
               <td>public</td>
@@ -377,7 +377,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-argi~3"></span>
+              <span class="anchor" id="variable-argi"></span>
               integer,
             </td>
               <td>public,</td>
@@ -394,7 +394,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-argr~3"></span>
+              <span class="anchor" id="variable-argr"></span>
               real(kind=rk),
             </td>
               <td>public,</td>
@@ -422,7 +422,7 @@ large graphs.</div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-init~2"></span>
+      <span class="anchor" id="boundprocedure-init"></span>
       <h3>
           procedure, public ::
   <strong>init</strong>
@@ -432,7 +432,7 @@ large graphs.</div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private impure elemental subroutine <a href='../proc/init~2.html'>init</a>(this, nmarks, title, filename, nloops)  
+    private impure elemental subroutine <a href='../proc/init.html'>init</a>(this, nmarks, title, filename, nloops)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
@@ -539,7 +539,7 @@ large graphs.</div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-start_benchmark~2"></span>
+      <span class="anchor" id="boundprocedure-start_benchmark"></span>
       <h3>
           procedure, public ::
   <strong>start_benchmark</strong>
@@ -549,7 +549,7 @@ large graphs.</div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private impure subroutine <a href='../proc/start_benchmark~2.html'>start_benchmark</a>(this, imark, method, description, argi, argr)  
+    private impure subroutine <a href='../proc/start_benchmark.html'>start_benchmark</a>(this, imark, method, description, argi, argr)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
@@ -671,7 +671,7 @@ large graphs.</div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-stop_benchmark~2"></span>
+      <span class="anchor" id="boundprocedure-stop_benchmark"></span>
       <h3>
           procedure, public ::
   <strong>stop_benchmark</strong>
@@ -681,7 +681,7 @@ large graphs.</div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private impure subroutine <a href='../proc/stop_benchmark~2.html'>stop_benchmark</a>(this, imark, flops)  
+    private impure subroutine <a href='../proc/stop_benchmark.html'>stop_benchmark</a>(this, imark, flops)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
@@ -758,7 +758,7 @@ large graphs.</div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-write_benchmark~2"></span>
+      <span class="anchor" id="boundprocedure-write_benchmark"></span>
       <h3>
           procedure, private ::
   <strong>write_benchmark</strong>
@@ -768,7 +768,7 @@ large graphs.</div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private impure subroutine <a href='../proc/write_benchmark~2.html'>write_benchmark</a>(this, imark)  
+    private impure subroutine <a href='../proc/write_benchmark.html'>write_benchmark</a>(this, imark)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
@@ -830,7 +830,7 @@ large graphs.</div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-finalize~2"></span>
+      <span class="anchor" id="boundprocedure-finalize"></span>
       <h3>
           procedure, public ::
   <strong>finalize</strong>
@@ -840,7 +840,7 @@ large graphs.</div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private impure elemental subroutine <a href='../proc/finalize~2.html'>finalize</a>(this)  
+    private impure elemental subroutine <a href='../proc/finalize.html'>finalize</a>(this)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
@@ -921,7 +921,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-12-29T14:58:50.634667             </p>
+ on 2023-12-29T14:59:33.578221             </p>
           </div>
         </div>
         <br>
