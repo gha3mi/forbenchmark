@@ -72,6 +72,8 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
       integer                                :: iostat
       character(10)                          :: im_chr
 
+      if (nmarks <= 0) error stop 'nmarks must be greater than zero.'
+
       write (im_chr, '(i0)') this_image()
       if (present(filename)) then
          this%filename_image = trim(filename//'_im'//trim(im_chr)//'.data')
@@ -168,6 +170,8 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
       real(rk), dimension(:), intent(in), optional :: argr
       character(*),           intent(in), optional :: description
 
+      if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
+
       this%marks(imark)%description = description
       this%marks(imark)%method      = method
 
@@ -231,6 +235,8 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
       real(rk)                        :: flops_total
       integer                         :: i
       real(rk), dimension(:), allocatable :: elapsed_times
+
+      if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
 
       call this%marks_co(imark)%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
 
@@ -307,6 +313,8 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
       integer                         :: lm
       logical                         :: exist
       integer                         :: iostat
+
+      if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
 
       lm = 20-len_trim(this%marks(imark)%method)
       write(fmt1,'(a,g0,a)')&
