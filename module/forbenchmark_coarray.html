@@ -26,7 +26,7 @@
     <div class="container-fluid mb-sm-4 mb-xl-2">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="../index.html">ForBenchmark <small>0.2.1</small></a>
+          <a class="navbar-brand" href="../index.html">ForBenchmark <small>0.2.2</small></a>
           <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
                   aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon">
@@ -136,7 +136,7 @@
       </a>
       <div id="funcs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-current_date_and_time~2">current_date_and_time</a>
+            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-current_date_and_time">current_date_and_time</a>
         </div>
       </div>
     </div>
@@ -148,12 +148,12 @@
       </a>
       <div id="subs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-init~2">init</a>
-            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-start_benchmark~2">start_benchmark</a>
-            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-stop_benchmark~2">stop_benchmark</a>
-            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-write_benchmark~2">write_benchmark</a>
-            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-finalize_mark~2">finalize_mark</a>
-            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-finalize~2">finalize</a>
+            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-init">init</a>
+            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-start_benchmark">start_benchmark</a>
+            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-stop_benchmark">stop_benchmark</a>
+            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-write_benchmark">write_benchmark</a>
+            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-finalize_mark">finalize_mark</a>
+            <a class="list-group-item" href="../module/forbenchmark_coarray.html#proc-finalize">finalize</a>
         </div>
       </div>
     </div>
@@ -469,7 +469,7 @@ large graphs.</div>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~2"></span>
+              <span class="anchor" id="variable-time"></span>
               type(timer),
             </td>
               <td>public</td>
@@ -486,7 +486,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-gflops~2"></span>
+              <span class="anchor" id="variable-flops"></span>
               real(kind=rk),
             </td>
               <td>public</td>
@@ -494,7 +494,7 @@ large graphs.</div>
               
             </td>
             <td>::</td>
-            <td><strong>gflops</strong></td>
+            <td><strong>flops</strong></td>
                 <td></td>
                 <td></td>
             <td>
@@ -535,7 +535,7 @@ large graphs.</div>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-method~3"></span>
+              <span class="anchor" id="variable-method"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -552,7 +552,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-description~3"></span>
+              <span class="anchor" id="variable-description"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -620,7 +620,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-gflops_total"></span>
+              <span class="anchor" id="variable-flops_total"></span>
               real(kind=rk),
             </td>
               <td>public</td>
@@ -628,7 +628,7 @@ large graphs.</div>
               
             </td>
             <td>::</td>
-            <td><strong>gflops_total</strong></td>
+            <td><strong>flops_total</strong></td>
                 <td></td>
                 <td></td>
             <td>
@@ -663,7 +663,7 @@ large graphs.</div>
           <tbody>
               <tr>
                 <td>  procedure, private ::
-  <strong><a href='../type/mark.html#boundprocedure-finalize_mark~2'>finalize_mark</a></strong></td>
+  <strong><a href='../type/mark.html#boundprocedure-finalize_mark'>finalize_mark</a></strong></td>
                 <td></td>
               </tr>
           </tbody>
@@ -713,7 +713,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-marks~2"></span>
+              <span class="anchor" id="variable-marks"></span>
               type(<a href='../type/mark.html'>mark</a>),
             </td>
               <td>public,</td>
@@ -730,7 +730,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-filename~3"></span>
+              <span class="anchor" id="variable-filename"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -764,7 +764,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nloops~3"></span>
+              <span class="anchor" id="variable-nloops"></span>
               integer,
             </td>
               <td>public</td>
@@ -781,7 +781,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-argi~3"></span>
+              <span class="anchor" id="variable-argi"></span>
               integer,
             </td>
               <td>public,</td>
@@ -798,7 +798,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-argr~3"></span>
+              <span class="anchor" id="variable-argr"></span>
               real(kind=rk),
             </td>
               <td>public,</td>
@@ -824,27 +824,27 @@ large graphs.</div>
           <tbody>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/benchmark.html#boundprocedure-init~2'>init</a></strong></td>
+  <strong><a href='../type/benchmark.html#boundprocedure-init'>init</a></strong></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/benchmark.html#boundprocedure-start_benchmark~2'>start_benchmark</a></strong></td>
+  <strong><a href='../type/benchmark.html#boundprocedure-start_benchmark'>start_benchmark</a></strong></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/benchmark.html#boundprocedure-stop_benchmark~2'>stop_benchmark</a></strong></td>
+  <strong><a href='../type/benchmark.html#boundprocedure-stop_benchmark'>stop_benchmark</a></strong></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, private ::
-  <strong><a href='../type/benchmark.html#boundprocedure-write_benchmark~2'>write_benchmark</a></strong></td>
+  <strong><a href='../type/benchmark.html#boundprocedure-write_benchmark'>write_benchmark</a></strong></td>
                 <td></td>
               </tr>
               <tr>
                 <td>  procedure, public ::
-  <strong><a href='../type/benchmark.html#boundprocedure-finalize~2'>finalize</a></strong></td>
+  <strong><a href='../type/benchmark.html#boundprocedure-finalize'>finalize</a></strong></td>
                 <td></td>
               </tr>
           </tbody>
@@ -858,7 +858,7 @@ large graphs.</div>
         <section>
           <h2>Functions</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-current_date_and_time~2"></span><h3>private impure function <a href='../proc/current_date_and_time~2.html'>current_date_and_time</a>() result(datetime)  
+    <div class="card-header codesum"><span class="anchor" id="proc-current_date_and_time"></span><h3>private impure function <a href='../proc/current_date_and_time.html'>current_date_and_time</a>() result(datetime)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -884,7 +884,7 @@ large graphs.</div>
         <section>
           <h2>Subroutines</h2>
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-init~2"></span><h3>private impure elemental subroutine <a href='../proc/init~2.html'>init</a>(this, nmarks, title, filename, nloops)  
+    <div class="card-header codesum"><span class="anchor" id="proc-init"></span><h3>private impure elemental subroutine <a href='../proc/init.html'>init</a>(this, nmarks, title, filename, nloops)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -906,7 +906,7 @@ large graphs.</div>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-this~8"></span>
+              <span class="anchor" id="variable-this~2"></span>
               class(<a href='../type/benchmark.html'>benchmark</a>),
             </td>
 <td>intent(inout)</td>
@@ -921,7 +921,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nmarks~2"></span>
+              <span class="anchor" id="variable-nmarks"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -936,7 +936,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-title~2"></span>
+              <span class="anchor" id="variable-title"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -951,7 +951,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-filename~4"></span>
+              <span class="anchor" id="variable-filename~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -966,7 +966,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nloops~4"></span>
+              <span class="anchor" id="variable-nloops~2"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -987,7 +987,7 @@ large graphs.</div>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-start_benchmark~2"></span><h3>private impure subroutine <a href='../proc/start_benchmark~2.html'>start_benchmark</a>(this, imark, method, description, argi, argr)  
+    <div class="card-header codesum"><span class="anchor" id="proc-start_benchmark"></span><h3>private impure subroutine <a href='../proc/start_benchmark.html'>start_benchmark</a>(this, imark, method, description, argi, argr)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -1009,7 +1009,7 @@ large graphs.</div>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-this~9"></span>
+              <span class="anchor" id="variable-this~3"></span>
               class(<a href='../type/benchmark.html'>benchmark</a>),
             </td>
 <td>intent(inout)</td>
@@ -1024,7 +1024,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-imark~4"></span>
+              <span class="anchor" id="variable-imark"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1039,7 +1039,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-method~4"></span>
+              <span class="anchor" id="variable-method~2"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1054,7 +1054,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-description~4"></span>
+              <span class="anchor" id="variable-description~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1069,7 +1069,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-argi~4"></span>
+              <span class="anchor" id="variable-argi~2"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1084,7 +1084,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-argr~4"></span>
+              <span class="anchor" id="variable-argr~2"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -1105,7 +1105,7 @@ large graphs.</div>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-stop_benchmark~2"></span><h3>private impure subroutine <a href='../proc/stop_benchmark~2.html'>stop_benchmark</a>(this, imark, flops)  
+    <div class="card-header codesum"><span class="anchor" id="proc-stop_benchmark"></span><h3>private impure subroutine <a href='../proc/stop_benchmark.html'>stop_benchmark</a>(this, imark, flops)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -1127,7 +1127,7 @@ large graphs.</div>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-this~10"></span>
+              <span class="anchor" id="variable-this~4"></span>
               class(<a href='../type/benchmark.html'>benchmark</a>),
             </td>
 <td>intent(inout)</td>
@@ -1142,7 +1142,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-imark~5"></span>
+              <span class="anchor" id="variable-imark~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1178,7 +1178,7 @@ large graphs.</div>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-write_benchmark~2"></span><h3>private impure subroutine <a href='../proc/write_benchmark~2.html'>write_benchmark</a>(this, imark)  
+    <div class="card-header codesum"><span class="anchor" id="proc-write_benchmark"></span><h3>private impure subroutine <a href='../proc/write_benchmark.html'>write_benchmark</a>(this, imark)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -1200,7 +1200,7 @@ large graphs.</div>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-this~11"></span>
+              <span class="anchor" id="variable-this~5"></span>
               class(<a href='../type/benchmark.html'>benchmark</a>),
             </td>
 <td>intent(inout)</td>
@@ -1215,7 +1215,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-imark~6"></span>
+              <span class="anchor" id="variable-imark~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1236,7 +1236,7 @@ large graphs.</div>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-finalize_mark~2"></span><h3>private pure elemental subroutine <a href='../proc/finalize_mark~2.html'>finalize_mark</a>(this)  
+    <div class="card-header codesum"><span class="anchor" id="proc-finalize_mark"></span><h3>private pure elemental subroutine <a href='../proc/finalize_mark.html'>finalize_mark</a>(this)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -1258,7 +1258,7 @@ large graphs.</div>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-this~7"></span>
+              <span class="anchor" id="variable-this"></span>
               class(<a href='../type/mark.html'>mark</a>),
             </td>
 <td>intent(inout)</td>
@@ -1279,7 +1279,7 @@ large graphs.</div>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-finalize~2"></span><h3>private impure elemental subroutine <a href='../proc/finalize~2.html'>finalize</a>(this)  
+    <div class="card-header codesum"><span class="anchor" id="proc-finalize"></span><h3>private impure elemental subroutine <a href='../proc/finalize.html'>finalize</a>(this)  
 </h3></div>
     <div class="card-body">
               <dl class="dl-horizontal">
@@ -1301,7 +1301,7 @@ large graphs.</div>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-this~12"></span>
+              <span class="anchor" id="variable-this~6"></span>
               class(<a href='../type/benchmark.html'>benchmark</a>),
             </td>
 <td>intent(inout)</td>
@@ -1341,7 +1341,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-12-29T18:41:30.817689             </p>
+ on 2023-12-29T18:52:48.357020             </p>
           </div>
         </div>
         <br>

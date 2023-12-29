@@ -26,7 +26,7 @@
     <div class="container-fluid mb-sm-4 mb-xl-2">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="../index.html">ForBenchmark <small>0.2.1</small></a>
+          <a class="navbar-brand" href="../index.html">ForBenchmark <small>0.2.2</small></a>
           <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
                   aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon">
@@ -273,7 +273,7 @@ large graphs.</div>
 <a id="ln-16" name="ln-16" href="#ln-16"></a><span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">description</span>
 <a id="ln-17" name="ln-17" href="#ln-17"></a><span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="nb">time</span>
 <a id="ln-18" name="ln-18" href="#ln-18"></a><span class="nb">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">speedup</span>
-<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">gflops</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">flops</span>
 <a id="ln-20" name="ln-20" href="#ln-20"></a><span class="w">   </span><span class="k">contains</span>
 <a id="ln-21" name="ln-21" href="#ln-21"></a><span class="k">      procedure</span><span class="p">,</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">finalize_mark</span>
 <a id="ln-22" name="ln-22" href="#ln-22"></a><span class="w">   </span><span class="k">end type </span><span class="n">mark</span>
@@ -434,10 +434,10 @@ large graphs.</div>
 <a id="ln-177" name="ln-177" href="#ln-177"></a>
 <a id="ln-178" name="ln-178" href="#ln-178"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">flops</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
 <a id="ln-179" name="ln-179" href="#ln-179"></a><span class="k">         print</span><span class="s1">&#39;(a,f7.3,a)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; Speedup      :&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="n">speedup</span><span class="p">,</span><span class="s1">&#39; [-]&#39;</span>
-<a id="ln-180" name="ln-180" href="#ln-180"></a><span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="n">gflops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flops</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">argi</span><span class="p">,</span><span class="n">this</span><span class="p">%</span><span class="n">argr</span><span class="p">)</span><span class="o">/</span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="nb">time</span><span class="p">%</span><span class="n">elapsed_time</span>
-<a id="ln-181" name="ln-181" href="#ln-181"></a><span class="w">         </span><span class="k">print</span><span class="s1">&#39;(a,f7.3,a)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; Performance  :&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="n">gflops</span><span class="p">,</span><span class="s1">&#39; [GFLOPS]&#39;</span>
+<a id="ln-180" name="ln-180" href="#ln-180"></a><span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="n">flops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flops</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">argi</span><span class="p">,</span><span class="n">this</span><span class="p">%</span><span class="n">argr</span><span class="p">)</span><span class="o">/</span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="nb">time</span><span class="p">%</span><span class="n">elapsed_time</span>
+<a id="ln-181" name="ln-181" href="#ln-181"></a><span class="w">         </span><span class="k">print</span><span class="s1">&#39;(a,f7.3,a)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; Performance  :&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="n">flops</span><span class="p">,</span><span class="s1">&#39; [GFLOPS]&#39;</span>
 <a id="ln-182" name="ln-182" href="#ln-182"></a><span class="w">      </span><span class="k">else</span>
-<a id="ln-183" name="ln-183" href="#ln-183"></a><span class="k">         </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="n">gflops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<a id="ln-183" name="ln-183" href="#ln-183"></a><span class="k">         </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="n">flops</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
 <a id="ln-184" name="ln-184" href="#ln-184"></a><span class="w">      </span><span class="k">endif</span>
 <a id="ln-185" name="ln-185" href="#ln-185"></a><span class="k">      print</span><span class="s1">&#39;(a)&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
 <a id="ln-186" name="ln-186" href="#ln-186"></a>
@@ -471,7 +471,7 @@ large graphs.</div>
 <a id="ln-214" name="ln-214" href="#ln-214"></a><span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="n">method</span><span class="p">,&amp;</span>
 <a id="ln-215" name="ln-215" href="#ln-215"></a><span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="n">speedup</span><span class="p">,&amp;</span>
 <a id="ln-216" name="ln-216" href="#ln-216"></a><span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="nb">time</span><span class="p">%</span><span class="n">elapsed_time</span><span class="p">,&amp;</span>
-<a id="ln-217" name="ln-217" href="#ln-217"></a><span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="n">gflops</span><span class="p">,&amp;</span>
+<a id="ln-217" name="ln-217" href="#ln-217"></a><span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">marks</span><span class="p">(</span><span class="n">imark</span><span class="p">)%</span><span class="n">flops</span><span class="p">,&amp;</span>
 <a id="ln-218" name="ln-218" href="#ln-218"></a><span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">nloops</span><span class="p">,&amp;</span>
 <a id="ln-219" name="ln-219" href="#ln-219"></a><span class="w">         </span><span class="n">this</span><span class="p">%</span><span class="n">argi</span>
 <a id="ln-220" name="ln-220" href="#ln-220"></a>
@@ -561,7 +561,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-12-29T18:41:30.817689             </p>
+ on 2023-12-29T18:52:48.357020             </p>
           </div>
         </div>
         <br>

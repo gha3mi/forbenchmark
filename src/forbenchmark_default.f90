@@ -16,7 +16,7 @@ module forbenchmark_default
       character(:), allocatable :: description
       type(timer)               :: time
       real(rk)                  :: speedup
-      real(rk)                  :: gflops
+      real(rk)                  :: flops
    contains
       procedure, private :: finalize_mark
    end type mark
@@ -177,10 +177,10 @@ contains
 
       if (present(flops)) then
          print'(a,f7.3,a)', ' Speedup      :', this%marks(imark)%speedup,' [-]'
-         this%marks(imark)%gflops = flops(this%argi,this%argr)/this%marks(imark)%time%elapsed_time
-         print'(a,f7.3,a)', ' Performance  :', this%marks(imark)%gflops,' [GFLOPS]'
+         this%marks(imark)%flops = flops(this%argi,this%argr)/this%marks(imark)%time%elapsed_time
+         print'(a,f7.3,a)', ' Performance  :', this%marks(imark)%flops,' [GFLOPS]'
       else
-         this%marks(imark)%gflops = 0.0_rk
+         this%marks(imark)%flops = 0.0_rk
       endif
       print'(a)', ''
 
@@ -214,7 +214,7 @@ contains
          this%marks(imark)%method,&
          this%marks(imark)%speedup,&
          this%marks(imark)%time%elapsed_time,&
-         this%marks(imark)%gflops,&
+         this%marks(imark)%flops,&
          this%nloops,&
          this%argi
 
