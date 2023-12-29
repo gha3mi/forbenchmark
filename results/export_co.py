@@ -2,6 +2,7 @@
 # Seyed Ali Ghasemi
 
 import forbenchmark_plot_coarray as fpd
+import forbenchmark_html as fh
 
 # Read the benchmark data from the file
 [benchmark_data, argi, file_path] = fpd.read_benchmark_data('results')
@@ -37,3 +38,6 @@ fpd.plot_speedup_max(file_path, benchmark_data, x_data,
                                    title='Demo Benchmark - Max. Speedup',
                                    xlabel='Order of Matrix',
                                    ylabel='Max. Speedup [-]')
+
+fh.generate_html(file_path, benchmark_data,
+                  title='Demo Benchmark')

@@ -2,6 +2,7 @@
 # Seyed Ali Ghasemi
 
 import forbenchmark_plot_default as fpd
+import forbenchmark_html as fh
 
 # Read the benchmark data from the file
 [benchmark_data, argi, file_path] = fpd.read_benchmark_data('results')
@@ -31,3 +32,6 @@ fpd.plot_speedup(file_path, benchmark_data, x_data,
                                    title='Demo Benchmark - Speedup',
                                    xlabel='Order of Matrix',
                                    ylabel='Speedup [-]')
+
+fh.generate_html(file_path, benchmark_data,
+                  title='Demo Benchmark')

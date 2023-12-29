@@ -2,6 +2,7 @@
 # Seyed Ali Ghasemi
 
 import forbenchmark_plot_image as fpd
+import forbenchmark_html as fh
 
 # Read the benchmark data from the file
 [benchmark_data, argi, file_path] = fpd.read_benchmark_data('results')
@@ -25,3 +26,6 @@ fpd.plot_performance_image(file_path, benchmark_data, x_data,
                                    title='Demo Benchmark - Image Performance',
                                    xlabel='Order of Matrix',
                                    ylabel='Performance [GFLOPS]')
+
+fh.generate_html(file_path, benchmark_data,
+                  title='Demo Benchmark')
