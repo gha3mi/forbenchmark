@@ -51,4 +51,4 @@ jobs:
         python -m pip install pandas matplotlib
 
     - name: Plot results
-      run: python results/plot.py demo.data
+      run: python results/export.py demo.data
