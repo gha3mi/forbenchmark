@@ -42,6 +42,7 @@ module forbenchmark_coarray
       type(mark_co), dimension(:), allocatable :: marks_co[:]
       type(mark),    dimension(:), allocatable :: marks
       character(:),                allocatable :: filename
+      character(:),                allocatable :: filename_image
       integer                                  :: nloops
       integer,       dimension(:), allocatable :: argi
       real(rk),      dimension(:), allocatable :: argr
@@ -72,9 +73,11 @@ contains
 
       write (im_chr, '(i0)') this_image()
       if (present(filename)) then
-         this%filename = trim(filename//'_im'//trim(im_chr)//'.data')
+         this%filename_image = trim(filename//'_im'//trim(im_chr)//'.data')
+         this%filename = trim(filename//'_co'//'.data')
       else
-         this%filename = trim('benchmark'//'_im'//trim(im_chr)//'.data')
+         this%filename_image = trim('benchmark'//'_im'//trim(im_chr)//'.data')
+         this%filename = trim('benchmark'//'_co'//'.data')
       end if
 
       if (present(nloops)) then
@@ -87,6 +90,35 @@ contains
       allocate(this%marks_co(nmarks)[*])
       allocate(this%marks(nmarks))
 
+      inquire(file=this%filename_image, iostat=iostat)
+      if (iostat /= 0) then
+         error stop 'file '//trim(this%filename_image)//' cannot be accessed.'
+      end if
+      open (newunit = nunit, file = this%filename_image)
+      write(nunit,'(a)') '-----------------------------------------------------'
+      write(nunit,'(a)') 'ForBenchmark - https://github.com/gha3mi/forbenchmark'
+      write(nunit,'(a)') '-----------------------------------------------------'
+      write(nunit,'(a)') ''
+      if (present(title)) then
+         write(nunit,'(a)') trim(title)
+      else
+         write(nunit,'(a)') 'ForBenchmark'
+      end if
+      write(nunit,'(a)') current_date_and_time()
+      write(nunit,'(a)') ''
+      write(nunit,'(a,a)') 'compiler_version: ', compiler_version()
+      write(nunit,'(a,a)') 'compiler_options: ', compiler_options()
+      write(nunit,'(a,g0,a,g0)') 'image: ',this_image(),' of ',num_images()
+      write(nunit,'(a)') ''
+      write(nunit,'(a)') &
+      &'       METHOD        |&
+      &     TIME(image)      |&
+      &    GFLOPS(image)     |&
+      &  NLOOPS  |&
+      &   ARGI  '
+      close(nunit)
+
+      if (this_image() == 1) then
       inquire(file=this%filename, iostat=iostat)
       if (iostat /= 0) then
          error stop 'file '//trim(this%filename)//' cannot be accessed.'
@@ -105,20 +137,20 @@ contains
       write(nunit,'(a)') ''
       write(nunit,'(a,a)') 'compiler_version: ', compiler_version()
       write(nunit,'(a,a)') 'compiler_options: ', compiler_options()
-      write(nunit,'(a,g0,a,g0)') 'image: ',this_image(),' of ',num_images()
+      write(nunit,'(a,g0)') 'num_image: ', num_images()
       write(nunit,'(a)') ''
       write(nunit,'(a)') &
       &'       METHOD        |&
       & SPEEDUP(max) |&
-      &     TIME(image)      |&
       &      TIME(max)       |&
       &      TIME(min)       |&
       &      TIME(avg)       |&
-      &    GFLOPS(image)     |&
       &     GFLOPS(tot)      |&
       &  NLOOPS  |&
       &   ARGI  '
       close(nunit)
+   end if
+
    end subroutine init
    !===============================================================================
 
@@ -269,32 +301,50 @@ contains
       class(benchmark), intent(inout) :: this
       integer,          intent(in)    :: imark
       integer                         :: nunit
-      character(len=103)              :: fmt
+      character(len=53)              :: fmt1
+      character(len=82)              :: fmt2
       integer                         :: lm
       logical                         :: exist
       integer                         :: iostat
 
       lm = 20-len_trim(this%marks(imark)%method)
-      write(fmt,'(a,g0,a)')&
-         '(a,',lm,'x,3x,F12.6,3x,E20.14,3x,E20.14,3x,E20.14,3x,E20.14,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g8.0,3x))'
+      write(fmt1,'(a,g0,a)')&
+         '(a,',lm,'x,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g8.0,3x))'
+
+      inquire(file=this%filename_image, exist=exist, iostat=iostat)
+      if (iostat /= 0 .or. .not. exist) then
+         error stop 'file '//trim(this%filename_image)//' does not exist or cannot be accessed.'
+      end if
+      open (newunit = nunit, file = this%filename_image, access = 'append')
+      write(nunit,fmt1) &
+         this%marks(imark)%method,&
+         this%marks_co(imark)%time%elapsed_time,&
+         this%marks_co(imark)%gflops,&
+         this%nloops,&
+         this%argi
+      close(nunit)
+
+      if (this_image() == 1) then
+      write(fmt2,'(a,g0,a)')&
+         '(a,',lm,'x,3x,F12.6,3x,E20.14,3x,E20.14,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g8.0,3x))'
 
       inquire(file=this%filename, exist=exist, iostat=iostat)
       if (iostat /= 0 .or. .not. exist) then
          error stop 'file '//trim(this%filename)//' does not exist or cannot be accessed.'
       end if
       open (newunit = nunit, file = this%filename, access = 'append')
-      write(nunit,fmt) &
+      write(nunit,fmt2) &
          this%marks(imark)%method,&
          this%marks(imark)%speedup_max_total,&
-         this%marks_co(imark)%time%elapsed_time,&
          this%marks(imark)%elapsed_time_max,&
          this%marks(imark)%elapsed_time_min,&
          this%marks(imark)%elapsed_time_average,&
-         this%marks_co(imark)%gflops,&
          this%marks(imark)%gflops_total,&
          this%nloops,&
          this%argi
       close(nunit)
+   end if
+
    end subroutine write_benchmark
    !===============================================================================
 
@@ -318,18 +368,28 @@ contains
       logical                         :: exist
       integer                         :: iostat
 
-      inquire(file=this%filename, exist=exist, iostat=iostat)
+      inquire(file=this%filename_image, exist=exist, iostat=iostat)
       if (iostat /= 0 .or. .not. exist) then
-         error stop 'file '//trim(this%filename)//' does not exist or cannot be accessed.'
+         error stop 'file '//trim(this%filename_image)//' does not exist or cannot be accessed.'
       end if
-      open (newunit = nunit, file = this%filename, access = 'append')
+      open (newunit = nunit, file = this%filename_image, access = 'append')
       write(nunit,'(a)') 'end of benchmark'
       close(nunit)
+
+      if (this_image() == 1) then
+         inquire(file=this%filename, exist=exist, iostat=iostat)
+         if (iostat /= 0 .or. .not. exist) then
+            error stop 'file '//trim(this%filename)//' does not exist or cannot be accessed.'
+         end if
+         open (newunit = nunit, file = this%filename, access = 'append')
+         write(nunit,'(a)') 'end of benchmark'
+         close(nunit)
+         end if
 
       if (allocated(this%marks_co)) deallocate(this%marks_co)
       call this%marks%finalize_mark()
       if (allocated(this%marks)) deallocate(this%marks)
-      if (allocated(this%filename)) deallocate(this%filename)
+      if (allocated(this%filename_image)) deallocate(this%filename_image)
       if (allocated(this%argi)) deallocate(this%argi)
       if (allocated(this%argr)) deallocate(this%argr)
 

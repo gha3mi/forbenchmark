@@ -32,18 +32,6 @@ fpd.plot_performance_tot(file_path, benchmark_data, x_data,
                                    xlabel='Order of Matrix',
                                    ylabel='Performance [GFLOPS]')
 
-# Plot the elapsed time
-fpd.plot_elapsed_time_image(file_path, benchmark_data, x_data,
-                                     title='Demo Benchmark - Image Elapsed Time',
-                                     xlabel='Order of Matrix',
-                                     ylabel='Image Elapsed Time [s]')
-
-# Plot the performance
-fpd.plot_performance_image(file_path, benchmark_data, x_data,
-                                   title='Demo Benchmark - Image Performance',
-                                   xlabel='Order of Matrix',
-                                   ylabel='Performance [GFLOPS]')
-
 # Plot the performance
 fpd.plot_speedup_max(file_path, benchmark_data, x_data,
                                    title='Demo Benchmark - Max. Speedup',

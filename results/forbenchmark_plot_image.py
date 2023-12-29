@@ -63,16 +63,16 @@ def read_benchmark_data(directory):
     data_rows = [line.split() for line in lines]
 
     # Infer the number of arguments based on the length of the first line of data
-    num_arguments = len(data_rows[0]) - 7  # Assuming the first 7 columns are fixed
+    num_arguments = len(data_rows[0]) - 4  # Assuming the first 4 columns are fixed
 
     # Define column names based on the inferred number of arguments
-    columns = ['method', 'speedup_max', 'elapsed_time_max', 'elapsed_time_min', 'elapsed_time_avg', 'gflops_tot', 'nloops'] + [f'arg{i}' for i in range(1, num_arguments + 1)]
+    columns = ['method', 'elapsed_time_image', 'gflops_image', 'nloops'] + [f'arg{i}' for i in range(1, num_arguments + 1)]
 
     # Convert data to a DataFrame and apply numeric conversion to appropriate columns
     benchmark_data = pd.DataFrame(data_rows, columns=columns).apply(pd.to_numeric, errors='ignore')
 
     # Subset of benchmark data containing argument values
-    arg_data = benchmark_data.iloc[:, 7:]
+    arg_data = benchmark_data.iloc[:, 4:]
 
     return benchmark_data, arg_data, file_path
 
@@ -124,21 +124,17 @@ def plot_benchmark_data(file_path, benchmark_data, x_data, title, xlabel, ylabel
     plt.figtext(0.98, 0.005, 'ForBenchmark', horizontalalignment='right',
                 verticalalignment='bottom', fontsize=8, color='gray')
 
-    if data_column == 'elapsed_time_avg':
-        output_filename = f'{os.path.splitext(file_path)[0]}_time_avg.png'
-    if data_column == 'elapsed_time_max':
-        output_filename = f'{os.path.splitext(file_path)[0]}_time_max.png'
-    elif data_column == 'gflops_tot':
-        output_filename = f'{os.path.splitext(file_path)[0]}_perf_tot.png'
-    elif data_column == 'speedup_max':
-        output_filename = f'{os.path.splitext(file_path)[0]}_speedup_max.png'
+    if data_column == 'elapsed_time_image':
+        output_filename = f'{os.path.splitext(file_path)[0]}_time.png'
+    elif data_column == 'gflops_image':
+        output_filename = f'{os.path.splitext(file_path)[0]}_perf.png'
     plt.savefig(output_filename, dpi=DPI)
 
     return plt
 
 
 
-def plot_elapsed_time_max(file_path, benchmark_data, x_data, title, xlabel, ylabel):
+def plot_elapsed_time_image(file_path, benchmark_data, x_data, title, xlabel, ylabel):
     """
     Plot elapsed time data from benchmark data.
 
@@ -153,32 +149,11 @@ def plot_elapsed_time_max(file_path, benchmark_data, x_data, title, xlabel, ylab
     Returns:
         plt (matplotlib.pyplot): Matplotlib pyplot object for the generated plot
     """
-    return plot_benchmark_data(file_path, benchmark_data, x_data, title, xlabel, ylabel, 'elapsed_time_max')
+    return plot_benchmark_data(file_path, benchmark_data, x_data, title, xlabel, ylabel, 'elapsed_time_image')
 
 
 
-
-def plot_elapsed_time_avg(file_path, benchmark_data, x_data, title, xlabel, ylabel):
-    """
-    Plot elapsed time data from benchmark data.
-
-    Args:
-        benchmark_data (DataFrame): Benchmark data in a Pandas DataFrame
-        x_data (Series or array-like): Data for the x-axis
-        file_path (str): File path for saving the plot
-        title (str): Title of the plot
-        xlabel (str): Label for the x-axis
-        ylabel (str): Label for the y-axis
-
-    Returns:
-        plt (matplotlib.pyplot): Matplotlib pyplot object for the generated plot
-    """
-    return plot_benchmark_data(file_path, benchmark_data, x_data, title, xlabel, ylabel, 'elapsed_time_avg')
-
-
-
-
-def plot_performance_tot(file_path, benchmark_data, x_data, title, xlabel, ylabel):
+def plot_performance_image(file_path, benchmark_data, x_data, title, xlabel, ylabel):
     """
     Plot performance (GFLOPS) data from benchmark data.
 
@@ -193,23 +168,4 @@ def plot_performance_tot(file_path, benchmark_data, x_data, title, xlabel, ylabe
     Returns:
         plt (matplotlib.pyplot): Matplotlib pyplot object for the generated plot
     """
-    return plot_benchmark_data(file_path, benchmark_data, x_data, title, xlabel, ylabel, 'gflops_tot')
-
-
-
-def plot_speedup_max(file_path, benchmark_data, x_data, title, xlabel, ylabel):
-    """
-    Plot performance (GFLOPS) data from benchmark data.
-
-    Args:
-        benchmark_data (DataFrame): Benchmark data in a Pandas DataFrame
-        x_data (Series or array-like): Data for the x-axis
-        file_path (str): File path for saving the plot
-        title (str): Title of the plot
-        xlabel (str): Label for the x-axis
-        ylabel (str): Label for the y-axis
-
-    Returns:
-        plt (matplotlib.pyplot): Matplotlib pyplot object for the generated plot
-    """
-    return plot_benchmark_data(file_path, benchmark_data, x_data, title, xlabel, ylabel, 'speedup_max')
+    return plot_benchmark_data(file_path, benchmark_data, x_data, title, xlabel, ylabel, 'gflops_image')
