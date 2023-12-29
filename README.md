@@ -96,6 +96,7 @@ python results/plot_im.py demo_im1.data
 The outputs can be found in the `results` directory.
 
 ## TODO
+- [ ] Add settings to set units.
 - [ ] Add benchmarks for matmul, dot ...
 - [ ] Add MPI module.
 - [x] Add plot_co.py similar to plot.py.
