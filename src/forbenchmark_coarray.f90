@@ -15,7 +15,7 @@ module forbenchmark_coarray
    !> author: Seyed Ali Ghasemi
    type :: mark_co
       type(timer) :: time
-      real(rk)    :: gflops
+      real(rk)    :: flops
    end type mark_co
    !===============================================================================
 
@@ -28,7 +28,7 @@ module forbenchmark_coarray
       real(rk)                  :: elapsed_time_min
       real(rk)                  :: elapsed_time_average
       real(rk)                  :: elapsed_time_max
-      real(rk)                  :: gflops_total
+      real(rk)                  :: flops_total
       real(rk)                  :: speedup_max_total
    contains
       procedure, private :: finalize_mark
@@ -227,17 +227,17 @@ contains
       class(benchmark), intent(inout) :: this
       integer,          intent(in)    :: imark
       real(rk)                        :: elapsed_time_average, elapsed_time_min, elapsed_time_max
-      real(rk)                        :: gflops_total
+      real(rk)                        :: flops_total
       integer                         :: i
       real(rk), dimension(:), allocatable :: elapsed_times
 
       call this%marks_co(imark)%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
 
       if (present(flops)) then
-         this%marks_co(imark)%gflops = flops(this%argi,this%argr)/this%marks_co(imark)%time%elapsed_time
-         print'(a,f7.3,a)', ' Performance  :', this%marks_co(imark)%gflops,' [GFLOPS/image]'
+         this%marks_co(imark)%flops = flops(this%argi,this%argr)/this%marks_co(imark)%time%elapsed_time
+         print'(a,f7.3,a)', ' Performance  :', this%marks_co(imark)%flops,' [GFLOPS/image]'
       else
-         this%marks_co(imark)%gflops = 0.0_rk
+         this%marks_co(imark)%flops = 0.0_rk
       end if
 
       sync all
@@ -251,15 +251,15 @@ contains
          elapsed_time_min = minval(elapsed_times)
          elapsed_time_average = sum(elapsed_times)/num_images()
 
-         if (present(flops)) gflops_total = 0.0_rk
+         if (present(flops)) flops_total = 0.0_rk
          do i = 1,num_images()
-            if (present(flops)) gflops_total = gflops_total + this%marks_co(imark)[i]%gflops
+            if (present(flops)) flops_total = flops_total + this%marks_co(imark)[i]%flops
          end do
       end if
       call co_broadcast(elapsed_time_average, 1)
       call co_broadcast(elapsed_time_min, 1)
       call co_broadcast(elapsed_time_max, 1)
-      if (present(flops)) call co_broadcast(gflops_total, 1)
+      if (present(flops)) call co_broadcast(flops_total, 1)
       this%marks(imark)%elapsed_time_average = elapsed_time_average
       this%marks(imark)%elapsed_time_min = elapsed_time_min
       this%marks(imark)%elapsed_time_max = elapsed_time_max
@@ -277,17 +277,17 @@ contains
             this%marks(imark)%elapsed_time_average, ' [s]'
 
          print'(a,f7.3,a)', colorize(' Speedup (max)          :', color_fg='blue'),&
-            this%marks(imark)%speedup_max_total, ' [s]'
+            this%marks(imark)%speedup_max_total, ' [-]'
          if (present(flops)) print'(a,f7.3,a)', colorize(' Performance  (total)   :', color_fg='cyan'),&
-            gflops_total, ' [GFLOPS]'
+            flops_total, ' [GFLOPS]'
          print'(a)', ''
       end if
 
 
       if (present(flops)) then
-         this%marks(imark)%gflops_total = gflops_total
+         this%marks(imark)%flops_total = flops_total
       else
-         this%marks(imark)%gflops_total = 0.0_rk
+         this%marks(imark)%flops_total = 0.0_rk
       end if
 
       call this%write_benchmark(imark)
@@ -319,7 +319,7 @@ contains
       write(nunit,fmt1) &
          this%marks(imark)%method,&
          this%marks_co(imark)%time%elapsed_time,&
-         this%marks_co(imark)%gflops,&
+         this%marks_co(imark)%flops,&
          this%nloops,&
          this%argi
       close(nunit)
@@ -339,7 +339,7 @@ contains
          this%marks(imark)%elapsed_time_max,&
          this%marks(imark)%elapsed_time_min,&
          this%marks(imark)%elapsed_time_average,&
-         this%marks(imark)%gflops_total,&
+         this%marks(imark)%flops_total,&
          this%nloops,&
          this%argi
       close(nunit)
