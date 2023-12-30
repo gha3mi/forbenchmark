@@ -217,7 +217,7 @@ contains
       open (newunit = nunit, file = this%filename, access = 'append')
 
       lm = 20-len_trim(this%marks(imark)%method)
-      write(fmt,'(a,g0,a)') '(a,',lm,'x,3x,F12.6,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g8.0,3x))'
+      write(fmt,'(a,g0,a)') '(a,',lm,'x,3x,F12.6,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g20.0,3x))'
 
       write(nunit,fmt) &
          this%marks(imark)%method,&

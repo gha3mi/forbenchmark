@@ -335,7 +335,7 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
 
       if (this_image() == 1) then
       write(fmt2,'(a,g0,a)')&
-         '(a,',lm,'x,3x,F12.6,3x,E20.14,3x,E20.14,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g8.0,3x))'
+         '(a,',lm,'x,3x,F12.6,3x,E20.14,3x,E20.14,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g20.0,3x))'
 
       inquire(file=this%filename, exist=exist, iostat=iostat)
       if (iostat /= 0 .or. .not. exist) then
