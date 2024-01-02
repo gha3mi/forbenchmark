@@ -19,7 +19,8 @@ program demo
    ! title: optional
    ! filename: optional. make sure directory exists
    ! nloops: optional. number of loops for each benchmark. default is 10.
-   call bench%init(nmarks=2, title='Demo Benchmark', filename='results/demo', nloops=2)
+   ! timer: optional. default is 'wall'. other options are 'cpu', 'omp'. 'mpi', 'date_and_time'
+   call bench%init(nmarks=2, title='Demo Benchmark', filename='results/demo', nloops=2, timer='wall')
 
    ! start the benchmark
    do p = 100,400, 100 ! loop over problem size
