@@ -3,7 +3,8 @@
 ! use -DUSE_COARRAY to compile for coarray benchmarks.
 program demo
 
-   use kinds,        only: rk         ! use -DREAL32 or -DREAL64 to switch between real32 and real64, default is real64
+   use kinds,        only: rk, ik     ! use -DREAL32 or -DREAL64 to switch between real32 and real64, default is real64
+                                      ! use -DINT32 or -DINT64 to switch between int32 and int64, default is int32
    use forbenchmark, only: benchmark  ! forbenchmark module
 
    implicit none
@@ -12,7 +13,8 @@ program demo
    type(benchmark)                       :: bench
    ! define your variables here
    real(rk), dimension(:,:), allocatable :: A, B, C
-   integer                               :: nl, p, i, j, k
+   integer                               :: p
+   integer(ik)                           :: nl, i, j, k
 
    ! initialize the benchmark
    ! nmarks: number of methods to benchmark
@@ -23,7 +25,7 @@ program demo
    call bench%init(nmarks=2, title='Demo Benchmark', filename='results/demo', nloops=2, timer='wall')
 
    ! start the benchmark
-   do p = 100,400, 100 ! loop over problem size
+   do p = 100_ik,400_ik, 100_ik ! loop over problem size
 
       !===============================================================================
       ! allocate and initialize your variables here
@@ -103,9 +105,9 @@ contains
    !===============================================================================
    ! define an optional function to compute gflops
    function cmp_gflops(argi,argr) result(gflops)
-      integer,  dimension(:), intent(in), optional :: argi
-      real(rk), dimension(:), intent(in), optional :: argr
-      real(rk)                                     :: gflops
+      integer(ik), dimension(:), intent(in), optional :: argi
+      real(rk),    dimension(:), intent(in), optional :: argr
+      real(rk)                                        :: gflops
 
       gflops = real(argi(1),rk) * real(argi(2),rk) * real(argi(3),rk) * 1.0e-9_rk
    end function cmp_gflops

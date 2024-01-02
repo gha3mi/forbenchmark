@@ -46,7 +46,7 @@ module forbenchmark_coarray
       character(:),                allocatable :: filename
       character(:),                allocatable :: filename_image
       integer                                  :: nloops
-      integer,       dimension(:), allocatable :: argi
+      integer(ik),   dimension(:), allocatable :: argi
       real(rk),      dimension(:), allocatable :: argr
       character(:),                allocatable :: timer
    contains
@@ -193,12 +193,12 @@ contains
    !! author: Seyed Ali Ghasemi
       use face
 
-      class(benchmark),       intent(inout)        :: this
-      integer,                intent(in)           :: imark
-      character(*),           intent(in)           :: method
-      integer,  dimension(:), intent(in), optional :: argi
-      real(rk), dimension(:), intent(in), optional :: argr
-      character(*),           intent(in), optional :: description
+      class(benchmark),          intent(inout)        :: this
+      integer,                   intent(in)           :: imark
+      character(*),              intent(in)           :: method
+      integer(ik), dimension(:), intent(in), optional :: argi
+      real(rk),    dimension(:), intent(in), optional :: argr
+      character(*),              intent(in), optional :: description
 
       if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
 
@@ -270,10 +270,10 @@ contains
 
       interface
          impure function Fun(argi, argr)
-            import rk
-            integer,  dimension(:), intent(in), optional :: argi
-            real(rk), dimension(:), intent(in), optional :: argr
-            real(rk)                                     :: Fun
+            import rk, ik
+            integer(ik), dimension(:), intent(in), optional :: argi
+            real(rk),    dimension(:), intent(in), optional :: argr
+            real(rk)                                        :: Fun
          end function Fun
       end interface
 
