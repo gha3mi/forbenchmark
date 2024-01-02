@@ -16,6 +16,7 @@ module forbenchmark_default
       character(:), allocatable :: method
       character(:), allocatable :: description
       type(timer)               :: time
+      real(rk)                  :: elapsed_time
       real(rk)                  :: speedup
       real(rk)                  :: flops
    contains
@@ -32,6 +33,7 @@ module forbenchmark_default
       integer                               :: nloops
       integer,    dimension(:), allocatable :: argi
       real(rk),   dimension(:), allocatable :: argr
+      character(:), allocatable :: timer
    contains
       procedure          :: init
       procedure          :: start_benchmark
@@ -44,7 +46,7 @@ module forbenchmark_default
 contains
 
    !===============================================================================
-   elemental impure subroutine init(this, nmarks, title, filename, nloops)
+   elemental impure subroutine init(this, nmarks, title, filename, nloops, timer)
    !! author: Seyed Ali Ghasemi
       use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
 
@@ -53,6 +55,7 @@ contains
       character(*),     intent(in), optional :: title
       character(*),     intent(in), optional :: filename
       integer,          intent(in), optional :: nloops
+      character(*),     intent(in), optional :: timer
       integer                                :: nunit
       integer                                :: iostat
 
@@ -71,6 +74,33 @@ contains
          this%nloops = nloops
       else
          this%nloops = 10
+      end if
+
+      if (present(timer)) then
+         select case (trim(timer))
+          case ('wall')
+            this%timer = 'wall'
+          case ('date_and_time')
+            this%timer = 'date_and_time'
+          case ('cpu')
+            this%timer = 'cpu'
+          case ('omp')
+#if defined(USE_OMP)
+            this%timer = 'omp'
+#else
+            error stop 'Use -DUSE_OMP to enable OpenMP.'
+#endif
+          case ('mpi')
+#if defined(USE_MPI)
+            this%timer = 'mpi'
+#else
+            error stop 'Use -DUSE_MPI to enable MPI.'
+#endif
+          case default
+            error stop 'timer is not valid. Valid options are: wall, date_and_time, cpu, omp, mpi.'
+         end select
+      else
+         this%timer = 'wall'
       end if
 
       inquire(file=this%filename, iostat=iostat)
@@ -153,7 +183,26 @@ contains
          print'(a)', colorize('Meth.: '//this%marks(imark)%method, color_fg='green',style='bold_on')
       end if
 
-      call this%marks(imark)%time%timer_start()
+      select case (trim(this%timer))
+       case ('wall')
+         call this%marks(imark)%time%timer_start()
+       case ('date_and_time')
+         call this%marks(imark)%time%dtimer_start()
+       case ('cpu')
+         call this%marks(imark)%time%ctimer_start()
+       case ('omp')
+#if defined(USE_OMP)
+         call this%marks(imark)%time%otimer_start()
+#else
+         error stop 'Use -DUSE_OMP to enable OpenMP.'
+#endif
+       case ('mpi')
+#if defined(USE_MPI)
+         call this%marks(imark)%time%mtimer_start()
+#else
+         error stop 'Use -DUSE_MPI to enable MPI.'
+#endif
+      end select
    end subroutine start_benchmark
    !===============================================================================
 
@@ -178,13 +227,37 @@ contains
 
       if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
 
-      call this%marks(imark)%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
+      select case (trim(this%timer))
+       case ('wall')
+         call this%marks(imark)%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks(imark)%elapsed_time = this%marks(imark)%time%elapsed_time
+       case ('date_and_time')
+         call this%marks(imark)%time%dtimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks(imark)%elapsed_time = this%marks(imark)%time%elapsed_dtime
+       case ('cpu')
+         call this%marks(imark)%time%ctimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks(imark)%elapsed_time = this%marks(imark)%time%cpu_time
+       case ('omp')
+#if defined(USE_OMP)
+         call this%marks(imark)%time%otimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks(imark)%elapsed_time = this%marks(imark)%time%omp_time
+#else
+         error stop 'Use -DUSE_OMP to enable OpenMP.'
+#endif
+       case ('mpi')
+#if defined(USE_MPI)
+         call this%marks(imark)%time%mtimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks(imark)%elapsed_time = this%marks(imark)%time%mpi_time
+#else
+         error stop 'Use -DUSE_MPI to enable MPI.'
+#endif
+      end select
 
-      this%marks(imark)%speedup = this%marks(imark)%time%elapsed_time/this%marks(1)%time%elapsed_time
+      this%marks(imark)%speedup = this%marks(imark)%elapsed_time/this%marks(1)%elapsed_time
 
       if (present(flops)) then
          print'(a,f7.3,a)', ' Speedup      :', this%marks(imark)%speedup,' [-]'
-         this%marks(imark)%flops = flops(this%argi,this%argr)/this%marks(imark)%time%elapsed_time
+         this%marks(imark)%flops = flops(this%argi,this%argr)/this%marks(imark)%elapsed_time
          print'(a,f7.3,a)', ' Performance  :', this%marks(imark)%flops,' [GFLOPS]'
       else
          this%marks(imark)%flops = 0.0_rk
@@ -222,7 +295,7 @@ contains
       write(nunit,fmt) &
          this%marks(imark)%method,&
          this%marks(imark)%speedup,&
-         this%marks(imark)%time%elapsed_time,&
+         this%marks(imark)%elapsed_time,&
          this%marks(imark)%flops,&
          this%nloops,&
          this%argi

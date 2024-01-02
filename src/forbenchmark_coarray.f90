@@ -16,6 +16,7 @@ module forbenchmark_coarray
    type :: mark_co
    !! author: Seyed Ali Ghasemi
       type(timer) :: time
+      real(rk)    :: elapsed_time
       real(rk)    :: flops
    end type mark_co
    !===============================================================================
@@ -47,6 +48,7 @@ module forbenchmark_coarray
       integer                                  :: nloops
       integer,       dimension(:), allocatable :: argi
       real(rk),      dimension(:), allocatable :: argr
+      character(:),                allocatable :: timer
    contains
       procedure          :: init
       procedure          :: start_benchmark
@@ -59,8 +61,8 @@ module forbenchmark_coarray
 contains
 
    !===============================================================================
-elemental impure subroutine init(this, nmarks, title, filename, nloops)
-!! author: Seyed Ali Ghasemi
+   elemental impure subroutine init(this, nmarks, title, filename, nloops, timer)
+   !! author: Seyed Ali Ghasemi
       use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
 
       class(benchmark), intent(inout)        :: this
@@ -68,6 +70,7 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
       character(*),     intent(in), optional :: title
       character(*),     intent(in), optional :: filename
       integer,          intent(in), optional :: nloops
+      character(*),     intent(in), optional :: timer
       integer                                :: nunit
       integer                                :: iostat
       character(10)                          :: im_chr
@@ -88,6 +91,33 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
          this%nloops = nloops
       else
          this%nloops = 10
+      end if
+
+      if (present(timer)) then
+         select case (trim(timer))
+          case ('wall')
+            this%timer = 'wall'
+          case ('date_and_time')
+            this%timer = 'date_and_time'
+          case ('cpu')
+            this%timer = 'cpu'
+          case ('omp')
+#if defined(USE_OMP)
+            this%timer = 'omp'
+#else
+            error stop 'Use -DUSE_OMP to enable OpenMP.'
+#endif
+          case ('mpi')
+#if defined(USE_MPI)
+            this%timer = 'mpi'
+#else
+            error stop 'Use -DUSE_MPI to enable MPI.'
+#endif
+          case default
+            error stop 'timer is not valid. Valid options are: wall, date_and_time, cpu, omp, mpi.'
+         end select
+      else
+         this%timer = 'wall'
       end if
 
       allocate(this%marks_co(nmarks)[*])
@@ -208,7 +238,27 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
          print'(a)', colorize('Meth.: '//this%marks(imark)%method, color_fg='green',style='bold_on')
       end if
 
-      call this%marks_co(imark)%time%timer_start()
+      select case (trim(this%timer))
+       case ('wall')
+         call this%marks_co(imark)%time%timer_start()
+       case ('date_and_time')
+         call this%marks_co(imark)%time%dtimer_start()
+       case ('cpu')
+         call this%marks_co(imark)%time%ctimer_start()
+       case ('omp')
+#if defined(USE_OMP)
+         call this%marks_co(imark)%time%ptimer_start()
+#else
+         error stop 'Use -DUSE_OMP to enable OpenMP.'
+#endif
+       case ('mpi')
+#if defined(USE_MPI)
+         call this%marks_co(imark)%time%mtimer_start()
+#else
+         error stop 'Use -DUSE_MPI to enable MPI.'
+#endif
+      end select
+
    end subroutine start_benchmark
    !===============================================================================
 
@@ -238,10 +288,34 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
 
       if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
 
-      call this%marks_co(imark)%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
+      select case (trim(this%timer))
+      case ('wall')
+         call this%marks_co(imark)%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks_co(imark)%elapsed_time = this%marks_co(imark)%time%elapsed_time
+      case ('date_and_time')
+        call this%marks_co(imark)%time%dtimer_stop(message=' Elapsed time :',nloops=this%nloops)
+        this%marks_co(imark)%elapsed_time = this%marks_co(imark)%time%elapsed_dtime
+      case ('cpu')
+        call this%marks_co(imark)%time%ctimer_stop(message=' Elapsed time :',nloops=this%nloops)
+        this%marks_co(imark)%elapsed_time = this%marks_co(imark)%time%cpu_time
+      case ('omp')
+#if defined(USE_OMP)
+        call this%marks_co(imark)%time%otimer_stop(message=' Elapsed time :',nloops=this%nloops)
+        this%marks_co(imark)%elapsed_time = this%marks_co(imark)%time%omp_time
+#else
+        error stop 'Use -DUSE_OMP to enable OpenMP.'
+#endif
+      case ('mpi')
+#if defined(USE_MPI)
+        call this%marks_co(imark)%time%mtimer_stop(message=' Elapsed time :',nloops=this%nloops)
+        this%marks_co(imark)%elapsed_time = this%marks_co(imark)%time%mpi_time
+#else
+        error stop 'Use -DUSE_MPI to enable MPI.'
+#endif
+     end select
 
       if (present(flops)) then
-         this%marks_co(imark)%flops = flops(this%argi,this%argr)/this%marks_co(imark)%time%elapsed_time
+         this%marks_co(imark)%flops = flops(this%argi,this%argr)/this%marks_co(imark)%elapsed_time
          print'(a,f7.3,a)', ' Performance  :', this%marks_co(imark)%flops,' [GFLOPS/image]'
       else
          this%marks_co(imark)%flops = 0.0_rk
@@ -252,7 +326,7 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
       if (this_image() == 1) then
          allocate(elapsed_times(num_images()))
          do i = 1, num_images()
-            elapsed_times(i) = this%marks_co(imark)[i]%time%elapsed_time
+            elapsed_times(i) = this%marks_co(imark)[i]%elapsed_time
          end do
          elapsed_time_max = maxval(elapsed_times)
          elapsed_time_min = minval(elapsed_times)
@@ -360,7 +434,7 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
 
    !===============================================================================
    pure elemental subroutine finalize_mark(this)
-   !! author: Seyed Ali Ghasemi
+      !! author: Seyed Ali Ghasemi
       class(mark), intent(inout) :: this
 
       if (allocated(this%method)) deallocate(this%method)
@@ -371,7 +445,7 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
 
    !===============================================================================
    elemental impure subroutine finalize(this)
-   !! author: Seyed Ali Ghasemi
+      !! author: Seyed Ali Ghasemi
       class(benchmark), intent(inout) :: this
       integer                         :: nunit
       logical                         :: exist
@@ -393,7 +467,7 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
          open (newunit = nunit, file = this%filename, access = 'append')
          write(nunit,'(a)') 'end of benchmark'
          close(nunit)
-         end if
+      end if
 
       if (allocated(this%marks_co)) deallocate(this%marks_co)
       call this%marks%finalize_mark()
@@ -410,7 +484,7 @@ elemental impure subroutine init(this, nmarks, title, filename, nloops)
 
    !===============================================================================
    impure function current_date_and_time() result(datetime)
-   !! author: Seyed Ali Ghasemi
+      !! author: Seyed Ali Ghasemi
       character(21) :: datetime
       character(10) :: date
       character(8)  :: time
