@@ -8,7 +8,9 @@
 
 **ForBenchmark**: A Fortran library for benchmarking (with support for coarrays).
 
-## Usage
+ForBenchmark can measure various time metrics including elapsed wall time, CPU time, OpenMP (OMP) time, MPI time, and date_and_time. Furthermore, it can compute flops based on a provided function.
+
+## Simple Usage
 
 ```fortran
 use forbenchmark
@@ -33,7 +35,29 @@ call bench%stop_benchmark(imark)
 call bench%finalize()
 ```
 
-See `example/demo.f90` for a complete example.
+## Procedures
+
+```fortran
+! initialize the benchmark
+call bench%init(nmarks, title, filename, nloops, timer)
+```
+
+```fortran
+! start benchmark
+call bench%start_benchmark(imark, method, description, argi, argr)
+```
+
+```fortran
+! stop benchmark
+call bench%stop_benchmark(imark, flops)
+```
+
+```fortran
+! finalize the benchmark
+call bench%finalize()
+```
+
+Refer to `example/demo.f90` for a complete demonstration.
 
 ## fpm dependency
 
