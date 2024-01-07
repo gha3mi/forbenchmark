@@ -3,19 +3,19 @@ ForBenchmark - https://github.com/gha3mi/forbenchmark
 -----------------------------------------------------
 
 Demo Benchmark
-2023.12.29 - 18:36:28
+2024. 1. 7 - 13:14:23
 
 compiler_version: Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 2024.0.2 Build 20231213
-compiler_options: -Ibuild/ifx_E065F348A3924AA0 -c -fpp -coarray -coarray-num-images=4 -DUSE_COARRAY -fp-model precise -pc64 -align all -error-limit 1 -reentrancy threaded -nogen-interfaces -assume byterecl -standard-semantics -free -module build/ifx_E065F348A3924AA0 -o build/ifx_E065F348A3924AA0/forbenchmark/src_forbenchmark_coarray.f90.o 
+compiler_options: -Ibuild/ifx_69076157971FC046 -c -fpp -coarray -coarray-num-images=4 -DUSE_COARRAY -free -module build/ifx_69076157971FC046 -o build/ifx_69076157971FC046/forbenchmark/src_forbenchmark_coarray.f90.o 
 image: 3 of 4
 
        METHOD        |     TIME(image)      |    GFLOPS(image)     |  NLOOPS  |   ARGI  
-m1                     0.65000000000000E-03   0.15384615384615E+01          2        100        100        100
-m2                     0.75000000000000E-03   0.13333333333333E+01          2        100        100        100
-m1                     0.42500000000000E-02   0.18823529411765E+01          2        200        200        200
-m2                     0.78000000000000E-02   0.10256410256410E+01          2        200        200        200
-m1                     0.12400000000000E-01   0.21774193548387E+01          2        300        300        300
-m2                     0.26150000000000E-01   0.10325047801147E+01          2        300        300        300
-m1                     0.25100000000000E-01   0.25498007968127E+01          2        400        400        400
-m2                     0.60150000000000E-01   0.10640066500416E+01          2        400        400        400
+m1                     0.10700000000000E-01   0.25233644859813E+01          2        300        300        300
+m2                     0.14250000000000E-01   0.18947368421053E+01          2        300        300        300
+m1                     0.25200000000000E-01   0.25396825396825E+01          2        400        400        400
+m2                     0.42250000000000E-01   0.15147928994083E+01          2        400        400        400
+m1                     0.46950000000000E-01   0.26624068157614E+01          2        500        500        500
+m2                     0.77950000000000E-01   0.16035920461835E+01          2        500        500        500
+m1                     0.84200000000000E-01   0.25653206650831E+01          2        600        600        600
+m2                     0.14645000000000E+00   0.14749061113008E+01          2        600        600        600
 end of benchmark
