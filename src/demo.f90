@@ -25,7 +25,7 @@ program demo
    call bench%init(nmarks=2, title='Demo Benchmark', filename='results/demo', nloops=2, timer='wall')
 
    ! start the benchmark
-   do p = 100_ik,400_ik, 100_ik ! loop over problem size
+   do p = 300_ik,600_ik, 100_ik ! loop over problem size
 
       !===============================================================================
       ! allocate and initialize your variables here
