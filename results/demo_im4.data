@@ -3,19 +3,19 @@ ForBenchmark - https://github.com/gha3mi/forbenchmark
 -----------------------------------------------------
 
 Demo Benchmark
-2024. 1. 7 - 13:14:23
+2024. 1. 7 - 15:20:41
 
 compiler_version: Intel(R) Fortran Compiler for applications running on Intel(R) 64, Version 2024.0.2 Build 20231213
-compiler_options: -Ibuild/ifx_69076157971FC046 -c -fpp -coarray -coarray-num-images=4 -DUSE_COARRAY -free -module build/ifx_69076157971FC046 -o build/ifx_69076157971FC046/forbenchmark/src_forbenchmark_coarray.f90.o 
+compiler_options: -Ibuild/ifx_E065F348A3924AA0 -c -fpp -coarray -coarray-num-images=4 -DUSE_COARRAY -fp-model precise -pc64 -align all -error-limit 1 -reentrancy threaded -nogen-interfaces -assume byterecl -standard-semantics -free -module build/ifx_E065F348A3924AA0 -o build/ifx_E065F348A3924AA0/forbenchmark/src_forbenchmark_coarray.f90.o 
 image: 4 of 4
 
        METHOD        |     TIME(image)      |    GFLOPS(image)     |  NLOOPS  |   ARGI  
-m1                     0.10550000000000E-01   0.25592417061611E+01          2        300        300        300
-m2                     0.14300000000000E-01   0.18881118881119E+01          2        300        300        300
-m1                     0.25150000000000E-01   0.25447316103380E+01          2        400        400        400
-m2                     0.42200000000000E-01   0.15165876777251E+01          2        400        400        400
-m1                     0.46850000000000E-01   0.26680896478122E+01          2        500        500        500
-m2                     0.77850000000000E-01   0.16056518946692E+01          2        500        500        500
-m1                     0.84350000000000E-01   0.25607587433314E+01          2        600        600        600
-m2                     0.14660000000000E+00   0.14733969986357E+01          2        600        600        600
+m1                     0.69950000000000E-01   0.30879199428163E+01          2        600        600        600
+m2                     0.22685000000000E+00   0.95217103813092E+00          2        600        600        600
+m1                     0.17245000000000E+00   0.19889823137141E+01          2        700        700        700
+m2                     0.34220000000000E+00   0.10023378141438E+01          2        700        700        700
+m1                     0.32075000000000E+00   0.15962587685113E+01          2        800        800        800
+m2                     0.58105000000000E+00   0.88116341106617E+00          2        800        800        800
+m1                     0.78925000000000E+00   0.92366170414951E+00          2        900        900        900
+m2                     0.77595000000000E+00   0.93949352406727E+00          2        900        900        900
 end of benchmark

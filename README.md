@@ -84,17 +84,17 @@ cd forbenchmark
 For non-coarray benchmarking:
 
 ```shell
-fpm run --example demo
+fpm run --example demo --profile release
 ```
 
 For coarray programs benchmarking using the Intel Fortran compiler:
 
 ```shell
-fpm run --example demo --compiler ifx --flag "-coarray -coarray-num-images=4 -DUSE_COARRAY"
+fpm run --example demo  --profile release --compiler ifx --flag "-coarray -coarray-num-images=4 -DUSE_COARRAY"
 ```
 
 ```shell
-fpm run --example demo --compiler ifort --flag "-coarray -coarray-num-images=4 -DUSE_COARRAY"
+fpm run --example demo  --profile release --compiler ifort --flag "-coarray -coarray-num-images=4 -DUSE_COARRAY"
 ```
 
 After execution, the results will be displayed in the terminal and stored in the 'results' folder. See `results/demo.data`, `results/demo_im1.data` for instance.
