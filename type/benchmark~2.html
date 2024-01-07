@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +19,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -47,7 +50,7 @@
                   <a class="nav-link" href="../lists/types.html">Derived Types</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../program/demo.html">Program</a>
+                  <a class="nav-link" href="program/demo.html">Program</a>
                 </li>
             </ul>
               <div class="d-flex align-items-end flex-grow-1">
@@ -75,7 +78,7 @@
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title="<p>25.0% of total for derived types.</p>Including implementation: 205 statements, 38.2% of total for derived types.">14 statements</a>
+                 title="<p>25.9% of total for derived types.</p>Including implementation: 203 statements, 38.1% of total for derived types.">15 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -115,12 +118,13 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../type/benchmark~2.html#variable-marks~2">marks</a>
-            <a class="list-group-item" href="../type/benchmark~2.html#variable-filename~3">filename</a>
-            <a class="list-group-item" href="../type/benchmark~2.html#variable-nloops~3">nloops</a>
-            <a class="list-group-item" href="../type/benchmark~2.html#variable-argi~3">argi</a>
-            <a class="list-group-item" href="../type/benchmark~2.html#variable-argr~3">argr</a>
-            <a class="list-group-item" href="../type/benchmark~2.html#variable-timer~3">timer</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#variable-marks">marks</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#variable-filename">filename</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#variable-nloops">nloops</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#variable-argi">argi</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#variable-argr">argr</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#variable-timer">timer</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#variable-imark">imark</a>
         </div>
       </div>
     </div>
@@ -147,11 +151,11 @@
       </a>
       <div id="boundprocs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../type/benchmark~2.html#boundprocedure-init~2">init</a>
-            <a class="list-group-item" href="../type/benchmark~2.html#boundprocedure-start_benchmark~2">start_benchmark</a>
-            <a class="list-group-item" href="../type/benchmark~2.html#boundprocedure-stop_benchmark~2">stop_benchmark</a>
-            <a class="list-group-item" href="../type/benchmark~2.html#boundprocedure-write_benchmark~2">write_benchmark</a>
-            <a class="list-group-item" href="../type/benchmark~2.html#boundprocedure-finalize~2">finalize</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#boundprocedure-init">init</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#boundprocedure-start_benchmark">start_benchmark</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#boundprocedure-stop_benchmark">stop_benchmark</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#boundprocedure-write_benchmark">write_benchmark</a>
+            <a class="list-group-item" href="../type/benchmark~2.html#boundprocedure-finalize">finalize</a>
         </div>
       </div>
     </div>
@@ -171,14 +175,15 @@
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>type, public :: benchmark</h2>
+      <h2>
+        type, public :: benchmark</h2>
     
-<br>    <div class="card">
-      <div class="card-header">
-  <h3 class="card-title">Inherits</h3>
-      </div>
-      <div class="card-body">
-    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<br>      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Inherits</h3>
+        </div>
+        <div class="card-body">
+          <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Generated by graphviz version 2.43.0 (0)
@@ -198,7 +203,7 @@
 <!-- type~mark~2 -->
 <g id="type~~benchmark~2~~InheritsGraph_node2" class="node">
 <title>type~mark~2</title>
-<g id="a_type~~benchmark~2~~InheritsGraph_node2"><a xlink:href=".././type/mark~2.html" xlink:title="mark">
+<g id="a_type~~benchmark~2~~InheritsGraph_node2"><a xlink:href="../type/mark~2.html" xlink:title="mark">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="166,-24 112,-24 112,0 166,0 166,-24"/>
 <text text-anchor="middle" x="139" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mark</text>
 </a>
@@ -226,17 +231,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#InheritsGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#InheritsGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="InheritsGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -275,8 +280,8 @@ large graphs.</div>
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
     <br>
 
     <section>
@@ -293,8 +298,8 @@ large graphs.</div>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-marks~2"></span>
-              type(<a href='../type/mark~2.html'>mark</a>),
+              <span class="anchor" id="variable-marks"></span>
+              type(<a href='mark~2.html'>mark</a>),
             </td>
               <td>public,</td>
             <td>
@@ -310,7 +315,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-filename~3"></span>
+              <span class="anchor" id="variable-filename"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -327,7 +332,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nloops~3"></span>
+              <span class="anchor" id="variable-nloops"></span>
               integer,
             </td>
               <td>public</td>
@@ -344,7 +349,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-argi~3"></span>
+              <span class="anchor" id="variable-argi"></span>
               integer(kind=ik),
             </td>
               <td>public,</td>
@@ -361,7 +366,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-argr~3"></span>
+              <span class="anchor" id="variable-argr"></span>
               real(kind=rk),
             </td>
               <td>public,</td>
@@ -378,7 +383,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-timer~3"></span>
+              <span class="anchor" id="variable-timer"></span>
               character(len=:),
             </td>
               <td>public,</td>
@@ -387,6 +392,23 @@ large graphs.</div>
             </td>
             <td>::</td>
             <td><strong>timer</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-imark"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>imark</strong></td>
                 <td></td>
                 <td></td>
             <td>
@@ -406,7 +428,7 @@ large graphs.</div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-init~2"></span>
+      <span class="anchor" id="boundprocedure-init"></span>
       <h3>
           procedure, public ::
   <strong>init</strong>
@@ -416,7 +438,7 @@ large graphs.</div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private impure elemental subroutine <a href='../proc/init~2.html'>init</a>(this, nmarks, title, filename, nloops, timer)  
+    private impure elemental subroutine <a href='../proc/init.html'>init</a>(this, nmarks, title, filename, nloops, timer)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
@@ -439,7 +461,7 @@ large graphs.</div>
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/benchmark~2.html'>benchmark</a>),
+              class(<a href='benchmark~2.html'>benchmark</a>),
             </td>
 <td>intent(inout)</td>
               <td></td>            <td>
@@ -538,7 +560,7 @@ large graphs.</div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-start_benchmark~2"></span>
+      <span class="anchor" id="boundprocedure-start_benchmark"></span>
       <h3>
           procedure, public ::
   <strong>start_benchmark</strong>
@@ -548,7 +570,7 @@ large graphs.</div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private impure subroutine <a href='../proc/start_benchmark~2.html'>start_benchmark</a>(this, imark, method, description, argi, argr)  
+    private impure subroutine <a href='../proc/start_benchmark.html'>start_benchmark</a>(this, imark, method, description, argi, argr)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
@@ -571,7 +593,7 @@ large graphs.</div>
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/benchmark~2.html'>benchmark</a>),
+              class(<a href='benchmark~2.html'>benchmark</a>),
             </td>
 <td>intent(inout)</td>
               <td></td>            <td>
@@ -670,7 +692,7 @@ large graphs.</div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-stop_benchmark~2"></span>
+      <span class="anchor" id="boundprocedure-stop_benchmark"></span>
       <h3>
           procedure, public ::
   <strong>stop_benchmark</strong>
@@ -680,7 +702,7 @@ large graphs.</div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private impure subroutine <a href='../proc/stop_benchmark~2.html'>stop_benchmark</a>(this, imark, flops)  
+    private impure subroutine <a href='../proc/stop_benchmark.html'>stop_benchmark</a>(this, flops)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
@@ -703,7 +725,7 @@ large graphs.</div>
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/benchmark~2.html'>benchmark</a>),
+              class(<a href='benchmark~2.html'>benchmark</a>),
             </td>
 <td>intent(inout)</td>
               <td></td>            <td>
@@ -711,21 +733,6 @@ large graphs.</div>
             </td>
             <td>::</td>
             <td><strong>this</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>imark</strong></td>
             <td>
 
             </td>
@@ -757,7 +764,7 @@ large graphs.</div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-write_benchmark~2"></span>
+      <span class="anchor" id="boundprocedure-write_benchmark"></span>
       <h3>
           procedure, private ::
   <strong>write_benchmark</strong>
@@ -767,7 +774,7 @@ large graphs.</div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private impure subroutine <a href='../proc/write_benchmark~2.html'>write_benchmark</a>(this, imark)  
+    private impure subroutine <a href='../proc/write_benchmark.html'>write_benchmark</a>(this)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
@@ -790,7 +797,7 @@ large graphs.</div>
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/benchmark~2.html'>benchmark</a>),
+              class(<a href='benchmark~2.html'>benchmark</a>),
             </td>
 <td>intent(inout)</td>
               <td></td>            <td>
@@ -798,21 +805,6 @@ large graphs.</div>
             </td>
             <td>::</td>
             <td><strong>this</strong></td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>imark</strong></td>
             <td>
 
             </td>
@@ -829,7 +821,7 @@ large graphs.</div>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-finalize~2"></span>
+      <span class="anchor" id="boundprocedure-finalize"></span>
       <h3>
           procedure, public ::
   <strong>finalize</strong>
@@ -839,7 +831,7 @@ large graphs.</div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private impure elemental subroutine <a href='../proc/finalize~2.html'>finalize</a>(this)  
+    private impure elemental subroutine <a href='../proc/finalize.html'>finalize</a>(this)  
 </h3>
         <dl class="dl-horizontal">
         <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
@@ -862,7 +854,7 @@ large graphs.</div>
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='../type/benchmark~2.html'>benchmark</a>),
+              class(<a href='benchmark~2.html'>benchmark</a>),
             </td>
 <td>intent(inout)</td>
               <td></td>            <td>
@@ -895,6 +887,7 @@ large graphs.</div>
 <span class="w">      </span><span class="kt">integer</span><span class="p">(</span><span class="n">ik</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">argi</span>
 <span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">),</span><span class="w">    </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">argr</span>
 <span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w">              </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">timer</span>
+<span class="w">      </span><span class="kt">integer</span><span class="w">                                </span><span class="kd">::</span><span class="w"> </span><span class="n">imark</span>
 <span class="w">   </span><span class="k">contains</span>
 <span class="k">      procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">init</span>
 <span class="w">      </span><span class="k">procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">start_benchmark</span>
@@ -921,7 +914,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-02T21:50:24.954546             </p>
+ on 2024-01-07T00:13:58.800150             </p>
           </div>
         </div>
         <br>

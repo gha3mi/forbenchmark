@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +20,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -48,7 +51,7 @@
                   <a class="nav-link" href="../lists/types.html">Derived Types</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../program/demo.html">Program</a>
+                  <a class="nav-link" href="program/demo.html">Program</a>
                 </li>
             </ul>
               <div class="d-flex align-items-end flex-grow-1">
@@ -69,11 +72,36 @@
 			 <thead>
 			 <tr><th>Type</th><th>Location</th><th>Extends</th><th>Description</th></tr>
 			 </thead><tbody>
-			   <tr><td><a href='../type/benchmark.html'>benchmark</a></td><td><a href='../module/forbenchmark_coarray.html'>forbenchmark_coarray</a></td><td>None</td><td></td></tr>
-			   <tr><td><a href='../type/benchmark~2.html'>benchmark</a></td><td><a href='../module/forbenchmark_default.html'>forbenchmark_default</a></td><td>None</td><td></td></tr>
-			   <tr><td><a href='../type/mark.html'>mark</a></td><td><a href='../module/forbenchmark_coarray.html'>forbenchmark_coarray</a></td><td>None</td><td></td></tr>
-			   <tr><td><a href='../type/mark~2.html'>mark</a></td><td><a href='../module/forbenchmark_default.html'>forbenchmark_default</a></td><td>None</td><td></td></tr>
-			   <tr><td><a href='../type/mark_co.html'>mark_co</a></td><td><a href='../module/forbenchmark_coarray.html'>forbenchmark_coarray</a></td><td>None</td><td></td></tr>
+			   <tr>
+                 <td><a href='../type/benchmark~2.html'>benchmark</a></td>
+                 <td><a href='../module/forbenchmark_default.html'>forbenchmark_default</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/benchmark.html'>benchmark</a></td>
+                 <td><a href='../module/forbenchmark_coarray.html'>forbenchmark_coarray</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/mark~2.html'>mark</a></td>
+                 <td><a href='../module/forbenchmark_default.html'>forbenchmark_default</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/mark.html'>mark</a></td>
+                 <td><a href='../module/forbenchmark_coarray.html'>forbenchmark_coarray</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../type/mark_co.html'>mark_co</a></td>
+                 <td><a href='../module/forbenchmark_coarray.html'>forbenchmark_coarray</a></td>
+                 <td>None</td>
+                 <td></td>
+               </tr>
 			 </tbody></table>
              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -89,7 +117,7 @@
 <!-- type~benchmark -->
 <g id="type~~graph~~TypeGraph_node1" class="node">
 <title>type~benchmark</title>
-<g id="a_type~~graph~~TypeGraph_node1"><a xlink:href=".././type/benchmark.html" xlink:title="benchmark">
+<g id="a_type~~graph~~TypeGraph_node1"><a xlink:href="../type/benchmark.html" xlink:title="benchmark">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="325,-87 252,-87 252,-63 325,-63 325,-87"/>
 <text text-anchor="middle" x="288.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">benchmark</text>
 </a>
@@ -98,7 +126,7 @@
 <!-- type~mark -->
 <g id="type~~graph~~TypeGraph_node3" class="node">
 <title>type~mark</title>
-<g id="a_type~~graph~~TypeGraph_node3"><a xlink:href=".././type/mark.html" xlink:title="mark">
+<g id="a_type~~graph~~TypeGraph_node3"><a xlink:href="../type/mark.html" xlink:title="mark">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="168,-108 114,-108 114,-84 168,-84 168,-108"/>
 <text text-anchor="middle" x="141" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mark</text>
 </a>
@@ -114,7 +142,7 @@
 <!-- type~mark_co -->
 <g id="type~~graph~~TypeGraph_node4" class="node">
 <title>type~mark_co</title>
-<g id="a_type~~graph~~TypeGraph_node4"><a xlink:href=".././type/mark_co.html" xlink:title="mark_co">
+<g id="a_type~~graph~~TypeGraph_node4"><a xlink:href="../type/mark_co.html" xlink:title="mark_co">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="170,-66 112,-66 112,-42 170,-42 170,-66"/>
 <text text-anchor="middle" x="141" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mark_co</text>
 </a>
@@ -130,7 +158,7 @@
 <!-- type~benchmark~2 -->
 <g id="type~~graph~~TypeGraph_node2" class="node">
 <title>type~benchmark~2</title>
-<g id="a_type~~graph~~TypeGraph_node2"><a xlink:href=".././type/benchmark~2.html" xlink:title="benchmark">
+<g id="a_type~~graph~~TypeGraph_node2"><a xlink:href="../type/benchmark~2.html" xlink:title="benchmark">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="325,-24 252,-24 252,0 325,0 325,-24"/>
 <text text-anchor="middle" x="288.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">benchmark</text>
 </a>
@@ -139,7 +167,7 @@
 <!-- type~mark~2 -->
 <g id="type~~graph~~TypeGraph_node5" class="node">
 <title>type~mark~2</title>
-<g id="a_type~~graph~~TypeGraph_node5"><a xlink:href=".././type/mark~2.html" xlink:title="mark">
+<g id="a_type~~graph~~TypeGraph_node5"><a xlink:href="../type/mark~2.html" xlink:title="mark">
 <polygon fill="#5cb85c" stroke="#5cb85c" points="168,-24 114,-24 114,0 168,0 168,-24"/>
 <text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mark</text>
 </a>
@@ -174,17 +202,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#TypeGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#TypeGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="TypeGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -237,7 +265,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-02T21:50:24.954546             </p>
+ on 2024-01-07T00:13:58.800150             </p>
           </div>
         </div>
         <br>

@@ -17,7 +17,8 @@
     <link href="./css/local.css" rel="stylesheet">
       <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -47,7 +48,7 @@
                   <a class="nav-link" href="./lists/types.html">Derived Types</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./program/demo.html">Program</a>
+                  <a class="nav-link" href="program/demo.html">Program</a>
                 </li>
             </ul>
               <div class="d-flex align-items-end flex-grow-1">
@@ -99,7 +100,7 @@
 
 <span class="k">end do</span>
 <span class="c">! stop benchmark</span>
-<span class="k">call </span><span class="n">bench</span><span class="p">%</span><span class="n">stop_benchmark</span><span class="p">(</span><span class="n">imark</span><span class="p">)</span>
+<span class="k">call </span><span class="n">bench</span><span class="p">%</span><span class="n">stop_benchmark</span><span class="p">()</span>
 
 <span class="c">! finalize the benchmark</span>
 <span class="k">call </span><span class="n">bench</span><span class="p">%</span><span class="n">finalize</span><span class="p">()</span>
@@ -115,7 +116,7 @@
 </code></pre></div>
 
 <div class="codehilite"><pre><span></span><code><span class="c">! stop benchmark</span>
-<span class="k">call </span><span class="n">bench</span><span class="p">%</span><span class="n">stop_benchmark</span><span class="p">(</span><span class="n">imark</span><span class="p">,</span><span class="w"> </span><span class="n">flops</span><span class="p">)</span>
+<span class="k">call </span><span class="n">bench</span><span class="p">%</span><span class="n">stop_benchmark</span><span class="p">(</span><span class="n">flops</span><span class="p">)</span>
 </code></pre></div>
 
 <div class="codehilite"><pre><span></span><code><span class="c">! finalize the benchmark</span>
@@ -198,7 +199,7 @@ If you find any issues or would like to suggest improvements, please open an iss
           <div class="col-xs-6 col-sm-3">
             <div>
               <h3>Source Files</h3>
-              <ul><li><a href='./sourcefile/demo.f90.html'>demo.f90</a></li><li><a href='./sourcefile/forbenchmark.f90.html'>forbenchmark.f90</a></li><li><a href='./sourcefile/forbenchmark_coarray.f90.html'>forbenchmark_coarray.f90</a></li><li><a href='./sourcefile/forbenchmark_default.f90.html'>forbenchmark_default.f90</a></li></ul>
+              <ul><li><a href='sourcefile/demo.f90.html'>demo.f90</a></li><li><a href='sourcefile/forbenchmark.f90.html'>forbenchmark.f90</a></li><li><a href='sourcefile/forbenchmark_coarray.f90.html'>forbenchmark_coarray.f90</a></li><li><a href='sourcefile/forbenchmark_default.f90.html'>forbenchmark_default.f90</a></li></ul>
             </div>
             <div>
               <ul>
@@ -209,7 +210,7 @@ If you find any issues or would like to suggest improvements, please open an iss
           <div class="col-xs-6 col-sm-3">
             <div>
               <h3>Modules</h3>
-              <ul><li><a href='./module/forbenchmark.html'>forbenchmark</a></li><li><a href='./module/forbenchmark_coarray.html'>forbenchmark_coarray</a></li><li><a href='./module/forbenchmark_default.html'>forbenchmark_default</a></li></ul>
+              <ul><li><a href='module/forbenchmark.html'>forbenchmark</a></li><li><a href='module/forbenchmark_coarray.html'>forbenchmark_coarray</a></li><li><a href='module/forbenchmark_default.html'>forbenchmark_default</a></li></ul>
             </div>
             <div>
               <ul>
@@ -220,7 +221,7 @@ If you find any issues or would like to suggest improvements, please open an iss
           <div class="col-xs-6 col-sm-3">
             <div>
               <h3>Procedures</h3>
-              <ul><li><a href='./proc/cmp_gflops.html'>cmp_gflops</a></li><li><a href='./proc/current_date_and_time.html'>current_date_and_time</a></li><li><a href='./proc/current_date_and_time~2.html'>current_date_and_time</a></li><li><a href='./proc/finalize.html'>finalize</a></li><li><a href='./proc/finalize~2.html'>finalize</a></li><li><a href='./proc/finalize_mark.html'>finalize_mark</a></li><li><a href='./proc/finalize_mark~2.html'>finalize_mark</a></li><li><a href='./proc/init.html'>init</a></li><li><a href='./proc/init~2.html'>init</a></li><li><a href='./proc/start_benchmark.html'>start_benchmark</a></li></ul>
+              <ul><li><a href='proc/cmp_gflops.html'>cmp_gflops</a></li><li><a href='proc/current_date_and_time.html'>current_date_and_time</a></li><li><a href='proc/current_date_and_time~2.html'>current_date_and_time</a></li><li><a href='proc/finalize.html'>finalize</a></li><li><a href='proc/finalize~2.html'>finalize</a></li><li><a href='proc/finalize_mark.html'>finalize_mark</a></li><li><a href='proc/finalize_mark~2.html'>finalize_mark</a></li><li><a href='proc/init.html'>init</a></li><li><a href='proc/init~2.html'>init</a></li><li><a href='proc/start_benchmark.html'>start_benchmark</a></li></ul>
             </div>
             <div>
               <ul>
@@ -231,7 +232,7 @@ If you find any issues or would like to suggest improvements, please open an iss
           <div class="col-xs-6 col-sm-3">
             <div>
               <h3>Derived Types</h3>
-              <ul><li><a href='./type/benchmark.html'>benchmark</a></li><li><a href='./type/benchmark~2.html'>benchmark</a></li><li><a href='./type/mark.html'>mark</a></li><li><a href='./type/mark~2.html'>mark</a></li><li><a href='./type/mark_co.html'>mark_co</a></li></ul>
+              <ul><li><a href='type/benchmark~2.html'>benchmark</a></li><li><a href='type/benchmark.html'>benchmark</a></li><li><a href='type/mark~2.html'>mark</a></li><li><a href='type/mark.html'>mark</a></li><li><a href='type/mark_co.html'>mark_co</a></li></ul>
             </div>
             <div>
               <ul>
@@ -252,7 +253,7 @@ If you find any issues or would like to suggest improvements, please open an iss
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-02T21:50:24.954546             </p>
+ on 2024-01-07T00:13:58.800150             </p>
           </div>
         </div>
         <br>

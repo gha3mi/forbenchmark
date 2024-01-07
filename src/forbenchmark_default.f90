@@ -34,6 +34,7 @@ module forbenchmark_default
       integer(ik), dimension(:), allocatable :: argi
       real(rk),    dimension(:), allocatable :: argr
       character(:),              allocatable :: timer
+      integer                                :: imark
    contains
       procedure          :: init
       procedure          :: start_benchmark
@@ -149,8 +150,10 @@ contains
 
       if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
 
-      this%marks(imark)%description = description
-      this%marks(imark)%method      = method
+      this%imark = imark
+
+      this%marks(this%imark)%description = description
+      this%marks(this%imark)%method      = method
 
       if (present(argi)) then
          this%argi = argi
@@ -166,39 +169,39 @@ contains
 
       if (present(description) .and. present(argi)) then
          print'(a,a," ",a,*(g0,1x))',&
-         colorize('Meth.: '//this%marks(imark)%method, color_fg='green',style='bold_on'),&
-         colorize('; Des.: '//this%marks(imark)%description, color_fg='green_intense'),&
+         colorize('Meth.: '//this%marks(this%imark)%method, color_fg='green',style='bold_on'),&
+         colorize('; Des.: '//this%marks(this%imark)%description, color_fg='green_intense'),&
          '; Argi.:',&
          this%argi
       elseif (present(description) .and. .not. present(argi)) then
          print'(a,a," ",a)',&
-         colorize('Meth.: '//this%marks(imark)%method, color_fg='green',style='bold_on'),&
-         colorize('; Des.: '//this%marks(imark)%description, color_fg='green_intense')
+         colorize('Meth.: '//this%marks(this%imark)%method, color_fg='green',style='bold_on'),&
+         colorize('; Des.: '//this%marks(this%imark)%description, color_fg='green_intense')
       elseif (.not. present(description) .and. present(argi)) then
          print'(a,a,*(g0,1x))',&
-         colorize('Meth.: '//this%marks(imark)%method, color_fg='green',style='bold_on'),&
+         colorize('Meth.: '//this%marks(this%imark)%method, color_fg='green',style='bold_on'),&
          '; Argi.:',&
          this%argi
       else
-         print'(a)', colorize('Meth.: '//this%marks(imark)%method, color_fg='green',style='bold_on')
+         print'(a)', colorize('Meth.: '//this%marks(this%imark)%method, color_fg='green',style='bold_on')
       end if
 
       select case (trim(this%timer))
        case ('wall')
-         call this%marks(imark)%time%timer_start()
+         call this%marks(this%imark)%time%timer_start()
        case ('date_and_time')
-         call this%marks(imark)%time%dtimer_start()
+         call this%marks(this%imark)%time%dtimer_start()
        case ('cpu')
-         call this%marks(imark)%time%ctimer_start()
+         call this%marks(this%imark)%time%ctimer_start()
        case ('omp')
 #if defined(USE_OMP)
-         call this%marks(imark)%time%otimer_start()
+         call this%marks(this%imark)%time%otimer_start()
 #else
          error stop 'Use -DUSE_OMP to enable OpenMP.'
 #endif
        case ('mpi')
 #if defined(USE_MPI)
-         call this%marks(imark)%time%mtimer_start()
+         call this%marks(this%imark)%time%mtimer_start()
 #else
          error stop 'Use -DUSE_MPI to enable MPI.'
 #endif
@@ -208,7 +211,7 @@ contains
 
 
    !===============================================================================
-   impure subroutine stop_benchmark(this, imark, flops)
+   impure subroutine stop_benchmark(this, flops)
    !! author: Seyed Ali Ghasemi
 
       interface
@@ -223,65 +226,59 @@ contains
       procedure(Fun), optional :: flops
 
       class(benchmark), intent(inout) :: this
-      integer,          intent(in)    :: imark
-
-      if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
 
       select case (trim(this%timer))
        case ('wall')
-         call this%marks(imark)%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
-         this%marks(imark)%elapsed_time = this%marks(imark)%time%elapsed_time
+         call this%marks(this%imark)%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks(this%imark)%elapsed_time = this%marks(this%imark)%time%elapsed_time
        case ('date_and_time')
-         call this%marks(imark)%time%dtimer_stop(message=' Elapsed time :',nloops=this%nloops)
-         this%marks(imark)%elapsed_time = this%marks(imark)%time%elapsed_dtime
+         call this%marks(this%imark)%time%dtimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks(this%imark)%elapsed_time = this%marks(this%imark)%time%elapsed_dtime
        case ('cpu')
-         call this%marks(imark)%time%ctimer_stop(message=' Elapsed time :',nloops=this%nloops)
-         this%marks(imark)%elapsed_time = this%marks(imark)%time%cpu_time
+         call this%marks(this%imark)%time%ctimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks(this%imark)%elapsed_time = this%marks(this%imark)%time%cpu_time
        case ('omp')
 #if defined(USE_OMP)
-         call this%marks(imark)%time%otimer_stop(message=' Elapsed time :',nloops=this%nloops)
-         this%marks(imark)%elapsed_time = this%marks(imark)%time%omp_time
+         call this%marks(this%imark)%time%otimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks(this%imark)%elapsed_time = this%marks(this%imark)%time%omp_time
 #else
          error stop 'Use -DUSE_OMP to enable OpenMP.'
 #endif
        case ('mpi')
 #if defined(USE_MPI)
-         call this%marks(imark)%time%mtimer_stop(message=' Elapsed time :',nloops=this%nloops)
-         this%marks(imark)%elapsed_time = this%marks(imark)%time%mpi_time
+         call this%marks(this%imark)%time%mtimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks(this%imark)%elapsed_time = this%marks(this%imark)%time%mpi_time
 #else
          error stop 'Use -DUSE_MPI to enable MPI.'
 #endif
       end select
 
-      this%marks(imark)%speedup = this%marks(imark)%elapsed_time/this%marks(1)%elapsed_time
+      this%marks(this%imark)%speedup = this%marks(this%imark)%elapsed_time/this%marks(1)%elapsed_time
 
       if (present(flops)) then
-         print'(a,f7.3,a)', ' Speedup      :', this%marks(imark)%speedup,' [-]'
-         this%marks(imark)%flops = flops(this%argi,this%argr)/this%marks(imark)%elapsed_time
-         print'(a,f7.3,a)', ' Performance  :', this%marks(imark)%flops,' [GFLOPS]'
+         print'(a,f7.3,a)', ' Speedup      :', this%marks(this%imark)%speedup,' [-]'
+         this%marks(this%imark)%flops = flops(this%argi,this%argr)/this%marks(this%imark)%elapsed_time
+         print'(a,f7.3,a)', ' Performance  :', this%marks(this%imark)%flops,' [GFLOPS]'
       else
-         this%marks(imark)%flops = 0.0_rk
+         this%marks(this%imark)%flops = 0.0_rk
       endif
       print'(a)', ''
 
 
-      call this%write_benchmark(imark)
+      call this%write_benchmark()
    end subroutine stop_benchmark
    !===============================================================================
 
 
    !===============================================================================
-   impure subroutine write_benchmark(this, imark)
+   impure subroutine write_benchmark(this)
    !! author: Seyed Ali Ghasemi
       class(benchmark), intent(inout) :: this
-      integer, intent(in)             :: imark
       integer                         :: nunit
       character(len=65)               :: fmt
       integer                         :: lm
       logical                         :: exist
       integer                         :: iostat
-
-      if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
 
       inquire(file=this%filename, exist=exist, iostat=iostat)
       if (iostat /= 0 .or. .not. exist) then
@@ -289,14 +286,14 @@ contains
       end if
       open (newunit = nunit, file = this%filename, access = 'append')
 
-      lm = 20-len_trim(this%marks(imark)%method)
+      lm = 20-len_trim(this%marks(this%imark)%method)
       write(fmt,'(a,g0,a)') '(a,',lm,'x,3x,F12.6,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g20.0,3x))'
 
       write(nunit,fmt) &
-         this%marks(imark)%method,&
-         this%marks(imark)%speedup,&
-         this%marks(imark)%elapsed_time,&
-         this%marks(imark)%flops,&
+         this%marks(this%imark)%method,&
+         this%marks(this%imark)%speedup,&
+         this%marks(this%imark)%elapsed_time,&
+         this%marks(this%imark)%flops,&
          this%nloops,&
          this%argi
 

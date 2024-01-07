@@ -59,9 +59,8 @@ program demo
 
       end do
       ! stop benchmark for method 1
-      ! imark is the same as above
       ! flops is an optional function to compute flops
-      call bench%stop_benchmark(imark=1, flops=cmp_gflops)
+      call bench%stop_benchmark(flops=cmp_gflops)
       !===============================================================================
 
 
@@ -82,7 +81,7 @@ program demo
          end do
 
       end do
-      call bench%stop_benchmark(2,cmp_gflops)
+      call bench%stop_benchmark(cmp_gflops)
       !===============================================================================
 
       ! you can add more methods ...

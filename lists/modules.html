@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +20,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -48,7 +51,7 @@
                   <a class="nav-link" href="../lists/types.html">Derived Types</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../program/demo.html">Program</a>
+                  <a class="nav-link" href="program/demo.html">Program</a>
                 </li>
             </ul>
               <div class="d-flex align-items-end flex-grow-1">
@@ -68,9 +71,21 @@
 			 <table class="table">
 			 <thead><tr><th>Module</th><th>Source File</th><th>Description</th></tr></thead>
 			 <tbody>
-			   <tr class="active"><td><a href='../module/forbenchmark.html'>forbenchmark</a></td><td><a href='../sourcefile/forbenchmark.f90.html'>forbenchmark.f90</a></td><td></td></tr>
-<!--active-->			   <tr class=""><td><a href='../module/forbenchmark_coarray.html'>forbenchmark_coarray</a></td><td><a href='../sourcefile/forbenchmark_coarray.f90.html'>forbenchmark_coarray.f90</a></td><td></td></tr>
-<!---->			   <tr class="active"><td><a href='../module/forbenchmark_default.html'>forbenchmark_default</a></td><td><a href='../sourcefile/forbenchmark_default.f90.html'>forbenchmark_default.f90</a></td><td></td></tr>
+			   <tr class="active">
+                 <td><a href='../module/forbenchmark.html'>forbenchmark</a></td>
+                 <td><a href='../sourcefile/forbenchmark.f90.html'>forbenchmark.f90</a></td>
+                 <td></td>
+               </tr>
+<!--active-->			   <tr class="">
+                 <td><a href='../module/forbenchmark_coarray.html'>forbenchmark_coarray</a></td>
+                 <td><a href='../sourcefile/forbenchmark_coarray.f90.html'>forbenchmark_coarray.f90</a></td>
+                 <td></td>
+               </tr>
+<!---->			   <tr class="active">
+                 <td><a href='../module/forbenchmark_default.html'>forbenchmark_default</a></td>
+                 <td><a href='../sourcefile/forbenchmark_default.f90.html'>forbenchmark_default.f90</a></td>
+                 <td></td>
+               </tr>
 <!--active-->			 </tbody></table>
              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -86,7 +101,7 @@
 <!-- module~forbenchmark -->
 <g id="module~~graph~~ModuleGraph_node1" class="node">
 <title>module~forbenchmark</title>
-<g id="a_module~~graph~~ModuleGraph_node1"><a xlink:href=".././module/forbenchmark.html" xlink:title="forbenchmark">
+<g id="a_module~~graph~~ModuleGraph_node1"><a xlink:href="../module/forbenchmark.html" xlink:title="forbenchmark">
 <polygon fill="#337ab7" stroke="#337ab7" points="352,-47.6 264,-47.6 264,-23.6 352,-23.6 352,-47.6"/>
 <text text-anchor="middle" x="308" y="-33.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark</text>
 </a>
@@ -95,7 +110,7 @@
 <!-- module~forbenchmark_coarray -->
 <g id="module~~graph~~ModuleGraph_node2" class="node">
 <title>module~forbenchmark_coarray</title>
-<g id="a_module~~graph~~ModuleGraph_node2"><a xlink:href=".././module/forbenchmark_coarray.html" xlink:title="forbenchmark_coarray">
+<g id="a_module~~graph~~ModuleGraph_node2"><a xlink:href="../module/forbenchmark_coarray.html" xlink:title="forbenchmark_coarray">
 <polygon fill="#337ab7" stroke="#337ab7" points="225,-89.6 90,-89.6 90,-65.6 225,-65.6 225,-89.6"/>
 <text text-anchor="middle" x="157.5" y="-75.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_coarray</text>
 </a>
@@ -110,7 +125,7 @@
 <!-- module~forbenchmark_default -->
 <g id="module~~graph~~ModuleGraph_node3" class="node">
 <title>module~forbenchmark_default</title>
-<g id="a_module~~graph~~ModuleGraph_node3"><a xlink:href=".././module/forbenchmark_default.html" xlink:title="forbenchmark_default">
+<g id="a_module~~graph~~ModuleGraph_node3"><a xlink:href="../module/forbenchmark_default.html" xlink:title="forbenchmark_default">
 <polygon fill="#337ab7" stroke="#337ab7" points="223,-47.6 92,-47.6 92,-23.6 223,-23.6 223,-47.6"/>
 <text text-anchor="middle" x="157.5" y="-33.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default</text>
 </a>
@@ -161,9 +176,9 @@
 <!-- proc~init -->
 <g id="module~~graph~~ModuleGraph_node4" class="node">
 <title>proc~init</title>
-<g id="a_module~~graph~~ModuleGraph_node4"><a xlink:href=".././proc/init.html" xlink:title="forbenchmark_coarray::benchmark%init">
-<polygon fill="#d9534f" stroke="#d9534f" points="656.5,-121.6 427.5,-121.6 427.5,-97.6 656.5,-97.6 656.5,-121.6"/>
-<text text-anchor="middle" x="542" y="-107.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_coarray::benchmark%init</text>
+<g id="a_module~~graph~~ModuleGraph_node4"><a xlink:href="../proc/init.html" xlink:title="forbenchmark_default::benchmark%init">
+<polygon fill="#d9534f" stroke="#d9534f" points="655,-121.6 429,-121.6 429,-97.6 655,-97.6 655,-121.6"/>
+<text text-anchor="middle" x="542" y="-107.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default::benchmark%init</text>
 </a>
 </g>
 </g>
@@ -182,24 +197,24 @@
 <!-- proc~init~2 -->
 <g id="module~~graph~~ModuleGraph_node5" class="node">
 <title>proc~init~2</title>
-<g id="a_module~~graph~~ModuleGraph_node5"><a xlink:href=".././proc/init~2.html" xlink:title="forbenchmark_default::benchmark%init">
-<polygon fill="#d9534f" stroke="#d9534f" points="655,-79.6 429,-79.6 429,-55.6 655,-55.6 655,-79.6"/>
-<text text-anchor="middle" x="542" y="-65.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default::benchmark%init</text>
+<g id="a_module~~graph~~ModuleGraph_node5"><a xlink:href="../proc/init~2.html" xlink:title="forbenchmark_coarray::benchmark%init">
+<polygon fill="#d9534f" stroke="#d9534f" points="656.5,-79.6 427.5,-79.6 427.5,-55.6 656.5,-55.6 656.5,-79.6"/>
+<text text-anchor="middle" x="542" y="-65.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_coarray::benchmark%init</text>
 </a>
 </g>
 </g>
 <!-- proc~init~2&#45;&gt;iso_fortran_env -->
 <g id="module~~graph~~ModuleGraph_edge8" class="edge">
 <title>proc~init~2&#45;&gt;iso_fortran_env</title>
-<path fill="none" stroke="#025516" stroke-dasharray="5,2" stroke-opacity="0.035294" d="M428.74,-72.92C406.68,-73.97 384.44,-75.02 365.21,-75.94"/>
-<polygon fill="#025516" fill-opacity="0.035294" stroke="#025516" stroke-opacity="0.035294" points="364.98,-72.44 355.16,-76.41 365.31,-79.43 364.98,-72.44"/>
+<path fill="none" stroke="#025516" stroke-dasharray="5,2" stroke-opacity="0.035294" d="M427.38,-72.99C405.78,-74.01 384.06,-75.04 365.24,-75.93"/>
+<polygon fill="#025516" fill-opacity="0.035294" stroke="#025516" stroke-opacity="0.035294" points="364.92,-72.45 355.1,-76.41 365.25,-79.44 364.92,-72.45"/>
 </g>
 <!-- proc~start_benchmark -->
 <g id="module~~graph~~ModuleGraph_node6" class="node">
 <title>proc~start_benchmark</title>
-<g id="a_module~~graph~~ModuleGraph_node6"><a xlink:href=".././proc/start_benchmark.html" xlink:title="forbenchmark_coarray::benchmark%start_benchmark">
-<polygon fill="#d9534f" stroke="#d9534f" points="693,-247.6 391,-247.6 391,-223.6 693,-223.6 693,-247.6"/>
-<text text-anchor="middle" x="542" y="-233.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_coarray::benchmark%start_benchmark</text>
+<g id="a_module~~graph~~ModuleGraph_node6"><a xlink:href="../proc/start_benchmark.html" xlink:title="forbenchmark_default::benchmark%start_benchmark">
+<polygon fill="#d9534f" stroke="#d9534f" points="691.5,-247.6 392.5,-247.6 392.5,-223.6 691.5,-223.6 691.5,-247.6"/>
+<text text-anchor="middle" x="542" y="-233.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default::benchmark%start_benchmark</text>
 </a>
 </g>
 </g>
@@ -218,37 +233,37 @@
 <!-- proc~start_benchmark~2 -->
 <g id="module~~graph~~ModuleGraph_node7" class="node">
 <title>proc~start_benchmark~2</title>
-<g id="a_module~~graph~~ModuleGraph_node7"><a xlink:href=".././proc/start_benchmark~2.html" xlink:title="forbenchmark_default::benchmark%start_benchmark">
-<polygon fill="#d9534f" stroke="#d9534f" points="691.5,-205.6 392.5,-205.6 392.5,-181.6 691.5,-181.6 691.5,-205.6"/>
-<text text-anchor="middle" x="542" y="-191.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default::benchmark%start_benchmark</text>
+<g id="a_module~~graph~~ModuleGraph_node7"><a xlink:href="../proc/start_benchmark~2.html" xlink:title="forbenchmark_coarray::benchmark%start_benchmark">
+<polygon fill="#d9534f" stroke="#d9534f" points="693,-205.6 391,-205.6 391,-181.6 693,-181.6 693,-205.6"/>
+<text text-anchor="middle" x="542" y="-191.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_coarray::benchmark%start_benchmark</text>
 </a>
 </g>
 </g>
 <!-- proc~start_benchmark~2&#45;&gt;face -->
 <g id="module~~graph~~ModuleGraph_edge10" class="edge">
 <title>proc~start_benchmark~2&#45;&gt;face</title>
-<path fill="none" stroke="#002505" stroke-dasharray="5,2" d="M392.43,-193.6C375.11,-193.6 358.84,-193.6 345.35,-193.6"/>
-<polygon fill="#002505" stroke="#002505" points="345.16,-190.1 335.16,-193.6 345.16,-197.1 345.16,-190.1"/>
+<path fill="none" stroke="#002505" stroke-dasharray="5,2" d="M390.79,-193.6C374.19,-193.6 358.61,-193.6 345.59,-193.6"/>
+<polygon fill="#002505" stroke="#002505" points="345.3,-190.1 335.3,-193.6 345.3,-197.1 345.3,-190.1"/>
 </g>
-<!-- proc~stop_benchmark -->
+<!-- proc~stop_benchmark~2 -->
 <g id="module~~graph~~ModuleGraph_node8" class="node">
-<title>proc~stop_benchmark</title>
-<g id="a_module~~graph~~ModuleGraph_node8"><a xlink:href=".././proc/stop_benchmark.html" xlink:title="forbenchmark_coarray::benchmark%stop_benchmark">
+<title>proc~stop_benchmark~2</title>
+<g id="a_module~~graph~~ModuleGraph_node8"><a xlink:href="../proc/stop_benchmark~2.html" xlink:title="forbenchmark_coarray::benchmark%stop_benchmark">
 <polygon fill="#d9534f" stroke="#d9534f" points="692.5,-163.6 391.5,-163.6 391.5,-139.6 692.5,-139.6 692.5,-163.6"/>
 <text text-anchor="middle" x="542" y="-149.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_coarray::benchmark%stop_benchmark</text>
 </a>
 </g>
 </g>
-<!-- proc~stop_benchmark&#45;&gt;face -->
+<!-- proc~stop_benchmark~2&#45;&gt;face -->
 <g id="module~~graph~~ModuleGraph_edge11" class="edge">
-<title>proc~stop_benchmark&#45;&gt;face</title>
+<title>proc~stop_benchmark~2&#45;&gt;face</title>
 <path fill="none" stroke="#170025" stroke-dasharray="5,2" stroke-opacity="0.019608" d="M443.5,-163.64C425.97,-166.26 407.9,-169.26 391,-172.6 375.8,-175.6 359.22,-179.69 344.96,-183.46"/>
 <polygon fill="#170025" fill-opacity="0.019608" stroke="#170025" stroke-opacity="0.019608" points="343.79,-180.15 335.05,-186.14 345.62,-186.91 343.79,-180.15"/>
 </g>
 <!-- program~demo -->
 <g id="module~~graph~~ModuleGraph_node9" class="node">
 <title>program~demo</title>
-<g id="a_module~~graph~~ModuleGraph_node9"><a xlink:href=".././program/demo.html" xlink:title="demo">
+<g id="a_module~~graph~~ModuleGraph_node9"><a xlink:href="../program/demo.html" xlink:title="demo">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="569,-27.6 515,-27.6 515,-3.6 569,-3.6 569,-27.6"/>
 <text text-anchor="middle" x="542" y="-13.2" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">demo</text>
 </a>
@@ -268,17 +283,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#ModuleGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#ModuleGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="ModuleGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -354,7 +369,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-02T21:50:24.954546             </p>
+ on 2024-01-07T00:13:58.800150             </p>
           </div>
         </div>
         <br>

@@ -1,3 +1,5 @@
+<!-- -*- mode: jinja2 -*- -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +20,8 @@
     <link href="../css/local.css" rel="stylesheet">
       <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
   <body>
@@ -48,7 +51,7 @@
                   <a class="nav-link" href="../lists/types.html">Derived Types</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="../program/demo.html">Program</a>
+                  <a class="nav-link" href="program/demo.html">Program</a>
                 </li>
             </ul>
               <div class="d-flex align-items-end flex-grow-1">
@@ -68,10 +71,22 @@
 			 <table class="table table-striped">
 			 <thead><tr><th>File</th><th>Description</th></tr></thead>
 			 <tbody>
-			   <tr><td><a href='../sourcefile/demo.f90.html'>demo.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/forbenchmark.f90.html'>forbenchmark.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/forbenchmark_coarray.f90.html'>forbenchmark_coarray.f90</a></td><td></td></tr>
-			   <tr><td><a href='../sourcefile/forbenchmark_default.f90.html'>forbenchmark_default.f90</a></td><td></td></tr>
+			   <tr>
+                 <td><a href='../sourcefile/demo.f90.html'>demo.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/forbenchmark.f90.html'>forbenchmark.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/forbenchmark_coarray.f90.html'>forbenchmark_coarray.f90</a></td>
+                 <td></td>
+               </tr>
+			   <tr>
+                 <td><a href='../sourcefile/forbenchmark_default.f90.html'>forbenchmark_default.f90</a></td>
+                 <td></td>
+               </tr>
 			 </tbody></table>
 			 <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -87,7 +102,7 @@
 <!-- sourcefile~demo.f90 -->
 <g id="file~~graph~~FileGraph_node1" class="node">
 <title>sourcefile~demo.f90</title>
-<g id="a_file~~graph~~FileGraph_node1"><a xlink:href=".././sourcefile/demo.f90.html" xlink:title="demo.f90">
+<g id="a_file~~graph~~FileGraph_node1"><a xlink:href="../sourcefile/demo.f90.html" xlink:title="demo.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="63,-45 0,-45 0,-21 63,-21 63,-45"/>
 <text text-anchor="middle" x="31.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">demo.f90</text>
 </a>
@@ -96,7 +111,7 @@
 <!-- sourcefile~forbenchmark.f90 -->
 <g id="file~~graph~~FileGraph_node2" class="node">
 <title>sourcefile~forbenchmark.f90</title>
-<g id="a_file~~graph~~FileGraph_node2"><a xlink:href=".././sourcefile/forbenchmark.f90.html" xlink:title="forbenchmark.f90">
+<g id="a_file~~graph~~FileGraph_node2"><a xlink:href="../sourcefile/forbenchmark.f90.html" xlink:title="forbenchmark.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="208,-45 99,-45 99,-21 208,-21 208,-45"/>
 <text text-anchor="middle" x="153.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark.f90</text>
 </a>
@@ -111,7 +126,7 @@
 <!-- sourcefile~forbenchmark_coarray.f90 -->
 <g id="file~~graph~~FileGraph_node3" class="node">
 <title>sourcefile~forbenchmark_coarray.f90</title>
-<g id="a_file~~graph~~FileGraph_node3"><a xlink:href=".././sourcefile/forbenchmark_coarray.f90.html" xlink:title="forbenchmark_coarray.f90">
+<g id="a_file~~graph~~FileGraph_node3"><a xlink:href="../sourcefile/forbenchmark_coarray.f90.html" xlink:title="forbenchmark_coarray.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="398,-66 244,-66 244,-42 398,-42 398,-66"/>
 <text text-anchor="middle" x="321" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_coarray.f90</text>
 </a>
@@ -126,7 +141,7 @@
 <!-- sourcefile~forbenchmark_default.f90 -->
 <g id="file~~graph~~FileGraph_node4" class="node">
 <title>sourcefile~forbenchmark_default.f90</title>
-<g id="a_file~~graph~~FileGraph_node4"><a xlink:href=".././sourcefile/forbenchmark_default.f90.html" xlink:title="forbenchmark_default.f90">
+<g id="a_file~~graph~~FileGraph_node4"><a xlink:href="../sourcefile/forbenchmark_default.f90.html" xlink:title="forbenchmark_default.f90">
 <polygon fill="#f0ad4e" stroke="#f0ad4e" points="396.5,-24 245.5,-24 245.5,0 396.5,0 396.5,-24"/>
 <text text-anchor="middle" x="321" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default.f90</text>
 </a>
@@ -140,17 +155,17 @@
 </g>
 </g>
 </svg>
-</div>        <div><a type="button" class="graph-help" data-toggle="modal" href="#FileGraph-help-text">Help</a></div>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#FileGraph-help-text">Help</a>
+          </div>
           <div class="modal fade" id="FileGraph-help-text" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                   <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              <div class="modal-body">
+                <div class="modal-body">
 <p>Nodes of different colours represent the following: </p>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -202,7 +217,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-02T21:50:24.954546             </p>
+ on 2024-01-07T00:13:58.800150             </p>
           </div>
         </div>
         <br>
