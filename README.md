@@ -29,7 +29,7 @@ do nl = 1, bench%nloops
 
 end do
 ! stop benchmark
-call bench%stop_benchmark(imark)
+call bench%stop_benchmark()
 
 ! finalize the benchmark
 call bench%finalize()
@@ -49,7 +49,7 @@ call bench%start_benchmark(imark, method, description, argi, argr)
 
 ```fortran
 ! stop benchmark
-call bench%stop_benchmark(imark, flops)
+call bench%stop_benchmark(flops)
 ```
 
 ```fortran
