@@ -78,7 +78,7 @@
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title="<p>29.3% of total for derived types.</p>Including implementation: 294 statements, 55.2% of total for derived types.">17 statements</a>
+                 title="<p>29.3% of total for derived types.</p>Including implementation: 296 statements, 55.3% of total for derived types.">17 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -328,7 +328,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Array of mark_co type for each method being benchmarked in each image</p>
             </td>
         </tr>
         <tr>
@@ -345,7 +345,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Array of mark type for each method being benchmarked in all images</p>
             </td>
         </tr>
         <tr>
@@ -362,7 +362,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Filename for storing the benchmark data in all images</p>
             </td>
         </tr>
         <tr>
@@ -379,7 +379,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Filename for storing the benchmark data in each image</p>
             </td>
         </tr>
         <tr>
@@ -396,7 +396,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Number of loops for each benchmark</p>
             </td>
         </tr>
         <tr>
@@ -413,7 +413,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Integer arguments for benchmarks</p>
             </td>
         </tr>
         <tr>
@@ -430,7 +430,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Real arguments for benchmarks</p>
             </td>
         </tr>
         <tr>
@@ -447,7 +447,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Timer object for measuring time</p>
             </td>
         </tr>
         <tr>
@@ -464,7 +464,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Index of the current benchmark</p>
             </td>
         </tr>
     </tbody>
@@ -487,6 +487,10 @@ large graphs.</div>
         
       </h3>
     </div>
+      <div class="card-body">
+        
+        <p>Initialization the benchmark object</p>
+      </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
@@ -497,7 +501,39 @@ large graphs.</div>
     </dl>
 
 
-  
+  <p>I
+n
+i
+t
+i
+a
+l
+i
+z
+a
+t
+i
+o
+n</p>
+<p>t
+h
+e</p>
+<p>b
+e
+n
+c
+h
+m
+a
+r
+k</p>
+<p>o
+b
+j
+e
+c
+t
+.</p><a href="../proc/init~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -522,7 +558,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>this</strong></td>
             <td>
-
+<p>Benchmark object</p>
             </td>
         </tr>
         <tr>
@@ -537,7 +573,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>nmarks</strong></td>
             <td>
-
+<p>Number of methods being benchmarked</p>
             </td>
         </tr>
         <tr>
@@ -552,7 +588,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>title</strong></td>
             <td>
-
+<p>Title of the benchmark</p>
             </td>
         </tr>
         <tr>
@@ -567,7 +603,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>filename</strong></td>
             <td>
-
+<p>Filename for storing the benchmark data</p>
             </td>
         </tr>
         <tr>
@@ -582,7 +618,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>nloops</strong></td>
             <td>
-
+<p>Number of loops for each benchmark (default: 10)</p>
             </td>
         </tr>
         <tr>
@@ -597,7 +633,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>timer</strong></td>
             <td>
-
+<p>Timer object for measuring time (default: wall)</p>
             </td>
         </tr>
     </tbody>
@@ -619,6 +655,10 @@ large graphs.</div>
         
       </h3>
     </div>
+      <div class="card-body">
+        
+        <p>Start a benchmark</p>
+      </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
@@ -654,7 +694,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>this</strong></td>
             <td>
-
+<p>Benchmark object</p>
             </td>
         </tr>
         <tr>
@@ -669,7 +709,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>imark</strong></td>
             <td>
-
+<p>Index of the current method</p>
             </td>
         </tr>
         <tr>
@@ -684,7 +724,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>method</strong></td>
             <td>
-
+<p>Name of the method being benchmarked</p>
             </td>
         </tr>
         <tr>
@@ -699,7 +739,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>description</strong></td>
             <td>
-
+<p>Description of the method being benchmarked (optional)</p>
             </td>
         </tr>
         <tr>
@@ -714,7 +754,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>argi</strong></td>
             <td>
-
+<p>Integer arguments for benchmarks (optional)</p>
             </td>
         </tr>
         <tr>
@@ -729,7 +769,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>argr</strong></td>
             <td>
-
+<p>Real arguments for benchmarks (optional)</p>
             </td>
         </tr>
     </tbody>
@@ -751,6 +791,10 @@ large graphs.</div>
         
       </h3>
     </div>
+      <div class="card-body">
+        
+        <p>Stop a benchmark</p>
+      </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
@@ -761,7 +805,108 @@ large graphs.</div>
     </dl>
 
 
-  
+  <p>S
+t
+o
+p
+s</p>
+<p>t
+h
+e</p>
+<p>c
+u
+r
+r
+e
+n
+t
+l
+y</p>
+<p>a
+c
+t
+i
+v
+e</p>
+<p>b
+e
+n
+c
+h
+m
+a
+r
+k
+,</p>
+<p>c
+a
+l
+c
+u
+l
+a
+t
+e
+s</p>
+<p>p
+e
+r
+f
+o
+r
+m
+a
+n
+c
+e</p>
+<p>m
+e
+t
+r
+i
+c
+s
+,</p>
+<p>a
+n
+d</p>
+<p>w
+r
+i
+t
+e
+s</p>
+<p>t
+h
+e</p>
+<p>r
+e
+s
+u
+l
+t
+s</p>
+<p>t
+o</p>
+<p>t
+h
+e</p>
+<p>f
+i
+l
+e</p>
+<p>a
+n
+d</p>
+<p>t
+e
+r
+m
+i
+n
+a
+l
+.</p><a href="../proc/stop_benchmark~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -786,7 +931,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>this</strong></td>
             <td>
-
+<p>Benchmark object</p>
             </td>
         </tr>
         <tr>
@@ -801,7 +946,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>flops</strong></td>
             <td>
-
+<p>Function to calculate Floating Point Operations Per Second (optional)</p>
             </td>
         </tr>
     </tbody>
@@ -823,6 +968,10 @@ large graphs.</div>
         
       </h3>
     </div>
+      <div class="card-body">
+        
+        <p>Write benchmark data to file</p>
+      </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
@@ -833,7 +982,103 @@ large graphs.</div>
     </dl>
 
 
-  
+  <p>W
+r
+i
+t
+e
+s</p>
+<p>t
+h
+e</p>
+<p>b
+e
+n
+c
+h
+m
+a
+r
+k</p>
+<p>d
+a
+t
+a</p>
+<p>t
+o</p>
+<p>a</p>
+<p>s
+p
+e
+c
+i
+f
+i
+e
+d</p>
+<p>f
+i
+l
+e
+,</p>
+<p>i
+n
+c
+l
+u
+d
+i
+n
+g</p>
+<p>m
+e
+t
+h
+o
+d
+,</p>
+<p>s
+p
+e
+e
+d
+u
+p
+,</p>
+<p>e
+l
+a
+p
+s
+e
+d</p>
+<p>t
+i
+m
+e
+,</p>
+<p>f
+l
+o
+p
+s
+,</p>
+<p>a
+n
+d</p>
+<p>o
+t
+h
+e
+r</p>
+<p>d
+e
+t
+a
+i
+l
+s
+.</p><a href="../proc/write_benchmark~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -858,7 +1103,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>this</strong></td>
             <td>
-
+<p>Benchmark object</p>
             </td>
         </tr>
     </tbody>
@@ -880,6 +1125,10 @@ large graphs.</div>
         
       </h3>
     </div>
+      <div class="card-body">
+        
+        <p>Finalize the benchmark object</p>
+      </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
@@ -890,7 +1139,81 @@ large graphs.</div>
     </dl>
 
 
-  
+  <p>F
+i
+n
+a
+l
+i
+z
+e
+s</p>
+<p>t
+h
+e</p>
+<p>b
+e
+n
+c
+h
+m
+a
+r
+k</p>
+<p>o
+b
+j
+e
+c
+t</p>
+<p>b
+y</p>
+<p>d
+e
+a
+l
+l
+o
+c
+a
+t
+i
+n
+g</p>
+<p>m
+e
+m
+o
+r
+y</p>
+<p>a
+n
+d</p>
+<p>p
+e
+r
+f
+o
+r
+m
+s</p>
+<p>n
+e
+c
+e
+s
+s
+a
+r
+y</p>
+<p>c
+l
+e
+a
+n
+u
+p
+.</p><a href="../proc/finalize~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -915,7 +1238,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>this</strong></td>
             <td>
-
+<p>Benchmark object to be finalized</p>
             </td>
         </tr>
     </tbody>
@@ -932,22 +1255,23 @@ large graphs.</div>
     <section>
     <h3><span class="anchor" id="src"></span>Source Code</h3>
     <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">type</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">benchmark</span>
-<span class="w">   </span><span class="c">!! author: Seyed Ali Ghasemi</span>
-<span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">mark_co</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">marks_co</span><span class="p">[:]</span>
-<span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">mark</span><span class="p">),</span><span class="w">    </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">marks</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w">                </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">filename</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w">                </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">filename_image</span>
-<span class="w">      </span><span class="kt">integer</span><span class="w">                                  </span><span class="kd">::</span><span class="w"> </span><span class="n">nloops</span>
-<span class="w">      </span><span class="kt">integer</span><span class="p">(</span><span class="n">ik</span><span class="p">),</span><span class="w">   </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">argi</span>
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">),</span><span class="w">      </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">argr</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w">                </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">timer</span>
-<span class="w">      </span><span class="kt">integer</span><span class="w">                                  </span><span class="kd">::</span><span class="w"> </span><span class="n">imark</span>
+<span class="w">      </span><span class="c">!! summary: Derived type for benchmarking and performance evaluation.</span>
+<span class="w">      </span><span class="c">!! author: Seyed Ali Ghasemi</span>
+<span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">mark_co</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">marks_co</span><span class="p">[:]</span><span class="w">     </span><span class="c">!! Array of mark_co type for each method being benchmarked in each image</span>
+<span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">mark</span><span class="p">),</span><span class="w">    </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">marks</span><span class="w">           </span><span class="c">!! Array of mark type for each method being benchmarked in all images</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w">                </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">filename</span><span class="w">        </span><span class="c">!! Filename for storing the benchmark data in all images</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w">                </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">filename_image</span><span class="w">  </span><span class="c">!! Filename for storing the benchmark data in each image</span>
+<span class="w">      </span><span class="kt">integer</span><span class="w">                                  </span><span class="kd">::</span><span class="w"> </span><span class="n">nloops</span><span class="w">          </span><span class="c">!! Number of loops for each benchmark</span>
+<span class="w">      </span><span class="kt">integer</span><span class="p">(</span><span class="n">ik</span><span class="p">),</span><span class="w">   </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">argi</span><span class="w">            </span><span class="c">!! Integer arguments for benchmarks</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">),</span><span class="w">      </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">argr</span><span class="w">            </span><span class="c">!! Real arguments for benchmarks</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w">                </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">timer</span><span class="w">           </span><span class="c">!! Timer object for measuring time</span>
+<span class="w">      </span><span class="kt">integer</span><span class="w">                                  </span><span class="kd">::</span><span class="w"> </span><span class="n">imark</span><span class="w">           </span><span class="c">!! Index of the current benchmark</span>
 <span class="w">   </span><span class="k">contains</span>
-<span class="k">      procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">init</span>
-<span class="w">      </span><span class="k">procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">start_benchmark</span>
-<span class="w">      </span><span class="k">procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">stop_benchmark</span>
-<span class="w">      </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">write_benchmark</span>
-<span class="w">      </span><span class="k">procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">finalize</span>
+<span class="k">      procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">init</span><span class="w">             </span><span class="c">!! Initialization the benchmark object</span>
+<span class="w">      </span><span class="k">procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">start_benchmark</span><span class="w">  </span><span class="c">!! Start a benchmark</span>
+<span class="w">      </span><span class="k">procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">stop_benchmark</span><span class="w">   </span><span class="c">!! Stop a benchmark</span>
+<span class="w">      </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">write_benchmark</span><span class="w">  </span><span class="c">!! Write benchmark data to file</span>
+<span class="w">      </span><span class="k">procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">finalize</span><span class="w">         </span><span class="c">!! Finalize the benchmark object</span>
 <span class="w">   </span><span class="k">end type </span><span class="n">benchmark</span>
 </pre></div>
 
@@ -968,7 +1292,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-07T00:13:58.800150             </p>
+ on 2024-01-07T11:47:32.325564             </p>
           </div>
         </div>
         <br>

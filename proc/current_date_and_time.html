@@ -73,12 +73,11 @@
     <div class="row align-items-center justify-content-between" id="info-bar">
       <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
-            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Seyed Ali Ghasemi</li>
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title=" 3.5% of total for procedures.">18 statements</a>
+                 title=" 4.2% of total for procedures.">22 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -147,6 +146,9 @@
 </h2>
     
 
+    <p>It utilizes the intrinsic <code>date_and_time</code> function to obtain system time information.
+A string containing the current date and time in the format "YYYY.MM.DD - HH:MM:SS".
+author: Seyed Ali Ghasemi</p>
 
 
     <h3>Arguments</h3>
@@ -158,7 +160,7 @@
           character(len=21)
         </small>
       </h3>
-      
+      <p>Character containing the current date and time</p>
     <br>
     <div class="card">
       <div class="card-header">
@@ -310,15 +312,23 @@ large graphs.</div>
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">impure function </span><span class="n">current_date_and_time</span><span class="p">()</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">datetime</span><span class="p">)</span>
-<span class="w">   </span><span class="c">!! author: Seyed Ali Ghasemi</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">datetime</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="nb">time</span>
-<span class="nb">      </span><span class="kt">integer</span><span class="w">       </span><span class="kd">::</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">year</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="n">hour</span><span class="p">,</span><span class="w"> </span><span class="n">minute</span><span class="p">,</span><span class="w"> </span><span class="nb">second</span>
-<span class="nb">      </span>
-<span class="nb">      </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>
+<span class="w">      </span><span class="c">!! summary: Retrieves the current date and time and returns it as a string</span>
+<span class="w">      </span><span class="c">!! It utilizes the intrinsic `date_and_time` function to obtain system time information.</span>
+<span class="w">      </span><span class="c">!! A string containing the current date and time in the format &quot;YYYY.MM.DD - HH:MM:SS&quot;.</span>
+<span class="w">      </span><span class="c">!! author: Seyed Ali Ghasemi</span>
+
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">datetime</span><span class="w">  </span><span class="c">!! Character containing the current date and time</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">date</span><span class="w">      </span><span class="c">!! Character containing the current date</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="nb">time</span><span class="w">      </span><span class="c">!! Character containing the current time</span>
+<span class="w">      </span><span class="kt">integer</span><span class="w">       </span><span class="kd">::</span><span class="w"> </span><span class="n">values</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="c">!! Array containing the current date and time values</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">year</span><span class="w">      </span><span class="c">!! Current year</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">month</span><span class="w">     </span><span class="c">!! Current month</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">day</span><span class="w">       </span><span class="c">!! Current day</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">hour</span><span class="w">      </span><span class="c">!! Current hour</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">minute</span><span class="w">    </span><span class="c">!! Current minute</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="nb">second</span><span class="w">    </span><span class="c">!! Current second</span>
+
+<span class="w">      </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>
 
 <span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="s1">&#39;(i4)&#39;</span><span class="p">)</span><span class="w">   </span><span class="n">values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">month</span><span class="p">,</span><span class="s1">&#39;(i2)&#39;</span><span class="p">)</span><span class="w">  </span><span class="n">values</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -350,7 +360,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-07T00:13:58.800150             </p>
+ on 2024-01-07T11:47:32.325564             </p>
           </div>
         </div>
         <br>

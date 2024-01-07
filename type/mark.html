@@ -293,7 +293,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Name of the method being benchmarked</p>
             </td>
         </tr>
         <tr>
@@ -310,7 +310,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Description of the method being benchmarked</p>
             </td>
         </tr>
         <tr>
@@ -327,7 +327,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Minimum elapsed time for the benchmark in all images</p>
             </td>
         </tr>
         <tr>
@@ -344,7 +344,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Average elapsed time for the benchmark in all images</p>
             </td>
         </tr>
         <tr>
@@ -361,7 +361,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Maximum elapsed time for the benchmark in all images</p>
             </td>
         </tr>
         <tr>
@@ -378,7 +378,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Total floating-point operations per second in all images</p>
             </td>
         </tr>
         <tr>
@@ -395,7 +395,7 @@ large graphs.</div>
                 <td></td>
                 <td></td>
             <td>
-                
+                <p>Maximum speedup in all images compared to the reference benchmark</p>
             </td>
         </tr>
     </tbody>
@@ -418,6 +418,10 @@ large graphs.</div>
         
       </h3>
     </div>
+      <div class="card-body">
+        
+        <p>Finalize procedure for mark type</p>
+      </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
@@ -428,7 +432,81 @@ large graphs.</div>
     </dl>
 
 
-  
+  <p>F
+i
+n
+a
+l
+i
+z
+e
+s</p>
+<p>t
+h
+e</p>
+<p>m
+a
+r
+k</p>
+<p>o
+b
+j
+e
+c
+t</p>
+<p>b
+y</p>
+<p>d
+e
+a
+l
+l
+o
+c
+a
+t
+i
+n
+g</p>
+<p>a
+l
+l
+o
+c
+a
+t
+e
+d</p>
+<p>m
+e
+m
+o
+r
+y</p>
+<p>f
+o
+r</p>
+<p>m
+e
+t
+h
+o
+d</p>
+<p>a
+n
+d</p>
+<p>d
+e
+s
+c
+r
+i
+p
+t
+i
+o
+n
+.</p><a href="../proc/finalize_mark~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -453,7 +531,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>this</strong></td>
             <td>
-
+<p>Mark object to be finalized</p>
             </td>
         </tr>
     </tbody>
@@ -470,16 +548,17 @@ large graphs.</div>
     <section>
     <h3><span class="anchor" id="src"></span>Source Code</h3>
     <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">type</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mark</span>
-<span class="w">   </span><span class="c">!! author: Seyed Ali Ghasemi</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">method</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">description</span>
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">elapsed_time_min</span>
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">elapsed_time_average</span>
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">elapsed_time_max</span>
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">flops_total</span>
-<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">speedup_max_total</span>
+<span class="w">      </span><span class="c">!! summary: Derived type for each method being benchmarked in all images.</span>
+<span class="w">      </span><span class="c">!! author: Seyed Ali Ghasemi</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">method</span><span class="w">                </span><span class="c">!! Name of the method being benchmarked</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">description</span><span class="w">           </span><span class="c">!! Description of the method being benchmarked</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">elapsed_time_min</span><span class="w">      </span><span class="c">!! Minimum elapsed time for the benchmark in all images</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">elapsed_time_average</span><span class="w">  </span><span class="c">!! Average elapsed time for the benchmark in all images</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">elapsed_time_max</span><span class="w">      </span><span class="c">!! Maximum elapsed time for the benchmark in all images</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">flops_total</span><span class="w">           </span><span class="c">!! Total floating-point operations per second in all images</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">speedup_max_total</span><span class="w">     </span><span class="c">!! Maximum speedup in all images compared to the reference benchmark</span>
 <span class="w">   </span><span class="k">contains</span>
-<span class="k">      procedure</span><span class="p">,</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">finalize_mark</span>
+<span class="k">      procedure</span><span class="p">,</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">finalize_mark</span><span class="w"> </span><span class="c">!! Finalize procedure for mark type</span>
 <span class="w">   </span><span class="k">end type </span><span class="n">mark</span>
 </pre></div>
 
@@ -500,7 +579,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-07T00:13:58.800150             </p>
+ on 2024-01-07T11:47:32.325564             </p>
           </div>
         </div>
         <br>

@@ -78,7 +78,7 @@
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title="18.4% of total for procedures.">95 statements</a>
+                 title="18.0% of total for procedures.">95 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -291,7 +291,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>this</strong></td>
             <td>
-                
+                <p>Benchmark object</p>
             </td>
         </tr>
         <tr>
@@ -306,7 +306,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>nmarks</strong></td>
             <td>
-                
+                <p>Number of methods being benchmarked</p>
             </td>
         </tr>
         <tr>
@@ -321,7 +321,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>title</strong></td>
             <td>
-                
+                <p>Title of the benchmark</p>
             </td>
         </tr>
         <tr>
@@ -336,7 +336,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>filename</strong></td>
             <td>
-                
+                <p>Filename for storing the benchmark data</p>
             </td>
         </tr>
         <tr>
@@ -351,7 +351,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>nloops</strong></td>
             <td>
-                
+                <p>Number of loops for each benchmark (default: 10)</p>
             </td>
         </tr>
         <tr>
@@ -366,7 +366,7 @@ large graphs.</div>
             <td>::</td>
             <td><strong>timer</strong></td>
             <td>
-                
+                <p>Timer object for measuring time (default: wall)</p>
             </td>
         </tr>
     </tbody>
@@ -508,18 +508,20 @@ large graphs.</div>
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
     <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">elemental impure subroutine </span><span class="n">init</span><span class="p">(</span><span class="n">this</span><span class="p">,</span><span class="w"> </span><span class="n">nmarks</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">nloops</span><span class="p">,</span><span class="w"> </span><span class="n">timer</span><span class="p">)</span>
-<span class="w">   </span><span class="c">!! author: Seyed Ali Ghasemi</span>
+<span class="w">      </span><span class="c">!! summary: Initialization the benchmark object.</span>
+<span class="w">      </span><span class="c">!! author: Seyed Ali Ghasemi</span>
+
 <span class="w">      </span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">compiler_version</span><span class="p">,</span><span class="w"> </span><span class="n">compiler_options</span>
 
-<span class="w">      </span><span class="k">class</span><span class="p">(</span><span class="n">benchmark</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">        </span><span class="kd">::</span><span class="w"> </span><span class="n">this</span>
-<span class="w">      </span><span class="kt">integer</span><span class="p">,</span><span class="w">          </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">nmarks</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w">     </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">title</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w">     </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">filename</span>
-<span class="w">      </span><span class="kt">integer</span><span class="p">,</span><span class="w">          </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nloops</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w">     </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">timer</span>
-<span class="w">      </span><span class="kt">integer</span><span class="w">                                </span><span class="kd">::</span><span class="w"> </span><span class="n">nunit</span>
-<span class="w">      </span><span class="kt">integer</span><span class="w">                                </span><span class="kd">::</span><span class="w"> </span><span class="n">iostat</span>
-<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w">                          </span><span class="kd">::</span><span class="w"> </span><span class="n">im_chr</span>
+<span class="w">      </span><span class="k">class</span><span class="p">(</span><span class="n">benchmark</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">        </span><span class="kd">::</span><span class="w"> </span><span class="n">this</span><span class="w">      </span><span class="c">!! Benchmark object</span>
+<span class="w">      </span><span class="kt">integer</span><span class="p">,</span><span class="w">          </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">           </span><span class="kd">::</span><span class="w"> </span><span class="n">nmarks</span><span class="w">    </span><span class="c">!! Number of methods being benchmarked</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w">     </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">title</span><span class="w">     </span><span class="c">!! Title of the benchmark</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w">     </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">filename</span><span class="w">  </span><span class="c">!! Filename for storing the benchmark data</span>
+<span class="w">      </span><span class="kt">integer</span><span class="p">,</span><span class="w">          </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nloops</span><span class="w">    </span><span class="c">!! Number of loops for each benchmark (default: 10)</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w">     </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">timer</span><span class="w">     </span><span class="c">!! Timer object for measuring time (default: wall)</span>
+<span class="w">      </span><span class="kt">integer</span><span class="w">                                </span><span class="kd">::</span><span class="w"> </span><span class="n">nunit</span><span class="w">     </span><span class="c">!! Unit number for file access</span>
+<span class="w">      </span><span class="kt">integer</span><span class="w">                                </span><span class="kd">::</span><span class="w"> </span><span class="n">iostat</span><span class="w">    </span><span class="c">!! I/O status</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w">                          </span><span class="kd">::</span><span class="w"> </span><span class="n">im_chr</span><span class="w">    </span><span class="c">!! Character representation of the image number</span>
 
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nmarks</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">error stop</span><span class="w"> </span><span class="s1">&#39;nmarks must be greater than zero.&#39;</span>
 
@@ -598,37 +600,37 @@ large graphs.</div>
 <span class="w">      </span><span class="k">close</span><span class="p">(</span><span class="n">nunit</span><span class="p">)</span>
 
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">this_image</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">      inquire</span><span class="p">(</span><span class="k">file</span><span class="o">=</span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">iostat</span><span class="p">)</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iostat</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">         error stop</span><span class="w"> </span><span class="s1">&#39;file &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; cannot be accessed.&#39;</span>
+<span class="k">         inquire</span><span class="p">(</span><span class="k">file</span><span class="o">=</span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="n">iostat</span><span class="o">=</span><span class="n">iostat</span><span class="p">)</span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iostat</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            error stop</span><span class="w"> </span><span class="s1">&#39;file &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; cannot be accessed.&#39;</span>
+<span class="w">         </span><span class="k">end if</span>
+<span class="k">         open</span><span class="w"> </span><span class="p">(</span><span class="n">newunit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nunit</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">)</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;-----------------------------------------------------&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;ForBenchmark - https://github.com/gha3mi/forbenchmark&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;-----------------------------------------------------&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">         </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">title</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+<span class="w">         </span><span class="k">else</span>
+<span class="k">            write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;ForBenchmark&#39;</span>
+<span class="w">         </span><span class="k">end if</span>
+<span class="k">         write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">current_date_and_time</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a,a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;compiler_version: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">compiler_version</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a,a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;compiler_options: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">compiler_options</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a,g0)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;num_image: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num_images</span><span class="p">()</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">         </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">         </span><span class="p">&amp;</span><span class="s1">&#39;       METHOD        |&amp;</span>
+<span class="s1">         &amp; SPEEDUP(max) |&amp;</span>
+<span class="s1">         &amp;      TIME(max)       |&amp;</span>
+<span class="s1">         &amp;      TIME(min)       |&amp;</span>
+<span class="s1">         &amp;      TIME(avg)       |&amp;</span>
+<span class="s1">         &amp;     GFLOPS(tot)      |&amp;</span>
+<span class="s1">         &amp;  NLOOPS  |&amp;</span>
+<span class="s1">         &amp;   ARGI  &#39;</span>
+<span class="w">         </span><span class="k">close</span><span class="p">(</span><span class="n">nunit</span><span class="p">)</span>
 <span class="w">      </span><span class="k">end if</span>
-<span class="k">      open</span><span class="w"> </span><span class="p">(</span><span class="n">newunit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nunit</span><span class="p">,</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">this</span><span class="p">%</span><span class="n">filename</span><span class="p">)</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;-----------------------------------------------------&#39;</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;ForBenchmark - https://github.com/gha3mi/forbenchmark&#39;</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;-----------------------------------------------------&#39;</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">title</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
-<span class="k">         write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
-<span class="w">      </span><span class="k">else</span>
-<span class="k">         write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;ForBenchmark&#39;</span>
-<span class="w">      </span><span class="k">end if</span>
-<span class="k">      write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">current_date_and_time</span><span class="p">()</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a,a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;compiler_version: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">compiler_version</span><span class="p">()</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a,a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;compiler_options: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">compiler_options</span><span class="p">()</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a,g0)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;num_image: &#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">num_images</span><span class="p">()</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
-<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nunit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
-<span class="w">      </span><span class="p">&amp;</span><span class="s1">&#39;       METHOD        |&amp;</span>
-<span class="s1">      &amp; SPEEDUP(max) |&amp;</span>
-<span class="s1">      &amp;      TIME(max)       |&amp;</span>
-<span class="s1">      &amp;      TIME(min)       |&amp;</span>
-<span class="s1">      &amp;      TIME(avg)       |&amp;</span>
-<span class="s1">      &amp;     GFLOPS(tot)      |&amp;</span>
-<span class="s1">      &amp;  NLOOPS  |&amp;</span>
-<span class="s1">      &amp;   ARGI  &#39;</span>
-<span class="w">      </span><span class="k">close</span><span class="p">(</span><span class="n">nunit</span><span class="p">)</span>
-<span class="w">   </span><span class="k">end if</span>
 
 <span class="k">   end subroutine </span><span class="n">init</span>
 </pre></div>
@@ -651,7 +653,7 @@ large graphs.</div>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-07T00:13:58.800150             </p>
+ on 2024-01-07T11:47:32.325564             </p>
           </div>
         </div>
         <br>

@@ -1,5 +1,8 @@
 module forbenchmark_coarray
+   !! summary: A Fortran module for benchmarking and performance evaluation for coarray codes.
    !! author: Seyed Ali Ghasemi
+   !! version: {!VERSION!}
+   !! license: {!LICENSE!}
 
 #if defined(USE_COARRAY)
 
@@ -14,48 +17,51 @@ module forbenchmark_coarray
 
    !===============================================================================
    type :: mark_co
-   !! author: Seyed Ali Ghasemi
-      type(timer) :: time
-      real(rk)    :: elapsed_time
-      real(rk)    :: flops
+      !! summary: Derived type for each method being benchmarked in each image.
+      !! author: Seyed Ali Ghasemi
+      type(timer) :: time          !! Timer object to measure elapsed time in each image
+      real(rk)    :: elapsed_time  !! Elapsed time for the benchmark in each image
+      real(rk)    :: flops         !! Floating-point operations per second in each image
    end type mark_co
    !===============================================================================
 
 
    !===============================================================================
    type :: mark
-   !! author: Seyed Ali Ghasemi
-      character(:), allocatable :: method
-      character(:), allocatable :: description
-      real(rk)                  :: elapsed_time_min
-      real(rk)                  :: elapsed_time_average
-      real(rk)                  :: elapsed_time_max
-      real(rk)                  :: flops_total
-      real(rk)                  :: speedup_max_total
+      !! summary: Derived type for each method being benchmarked in all images.
+      !! author: Seyed Ali Ghasemi
+      character(:), allocatable :: method                !! Name of the method being benchmarked
+      character(:), allocatable :: description           !! Description of the method being benchmarked
+      real(rk)                  :: elapsed_time_min      !! Minimum elapsed time for the benchmark in all images
+      real(rk)                  :: elapsed_time_average  !! Average elapsed time for the benchmark in all images
+      real(rk)                  :: elapsed_time_max      !! Maximum elapsed time for the benchmark in all images
+      real(rk)                  :: flops_total           !! Total floating-point operations per second in all images
+      real(rk)                  :: speedup_max_total     !! Maximum speedup in all images compared to the reference benchmark
    contains
-      procedure, private :: finalize_mark
+      procedure, private :: finalize_mark !! Finalize procedure for mark type
    end type mark
    !===============================================================================
 
 
    !===============================================================================
    type :: benchmark
-   !! author: Seyed Ali Ghasemi
-      type(mark_co), dimension(:), allocatable :: marks_co[:]
-      type(mark),    dimension(:), allocatable :: marks
-      character(:),                allocatable :: filename
-      character(:),                allocatable :: filename_image
-      integer                                  :: nloops
-      integer(ik),   dimension(:), allocatable :: argi
-      real(rk),      dimension(:), allocatable :: argr
-      character(:),                allocatable :: timer
-      integer                                  :: imark
+      !! summary: Derived type for benchmarking and performance evaluation.
+      !! author: Seyed Ali Ghasemi
+      type(mark_co), dimension(:), allocatable :: marks_co[:]     !! Array of mark_co type for each method being benchmarked in each image
+      type(mark),    dimension(:), allocatable :: marks           !! Array of mark type for each method being benchmarked in all images
+      character(:),                allocatable :: filename        !! Filename for storing the benchmark data in all images
+      character(:),                allocatable :: filename_image  !! Filename for storing the benchmark data in each image
+      integer                                  :: nloops          !! Number of loops for each benchmark
+      integer(ik),   dimension(:), allocatable :: argi            !! Integer arguments for benchmarks
+      real(rk),      dimension(:), allocatable :: argr            !! Real arguments for benchmarks
+      character(:),                allocatable :: timer           !! Timer object for measuring time
+      integer                                  :: imark           !! Index of the current benchmark
    contains
-      procedure          :: init
-      procedure          :: start_benchmark
-      procedure          :: stop_benchmark
-      procedure, private :: write_benchmark
-      procedure          :: finalize
+      procedure          :: init             !! Initialization the benchmark object
+      procedure          :: start_benchmark  !! Start a benchmark
+      procedure          :: stop_benchmark   !! Stop a benchmark
+      procedure, private :: write_benchmark  !! Write benchmark data to file
+      procedure          :: finalize         !! Finalize the benchmark object
    end type benchmark
    !===============================================================================
 
@@ -63,18 +69,20 @@ contains
 
    !===============================================================================
    elemental impure subroutine init(this, nmarks, title, filename, nloops, timer)
-   !! author: Seyed Ali Ghasemi
+      !! summary: Initialization the benchmark object.
+      !! author: Seyed Ali Ghasemi
+
       use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
 
-      class(benchmark), intent(inout)        :: this
-      integer,          intent(in)           :: nmarks
-      character(*),     intent(in), optional :: title
-      character(*),     intent(in), optional :: filename
-      integer,          intent(in), optional :: nloops
-      character(*),     intent(in), optional :: timer
-      integer                                :: nunit
-      integer                                :: iostat
-      character(10)                          :: im_chr
+      class(benchmark), intent(inout)        :: this      !! Benchmark object
+      integer,          intent(in)           :: nmarks    !! Number of methods being benchmarked
+      character(*),     intent(in), optional :: title     !! Title of the benchmark
+      character(*),     intent(in), optional :: filename  !! Filename for storing the benchmark data
+      integer,          intent(in), optional :: nloops    !! Number of loops for each benchmark (default: 10)
+      character(*),     intent(in), optional :: timer     !! Timer object for measuring time (default: wall)
+      integer                                :: nunit     !! Unit number for file access
+      integer                                :: iostat    !! I/O status
+      character(10)                          :: im_chr    !! Character representation of the image number
 
       if (nmarks <= 0) error stop 'nmarks must be greater than zero.'
 
@@ -153,37 +161,37 @@ contains
       close(nunit)
 
       if (this_image() == 1) then
-      inquire(file=this%filename, iostat=iostat)
-      if (iostat /= 0) then
-         error stop 'file '//trim(this%filename)//' cannot be accessed.'
+         inquire(file=this%filename, iostat=iostat)
+         if (iostat /= 0) then
+            error stop 'file '//trim(this%filename)//' cannot be accessed.'
+         end if
+         open (newunit = nunit, file = this%filename)
+         write(nunit,'(a)') '-----------------------------------------------------'
+         write(nunit,'(a)') 'ForBenchmark - https://github.com/gha3mi/forbenchmark'
+         write(nunit,'(a)') '-----------------------------------------------------'
+         write(nunit,'(a)') ''
+         if (present(title)) then
+            write(nunit,'(a)') trim(title)
+         else
+            write(nunit,'(a)') 'ForBenchmark'
+         end if
+         write(nunit,'(a)') current_date_and_time()
+         write(nunit,'(a)') ''
+         write(nunit,'(a,a)') 'compiler_version: ', compiler_version()
+         write(nunit,'(a,a)') 'compiler_options: ', compiler_options()
+         write(nunit,'(a,g0)') 'num_image: ', num_images()
+         write(nunit,'(a)') ''
+         write(nunit,'(a)') &
+         &'       METHOD        |&
+         & SPEEDUP(max) |&
+         &      TIME(max)       |&
+         &      TIME(min)       |&
+         &      TIME(avg)       |&
+         &     GFLOPS(tot)      |&
+         &  NLOOPS  |&
+         &   ARGI  '
+         close(nunit)
       end if
-      open (newunit = nunit, file = this%filename)
-      write(nunit,'(a)') '-----------------------------------------------------'
-      write(nunit,'(a)') 'ForBenchmark - https://github.com/gha3mi/forbenchmark'
-      write(nunit,'(a)') '-----------------------------------------------------'
-      write(nunit,'(a)') ''
-      if (present(title)) then
-         write(nunit,'(a)') trim(title)
-      else
-         write(nunit,'(a)') 'ForBenchmark'
-      end if
-      write(nunit,'(a)') current_date_and_time()
-      write(nunit,'(a)') ''
-      write(nunit,'(a,a)') 'compiler_version: ', compiler_version()
-      write(nunit,'(a,a)') 'compiler_options: ', compiler_options()
-      write(nunit,'(a,g0)') 'num_image: ', num_images()
-      write(nunit,'(a)') ''
-      write(nunit,'(a)') &
-      &'       METHOD        |&
-      & SPEEDUP(max) |&
-      &      TIME(max)       |&
-      &      TIME(min)       |&
-      &      TIME(avg)       |&
-      &     GFLOPS(tot)      |&
-      &  NLOOPS  |&
-      &   ARGI  '
-      close(nunit)
-   end if
 
    end subroutine init
    !===============================================================================
@@ -191,15 +199,17 @@ contains
 
    !===============================================================================
    impure subroutine start_benchmark(this, imark, method, description, argi, argr)
-   !! author: Seyed Ali Ghasemi
+      !! summaray: Start a specific benchmark.
+      !! author: Seyed Ali Ghasemi
+
       use face
 
-      class(benchmark),          intent(inout)        :: this
-      integer,                   intent(in)           :: imark
-      character(*),              intent(in)           :: method
-      integer(ik), dimension(:), intent(in), optional :: argi
-      real(rk),    dimension(:), intent(in), optional :: argr
-      character(*),              intent(in), optional :: description
+      class(benchmark),          intent(inout)        :: this         !! Benchmark object
+      integer,                   intent(in)           :: imark        !! Index of the current method
+      character(*),              intent(in)           :: method       !! Name of the method being benchmarked
+      integer(ik), dimension(:), intent(in), optional :: argi         !! Integer arguments for benchmarks (optional)
+      real(rk),    dimension(:), intent(in), optional :: argr         !! Real arguments for benchmarks (optional)
+      character(*),              intent(in), optional :: description  !! Description of the method being benchmarked (optional)
 
       if (imark <= 0 .or. imark > size(this%marks)) error stop 'imark is out of range.'
 
@@ -268,7 +278,9 @@ contains
 
    !===============================================================================
    impure subroutine stop_benchmark(this, flops)
-   !! author: Seyed Ali Ghasemi
+      !! summary: Stops the currently active benchmark, calculates performance metrics, and writes the results to the file and terminal.
+      !! author: Seyed Ali Ghasemi
+
       use face
 
       interface
@@ -280,39 +292,41 @@ contains
          end function Fun
       end interface
 
-      procedure(Fun), optional :: flops
+      procedure(Fun), optional :: flops !! Function to calculate Floating Point Operations Per Second (optional)
 
-      class(benchmark), intent(inout) :: this
-      real(rk)                        :: elapsed_time_average, elapsed_time_min, elapsed_time_max
-      real(rk)                        :: flops_total
-      integer                         :: i
-      real(rk), dimension(:), allocatable :: elapsed_times
+      class(benchmark), intent(inout)     :: this                 !! Benchmark object
+      real(rk)                            :: elapsed_time_average !! Average elapsed time for the benchmark in all images
+      real(rk)                            :: elapsed_time_min     !! Minimum elapsed time for the benchmark in all images
+      real(rk)                            :: elapsed_time_max     !! Maximum elapsed time for the benchmark in all images
+      real(rk)                            :: flops_total          !! Total floating-point operations per second in all images
+      real(rk), dimension(:), allocatable :: elapsed_times        !! Array of elapsed times in all images
+      integer                             :: i
 
       select case (trim(this%timer))
-      case ('wall')
+       case ('wall')
          call this%marks_co(this%imark)%time%timer_stop(message=' Elapsed time :',nloops=this%nloops)
          this%marks_co(this%imark)%elapsed_time = this%marks_co(this%imark)%time%elapsed_time
-      case ('date_and_time')
-        call this%marks_co(this%imark)%time%dtimer_stop(message=' Elapsed time :',nloops=this%nloops)
-        this%marks_co(this%imark)%elapsed_time = this%marks_co(this%imark)%time%elapsed_dtime
-      case ('cpu')
-        call this%marks_co(this%imark)%time%ctimer_stop(message=' Elapsed time :',nloops=this%nloops)
-        this%marks_co(this%imark)%elapsed_time = this%marks_co(this%imark)%time%cpu_time
-      case ('omp')
+       case ('date_and_time')
+         call this%marks_co(this%imark)%time%dtimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks_co(this%imark)%elapsed_time = this%marks_co(this%imark)%time%elapsed_dtime
+       case ('cpu')
+         call this%marks_co(this%imark)%time%ctimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks_co(this%imark)%elapsed_time = this%marks_co(this%imark)%time%cpu_time
+       case ('omp')
 #if defined(USE_OMP)
-        call this%marks_co(this%imark)%time%otimer_stop(message=' Elapsed time :',nloops=this%nloops)
-        this%marks_co(this%imark)%elapsed_time = this%marks_co(this%imark)%time%omp_time
+         call this%marks_co(this%imark)%time%otimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks_co(this%imark)%elapsed_time = this%marks_co(this%imark)%time%omp_time
 #else
-        error stop 'Use -DUSE_OMP to enable OpenMP.'
+         error stop 'Use -DUSE_OMP to enable OpenMP.'
 #endif
-      case ('mpi')
+       case ('mpi')
 #if defined(USE_MPI)
-        call this%marks_co(this%imark)%time%mtimer_stop(message=' Elapsed time :',nloops=this%nloops)
-        this%marks_co(this%imark)%elapsed_time = this%marks_co(this%imark)%time%mpi_time
+         call this%marks_co(this%imark)%time%mtimer_stop(message=' Elapsed time :',nloops=this%nloops)
+         this%marks_co(this%imark)%elapsed_time = this%marks_co(this%imark)%time%mpi_time
 #else
-        error stop 'Use -DUSE_MPI to enable MPI.'
+         error stop 'Use -DUSE_MPI to enable MPI.'
 #endif
-     end select
+      end select
 
       if (present(flops)) then
          this%marks_co(this%imark)%flops = flops(this%argi,this%argr)/this%marks_co(this%imark)%elapsed_time
@@ -378,14 +392,16 @@ contains
 
    !===============================================================================
    impure subroutine write_benchmark(this)
-   !! author: Seyed Ali Ghasemi
-      class(benchmark), intent(inout) :: this
-      integer                         :: nunit
-      character(len=53)               :: fmt1
-      character(len=82)               :: fmt2
+      !! summary: Writes the benchmark data to a specified file, including method, speedup, elapsed time, flops, and other details.
+      !! author: Seyed Ali Ghasemi
+
+      class(benchmark), intent(inout) :: this   !! Benchmark object
+      integer                         :: nunit  !! Unit number for file access
+      character(len=53)               :: fmt1   !! Format for write
+      character(len=82)               :: fmt2   !! Format for write
+      logical                         :: exist  !! Logical variable for file existence
+      integer                         :: iostat !! I/O status
       integer                         :: lm
-      logical                         :: exist
-      integer                         :: iostat
 
       lm = 20-len_trim(this%marks(this%imark)%method)
       write(fmt1,'(a,g0,a)')&
@@ -405,25 +421,25 @@ contains
       close(nunit)
 
       if (this_image() == 1) then
-      write(fmt2,'(a,g0,a)')&
-         '(a,',lm,'x,3x,F12.6,3x,E20.14,3x,E20.14,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g20.0,3x))'
+         write(fmt2,'(a,g0,a)')&
+            '(a,',lm,'x,3x,F12.6,3x,E20.14,3x,E20.14,3x,E20.14,3x,E20.14,3x,g8.0,3x,*(g20.0,3x))'
 
-      inquire(file=this%filename, exist=exist, iostat=iostat)
-      if (iostat /= 0 .or. .not. exist) then
-         error stop 'file '//trim(this%filename)//' does not exist or cannot be accessed.'
+         inquire(file=this%filename, exist=exist, iostat=iostat)
+         if (iostat /= 0 .or. .not. exist) then
+            error stop 'file '//trim(this%filename)//' does not exist or cannot be accessed.'
+         end if
+         open (newunit = nunit, file = this%filename, access = 'append')
+         write(nunit,fmt2) &
+            this%marks(this%imark)%method,&
+            this%marks(this%imark)%speedup_max_total,&
+            this%marks(this%imark)%elapsed_time_max,&
+            this%marks(this%imark)%elapsed_time_min,&
+            this%marks(this%imark)%elapsed_time_average,&
+            this%marks(this%imark)%flops_total,&
+            this%nloops,&
+            this%argi
+         close(nunit)
       end if
-      open (newunit = nunit, file = this%filename, access = 'append')
-      write(nunit,fmt2) &
-         this%marks(this%imark)%method,&
-         this%marks(this%imark)%speedup_max_total,&
-         this%marks(this%imark)%elapsed_time_max,&
-         this%marks(this%imark)%elapsed_time_min,&
-         this%marks(this%imark)%elapsed_time_average,&
-         this%marks(this%imark)%flops_total,&
-         this%nloops,&
-         this%argi
-      close(nunit)
-   end if
 
    end subroutine write_benchmark
    !===============================================================================
@@ -431,8 +447,10 @@ contains
 
    !===============================================================================
    pure elemental subroutine finalize_mark(this)
+      !! summary: Finalizes the mark object by deallocating allocated memory for method and description.
       !! author: Seyed Ali Ghasemi
-      class(mark), intent(inout) :: this
+
+      class(mark), intent(inout) :: this !! Mark object to be finalized
 
       if (allocated(this%method)) deallocate(this%method)
       if (allocated(this%description)) deallocate(this%description)
@@ -442,11 +460,13 @@ contains
 
    !===============================================================================
    elemental impure subroutine finalize(this)
+      !! summary: Finalizes the benchmark object by deallocating memory and performs necessary cleanup.
       !! author: Seyed Ali Ghasemi
-      class(benchmark), intent(inout) :: this
-      integer                         :: nunit
-      logical                         :: exist
-      integer                         :: iostat
+
+      class(benchmark), intent(inout) :: this   !! Benchmark object to be finalized
+      integer                         :: nunit  !! Unit number for file access
+      logical                         :: exist  !! Logical variable for file existence
+      integer                         :: iostat !! I/O status
 
       inquire(file=this%filename_image, exist=exist, iostat=iostat)
       if (iostat /= 0 .or. .not. exist) then
@@ -481,13 +501,21 @@ contains
 
    !===============================================================================
    impure function current_date_and_time() result(datetime)
+      !! summary: Retrieves the current date and time and returns it as a string
+      !! It utilizes the intrinsic `date_and_time` function to obtain system time information.
+      !! A string containing the current date and time in the format "YYYY.MM.DD - HH:MM:SS".
       !! author: Seyed Ali Ghasemi
-      character(21) :: datetime
-      character(10) :: date
-      character(8)  :: time
-      integer       :: values(8)
-      character(4)  :: year
-      character(2)  :: month, day, hour, minute, second
+
+      character(21) :: datetime  !! Character containing the current date and time
+      character(10) :: date      !! Character containing the current date
+      character(8)  :: time      !! Character containing the current time
+      integer       :: values(8) !! Array containing the current date and time values
+      character(4)  :: year      !! Current year
+      character(2)  :: month     !! Current month
+      character(2)  :: day       !! Current day
+      character(2)  :: hour      !! Current hour
+      character(2)  :: minute    !! Current minute
+      character(2)  :: second    !! Current second
 
       call date_and_time(values=values)
 
