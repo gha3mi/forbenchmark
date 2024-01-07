@@ -73,7 +73,6 @@
     <div class="row align-items-center justify-content-between" id="info-bar">
       <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
-            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Seyed Ali Ghasemi</li>
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
@@ -177,7 +176,8 @@
     <div class="col-md-9" id='text'>
       <h2>
         type, public :: benchmark</h2>
-    
+    <p>Derived type for benchmarking and performance evaluation.</p>
+<p>author: Seyed Ali Ghasemi</p>
 <br>      <div class="card">
         <div class="card-header">
           <h3 class="card-title">Inherits</h3>
@@ -444,39 +444,9 @@ large graphs.</div>
                   <h3>
     private impure elemental subroutine <a href='../proc/init.html'>init</a>(this, nmarks, title, filename, nloops, timer)  
 </h3>
-        <dl class="dl-horizontal">
-        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
-    </dl>
+    
 
-
-  <p>I
-n
-i
-t
-i
-a
-l
-i
-z
-e</p>
-<p>t
-h
-e</p>
-<p>b
-e
-n
-c
-h
-m
-a
-r
-k</p>
-<p>o
-b
-j
-e
-c
-t</p><a href="../proc/init.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Initialize the benchmark object.</p><a href="../proc/init.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -607,34 +577,9 @@ t</p><a href="../proc/init.html" class="pull-right"><emph>Read more&hellip;</emp
                   <h3>
     private impure subroutine <a href='../proc/start_benchmark.html'>start_benchmark</a>(this, imark, method, description, argi, argr)  
 </h3>
-        <dl class="dl-horizontal">
-        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
-    </dl>
+    
 
-
-  <p>S
-t
-a
-r
-t</p>
-<p>a</p>
-<p>s
-p
-e
-c
-i
-f
-i
-c</p>
-<p>b
-e
-n
-c
-h
-m
-a
-r
-k</p><a href="../proc/start_benchmark.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Start a specific benchmark</p><a href="../proc/start_benchmark.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -765,113 +710,9 @@ k</p><a href="../proc/start_benchmark.html" class="pull-right"><emph>Read more&h
                   <h3>
     private impure subroutine <a href='../proc/stop_benchmark.html'>stop_benchmark</a>(this, flops)  
 </h3>
-        <dl class="dl-horizontal">
-        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
-    </dl>
+    
 
-
-  <p>S
-t
-o
-p
-s</p>
-<p>t
-h
-e</p>
-<p>c
-u
-r
-r
-e
-n
-t
-l
-y</p>
-<p>a
-c
-t
-i
-v
-e</p>
-<p>b
-e
-n
-c
-h
-m
-a
-r
-k
-,</p>
-<p>c
-a
-l
-c
-u
-l
-a
-t
-e
-s</p>
-<p>p
-e
-r
-f
-o
-r
-m
-a
-n
-c
-e</p>
-<p>m
-e
-t
-r
-i
-c
-s
-,</p>
-<p>a
-n
-d</p>
-<p>w
-r
-i
-t
-e
-s</p>
-<p>t
-h
-e</p>
-<p>r
-e
-s
-u
-l
-t
-s</p>
-<p>t
-o</p>
-<p>t
-h
-e</p>
-<p>f
-i
-l
-e</p>
-<p>a
-n
-d</p>
-<p>t
-e
-r
-m
-i
-n
-a
-l
-.</p><a href="../proc/stop_benchmark.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Stops the currently active benchmark, calculates performance metrics, and writes the results to the file and terminal.</p><a href="../proc/stop_benchmark.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -942,108 +783,9 @@ l
                   <h3>
     private impure subroutine <a href='../proc/write_benchmark.html'>write_benchmark</a>(this)  
 </h3>
-        <dl class="dl-horizontal">
-        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
-    </dl>
+    
 
-
-  <p>W
-r
-i
-t
-e
-s</p>
-<p>t
-h
-e</p>
-<p>b
-e
-n
-c
-h
-m
-a
-r
-k</p>
-<p>d
-a
-t
-a</p>
-<p>t
-o</p>
-<p>a</p>
-<p>s
-p
-e
-c
-i
-f
-i
-e
-d</p>
-<p>f
-i
-l
-e
-,</p>
-<p>i
-n
-c
-l
-u
-d
-i
-n
-g</p>
-<p>m
-e
-t
-h
-o
-d
-,</p>
-<p>s
-p
-e
-e
-d
-u
-p
-,</p>
-<p>e
-l
-a
-p
-s
-e
-d</p>
-<p>t
-i
-m
-e
-,</p>
-<p>f
-l
-o
-p
-s
-,</p>
-<p>a
-n
-d</p>
-<p>o
-t
-h
-e
-r</p>
-<p>d
-e
-t
-a
-i
-l
-s
-.</p><a href="../proc/write_benchmark.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Writes the benchmark data to a specified file, including method, speedup, elapsed time, flops, and other details.</p><a href="../proc/write_benchmark.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1099,86 +841,9 @@ s
                   <h3>
     private impure elemental subroutine <a href='../proc/finalize.html'>finalize</a>(this)  
 </h3>
-        <dl class="dl-horizontal">
-        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
-    </dl>
+    
 
-
-  <p>F
-i
-n
-a
-l
-i
-z
-e
-s</p>
-<p>t
-h
-e</p>
-<p>b
-e
-n
-c
-h
-m
-a
-r
-k</p>
-<p>o
-b
-j
-e
-c
-t</p>
-<p>b
-y</p>
-<p>d
-e
-a
-l
-l
-o
-c
-a
-t
-i
-n
-g</p>
-<p>m
-e
-m
-o
-r
-y</p>
-<p>a
-n
-d</p>
-<p>p
-e
-r
-f
-o
-r
-m
-s</p>
-<p>n
-e
-c
-e
-s
-s
-a
-r
-y</p>
-<p>c
-l
-e
-a
-n
-u
-p
-.</p><a href="../proc/finalize.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Finalizes the benchmark object by deallocating memory and performs necessary cleanup.</p><a href="../proc/finalize.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1220,7 +885,8 @@ p
     <section>
     <h3><span class="anchor" id="src"></span>Source Code</h3>
     <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">type</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">benchmark</span>
-<span class="w">      </span><span class="c">!! summary: Derived type for benchmarking and performance evaluation.</span>
+<span class="w">      </span><span class="c">!! Derived type for benchmarking and performance evaluation.</span>
+<span class="w">      </span><span class="c">!!</span>
 <span class="w">      </span><span class="c">!! author: Seyed Ali Ghasemi</span>
 
 <span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">mark</span><span class="p">),</span><span class="w">  </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">marks</span><span class="w">     </span><span class="c">!! Array of marks to store benchmark data</span>
@@ -1256,7 +922,7 @@ p
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-07T13:26:48.447263             </p>
+ on 2024-01-07T13:38:36.019548             </p>
           </div>
         </div>
         <br>

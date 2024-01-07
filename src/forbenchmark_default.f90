@@ -1,5 +1,6 @@
 module forbenchmark_default
-   !! summary: A Fortran module for benchmarking and performance evaluation for non-coarray codes.
+   !! A Fortran module for benchmarking and performance evaluation for non-coarray codes.
+   !!
    !! author: Seyed Ali Ghasemi
    !! version: {!VERSION!}
    !! license: {!LICENSE!}
@@ -15,7 +16,8 @@ module forbenchmark_default
 
    !===============================================================================
    type :: mark
-      !! summary: Derived type for each method being benchmarked.
+      !! Derived type for each method being benchmarked.
+      !!
       !! author: Seyed Ali Ghasemi
 
       character(:), allocatable :: method       !! Name of the method being benchmarked
@@ -32,7 +34,8 @@ module forbenchmark_default
 
    !===============================================================================
    type :: benchmark
-      !! summary: Derived type for benchmarking and performance evaluation.
+      !! Derived type for benchmarking and performance evaluation.
+      !!
       !! author: Seyed Ali Ghasemi
 
       type(mark),  dimension(:), allocatable :: marks     !! Array of marks to store benchmark data
@@ -55,7 +58,8 @@ contains
 
    !===============================================================================
    elemental impure subroutine init(this, nmarks, title, filename, nloops, timer)
-      !! summary: Initialize the benchmark object
+      !! Initialize the benchmark object.
+      !!
       !! author: Seyed Ali Ghasemi
 
       use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
@@ -147,7 +151,8 @@ contains
 
    !===============================================================================
    impure subroutine start_benchmark(this, imark, method, description, argi, argr)
-      !! summary: Start a specific benchmark
+      !! Start a specific benchmark
+      !!
       !! author: Seyed Ali Ghasemi
 
       use face
@@ -223,7 +228,8 @@ contains
 
    !===============================================================================
    impure subroutine stop_benchmark(this, flops)
-      !! summary: Stops the currently active benchmark, calculates performance metrics, and writes the results to the file and terminal.
+      !! Stops the currently active benchmark, calculates performance metrics, and writes the results to the file and terminal.
+      !!
       !! author: Seyed Ali Ghasemi
 
       interface
@@ -286,7 +292,8 @@ contains
 
    !===============================================================================
    impure subroutine write_benchmark(this)
-      !! summary: Writes the benchmark data to a specified file, including method, speedup, elapsed time, flops, and other details.
+      !! Writes the benchmark data to a specified file, including method, speedup, elapsed time, flops, and other details.
+      !!
       !! author: Seyed Ali Ghasemi
 
       class(benchmark), intent(inout) :: this   !! Benchmark object
@@ -320,7 +327,8 @@ contains
 
    !===============================================================================
    elemental pure subroutine finalize_mark(this)
-      !! summary: Finalizes the mark object by deallocating allocated memory for method and description.
+      !! Finalizes the mark object by deallocating allocated memory for method and description.
+      !!
       !! author: Seyed Ali Ghasemi
 
       class(mark), intent(inout) :: this !! Mark object to be finalized
@@ -333,7 +341,8 @@ contains
 
    !===============================================================================
    elemental impure subroutine finalize(this)
-      !! summary: Finalizes the benchmark object by deallocating memory and performs necessary cleanup.
+      !! Finalizes the benchmark object by deallocating memory and performs necessary cleanup.
+      !!
       !! author: Seyed Ali Ghasemi
 
       class(benchmark), intent(inout) :: this   !! Benchmark object to be finalized
@@ -362,9 +371,10 @@ contains
 
    !===============================================================================
    impure function current_date_and_time() result(datetime)
-      !! summary: Retrieves the current date and time and returns it as a string
+      !! Retrieves the current date and time and returns it as a string
       !! It utilizes the intrinsic `date_and_time` function to obtain system time information.
       !! A string containing the current date and time in the format "YYYY.MM.DD - HH:MM:SS".
+      !!
       !! author: Seyed Ali Ghasemi
 
       character(21) :: datetime  !! Character containing the current date and time
