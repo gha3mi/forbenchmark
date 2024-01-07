@@ -329,6 +329,7 @@ contains
       end select
 
       if (present(flops)) then
+         if (this%marks_co(this%imark)%elapsed_time <= epsilon(0.0_rk)) error stop 'Elapsed time is too small.'
          this%marks_co(this%imark)%flops = flops(this%argi,this%argr)/this%marks_co(this%imark)%elapsed_time
          print'(a,f7.3,a)', ' Performance  :', this%marks_co(this%imark)%flops,' [GFLOPS/image]'
       else
@@ -359,6 +360,7 @@ contains
       this%marks(this%imark)%elapsed_time_min = elapsed_time_min
       this%marks(this%imark)%elapsed_time_max = elapsed_time_max
 
+      if (this%marks(1)%elapsed_time_max <= epsilon(0.0_rk)) error stop 'Maximum elapsed time for the reference benchmark is too small.'
       this%marks(this%imark)%speedup_max_total = this%marks(this%imark)%elapsed_time_max/this%marks(1)%elapsed_time_max
 
 

@@ -265,6 +265,8 @@ contains
 #endif
       end select
 
+      if (this%marks(this%imark)%elapsed_time <= epsilon(0.0_rk)) error stop 'Elapsed time is too small'
+
       this%marks(this%imark)%speedup = this%marks(this%imark)%elapsed_time/this%marks(1)%elapsed_time
 
       if (present(flops)) then
