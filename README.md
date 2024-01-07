@@ -101,17 +101,17 @@ After execution, the results will be displayed in the terminal and stored in the
 
 **Visualizing and exporting demo results:**
 
-To visualize and eport benchmarking results, run the following commands in Python, specifying the relevant data files as arguments:
+To generate visual representations and export benchmarking metrics, execute the following commands in Python. Specify the relevant data file as an argument:
 
 ```shell
 python results/export.py demo.data
 ```
 
-The output includes graphical representations and html table of benchmarking metrics:
+This command will produce graphical representations and an HTML table showcasing benchmarking metrics:
 
 <img alt="demo_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_time.png" width="250"> <img alt="demo_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_perf.png" width="250"> <img alt="demo_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_speedup.png" width="250">
 
-For Coarray:
+For Coarray benchmarks, execute:
 
 ```shell
 python results/export_co.py demo_co.data
