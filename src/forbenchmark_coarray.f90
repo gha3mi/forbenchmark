@@ -1,5 +1,6 @@
 module forbenchmark_coarray
-   !! summary: A Fortran module for benchmarking and performance evaluation for coarray codes.
+   !! A Fortran module for benchmarking and performance evaluation for coarray codes.
+   !!
    !! author: Seyed Ali Ghasemi
    !! version: {!VERSION!}
    !! license: {!LICENSE!}
@@ -17,7 +18,8 @@ module forbenchmark_coarray
 
    !===============================================================================
    type :: mark_co
-      !! summary: Derived type for each method being benchmarked in each image.
+      !! Derived type for each method being benchmarked in each image.
+      !!
       !! author: Seyed Ali Ghasemi
       type(timer) :: time          !! Timer object to measure elapsed time in each image
       real(rk)    :: elapsed_time  !! Elapsed time for the benchmark in each image
@@ -28,7 +30,8 @@ module forbenchmark_coarray
 
    !===============================================================================
    type :: mark
-      !! summary: Derived type for each method being benchmarked in all images.
+      !! Derived type for each method being benchmarked in all images.
+      !!
       !! author: Seyed Ali Ghasemi
       character(:), allocatable :: method                !! Name of the method being benchmarked
       character(:), allocatable :: description           !! Description of the method being benchmarked
@@ -45,7 +48,8 @@ module forbenchmark_coarray
 
    !===============================================================================
    type :: benchmark
-      !! summary: Derived type for benchmarking and performance evaluation.
+      !! Derived type for benchmarking and performance evaluation.
+      !!
       !! author: Seyed Ali Ghasemi
       type(mark_co), dimension(:), allocatable :: marks_co[:]     !! Array of mark_co type for each method being benchmarked in each image
       type(mark),    dimension(:), allocatable :: marks           !! Array of mark type for each method being benchmarked in all images
@@ -69,7 +73,8 @@ contains
 
    !===============================================================================
    elemental impure subroutine init(this, nmarks, title, filename, nloops, timer)
-      !! summary: Initialization the benchmark object.
+      !! Initialization the benchmark object.
+      !!
       !! author: Seyed Ali Ghasemi
 
       use, intrinsic :: iso_fortran_env, only: compiler_version, compiler_options
@@ -199,7 +204,8 @@ contains
 
    !===============================================================================
    impure subroutine start_benchmark(this, imark, method, description, argi, argr)
-      !! summaray: Start a specific benchmark.
+      !! Start a specific benchmark.
+      !!
       !! author: Seyed Ali Ghasemi
 
       use face
@@ -278,7 +284,8 @@ contains
 
    !===============================================================================
    impure subroutine stop_benchmark(this, flops)
-      !! summary: Stops the currently active benchmark, calculates performance metrics, and writes the results to the file and terminal.
+      !! Stops the currently active benchmark, calculates performance metrics, and writes the results to the file and terminal.
+      !!
       !! author: Seyed Ali Ghasemi
 
       use face
@@ -394,7 +401,8 @@ contains
 
    !===============================================================================
    impure subroutine write_benchmark(this)
-      !! summary: Writes the benchmark data to a specified file, including method, speedup, elapsed time, flops, and other details.
+      !! Writes the benchmark data to a specified file, including method, speedup, elapsed time, flops, and other details.
+      !!
       !! author: Seyed Ali Ghasemi
 
       class(benchmark), intent(inout) :: this   !! Benchmark object
@@ -449,7 +457,8 @@ contains
 
    !===============================================================================
    pure elemental subroutine finalize_mark(this)
-      !! summary: Finalizes the mark object by deallocating allocated memory for method and description.
+      !! Finalizes the mark object by deallocating allocated memory for method and description.
+      !!
       !! author: Seyed Ali Ghasemi
 
       class(mark), intent(inout) :: this !! Mark object to be finalized
@@ -462,7 +471,8 @@ contains
 
    !===============================================================================
    elemental impure subroutine finalize(this)
-      !! summary: Finalizes the benchmark object by deallocating memory and performs necessary cleanup.
+      !! Finalizes the benchmark object by deallocating memory and performs necessary cleanup.
+      !!
       !! author: Seyed Ali Ghasemi
 
       class(benchmark), intent(inout) :: this   !! Benchmark object to be finalized
@@ -503,9 +513,10 @@ contains
 
    !===============================================================================
    impure function current_date_and_time() result(datetime)
-      !! summary: Retrieves the current date and time and returns it as a string
+      !! Retrieves the current date and time and returns it as a string
       !! It utilizes the intrinsic `date_and_time` function to obtain system time information.
       !! A string containing the current date and time in the format "YYYY.MM.DD - HH:MM:SS".
+      !!
       !! author: Seyed Ali Ghasemi
 
       character(21) :: datetime  !! Character containing the current date and time
