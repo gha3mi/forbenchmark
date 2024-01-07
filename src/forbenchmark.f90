@@ -1,9 +1,8 @@
 module forbenchmark
+   !! author: Seyed Ali Ghasemi
+   !! license: BSD 3-Clause License
    !! This module is used to switch between the default and coarray versions of the benchmark
    !!
-   !! author: Seyed Ali Ghasemi
-   !! version: {!VERSION!}
-   !! license: {!LICENSE!}
 
 #if defined(USE_COARRAY)
    use forbenchmark_coarray

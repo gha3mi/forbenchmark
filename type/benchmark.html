@@ -73,6 +73,8 @@
     <div class="row align-items-center justify-content-between" id="info-bar">
       <div class="col">
         <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Seyed Ali Ghasemi</li>
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> BSD 3-Clause License</li>
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
@@ -122,8 +124,8 @@
             <a class="list-group-item" href="../type/benchmark.html#variable-filename~3">filename</a>
             <a class="list-group-item" href="../type/benchmark.html#variable-filename_image">filename_image</a>
             <a class="list-group-item" href="../type/benchmark.html#variable-nloops~3">nloops</a>
-            <a class="list-group-item" href="../type/benchmark.html#variable-argi~4">argi</a>
-            <a class="list-group-item" href="../type/benchmark.html#variable-argr~4">argr</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-argi~5">argi</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-argr~5">argr</a>
             <a class="list-group-item" href="../type/benchmark.html#variable-timer~3">timer</a>
             <a class="list-group-item" href="../type/benchmark.html#variable-imark~3">imark</a>
         </div>
@@ -179,7 +181,6 @@
       <h2>
         type, public :: benchmark</h2>
     <p>Derived type for benchmarking and performance evaluation.</p>
-<p>author: Seyed Ali Ghasemi</p>
 <br>      <div class="card">
         <div class="card-header">
           <h3 class="card-title">Inherits</h3>
@@ -401,7 +402,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-argi~4"></span>
+              <span class="anchor" id="variable-argi~5"></span>
               integer(kind=ik),
             </td>
               <td>public,</td>
@@ -418,7 +419,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-argr~4"></span>
+              <span class="anchor" id="variable-argr~5"></span>
               real(kind=rk),
             </td>
               <td>public,</td>
@@ -496,9 +497,13 @@ large graphs.</div>
                   <h3>
     private impure elemental subroutine <a href='../proc/init~2.html'>init</a>(this, nmarks, title, filename, nloops, timer)  
 </h3>
-    
+        <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
+        <dt>License</dt><dd>BSD 3-Clause License</dd>
+    </dl>
 
-  <p>Initialization the benchmark object.</p><a href="../proc/init~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <p>Initialize the benchmark object.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -629,9 +634,13 @@ large graphs.</div>
                   <h3>
     private impure subroutine <a href='../proc/start_benchmark~2.html'>start_benchmark</a>(this, imark, method, description, argi, argr)  
 </h3>
-    
+        <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
+        <dt>License</dt><dd>BSD 3-Clause License</dd>
+    </dl>
 
-  <p>Start a specific benchmark.</p><a href="../proc/start_benchmark~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <p>Start a specific benchmark.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -762,9 +771,13 @@ large graphs.</div>
                   <h3>
     private impure subroutine <a href='../proc/stop_benchmark~2.html'>stop_benchmark</a>(this, flops)  
 </h3>
-    
+        <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
+        <dt>License</dt><dd>BSD 3-Clause License</dd>
+    </dl>
 
-  <p>Stops the currently active benchmark, calculates performance metrics, and writes the results to the file and terminal.</p><a href="../proc/stop_benchmark~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <p>Stops the currently active benchmark, calculates performance metrics, and writes the results to the file and terminal.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -835,9 +848,13 @@ large graphs.</div>
                   <h3>
     private impure subroutine <a href='../proc/write_benchmark~2.html'>write_benchmark</a>(this)  
 </h3>
-    
+        <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
+        <dt>License</dt><dd>BSD 3-Clause License</dd>
+    </dl>
 
-  <p>Writes the benchmark data to a specified file, including method, speedup, elapsed time, flops, and other details.</p><a href="../proc/write_benchmark~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <p>Writes the benchmark data to a specified file, including method, speedup, elapsed time, flops, and other details.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -893,9 +910,13 @@ large graphs.</div>
                   <h3>
     private impure elemental subroutine <a href='../proc/finalize~2.html'>finalize</a>(this)  
 </h3>
-    
+        <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
+        <dt>License</dt><dd>BSD 3-Clause License</dd>
+    </dl>
 
-  <p>Finalizes the benchmark object by deallocating memory and performs necessary cleanup.</p><a href="../proc/finalize~2.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <p>Finalizes the benchmark object by deallocating memory and performs necessary cleanup.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -937,9 +958,9 @@ large graphs.</div>
     <section>
     <h3><span class="anchor" id="src"></span>Source Code</h3>
     <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">type</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">benchmark</span>
+<span class="w">      </span><span class="c">!! author: Seyed Ali Ghasemi</span>
 <span class="w">      </span><span class="c">!! Derived type for benchmarking and performance evaluation.</span>
 <span class="w">      </span><span class="c">!!</span>
-<span class="w">      </span><span class="c">!! author: Seyed Ali Ghasemi</span>
 <span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">mark_co</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">marks_co</span><span class="p">[:]</span><span class="w">     </span><span class="c">!! Array of mark_co type for each method being benchmarked in each image</span>
 <span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">mark</span><span class="p">),</span><span class="w">    </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">marks</span><span class="w">           </span><span class="c">!! Array of mark type for each method being benchmarked in all images</span>
 <span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w">                </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">filename</span><span class="w">        </span><span class="c">!! Filename for storing the benchmark data in all images</span>
@@ -968,14 +989,14 @@ large graphs.</div>
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>ForBenchmark was developed by Seyed Ali Ghasemi<br>&copy; 2023 
+          <div class="col"><p>ForBenchmark was developed by Seyed Ali Ghasemi<br>&copy; 2023 BSD 3-Clause License
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-07T13:38:36.019548             </p>
+ on 2024-01-07T14:06:48.997064             </p>
           </div>
         </div>
         <br>
