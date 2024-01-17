@@ -33,13 +33,31 @@ jobs:
         compiler: ${{ matrix.toolchain.compiler }}
         version: ${{ matrix.toolchain.version }}
 
+    - name: dot benchmark ifx
+      run: fpm test dot --profile release --compiler ${{ env.FC}} --flag "-Ofast -mtune=native -xHost -qmkl -qopenmp -DINT64"
+      if: ${{ env.FC}} == 'ifx'
+      env:
+        FC: ${{ steps.setup-fortran.outputs.fc }}
+
+    - name: dot benchmark gfortran
+      run: fpm test dot --profile release --compiler ${{ env.FC}} --flag "-Ofast -march=native -llapack -lblas -fopenmp -flto -DINT64"
+      if: ${{ env.FC}} == 'gfortran'
+      env:
+        FC: ${{ steps.setup-fortran.outputs.fc }}
+  
+    - name: dot benchmark nvfortran
+      run: fpm test dot --profile release --compiler ${{ env.FC}} --flag "-Ofast -fast -march=native -mtune=native -stdpar=gpu,multicore -llapack -lblas -openmp -DINT64"
+      if: ${{ env.FC}} == 'nvfortran'
+      env:
+        FC: ${{ steps.setup-fortran.outputs.fc }}
+  
     - name: dot benchmark
       run: fpm @benchamrk-dot-${{ env.FC}}
       env:
         FC: ${{ steps.setup-fortran.outputs.fc }}
 
     - name: dot benchmark (coarray)
-      run: fpm @benchamrk-dot-${{ env.FC}}-coarray
+      run: fpm test dot --profile release --compiler ${{ env.FC}} --flag "-Ofast -mtune=native -xHost -qmkl -qopenmp -DINT64 -coarray -coarray-num-images=4 -DUSE_COARRAY"
       if: ${{ env.FC}} == 'ifx'
       env:
         FC: ${{ steps.setup-fortran.outputs.fc }}
