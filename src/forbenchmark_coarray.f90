@@ -86,16 +86,26 @@ contains
       integer                                :: nunit     !! Unit number for file access
       integer                                :: iostat    !! I/O status
       character(10)                          :: im_chr    !! Character representation of the image number
+      integer                                :: which_compiler !! Logical variables for compiler detection
+      character(:), allocatable              :: compiler   !! Compiler name
 
       if (nmarks <= 0) error stop 'nmarks must be greater than zero.'
 
+      compiler =''
+      which_compiler = index(compiler_version(), 'Intel(R) Fortran Compiler')
+      if (which_compiler /= 0) compiler = '_intel'
+      which_compiler = index(compiler_version(), 'GCC')
+      if (which_compiler /= 0) compiler = '_gfortran'
+      which_compiler = index(compiler_version(), 'nvfortran')
+      if (which_compiler /= 0) compiler = '_nvfortran'
+
       write (im_chr, '(i0)') this_image()
       if (present(filename)) then
-         this%filename_image = trim(filename//'_im'//trim(im_chr)//'.data')
-         this%filename = trim(filename//'_co'//'.data')
+         this%filename_image = trim(filename//compiler//'_im'//trim(im_chr)//'.data')
+         this%filename = trim(filename//compiler//'_co'//'.data')
       else
-         this%filename_image = trim('benchmark'//'_im'//trim(im_chr)//'.data')
-         this%filename = trim('benchmark'//'_co'//'.data')
+         this%filename_image = trim('benchmark'//compiler//'_im'//trim(im_chr)//'.data')
+         this%filename = trim('benchmark'//compiler//'_co'//'.data')
       end if
 
       if (present(nloops)) then

@@ -13,7 +13,7 @@ program demo
    type(benchmark)                       :: bench
    ! define your variables here
    real(rk), dimension(:,:), allocatable :: A, B, C
-   integer                               :: p
+   integer(ik)                           :: p
    integer(ik)                           :: nl, i, j, k
 
    ! initialize the benchmark

@@ -68,15 +68,25 @@ contains
       character(*),     intent(in), optional :: timer      !! Timer object for measuring time (default: wall). The timer options available are 'wall', 'date_and_time', 'cpu', 'omp', and 'mpi'.
       integer                                :: nunit      !! Unit number for file access
       integer                                :: iostat     !! I/O status
+      integer                                :: which_compiler !! Logical variables for compiler detection
+      character(:), allocatable              :: compiler   !! Compiler name
 
       if (nmarks <= 0) error stop 'nmarks must be greater than zero.'
 
       allocate(this%marks(nmarks))
 
+      compiler =''
+      which_compiler = index(compiler_version(), 'Intel(R) Fortran Compiler')
+      if (which_compiler /= 0) compiler = '_intel'
+      which_compiler = index(compiler_version(), 'GCC')
+      if (which_compiler /= 0) compiler = '_gfortran'
+      which_compiler = index(compiler_version(), 'nvfortran')
+      if (which_compiler /= 0) compiler = '_nvfortran'
+
       if (present(filename)) then
-         this%filename = trim(filename//'.data')
+         this%filename = trim(filename//compiler//'.data')
       else
-         this%filename = 'benchmark.data'
+         this%filename = 'benchmark'//compiler//'.data'
       endif
 
       if (present(nloops)) then
