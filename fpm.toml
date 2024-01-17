@@ -20,11 +20,11 @@ implicit-external = false
 source-form       = "free"
 
 [dependencies]
-kinds   = {git="https://github.com/gha3mi/kinds.git"}
-fortime = {git="https://github.com/gha3mi/fortime.git"}
-FACE    = {git="https://github.com/szaghi/FACE.git"}
-formatmul = {git="https://github.com/gha3mi/formatmul.git", branch = "dev"}
-fordot = {git="https://github.com/gha3mi/fordot.git"}
+kinds     = {git="https://github.com/gha3mi/kinds.git"}
+fortime   = {git="https://github.com/gha3mi/fortime.git"}
+FACE      = {git="https://github.com/szaghi/FACE.git"}
+formatmul = {git="https://github.com/gha3mi/formatmul.git"}
+fordot    = {git="https://github.com/gha3mi/fordot.git"}
 
 [preprocess]
 [preprocess.cpp]
