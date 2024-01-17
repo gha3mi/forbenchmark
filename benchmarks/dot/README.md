@@ -5,7 +5,7 @@
 ### ifx
 
 ```shell
-fpm run --example dot  --profile release --compiler ifx --flag "-Ofast -mtune=native -xHost -qmkl -qopenmp -DINT64"
+fpm @benchmark-dot-ifx
 ```
 
 ```shell
@@ -17,7 +17,7 @@ cd benchmarks/dot && python results/export.py dot_intel.data && cd ../..
 ### gfortran
 
 ```shell
-fpm run --example dot  --profile release --compiler gfortran --flag "-Ofast -march=native -llapack -lblas -fopenmp -flto -DINT64"
+fpm @benchmark-dot-gfortran
 ```
 ```shell
 cd benchmarks/dot && python results/export.py dot_gfortran.data && cd ../..
@@ -28,7 +28,7 @@ cd benchmarks/dot && python results/export.py dot_gfortran.data && cd ../..
 ### nvidia
 
 ```shell
-fpm run --example dot  --profile release --compiler nvfortran --flag "-Ofast -fast -march=native -mtune=native -stdpar=gpu,multicore -llapack -lblas -openmp -DINT64"
+fpm @benchmark-dot-nvfortran
 ```
 
 ```shell
@@ -42,7 +42,7 @@ cd benchmarks/dot && python results/export.py dot_nvfortran.data && cd ../..
 ### ifx
 
 ```shell
-fpm run --example dot_co  --profile release --compiler ifx --flag "-Ofast -mtune=native -xHost -qmkl -qopenmp -DINT64 -coarray -coarray-num-images=4 -DUSE_COARRAY"
+fpm @benchmark-dot-ifx-coarray
 ```
 
 ```shell
