@@ -1,0 +1,23 @@
+@benchmark-dot-ifx
+options test dot
+options --profile release
+options --compiler ifx
+options --flag "-Ofast -mtune=native -xHost -qmkl -qopenmp -DINT64"
+
+@benchmark-dot-gfortran
+options test dot
+options --profile release
+options --compiler gfortran
+options --flag "-Ofast -march=native -llapack -lblas -fopenmp -flto -DINT64"
+
+@benchmark-dot-nvfortran
+options test dot
+options --profile release
+options --compiler nvfortran
+options --flag "-Ofast -fast -march=native -mtune=native -stdpar=gpu,multicore -llapack -lblas -openmp -DINT64"
+
+@benchmark-dot-ifx-coarray
+options test dot_co
+options --profile release
+options --compiler ifx
+options --flag "-Ofast -mtune=native -xHost -qmkl -qopenmp -DINT64 -coarray -coarray-num-images=4 -DUSE_COARRAY"

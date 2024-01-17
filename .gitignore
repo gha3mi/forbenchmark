@@ -5,3 +5,4 @@
 /mod
 /tmp
 *.data
+__pycache__

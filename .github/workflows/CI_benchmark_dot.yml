@@ -1,0 +1,68 @@
+name: benchmark_dot
+on: [push]
+jobs:
+
+  Build:
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        toolchain:
+          - {compiler: gcc}
+          - {compiler: intel}
+          - {compiler: nvidia-hpc}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Setup Fortran Package Manager (fpm)
+      uses: fortran-lang/setup-fpm@v5
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Fortran Compiler
+      uses: fortran-lang/setup-fortran@main
+      id: setup-fortran
+      with:
+        compiler: ${{ matrix.toolchain.compiler }}
+        version: ${{ matrix.toolchain.version }}
+
+    - name: dot benchmark
+      run: fpm @benchamrk-dot-${{ env.FC}}
+      env:
+        FC: ${{ steps.setup-fortran.outputs.fc }}
+
+    - name: dot benchmark (coarray)
+      run: fpm @benchamrk-dot-${{ env.FC}}-coarray
+      if: ${{ env.FC}} == 'ifx'
+      env:
+        FC: ${{ steps.setup-fortran.outputs.fc }}
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install pandas matplotlib
+
+    - name: Results
+      run: |
+        cd benchmarks/dot && python results/export.py dot_intel.data && cd ../..
+        cd benchmarks/dot && python results/export.py dot_gfortran.data && cd ../..
+        cd benchmarks/dot && python results/export.py dot_nvfortran.data && cd ../..
+        cd benchmarks/dot && python results/export_co.py dot_intel_co.data && cd ../..
+
+    - name: Create Pull Request
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email '
+        git switch -c results
+        git add benchmarks/dot/results
+        git commit -m "Update results"
+        git push -u origin results
+        gh pr create -B main -H results --title "Update results" --body ""

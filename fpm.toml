@@ -23,6 +23,8 @@ source-form       = "free"
 kinds   = {git="https://github.com/gha3mi/kinds.git"}
 fortime = {git="https://github.com/gha3mi/fortime.git"}
 FACE    = {git="https://github.com/szaghi/FACE.git"}
+formatmul = {git="https://github.com/gha3mi/formatmul.git", branch = "dev"}
+fordot = {git="https://github.com/gha3mi/fordot.git"}
 
 [preprocess]
 [preprocess.cpp]
@@ -31,3 +33,34 @@ FACE    = {git="https://github.com/szaghi/FACE.git"}
 name       = "demo"
 source-dir = "example"
 main       = "demo.f90"
+
+
+[[test]]
+name       = "dot"
+source-dir = "benchmarks/dot"
+main       = "dot.f90"
+
+[[test]]
+name       = "dot_co"
+source-dir = "benchmarks/dot"
+main       = "dot_co.f90"
+
+[[test]]
+name       = "matmul_matmat"
+source-dir = "benchmarks/matmul"
+main       = "matmul_matmat.f90"
+
+[[test]]
+name       = "matmul_matmat_co"
+source-dir = "benchmarks/matmul"
+main       = "matmul_matmat_co.f90"
+
+[[test]]
+name       = "matmul_matvec"
+source-dir = "benchmarks/matmul"
+main       = "matmul_matvec.f90"
+
+[[test]]
+name       = "matmul_matvec_co"
+source-dir = "benchmarks/matmul"
+main       = "matmul_matvec_co.f90"
