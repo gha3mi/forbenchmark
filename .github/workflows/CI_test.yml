@@ -15,9 +15,6 @@ jobs:
           - {compiler: intel}
           - {compiler: intel-classic}
           - {compiler: nvidia-hpc}
-        include:
-          - os: ubuntu-latest
-            toolchain: {compiler: gcc}
         exclude:
           - os: windows-latest
             toolchain: {compiler: nvidia-hpc}
