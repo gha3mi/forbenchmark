@@ -35,32 +35,32 @@ source-dir = "example"
 main       = "demo.f90"
 
 
-[[test]]
+[[example]]
 name       = "dot"
 source-dir = "benchmarks/dot"
 main       = "dot.f90"
 
-[[test]]
+[[example]]
 name       = "dot_co"
 source-dir = "benchmarks/dot"
 main       = "dot_co.f90"
 
-[[test]]
-name       = "matmul_matmat"
+[[example]]
+name       = "matmul_mm"
 source-dir = "benchmarks/matmul"
-main       = "matmul_matmat.f90"
+main       = "matmul_mm.f90"
 
-[[test]]
-name       = "matmul_matmat_co"
+[[example]]
+name       = "matmul_mm_co"
 source-dir = "benchmarks/matmul"
-main       = "matmul_matmat_co.f90"
+main       = "matmul_mm_co.f90"
 
-[[test]]
-name       = "matmul_matvec"
+[[example]]
+name       = "matmul_mv"
 source-dir = "benchmarks/matmul"
-main       = "matmul_matvec.f90"
+main       = "matmul_mv.f90"
 
-[[test]]
-name       = "matmul_matvec_co"
+[[example]]
+name       = "matmul_mv_co"
 source-dir = "benchmarks/matmul"
-main       = "matmul_matvec_co.f90"
+main       = "matmul_mv_co.f90"
