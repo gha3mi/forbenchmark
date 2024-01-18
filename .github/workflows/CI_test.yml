@@ -9,14 +9,22 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         toolchain:
           - {compiler: gcc}
+          - {compiler: intel}
           - {compiler: intel-classic}
-        #   - {compiler: intel}
+          - {compiler: nvidia-hpc}
+        include:
+          - os: ubuntu-latest
+            toolchain: {compiler: gcc}
         exclude:
+          - os: macos-latest
+            toolchain: {compiler: intel}
+          - os: macos-latest
+            toolchain: {compiler: nvidia-hpc}
           - os: windows-latest
-            toolchain: {compiler: intel-classic}
+            toolchain: {compiler: nvidia-hpc}
 
     steps:
     - name: Checkout code
@@ -30,7 +38,7 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup Fortran Compiler
-      uses: fortran-lang/setup-fortran@v1
+      uses: fortran-lang/setup-fortran@main
       id: setup-fortran
       with:
         compiler: ${{ matrix.toolchain.compiler }}
