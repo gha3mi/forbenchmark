@@ -93,7 +93,9 @@ contains
 
       compiler =''
       which_compiler = index(compiler_version(), 'Intel(R) Fortran Compiler')
-      if (which_compiler /= 0) compiler = '_intel'
+      if (which_compiler /= 0) compiler = '_ifx'
+      which_compiler = index(compiler_version(), 'Intel(R) Fortran Intel(R)')
+      if (which_compiler /= 0) compiler = '_ifort'
       which_compiler = index(compiler_version(), 'GCC')
       if (which_compiler /= 0) compiler = '_gfortran'
       which_compiler = index(compiler_version(), 'nvfortran')
