@@ -21,6 +21,10 @@ jobs:
         exclude:
           - os: windows-latest
             toolchain: {compiler: nvidia-hpc}
+          - os: windows-latest
+            toolchain: {compiler: intel}
+          - os: windows-latest
+            toolchain: {compiler: intel-classic}
 
     steps:
     - name: Checkout code
