@@ -1,7 +1,16 @@
 name: benchmark_dot
+
 on:
- schedule:
-    - cron: '0 0 1 * *'
+  push:
+    paths:
+      - benchmarks/dot/dot.f90
+      - benchmarks/dot/dot_co.f90
+  pull_request:
+    paths:
+      - benchmarks/dot/dot.f90
+      - benchmarks/dot/dot_co.f90
+  # schedule:
+  #   - cron: '0 0 1 * *'
 
 jobs:
 
