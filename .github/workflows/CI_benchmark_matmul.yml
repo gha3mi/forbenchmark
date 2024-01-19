@@ -55,12 +55,16 @@ jobs:
         version: ${{ matrix.toolchain.version }}
 
     - name: matmul benchmark (matrix-matrix)
-      run: fpm @benchmark-matmul-mm-${{env.FC}}
+      run: |
+        ulimit -s unlimited
+        fpm @benchmark-matmul-mm-${{env.FC}}
       env:
         FC: ${{ steps.setup-fortran.outputs.fc }}
 
     - name: matmul benchmark (matrix-vector)
-      run: fpm @benchmark-matmul-mv-${{env.FC}}
+      run: |
+        ulimit -s unlimited
+        fpm @benchmark-matmul-mv-${{env.FC}}
       env:
         FC: ${{ steps.setup-fortran.outputs.fc }}
     
