@@ -59,9 +59,11 @@ jobs:
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git branch -D results-${{env.FC}} || true
+        git push origin --D results-${{env.FC}} || true
         git switch -c results-${{env.FC}}
         git add benchmarks/dot/results/dot_${{env.FC}}*.png
         git add benchmarks/dot/results/dot_${{env.FC}}*.html
         git commit -m "Update results ${{env.FC}}"
         git push -u origin results-${{env.FC}}
-        gh pr create -B main -H results --title "Update results-${{env.FC}}" --body ""
+        # gh pr create -B main -H results --title "Update results-${{env.FC}}" --body ""
