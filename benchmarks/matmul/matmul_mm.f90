@@ -11,7 +11,7 @@ program benchmark_matmul_mm
    integer(ik)           :: m, n, o, p
    integer               :: nl
 
-   call bench%init(12,'Benchmark matmul','benchmarks/matmul/results/matmul_mm', 100)
+   call bench%init(12,'Benchmark matmul','benchmarks/matmul/results/matmul_mm', 10)
 
    do p = 250_ik,1500_ik,250_ik
 
