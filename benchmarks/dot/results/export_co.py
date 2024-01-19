@@ -39,7 +39,7 @@ fpd.plot_performance_tot(file_path, benchmark_data, x_data,
                                    ylabel='Performance [GFLOPS]')
 
 # Plot the performance
-fpd.plot_speedup_max(file_path, benchmark_data, x_data,
+fpd.plot_speedup_max(file_path, benchmark_data,
                                    title='dot_product Benchmark - Max. Speedup',
                                    xlabel='Number of Elements',
                                    ylabel='Max. Speedup [-]')

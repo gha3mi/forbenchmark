@@ -138,6 +138,67 @@ def plot_benchmark_data(file_path, benchmark_data, x_data, title, xlabel, ylabel
 
 
 
+def plot_benchmark_data_bar(
+    file_path, benchmark_data, title, xlabel, ylabel, data_column
+):
+    """
+    Plot benchmark data for a specific column using bar charts.
+
+    Args:
+        benchmark_data (DataFrame): Benchmark data in a Pandas DataFrame
+        file_path (str): File path for saving the plot
+        title (str): Title of the plot
+        xlabel (str): Label for the x-axis
+        ylabel (str): Label for the y-axis
+        data_column (str): Column name from benchmark data to be plotted
+
+    Returns:
+        plt (matplotlib.pyplot): Matplotlib pyplot object for the generated plot
+    """
+
+    unique_methods = benchmark_data["method"].unique()
+    num_unique_methods = len(unique_methods)
+    cmap = plt.cm.get_cmap(COLORMAP, num_unique_methods)
+    colors = {
+        method: mpl.colors.rgb2hex(cmap(i)[:3])
+        for i, method in enumerate(unique_methods)
+    }
+
+    plt.figure(figsize=FIG_SIZE)
+    plt.title(title)
+
+    # Plot bar charts for each method
+    plt.bar(
+        range(num_unique_methods),
+        benchmark_data.groupby("method")[data_column].mean(),
+        tick_label=unique_methods,
+        color=[colors[method] for method in unique_methods],
+    )
+
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.xticks(rotation=45, ha="right")
+    plt.grid(axis="y")
+    plt.tight_layout()
+
+    # Add 'Generated using ForBenchmark' text to the bottom right corner of the figure
+    plt.figtext(
+        0.98,
+        0.005,
+        "ForBenchmark",
+        horizontalalignment="right",
+        verticalalignment="bottom",
+        fontsize=8,
+        color="gray",
+    )
+
+    output_filename = f"{os.path.splitext(file_path)[0]}_{data_column}.png"
+    plt.savefig(output_filename, dpi=DPI)
+
+    return plt
+
+
+
 def plot_elapsed_time_max(file_path, benchmark_data, x_data, title, xlabel, ylabel):
     """
     Plot elapsed time data from benchmark data.
@@ -197,7 +258,7 @@ def plot_performance_tot(file_path, benchmark_data, x_data, title, xlabel, ylabe
 
 
 
-def plot_speedup_max(file_path, benchmark_data, x_data, title, xlabel, ylabel):
+def plot_speedup_max(file_path, benchmark_data, title, xlabel, ylabel):
     """
     Plot performance (GFLOPS) data from benchmark data.
 
@@ -212,4 +273,4 @@ def plot_speedup_max(file_path, benchmark_data, x_data, title, xlabel, ylabel):
     Returns:
         plt (matplotlib.pyplot): Matplotlib pyplot object for the generated plot
     """
-    return plot_benchmark_data(file_path, benchmark_data, x_data, title, xlabel, ylabel, 'speedup_max')
+    return plot_benchmark_data_bar(file_path, benchmark_data, title, xlabel, ylabel, 'speedup_max')

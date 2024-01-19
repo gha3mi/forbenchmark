@@ -33,7 +33,7 @@ fpd.plot_performance(file_path, benchmark_data, x_data,
                                    ylabel='Performance [GFLOPS]')
 
 # Plot the performance
-fpd.plot_speedup(file_path, benchmark_data, x_data,
+fpd.plot_speedup(file_path, benchmark_data,
                                    title='dot_product Benchmark - Speedup',
                                    xlabel='Number of Elements',
                                    ylabel='Speedup [-]')
