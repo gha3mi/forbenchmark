@@ -67,4 +67,4 @@ jobs:
         git commit -m "Update results ${{env.FC}}"
         git push -u origin results-${{env.FC}} --force-with-lease
         default_branch="${{ github.event.repository.default_branch }}"
-        gh pr create -B "$default_branch" -H "results-${{env.FC}}"" --title "Update results-${{env.FC}}" --body "Update results-${{env.FC}}"
+        gh pr create -B "$default_branch" -H "results-${{env.FC}}" --title "Update results-${{env.FC}}" --body "Update results-${{env.FC}}"
