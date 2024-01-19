@@ -60,10 +60,9 @@ jobs:
         git config user.name "github-actions[bot]"
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git switch -c results-${{env.FC}}
+        git fetch
         git add benchmarks/dot/results/dot_${{env.FC}}*.png
         git add benchmarks/dot/results/dot_${{env.FC}}*.html
         git commit -m "Update results ${{env.FC}}"
         git push -u origin results-${{env.FC}} --force-with-lease
-        git branch -D results-${{env.FC}}
-        git push origin --delete results-${{env.FC}}
         # gh pr create -B main -H results --title "Update results-${{env.FC}}" --body ""
