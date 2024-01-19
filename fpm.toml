@@ -10,7 +10,6 @@ auto-executables = false
 auto-tests       = false
 auto-examples    = false
 module-naming    = false
-link = ["lapack", "blas"]
 
 [install]
 library = false
@@ -24,8 +23,6 @@ source-form       = "free"
 kinds     = {git="https://github.com/gha3mi/kinds.git"}
 fortime   = {git="https://github.com/gha3mi/fortime.git"}
 FACE      = {git="https://github.com/szaghi/FACE.git"}
-formatmul = {git="https://github.com/gha3mi/formatmul.git"}
-fordot    = {git="https://github.com/gha3mi/fordot.git"}
 
 [preprocess]
 [preprocess.cpp]
@@ -40,28 +37,46 @@ main       = "demo.f90"
 name       = "dot"
 source-dir = "benchmarks/dot"
 main       = "dot.f90"
+link       = ["lapack", "blas"]
+[example.dependencies]
+fordot = {git="https://github.com/gha3mi/fordot.git"}
 
 [[example]]
 name       = "dot_co"
 source-dir = "benchmarks/dot"
 main       = "dot_co.f90"
+link       = ["lapack", "blas"]
+[example.dependencies]
+fordot = {git="https://github.com/gha3mi/fordot.git"}
 
 [[example]]
 name       = "matmul_mm"
 source-dir = "benchmarks/matmul"
 main       = "matmul_mm.f90"
+link       = ["lapack", "blas"]
+[example.dependencies]
+formatmul = {git="https://github.com/gha3mi/formatmul.git"}
 
 [[example]]
 name       = "matmul_mm_co"
 source-dir = "benchmarks/matmul"
 main       = "matmul_mm_co.f90"
+link       = ["lapack", "blas"]
+[example.dependencies]
+formatmul = {git="https://github.com/gha3mi/formatmul.git"}
 
 [[example]]
 name       = "matmul_mv"
 source-dir = "benchmarks/matmul"
 main       = "matmul_mv.f90"
+link       = ["lapack", "blas"]
+[example.dependencies]
+formatmul = {git="https://github.com/gha3mi/formatmul.git"}
 
 [[example]]
 name       = "matmul_mv_co"
 source-dir = "benchmarks/matmul"
 main       = "matmul_mv_co.f90"
+link       = ["lapack", "blas"]
+[example.dependencies]
+formatmul = {git="https://github.com/gha3mi/formatmul.git"}
