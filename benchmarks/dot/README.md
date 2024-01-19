@@ -9,9 +9,6 @@
     - [Intel Fortran Compiler Classic (ifort)](#intel-fortran-compiler-classic-ifort)
     - [GNU Fortran (gfortran)](#gnu-fortran-gfortran)
     - [NVIDIA HPC (nvfortran)](#nvidia-hpc-nvfortran)
-  - [dot\_product (Coarray)](#dot_product-coarray)
-    - [Intel Fortran Compiler (ifx)](#intel-fortran-compiler-ifx-1)
-    - [Intel Fortran Compiler Classic (ifort)](#intel-fortran-compiler-classic-ifort-1)
 
 ## Usage Guide
 
@@ -90,21 +87,3 @@ cd ../..
 | <img alt="dot_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_nvfortran_time.png" width="300"> | <img alt="dot_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_nvfortran_perf.png" width="300"> | <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_nvfortran_speedup.png" width="300"> |
 
 [View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/dot/results/dot_nvfortran.html)
-
-## dot_product (Coarray)
-
-### Intel Fortran Compiler (ifx)
-
-| Elapsed Time | Performance | Speedup |
-|--------------|-------------|---------|
-| <img alt="dot_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifx_co_time_max.png" width="300"> | <img alt="dot_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifx_co_perf_tot.png" width="300"> | <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifx_co_speedup_max.png" width="300"> |
-
-[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/dot/results/dot_ifx_co.html)
-
-### Intel Fortran Compiler Classic (ifort)
-
-| Elapsed Time | Performance | Speedup |
-|--------------|-------------|---------|
-| <img alt="dot_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifort_co_time_max.png" width="300"> | <img alt="dot_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifort_co_perf_tot.png" width="300"> | <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifort_co_speedup_max.png" width="300"> |
-
-[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/dot/results/dot_ifort_co.html)
