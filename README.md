@@ -10,6 +10,12 @@
 
 ForBenchmark can measure various time metrics including elapsed wall time, CPU time, OpenMP (OMP) time, MPI time, and date_and_time. Furthermore, it can compute flops based on a provided function.
 
+## Benchmark Results
+
+- [dot_product](https://github.com/gha3mi/forbenchmark/tree/main/benchmarks/dot)
+
+This list will be updated. Feel free to add new benchmarks.
+
 ## Simple Usage
 
 ```fortran
@@ -120,6 +126,7 @@ python results/export_im.py demo_im1.data
 The outputs can be found in the `results` directory.
 
 ## TODO
+- [ ] Add [sphinx-gallery](https://sphinx-gallery.github.io/stable/auto_examples/index.html)
 - [ ] Add settings to set units.
 - [ ] Add benchmarks for matmul, dot ...
 - [ ] Add MPI module.
