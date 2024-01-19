@@ -11,7 +11,7 @@ program benchmark_matmul_mm_coarray
    integer(ik)           :: m, n, o, p
    integer               :: nl
 
-   call bench%init(11,'Benchmark matmul','benchmarks/matmul/results/matmul_mm', 10)
+   call bench%init(11,'Benchmark matmul','benchmarks/matmul/results/matmul_mm', 100)
 
    do p = 250_ik,1500_ik,250_ik
 
