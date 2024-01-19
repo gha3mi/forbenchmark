@@ -1,5 +1,5 @@
 program benchmark_dot
-
+ 
    use kinds
    use fordot
    use forbenchmark
