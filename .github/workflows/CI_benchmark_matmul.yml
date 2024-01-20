@@ -88,8 +88,10 @@ jobs:
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git switch -c results-${{env.FC}}
         git fetch
-        git add benchmarks/matmul/results/matmul_${{env.FC}}*.png
-        git add benchmarks/matmul/results/matmul_${{env.FC}}*.html
+        git add benchmarks/matmul/results/matmul_mm_${{env.FC}}*.png
+        git add benchmarks/matmul/results/matmul_mv_${{env.FC}}*.png
+        git add benchmarks/matmul/results/matmul_mm_${{env.FC}}*.html
+        git add benchmarks/matmul/results/matmul_mv_${{env.FC}}*.html
         git commit -m "Update matmul results ${{env.FC}}"
         git push -u origin results-${{env.FC}} --force-with-lease
         default_branch="${{ github.event.repository.default_branch }}"
