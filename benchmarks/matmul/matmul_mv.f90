@@ -95,30 +95,6 @@ program benchmark_matmul_mv
       call bench%stop_benchmark(cmp_gflops)
       !===============================================================================
 
-
-      !===============================================================================
-      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      ! GFORTRAN DOESNT SUPPORT SHARED !
-      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      ! call bench%start_benchmark(8,'m7',"w = matmul(A,v,option='m7')",[m*n])
-      ! do nl = 1,bench%nloops
-      !    w = matmul(A,v,option='m7')
-      ! end do
-      ! call bench%stop_benchmark(cmp_gflops)
-      !===============================================================================
-
-
-      !===============================================================================
-      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      ! GFORTRAN DOESNT SUPPORT SHARED !
-      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      ! call bench%start_benchmark(9,'m8',"w = matmul(A,v,option='m8')",[m*n])
-      ! do nl = 1,bench%nloops
-      !    w = matmul(A,v,option='m8')
-      ! end do
-      ! call bench%stop_benchmark(cmp_gflops)
-      !===============================================================================
-
    end do
 
    call bench%finalize()

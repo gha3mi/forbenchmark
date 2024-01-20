@@ -140,30 +140,6 @@ program benchmark_matmul_mm_coarray
       call bench%stop_benchmark(cmp_gflops)
       !===============================================================================
 
-
-      !===============================================================================
-      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      ! GFORTRAN DOESNT SUPPORT SHARED !
-      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      ! call bench%start_benchmark(12,'m10',"C = matmul(A,B,coarray=.true.,option='m10')",[m*n*o])
-      ! do nl = 1,bench%nloops
-      !    C = matmul(A,B,coarray=.true.,option='m10')
-      ! end do
-      ! call bench%stop_benchmark(cmp_gflops)
-      !===============================================================================
-
-
-      !===============================================================================
-      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      ! GFORTRAN DOESNT SUPPORT SHARED !
-      !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-      ! call bench%start_benchmark(13,'m11',"C = matmul(A,B,coarray=.true.,option='m11')",[m*n*o])
-      ! do nl = 1,bench%nloops
-      !    C = matmul(A,B,coarray=.true.,option='m11')
-      ! end do
-      ! call bench%stop_benchmark(cmp_gflops)
-      !===============================================================================
-
    end do
 
    call bench%finalize()
