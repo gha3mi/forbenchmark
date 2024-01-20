@@ -14,7 +14,7 @@ program benchmark_matmul_mv_coarray
 
    call bench%init(6,'Benchmark matmul','benchmarks/matmul/results/matmul_mv', 10)
 
-   do p = 250_ik,1500_ik,250_ik
+   do p = 750_ik,2000_ik,250_ik
 
       !===============================================================================
       ! w(m) = A(m,n).v(n)
