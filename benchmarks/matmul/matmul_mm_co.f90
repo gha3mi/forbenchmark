@@ -13,7 +13,7 @@ program benchmark_matmul_mm_coarray
 
    call bench%init(11,'Benchmark matmul','benchmarks/matmul/results/matmul_mm', 10)
 
-   do p = 250_ik,3000_ik,250_ik
+   do p = 250_ik,1500_ik,250_ik
 
       !===============================================================================
       ! C(m,o) = A(m,n).B(n,o)
