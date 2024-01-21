@@ -3,12 +3,14 @@ name: benchmark_matmul
 on:
   push:
     paths:
+      - src/*.f90
       - benchmarks/matmul/matmul_mm.f90
       - benchmarks/matmul/matmul_mm_co.f90
       - benchmarks/matmul/matmul_mv.f90
       - benchmarks/matmul/matmul_mv_co.f90
   pull_request:
     paths:
+      - src/*.f90
       - benchmarks/matmul/matmul_mm.f90
       - benchmarks/matmul/matmul_mm_co.f90
       - benchmarks/matmul/matmul_mv.f90

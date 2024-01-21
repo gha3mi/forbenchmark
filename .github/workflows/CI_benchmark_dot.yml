@@ -3,10 +3,12 @@ name: benchmark_dot
 on:
   push:
     paths:
+      - src/*.f90
       - benchmarks/dot/dot.f90
       - benchmarks/dot/dot_co.f90
   pull_request:
     paths:
+      - src/*.f90
       - benchmarks/dot/dot.f90
       - benchmarks/dot/dot_co.f90
   # schedule:
