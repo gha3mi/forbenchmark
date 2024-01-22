@@ -12,6 +12,12 @@ program benchmark_dot
    real(rk)              :: a
    integer(ik)           :: p
    integer               :: nl
+   integer               :: seed_size
+   integer, allocatable  :: seed_array(:)
+
+   call random_seed(size = seed_size)
+   allocate(seed_array(seed_size))
+   seed_array = 123456789
 
    call bench%init(5,'Benchmark dot_product','benchmarks/dot/results/dot', 1000)
 
@@ -22,6 +28,7 @@ program benchmark_dot
       if (allocated(v)) deallocate(v)
       allocate(u(p))
       allocate(v(p))
+      call random_seed(put = seed_array)
       call random_number(u)
       call random_number(v)
       !===============================================================================
