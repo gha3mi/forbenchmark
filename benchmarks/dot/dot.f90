@@ -2,6 +2,7 @@ program benchmark_dot
 
    use kinds
    use fordot
+   use fast_math, only: fprod, fprod_kahan
    use forbenchmark
 
    implicit none
@@ -19,7 +20,7 @@ program benchmark_dot
    allocate(seed_array(seed_size))
    seed_array = 123456789
 
-   call bench%init(5,'Benchmark dot_product','benchmarks/dot/results/dot', 1000)
+   call bench%init(7,'Benchmark dot_product','benchmarks/dot/results/dot', 1000)
 
    do p = 5000_ik,100000_ik, 5000_ik
 
@@ -84,6 +85,27 @@ program benchmark_dot
          u = u + real(nl,rk) ! to prevent compiler from optimizing (loop-invariant)
          v = v + real(nl,rk) ! to prevent compiler from optimizing (loop-invariant)
          a = dot_product(u,v,'m4')
+      end do
+      call bench%stop_benchmark(cmp_gflops)
+      !===============================================================================
+
+      !===============================================================================
+      call bench%start_benchmark(6,'chunks', "a = fprod(u,v)",[p])
+      do nl = 1,bench%nloops
+         u = u + real(nl,rk) ! to prevent compiler from optimizing (loop-invariant)
+         v = v + real(nl,rk) ! to prevent compiler from optimizing (loop-invariant)
+         a = fprod(u,v)
+      end do
+      call bench%stop_benchmark(cmp_gflops)
+      !===============================================================================
+
+
+      !===============================================================================
+      call bench%start_benchmark(7,'kahan', "a = fprod_kahan(u,v)",[p])
+      do nl = 1,bench%nloops
+         u = u + real(nl,rk) ! to prevent compiler from optimizing (loop-invariant)
+         v = v + real(nl,rk) ! to prevent compiler from optimizing (loop-invariant)
+         a = fprod_kahan(u,v)
       end do
       call bench%stop_benchmark(cmp_gflops)
       !===============================================================================
