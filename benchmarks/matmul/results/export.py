@@ -18,7 +18,7 @@ x_data = argi.iloc[:, 0]  # Customizing x-axis data based on the benchmark requi
 
 
 # Set plot settings
-fpd.set_plot_settings(fig_size=(7, 6), dpi=600, colormap='prism')
+fpd.set_plot_settings(fig_size=(12, 6), dpi=600, colormap='prism')
 
 # Plot the elapsed time
 fpd.plot_elapsed_time(file_path, benchmark_data, x_data,
@@ -32,11 +32,17 @@ fpd.plot_performance(file_path, benchmark_data, x_data,
                                    xlabel='Number of Elements',
                                    ylabel='Performance [GFLOPS]')
 
-# Plot the performance
-fpd.plot_speedup(file_path, benchmark_data,
+fpd.plot_speedup(file_path, benchmark_data, x_data,
                                    title='MatMul Benchmark - Speedup',
                                    xlabel='Number of Elements',
-                                   ylabel='Speedup [-]')
+                                   ylabel='Speedup [-]',
+                                   bar_width=0.05)
+
+
+fpd.plot_speedup_avg(file_path, benchmark_data, x_data, 
+                                   title='MatMul Benchmark - Average Speedup',
+                                   xlabel='Number of Elements',
+                                   ylabel='Average Speedup [-]')
 
 fh.generate_html(file_path, benchmark_data,
                   title='MatMul Benchmark')
