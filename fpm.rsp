@@ -3,7 +3,7 @@ options run --example
 options --target dot
 options --profile release
 options --compiler ifx
-options --flag "-O3 -mtune=native -xHost -llapack -lblas -qopenmp -DINT64"
+options --flag "-O3 -mtune=native -xHost -llapack -lblas -qopenmp -flto=full -DINT64"
 
 @benchmark-dot-ifort
 options run --example
