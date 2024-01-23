@@ -57,33 +57,48 @@ cd ../..
 
 ### Intel Fortran Compiler (ifx)
 
-| Elapsed Time | Performance | Speedup |
-|--------------|-------------|---------|
-| <img alt="dot_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifx_time.png" width="300"> | <img alt="dot_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifx_perf.png" width="300"> | <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifx_speedup.png" width="300"> |
+| Elapsed Time | Performance |
+|--------------|-------------|
+| <img alt="dot_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifx_time.png" width="300"> | <img alt="dot_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifx_perf.png" width="300"> |
 
+| Speedup | Average Weighted Speedup |
+|---------|--------------------------|
+| <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifx_speedup.png" width="300"> | <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifx_speedup_avg.png" width="300"> |
 
 [View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/dot/results/dot_ifx.html)
 
 ### Intel Fortran Compiler Classic (ifort)
 
-| Elapsed Time | Performance | Speedup |
-|--------------|-------------|---------|
-| <img alt="dot_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifort_time.png" width="300"> | <img alt="dot_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifort_perf.png" width="300"> | <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifort_speedup.png" width="300"> |
+| Elapsed Time | Performance |
+|--------------|-------------|
+| <img alt="dot_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifort_time.png" width="300"> | <img alt="dot_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifort_perf.png" width="300"> |
+
+| Speedup | Average Weighted Speedup |
+|---------|--------------------------|
+| <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifort_speedup.png" width="300"> | <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_ifort_speedup_avg.png" width="300"> |
 
 [View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/dot/results/dot_ifort.html)
 
 ### GNU Fortran (gfortran)
 
-| Elapsed Time | Performance | Speedup |
-|--------------|-------------|---------|
-| <img alt="dot_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_gfortran_time.png" width="300"> | <img alt="dot_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_gfortran_perf.png" width="300"> | <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_gfortran_speedup.png" width="300"> |
+| Elapsed Time | Performance |
+|--------------|-------------|
+| <img alt="dot_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_gfortran_time.png" width="300"> | <img alt="dot_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_gfortran_perf.png" width="300"> |
+
+| Speedup | Average Weighted Speedup |
+|---------|--------------------------|
+| <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_gfortran_speedup.png" width="300"> | <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_gfortran_speedup_avg.png" width="300"> |
 
 [View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/dot/results/dot_gfortran.html)
 
 ### NVIDIA HPC (nvfortran)
 
-| Elapsed Time | Performance | Speedup |
-|--------------|-------------|---------|
-| <img alt="dot_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_nvfortran_time.png" width="300"> | <img alt="dot_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_nvfortran_perf.png" width="300"> | <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_nvfortran_speedup.png" width="300"> |
+| Elapsed Time | Performance |
+|--------------|-------------|
+| <img alt="dot_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_nvfortran_time.png" width="300"> | <img alt="dot_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_nvfortran_perf.png" width="300"> |
+
+| Speedup | Average Weighted Speedup |
+|---------|--------------------------|
+| <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_nvfortran_speedup.png" width="300"> | <img alt="dot_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/dot/results/dot_nvfortran_speedup_avg.png" width="300"> |
 
 [View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/dot/results/dot_nvfortran.html)
