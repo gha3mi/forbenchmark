@@ -19,7 +19,7 @@ program benchmark_dot
    allocate(seed_array(seed_size))
    seed_array = 123456789
 
-   call bench%init(7,'Benchmark dot_product','benchmarks/dot/results/dot', 1000)
+   call bench%init(7,'Benchmark dot_product','benchmarks/dot/results/dot', 5000)
 
    num_elements = [100_ik, 1000_ik, 10000_ik, 100000_ik, 1000000_ik]
 
