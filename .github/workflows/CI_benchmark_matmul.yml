@@ -21,6 +21,7 @@ on:
 jobs:
 
   Build:
+    if: github.repository_owner == 'gha3mi'
     runs-on: ${{ matrix.os }}
     permissions:
       contents: write
