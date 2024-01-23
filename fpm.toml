@@ -38,7 +38,7 @@ main       = "demo.f90"
 name       = "test_dot"
 source-dir = "benchmarks/dot/test"
 main       = "test_dot.f90"
-[example.dependencies]
+[test.dependencies]
 fordot = {git="https://github.com/gha3mi/fordot.git"}
 fast_math = {git="https://github.com/jalvesz/fast_math.git"}
 
