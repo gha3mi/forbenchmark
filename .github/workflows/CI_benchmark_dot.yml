@@ -53,7 +53,12 @@ jobs:
         compiler: ${{ matrix.toolchain.compiler }}
         version: ${{ matrix.toolchain.version }}
 
-    - name: dot benchmark
+    - name: Test
+      run: fpm @benchmark-dot-test-${{env.FC}}
+      env:
+        FC: ${{ steps.setup-fortran.outputs.fc }}
+
+    - name: Run dot benchmark
       run: fpm @benchmark-dot-${{env.FC}}
       env:
         FC: ${{ steps.setup-fortran.outputs.fc }}
