@@ -376,7 +376,7 @@ contains
       this%marks(this%imark)%elapsed_time_max = elapsed_time_max
 
       if (this%marks(1)%elapsed_time_max <= epsilon(0.0_rk)) error stop 'Maximum elapsed time for the reference benchmark is too small.'
-      this%marks(this%imark)%speedup_max_total = this%marks(this%imark)%elapsed_time_max/this%marks(1)%elapsed_time_max
+      this%marks(this%imark)%speedup_max_total = this%marks(1)%elapsed_time_max/this%marks(this%imark)%elapsed_time_max
 
 
       if (this_image()==1) then
