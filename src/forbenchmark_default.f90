@@ -73,6 +73,7 @@ contains
 
       if (nmarks <= 0) error stop 'nmarks must be greater than zero.'
 
+      if (allocated(this%marks)) deallocate(this%marks)
       allocate(this%marks(nmarks))
 
       compiler =''
