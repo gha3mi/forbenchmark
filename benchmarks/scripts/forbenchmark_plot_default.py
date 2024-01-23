@@ -125,12 +125,13 @@ def plot_benchmark_data(
             color=colors[method],
         )
 
+    plt.xscale("log")
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.legend(loc="upper left", bbox_to_anchor=(1, 1), ncol=1)
-    plt.gca().xaxis.set_major_formatter(plt.ScalarFormatter(useMathText=True))
-    plt.gca().ticklabel_format(axis="x", style="sci", scilimits=(-2, 2))
-    plt.grid(True)
+    # plt.gca().xaxis.set_major_formatter(plt.ScalarFormatter(useMathText=True))
+    # plt.gca().ticklabel_format(axis="x", style="sci", scilimits=(-2, 2))
+    plt.grid(True,"both")
     plt.tight_layout()
 
     # Add 'Generated using ForBenchmark' text to the bottom right corner of the figure
