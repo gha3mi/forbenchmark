@@ -21,7 +21,7 @@ program benchmark_dot
 
    call bench%init(7,'Benchmark dot_product','benchmarks/dot/results/dot', 5000)
 
-   num_elements = [100_ik, 1000_ik, 10000_ik, 100000_ik, 1000000_ik]
+   num_elements = [500_ik, 1000_ik, 10000_ik, 100000_ik, 1000000_ik]
 
    do i = 1, size(num_elements)
       p = num_elements(i)
