@@ -21,9 +21,10 @@ implicit-external = false
 source-form       = "free"
 
 [dependencies]
-kinds     = {git="https://github.com/gha3mi/kinds.git"}
-fortime   = {git="https://github.com/gha3mi/fortime.git"}
-FACE      = {git="https://github.com/szaghi/FACE.git"}
+kinds       = {git="https://github.com/gha3mi/kinds.git"}
+fortime     = {git="https://github.com/gha3mi/fortime.git"}
+FACE        = {git="https://github.com/szaghi/FACE.git"}
+forunittest = {git="https://github.com/gha3mi/forunittest.git"}
 
 [preprocess]
 [preprocess.cpp]
@@ -33,6 +34,13 @@ name       = "demo"
 source-dir = "example"
 main       = "demo.f90"
 
+[[test]]
+name       = "test_dot"
+source-dir = "benchmarks/dot/test"
+main       = "test_dot.f90"
+[example.dependencies]
+fordot = {git="https://github.com/gha3mi/fordot.git"}
+fast_math = {git="https://github.com/jalvesz/fast_math.git"}
 
 [[example]]
 name       = "dot"

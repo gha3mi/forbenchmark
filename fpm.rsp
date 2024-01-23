@@ -43,6 +43,37 @@ options --flag "-O3 -mtune=native -xHost -llapack -lblas -qopenmp -DINT64 -ipo -
 
 
 
+@benchmark-dot-test-ifx
+options test
+options --target test_dot
+options --profile release
+options --compiler ifx
+options --flag "-O3 -mtune=native -xHost -llapack -lblas -qopenmp -flto=full -DINT64"
+
+@benchmark-dot-test-ifort
+options test
+options --target test_dot
+options --profile release
+options --compiler ifort
+options --flag --flag "-O3 -mtune=native -xHost -llapack -lblas -qopenmp -ipo -DINT64"
+
+@benchmark-dot-test-gfortran
+options test
+options --target test_dot
+options --profile release
+options --compiler gfortran
+options --flag "-O3 -march=native -llapack -lblas -fopenmp -flto -DINT64"
+
+@benchmark-dot-test-nvfortran
+options test
+options --target test_dot
+options --profile release
+options --compiler nvfortran
+options --flag "-O3 -fast -march=native -mtune=native -stdpar=gpu,multicore -llapack -lblas -openmp -DINT64"
+
+
+
+
 @benchmark-matmul-mm-ifx
 options run --example
 options --target matmul_mm
