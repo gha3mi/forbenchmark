@@ -122,7 +122,7 @@ This command will produce graphical representations and an HTML table showcasing
 
 | Speedup | Average Weighted Speedup |
 |---------|--------------------------|
-| <img alt="demo_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/dot_gfortran_speedup.png" width="300"> | <img alt="demo_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/dot_gfortran_speedup_avg.png" width="300"> |
+| <img alt="demo_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_gfortran_speedup.png" width="300"> | <img alt="demo_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_gfortran_speedup_avg.png" width="300"> |
 
 For Coarray benchmarks, execute:
 
