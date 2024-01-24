@@ -135,7 +135,7 @@ The outputs can be found in the `results` directory.
 ## TODO
 - [ ] Add [sphinx-gallery](https://sphinx-gallery.github.io/stable/auto_examples/.index.html)
 - [ ] Add settings to set units.
-- [ ] Add benchmarks for matmul_co, dot_co, ...
+- [ ] Add and update benchmarks for matmul and matmul_co,...
 - [ ] Add MPI module.
 
 ## API documentation
