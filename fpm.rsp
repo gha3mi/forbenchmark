@@ -31,14 +31,14 @@ options run --example
 options --target dot_co
 options --profile release
 options --compiler ifx
-options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -DINT64 -flto=full -coarray -coarray-num-images=4 -DUSE_COARRAY"
+options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -DINT64 -flto=full -coarray -DUSE_COARRAY"
 
 @benchmark-dot-ifort-coarray
 options run --example
 options --target dot_co
 options --profile release
 options --compiler ifort
-options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -DINT64 -ipo -coarray -coarray-num-images=4 -DUSE_COARRAY"
+options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -DINT64 -ipo -coarray -DUSE_COARRAY"
 
 
 
