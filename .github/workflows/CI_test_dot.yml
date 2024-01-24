@@ -1,0 +1,49 @@
+name: test_dot
+
+on:
+  push:
+    paths:
+      - benchmarks/dot/dot.f90
+      - benchmarks/dot/dot_co.f90
+
+jobs:
+
+  Build:
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        toolchain:
+          - {compiler: gcc}
+          - {compiler: intel}
+          - {compiler: intel-classic}
+          - {compiler: nvidia-hpc}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
+    - name: Setup Fortran Package Manager (fpm)
+      uses: fortran-lang/setup-fpm@v5
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Install LAPACK and BLAS
+      run: sudo apt-get install -y libblas-dev liblapack-dev
+
+    - name: Setup Fortran Compiler
+      uses: fortran-lang/setup-fortran@main
+      id: setup-fortran
+      with:
+        compiler: ${{ matrix.toolchain.compiler }}
+        version: ${{ matrix.toolchain.version }}
+
+    - name: Run test
+      run: fpm @benchmark-dot-test-${{env.FC}}
+      env:
+        FC: ${{ steps.setup-fortran.outputs.fc }}
