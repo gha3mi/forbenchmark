@@ -92,7 +92,7 @@ program demo
    call bench%finalize()
 
    ! you can use a python script to plot and export the results as follows:
-   ! python results/export.py demo.data
+   ! python results/export.py demo_<compiler>.data
    ! for coarray benchmarks, utilize:
    ! python results/export_co.py demo_co.data
    ! python results/export_im.py demo_im1.data
