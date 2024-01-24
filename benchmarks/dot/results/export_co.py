@@ -39,10 +39,17 @@ fpd.plot_performance_tot(file_path, benchmark_data, x_data,
                                    ylabel='Performance [GFLOPS]')
 
 # Plot the performance
-fpd.plot_speedup_max(file_path, benchmark_data,
-                                   title='dot_product Benchmark - Max. Speedup',
+fpd.plot_speedup_max(file_path, benchmark_data, x_data,
+                                   title='dot_product Benchmark - Speedup',
                                    xlabel='Number of Elements',
-                                   ylabel='Max. Speedup [-]')
+                                   ylabel='Max. Speedup [-]',
+                                   bar_width=0.12)
+
+
+fpd.plot_speedup_max_avg(file_path, benchmark_data, x_data, 
+                                   title='dot_product Benchmark - Average Max. Speedup',
+                                   xlabel='Methods',
+                                   ylabel='Average Max. Speedup [-]')
 
 fh.generate_html(file_path, benchmark_data,
                   title='dot_product Benchmark')
