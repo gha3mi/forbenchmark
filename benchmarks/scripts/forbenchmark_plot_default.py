@@ -1,6 +1,7 @@
 # ForBenchmark
 # Seyed Ali Ghasemi
 
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -128,7 +129,7 @@ def plot_benchmark_data(
     plt.xscale("log")
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    plt.legend(loc="upper left", bbox_to_anchor=(1, 1), ncol=1)
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15), ncol=4)
     # plt.gca().xaxis.set_major_formatter(plt.ScalarFormatter(useMathText=True))
     # plt.gca().ticklabel_format(axis="x", style="sci", scilimits=(-2, 2))
     plt.grid(True,"both")
@@ -172,12 +173,9 @@ def plot_benchmark_speedup(file_path, benchmark_data, x_data, title, xlabel, yla
     for i, (method, group) in enumerate(benchmark_data.groupby("method")):
         speedup_values = group["speedup"]
 
-        # Calculate the width to separate bars
-        # bar_width = 0.12  # Adjust this value based on your preference
-
         # Plot all bars for each method
         positions = [x + i * bar_width for x in range(len(speedup_values))]
-        plt.bar(
+        bars = plt.bar(
             positions,
             speedup_values,
             label=method,
@@ -186,15 +184,24 @@ def plot_benchmark_speedup(file_path, benchmark_data, x_data, title, xlabel, yla
             width=bar_width,
         )
 
+        # Add rotated text for each bar
+        for pos, val in zip(positions, speedup_values):
+            plt.text(pos, val+0.1, method,       va='bottom', ha='center', rotation=90, fontsize=8)
+            # plt.text(pos, val+0.1, str(val), va='bottom', ha='center', rotation=90, fontsize=8)
+
     # Set x-ticks to the x_data values for the first group
     first_group_method = unique_methods[0]
     first_group_x_data = x_data[benchmark_data['method'] == first_group_method]
     plt.xticks(range(len(first_group_x_data)), first_group_x_data)
 
+    plt.yticks(np.arange(0, round(max(benchmark_data["speedup"]))+2, 1))
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    plt.legend()
-    plt.grid(True)
+    # plt.legend()
+    plt.gca().set_axisbelow(True)
+    plt.grid(True, axis='y')
+    plt.minorticks_on()
+    plt.grid(True, which='minor', axis='y', linestyle=':', linewidth=0.5)
     plt.tight_layout()
 
     # Add 'Generated using ForBenchmark' text to the bottom right corner of the figure
@@ -226,7 +233,7 @@ def plot_average_speedup(file_path, benchmark_data, x_data, title, xlabel, ylabe
 
     # Set up color map
     num_methods = len(avg_speedup)
-    cmap = plt.cm.get_cmap(COLORMAP, num_methods)
+    cmap = plt.cm.get_cmap('viridis', num_methods)
     colors = {
         method: mpl.colors.rgb2hex(cmap(i)[:3])
         for i, method in enumerate(avg_speedup.index)
@@ -252,14 +259,20 @@ def plot_average_speedup(file_path, benchmark_data, x_data, title, xlabel, ylabe
             speedup,
             f'{speedup:.2f}',
             ha='center',
-            va='bottom'
+            va='bottom',
+            fontsize=8,
+            rotation=90
         )
 
-    plt.xticks(range(num_methods), avg_speedup.index)
+    plt.xticks(range(num_methods), avg_speedup.index, rotation=90)
+    plt.yticks(np.arange(0, round(max(benchmark_data["speedup"]))+2, 1))
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    plt.legend()
-    plt.grid(True)
+    # plt.legend()
+    plt.gca().set_axisbelow(True)
+    plt.grid(True, axis='y')
+    plt.minorticks_on()
+    plt.grid(True, which='minor', axis='y', linestyle=':', linewidth=0.5)
     plt.tight_layout()
 
     # Add 'Generated using ForBenchmark' text to the bottom right corner of the figure
