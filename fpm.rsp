@@ -3,42 +3,42 @@ options run --example
 options --target dot
 options --profile release
 options --compiler ifx
-options --flag "-O3 -mtune=native -xHost -llapack -lblas -qopenmp -flto=full -DINT64"
+options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -flto=full -DINT64"
 
 @benchmark-dot-ifort
 options run --example
 options --target dot
 options --profile release
 options --compiler ifort
-options --flag --flag "-O3 -mtune=native -xHost -llapack -lblas -qopenmp -ipo -DINT64"
+options --flag --flag "-O3 -mtune=native -xHost -lblas -qopenmp -ipo -DINT64"
 
 @benchmark-dot-gfortran
 options run --example
 options --target dot
 options --profile release
 options --compiler gfortran
-options --flag "-O3 -march=native -llapack -lblas -fopenmp -flto -DINT64"
+options --flag "-O3 -march=native -lblas -fopenmp -flto -DINT64"
 
 @benchmark-dot-nvfortran
 options run --example
 options --target dot
 options --profile release
 options --compiler nvfortran
-options --flag "-O3 -fast -march=native -mtune=native -stdpar=gpu,multicore -llapack -lblas -openmp -DINT64"
+options --flag "-O3 -fast -march=native -mtune=native -stdpar=gpu,multicore -lblas -openmp -DINT64"
 
 @benchmark-dot-ifx-coarray
 options run --example
 options --target dot_co
 options --profile release
 options --compiler ifx
-options --flag "-O3 -mtune=native -xHost -llapack -lblas -qopenmp -DINT64 -coarray -coarray-num-images=4 -DUSE_COARRAY"
+options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -DINT64 -flto=full -coarray -coarray-num-images=4 -DUSE_COARRAY"
 
 @benchmark-dot-ifort-coarray
 options run --example
 options --target dot_co
 options --profile release
 options --compiler ifort
-options --flag "-O3 -mtune=native -xHost -llapack -lblas -qopenmp -DINT64 -ipo -coarray -coarray-num-images=4 -DUSE_COARRAY"
+options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -DINT64 -ipo -coarray -coarray-num-images=4 -DUSE_COARRAY"
 
 
 
@@ -48,28 +48,28 @@ options test
 options --target test_dot
 options --profile release
 options --compiler ifx
-options --flag "-O3 -mtune=native -xHost -llapack -lblas -qopenmp -flto=full -DINT64"
+options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -flto=full -DINT64"
 
 @benchmark-dot-test-ifort
 options test
 options --target test_dot
 options --profile release
 options --compiler ifort
-options --flag --flag "-O3 -mtune=native -xHost -llapack -lblas -qopenmp -ipo -DINT64"
+options --flag --flag "-O3 -mtune=native -xHost -lblas -qopenmp -ipo -DINT64"
 
 @benchmark-dot-test-gfortran
 options test
 options --target test_dot
 options --profile release
 options --compiler gfortran
-options --flag "-O3 -march=native -llapack -lblas -fopenmp -flto -DINT64"
+options --flag "-O3 -march=native -lblas -fopenmp -flto -DINT64"
 
 @benchmark-dot-test-nvfortran
 options test
 options --target test_dot
 options --profile release
 options --compiler nvfortran
-options --flag "-O3 -fast -march=native -mtune=native -stdpar=gpu,multicore -llapack -lblas -openmp -DINT64"
+options --flag "-O3 -fast -march=native -mtune=native -stdpar=gpu,multicore -lblas -openmp -DINT64"
 
 
 
