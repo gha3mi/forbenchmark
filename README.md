@@ -111,12 +111,18 @@ After execution, the results will be displayed in the terminal and stored in the
 To generate visual representations and export benchmarking metrics, execute the following commands in Python. Specify the relevant data file as an argument:
 
 ```shell
-python results/export.py demo.data
+python results/export.py demo_<compiler>.data
 ```
 
 This command will produce graphical representations and an HTML table showcasing benchmarking metrics:
 
-<img alt="demo_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_time.png" width="250"> <img alt="demo_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_perf.png" width="250"> <img alt="demo_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_speedup.png" width="250">
+| Elapsed Time | Performance |
+|--------------|-------------|
+| <img alt="demo_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_gfortran_time.png" width="300"> | <img alt="demo_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/results/demo_gfortran_perf.png" width="300"> |
+
+| Speedup | Average Weighted Speedup |
+|---------|--------------------------|
+| <img alt="demo_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/dot_gfortran_speedup.png" width="300"> | <img alt="demo_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/results/dot_gfortran_speedup_avg.png" width="300"> |
 
 For Coarray benchmarks, execute:
 
