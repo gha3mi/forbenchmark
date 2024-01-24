@@ -57,10 +57,11 @@ cd ../..
 
 System specifications for the obtained results:
 
-| **Processor**                     | Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz |
-|-----------------------------------|--------------------------------------------|
-| **Memory**                        | 64 GB                                      |
-| **Operating System**              | Ubuntu 22.04.3 LTS                          |
+| **Specification**    | **Details**                                 |
+|----------------------|---------------------------------------------|
+| **Processor**        | Intel(R) Core(TM) i9-9980HK CPU @ 2.40GHz   |
+| **Memory**           | 64 GB                                       |
+| **Operating System** | Ubuntu 22.04.3 LTS                      |
 
 ### Intel Fortran Compiler (ifx)
 
