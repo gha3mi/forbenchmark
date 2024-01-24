@@ -49,4 +49,6 @@ jobs:
         python -m pip install pandas matplotlib
 
     - name: Plot results
-      run: python results/export.py demo.data
+      run: python results/export.py demo_${{ env.FC}}.data
+      env:
+        FC: ${{ steps.setup-fortran.outputs.fc }}
