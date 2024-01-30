@@ -13,7 +13,7 @@ ForBenchmark can measure various time metrics including elapsed wall time, CPU t
 ## Benchmark Results
 
 - [dot_product](https://github.com/gha3mi/forbenchmark/tree/main/benchmarks/dot)
-- [matmul](https://github.com/gha3mi/forbenchmark/tree/main/benchmarks/matmul)
+- [matmul](https://github.com/gha3mi/forbenchmark/tree/main/benchmarks/matmul) (Under development)
 
 This list will be updated. Feel free to add new benchmarks.
 
