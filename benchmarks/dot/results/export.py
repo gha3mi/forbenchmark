@@ -36,7 +36,7 @@ fpd.plot_speedup(file_path, benchmark_data, x_data,
                                    title='dot_product Benchmark - Speedup',
                                    xlabel='Number of Elements',
                                    ylabel='Speedup [-]',
-                                   bar_width=0.12)
+                                   bar_width=0.10)
 
 
 fpd.plot_speedup_avg(file_path, benchmark_data, x_data, 

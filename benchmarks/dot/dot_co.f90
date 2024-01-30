@@ -3,7 +3,7 @@ program benchmark_dot_coarray
 #if defined(USE_COARRAY)
 
    use kinds
-   use fordot
+   use fordot, only: fdot_product => dot_product ! to avoid overloading
    use forbenchmark
 
    implicit none
@@ -21,7 +21,7 @@ program benchmark_dot_coarray
    allocate(seed_array(seed_size))
    seed_array = 123456789
 
-   call bench%init(4, 'Fordot_product','benchmarks/dot/results/dot', 1000)
+   call bench%init(6, 'Fordot_product','benchmarks/dot/results/dot', 1000)
 
    num_elements = [1000_ik, 10000_ik, 100000_ik, 1000000_ik]
 
@@ -52,7 +52,7 @@ program benchmark_dot_coarray
       !===============================================================================
       call bench%start_benchmark(2,'m1_co', "a = dot_product(u,v,'m1',coarray=.true.)",[p])
       do nl = 1,bench%nloops
-         a = dot_product(u,v,'m1',coarray=.true.)
+         a = fdot_product(u,v,'m1',coarray=.true.)
          call prevent_optimization(a,nl) ! loop-invariant
       end do
       call bench%stop_benchmark(cmp_gflops)
@@ -62,7 +62,7 @@ program benchmark_dot_coarray
       !===============================================================================
       call bench%start_benchmark(3,'m2_co', "a = dot_product(u,v,'m2',coarray=.true.)",[p])
       do nl = 1,bench%nloops
-         a = dot_product(u,v,'m2',coarray=.true.)
+         a = fdot_product(u,v,'m2',coarray=.true.)
          call prevent_optimization(a,nl) ! loop-invariant
       end do
       call bench%stop_benchmark(cmp_gflops)
@@ -72,7 +72,7 @@ program benchmark_dot_coarray
       !===============================================================================
       call bench%start_benchmark(4,'m3_co', "a = dot_product(u,v,'m3',coarray=.true.)",[p])
       do nl = 1,bench%nloops
-         a = dot_product(u,v,'m3',coarray=.true.)
+         a = fdot_product(u,v,'m3',coarray=.true.)
          call prevent_optimization(a,nl) ! loop-invariant
       end do
       call bench%stop_benchmark(cmp_gflops)

@@ -1,7 +1,7 @@
 program benchmark_dot
 
    use kinds
-   use fordot
+   use fordot, only: fdot_product => dot_product ! to avoid overloading
    use fast_math, only: fprod, fprod_kahan
    use forbenchmark
 
@@ -19,7 +19,7 @@ program benchmark_dot
    allocate(seed_array(seed_size))
    seed_array = 123456789
 
-   call bench%init(7,'Benchmark dot_product','benchmarks/dot/results/dot', 10000)
+   call bench%init(8,'Benchmark dot_product','benchmarks/dot/results/dot', 10000)
 
    num_elements = [1000_ik, 10000_ik, 100000_ik, 1000000_ik]
 
@@ -48,9 +48,9 @@ program benchmark_dot
 
 
       !===============================================================================
-      call bench%start_benchmark(2,'m1', "a = dot_product(u,v,'m1')",[p])
+      call bench%start_benchmark(2,'blas', "a = dot_product(u,v,'m2')",[p])
       do nl = 1,bench%nloops
-         a = dot_product(u,v,'m1')
+         a = fdot_product(u,v,'m2')
          call prevent_optimization(a,nl) ! loop-invariant
       end do
       call bench%stop_benchmark(cmp_gflops)
@@ -58,9 +58,9 @@ program benchmark_dot
 
 
       !===============================================================================
-      call bench%start_benchmark(3,'m2', "a = dot_product(u,v,'m2')",[p])
+      call bench%start_benchmark(3,'m1_b16', "a = f(u,v,'m1',16)",[p])
       do nl = 1,bench%nloops
-         a = dot_product(u,v,'m2')
+         a = fdot_product(u,v,'m1',16)
          call prevent_optimization(a,nl) ! loop-invariant
       end do
       call bench%stop_benchmark(cmp_gflops)
@@ -68,9 +68,9 @@ program benchmark_dot
 
 
       !===============================================================================
-      call bench%start_benchmark(4,'m3', "a = dot_product(u,v,'m3')",[p])
+      call bench%start_benchmark(4,'blas_b16', "a = dot_product(u,v,'m2',16)",[p])
       do nl = 1,bench%nloops
-         a = dot_product(u,v,'m3')
+         a = fdot_product(u,v,'m2',16)
          call prevent_optimization(a,nl) ! loop-invariant
       end do
       call bench%stop_benchmark(cmp_gflops)
@@ -78,9 +78,9 @@ program benchmark_dot
 
 
       !===============================================================================
-      call bench%start_benchmark(5,'m4', "a = dot_product(u,v,'m4')",[p])
+      call bench%start_benchmark(5,'m3_b16', "a = dot_product(u,v,'m3',16)",[p])
       do nl = 1,bench%nloops
-         a = dot_product(u,v,'m4')
+         a = fdot_product(u,v,'m3',16)
          call prevent_optimization(a,nl) ! loop-invariant
       end do
       call bench%stop_benchmark(cmp_gflops)
@@ -88,7 +88,17 @@ program benchmark_dot
 
 
       !===============================================================================
-      call bench%start_benchmark(6,'chunks', "a = fprod(u,v)",[p])
+      call bench%start_benchmark(6,'m4_b16', "a = dot_product(u,v,'m4',16)",[p])
+      do nl = 1,bench%nloops
+         a = fdot_product(u,v,'m4',16)
+         call prevent_optimization(a,nl) ! loop-invariant
+      end do
+      call bench%stop_benchmark(cmp_gflops)
+      !===============================================================================
+
+
+      !===============================================================================
+      call bench%start_benchmark(7,'chunks', "a = fprod(u,v)",[p])
       do nl = 1,bench%nloops
          a = fprod(u,v)
          call prevent_optimization(a,nl) ! loop-invariant
@@ -98,7 +108,7 @@ program benchmark_dot
 
 
       !===============================================================================
-      call bench%start_benchmark(7,'kahan', "a = fprod_kahan(u,v)",[p])
+      call bench%start_benchmark(8,'kahan', "a = fprod_kahan(u,v)",[p])
       do nl = 1,bench%nloops
          a = fprod_kahan(u,v)
          call prevent_optimization(a,nl) ! loop-invariant
@@ -128,7 +138,7 @@ contains
    subroutine prevent_optimization(a, nl)
       real(rk), intent(in) :: a
       integer, intent(in)  :: nl
-      if (a == 0.0_rk) print*, nl, 'a = 0.0'
+      if (abs(a)<tiny(0.0_rk)) print*, nl, 'a = 0.0'
    end subroutine prevent_optimization
    !===============================================================================
 

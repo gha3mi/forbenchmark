@@ -3,7 +3,7 @@ options run --example
 options --target dot
 options --profile release
 options --compiler ifx
-options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -flto=full -DINT64"
+options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -flto=full -DINT64 -DUSE_DO_CONCURRENT"
 
 @benchmark-dot-ifort
 options run --example
@@ -31,7 +31,7 @@ options run --example
 options --target dot_co
 options --profile release
 options --compiler ifx
-options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -DINT64 -flto=full -coarray -DUSE_COARRAY"
+options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -DINT64 -flto=full -coarray -DUSE_COARRAY -DUSE_DO_CONCURRENT"
 
 @benchmark-dot-ifort-coarray
 options run --example
@@ -48,7 +48,7 @@ options test
 options --target test_dot
 options --profile release
 options --compiler ifx
-options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -flto=full -DINT64"
+options --flag "-O3 -mtune=native -xHost -lblas -qopenmp -flto=full -DINT64 -DUSE_DO_CONCURRENT"
 
 @benchmark-dot-test-ifort
 options test
