@@ -65,70 +65,73 @@ cd ../..
 
 ## matmul (matrix-matrix)
 
+**TODO**:
+- Generate results.
+
 ### Intel Fortran Compiler (ifx)
 
-| Elapsed Time | Performance | Speedup |
+<!-- | Elapsed Time | Performance | Speedup |
 |--------------|-------------|---------|
 | <img alt="matmul_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_ifx_time.png" width="300"> | <img alt="matmul_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_ifx_perf.png" width="300"> | <img alt="matmul_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_ifx_speedup.png" width="300"> |
 
 
-[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mm_ifx.html)
+[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mm_ifx.html) -->
 
 ### Intel Fortran Compiler Classic (ifort)
 
-| Elapsed Time | Performance | Speedup |
+<!-- | Elapsed Time | Performance | Speedup |
 |--------------|-------------|---------|
 | <img alt="matmul_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_ifort_time.png" width="300"> | <img alt="matmul_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_ifort_perf.png" width="300"> | <img alt="matmul_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_ifort_speedup.png" width="300"> |
 
-[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mm_ifort.html)
+[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mm_ifort.html) -->
 
 ### GNU Fortran (gfortran)
 
-| Elapsed Time | Performance | Speedup |
+<!-- | Elapsed Time | Performance | Speedup |
 |--------------|-------------|---------|
 | <img alt="matmul_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_gfortran_time.png" width="300"> | <img alt="matmul_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_gfortran_perf.png" width="300"> | <img alt="matmul_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_gfortran_speedup.png" width="300"> |
 
-[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mm_gfortran.html)
+[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mm_gfortran.html) -->
 
 ### NVIDIA HPC (nvfortran)
 
-| Elapsed Time | Performance | Speedup |
+<!-- | Elapsed Time | Performance | Speedup |
 |--------------|-------------|---------|
 | <img alt="matmul_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_nvfortran_time.png" width="300"> | <img alt="matmul_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_nvfortran_perf.png" width="300"> | <img alt="matmul_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mm_nvfortran_speedup.png" width="300"> |
 
-[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mm_nvfortran.html)
+[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mm_nvfortran.html) -->
 
 ## matmul (matrix-vector)
 
 ### Intel Fortran Compiler (ifx)
 
-| Elapsed Time | Performance | Speedup |
+<!-- | Elapsed Time | Performance | Speedup |
 |--------------|-------------|---------|
 | <img alt="matmul_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_ifx_time.png" width="300"> | <img alt="matmul_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_ifx_perf.png" width="300"> | <img alt="matmul_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_ifx_speedup.png" width="300"> |
 
 
-[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mv_ifx.html)
+[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mv_ifx.html) -->
 
 ### Intel Fortran Compiler Classic (ifort)
 
-| Elapsed Time | Performance | Speedup |
+<!-- | Elapsed Time | Performance | Speedup |
 |--------------|-------------|---------|
 | <img alt="matmul_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_ifort_time.png" width="300"> | <img alt="matmul_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_ifort_perf.png" width="300"> | <img alt="matmul_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_ifort_speedup.png" width="300"> |
 
-[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mv_ifort.html)
+[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mv_ifort.html) -->
 
 ### GNU Fortran (gfortran)
 
-| Elapsed Time | Performance | Speedup |
+<!-- | Elapsed Time | Performance | Speedup |
 |--------------|-------------|---------|
 | <img alt="matmul_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_gfortran_time.png" width="300"> | <img alt="matmul_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_gfortran_perf.png" width="300"> | <img alt="matmul_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_gfortran_speedup.png" width="300"> |
 
-[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mv_gfortran.html)
+[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mv_gfortran.html) -->
 
 ### NVIDIA HPC (nvfortran)
 
-| Elapsed Time | Performance | Speedup |
+<!-- | Elapsed Time | Performance | Speedup |
 |--------------|-------------|---------|
 | <img alt="matmul_elapsed_time" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_nvfortran_time.png" width="300"> | <img alt="matmul_performance" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_nvfortran_perf.png" width="300"> | <img alt="matmul_speedup" src="https://github.com/gha3mi/forbenchmark/raw/main/benchmarks/matmul/results/matmul_mv_nvfortran_speedup.png" width="300"> |
 
-[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mv_nvfortran.html)
+[View detailed table](https://raw.githack.com/gha3mi/forbenchmark/main/benchmarks/matmul/results/matmul_mv_nvfortran.html) -->
