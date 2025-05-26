@@ -12,14 +12,29 @@
 
     <title>demo &ndash; ForBenchmark</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -75,8 +90,7 @@
             <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> BSD 3-Clause License</li>
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
-              <a data-bs-toggle="tooltip"
-                 data-bs-placement="bottom" data-html="true"
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
                  title="100.0% of total for programs.">45 statements</a>
             </li>
 
@@ -97,9 +111,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -122,7 +138,7 @@
             <a class="list-group-item" href="../program/demo.html#variable-c">C</a>
             <a class="list-group-item" href="../program/demo.html#variable-p">p</a>
             <a class="list-group-item" href="../program/demo.html#variable-nl">nl</a>
-            <a class="list-group-item" href="../program/demo.html#variable-i">i</a>
+            <a class="list-group-item" href="../program/demo.html#variable-i~2">i</a>
             <a class="list-group-item" href="../program/demo.html#variable-j">j</a>
             <a class="list-group-item" href="../program/demo.html#variable-k">k</a>
         </div>
@@ -177,8 +193,8 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item">kinds</li>
                   <li class="list-inline-item"><a href='../module/forbenchmark.html'>forbenchmark</a></li>
+                  <li class="list-inline-item">kinds</li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -208,8 +224,8 @@
 <!-- program~demo&#45;&gt;kinds -->
 <g id="program~~demo~~UsesGraph_edge1" class="edge">
 <title>program~demo&#45;&gt;kinds</title>
-<path fill="none" stroke="#255000" stroke-dasharray="5,2" d="M384.97,-76.98C330.02,-82.63 198.33,-92.85 90,-75 81.3,-73.57 72.17,-71.07 63.68,-68.29"/>
-<polygon fill="#255000" stroke="#255000" points="64.66,-64.93 54.06,-64.94 62.36,-71.54 64.66,-64.93"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M384.97,-76.98C330.02,-82.63 198.33,-92.85 90,-75 81.3,-73.57 72.17,-71.07 63.68,-68.29"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="64.66,-64.93 54.06,-64.94 62.36,-71.54 64.66,-64.93"/>
 </g>
 <!-- module~forbenchmark -->
 <g id="program~~demo~~UsesGraph_node3" class="node">
@@ -223,8 +239,8 @@
 <!-- program~demo&#45;&gt;module~forbenchmark -->
 <g id="program~~demo~~UsesGraph_edge2" class="edge">
 <title>program~demo&#45;&gt;module~forbenchmark</title>
-<path fill="none" stroke="#255000" stroke-dasharray="5,2" d="M384.77,-69C376.92,-67.51 368.01,-65.81 359.07,-64.11"/>
-<polygon fill="#255000" stroke="#255000" points="359.51,-60.63 349.03,-62.2 358.2,-67.51 359.51,-60.63"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M384.77,-69C376.92,-67.51 368.01,-65.81 359.07,-64.11"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="359.51,-60.63 349.03,-62.2 358.2,-67.51 359.51,-60.63"/>
 </g>
 <!-- module~forbenchmark_coarray -->
 <g id="program~~demo~~UsesGraph_node4" class="node">
@@ -238,8 +254,8 @@
 <!-- module~forbenchmark&#45;&gt;module~forbenchmark_coarray -->
 <g id="program~~demo~~UsesGraph_edge3" class="edge">
 <title>module~forbenchmark&#45;&gt;module~forbenchmark_coarray</title>
-<path fill="none" stroke="#025525" stroke-dasharray="5,2" stroke-opacity="0.019608" d="M260.74,-54C252.67,-54 244.02,-54 235.29,-54"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="235.04,-50.5 225.04,-54 235.04,-57.5 235.04,-50.5"/>
+<path fill="none" stroke="#00ffff" stroke-dasharray="5,2" d="M260.74,-54C252.67,-54 244.02,-54 235.29,-54"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="235.04,-50.5 225.04,-54 235.04,-57.5 235.04,-50.5"/>
 </g>
 <!-- module~forbenchmark_default -->
 <g id="program~~demo~~UsesGraph_node5" class="node">
@@ -253,14 +269,14 @@
 <!-- module~forbenchmark&#45;&gt;module~forbenchmark_default -->
 <g id="program~~demo~~UsesGraph_edge4" class="edge">
 <title>module~forbenchmark&#45;&gt;module~forbenchmark_default</title>
-<path fill="none" stroke="#025525" stroke-dasharray="5,2" stroke-opacity="0.019608" d="M262.31,-41.96C246.02,-37.26 227.18,-31.82 210.05,-26.88"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="210.78,-23.45 200.2,-24.04 208.84,-30.17 210.78,-23.45"/>
+<path fill="none" stroke="#00ffff" stroke-dasharray="5,2" d="M262.31,-41.96C246.02,-37.26 227.18,-31.82 210.05,-26.88"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="210.78,-23.45 200.2,-24.04 208.84,-30.17 210.78,-23.45"/>
 </g>
 <!-- module~forbenchmark_coarray&#45;&gt;kinds -->
 <g id="program~~demo~~UsesGraph_edge6" class="edge">
 <title>module~forbenchmark_coarray&#45;&gt;kinds</title>
-<path fill="none" stroke="#255000" stroke-dasharray="5,2" d="M89.99,-54C81.13,-54 72.34,-54 64.27,-54"/>
-<polygon fill="#255000" stroke="#255000" points="64.14,-50.5 54.14,-54 64.14,-57.5 64.14,-50.5"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M89.99,-54C81.13,-54 72.34,-54 64.27,-54"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="64.14,-50.5 54.14,-54 64.14,-57.5 64.14,-50.5"/>
 </g>
 <!-- fortime -->
 <g id="program~~demo~~UsesGraph_node6" class="node">
@@ -271,20 +287,20 @@
 <!-- module~forbenchmark_coarray&#45;&gt;fortime -->
 <g id="program~~demo~~UsesGraph_edge5" class="edge">
 <title>module~forbenchmark_coarray&#45;&gt;fortime</title>
-<path fill="none" stroke="#255000" stroke-dasharray="5,2" d="M117.78,-41.92C108.65,-39.03 98.98,-35.94 90,-33 81.54,-30.23 72.45,-27.19 63.91,-24.3"/>
-<polygon fill="#255000" stroke="#255000" points="64.8,-20.91 54.21,-21.01 62.55,-27.54 64.8,-20.91"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M117.78,-41.92C108.65,-39.03 98.98,-35.94 90,-33 81.54,-30.23 72.45,-27.19 63.91,-24.3"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="64.8,-20.91 54.21,-21.01 62.55,-27.54 64.8,-20.91"/>
 </g>
 <!-- module~forbenchmark_default&#45;&gt;kinds -->
 <g id="program~~demo~~UsesGraph_edge8" class="edge">
 <title>module~forbenchmark_default&#45;&gt;kinds</title>
-<path fill="none" stroke="#025525" stroke-dasharray="5,2" stroke-opacity="0.019608" d="M117.78,-24.08C108.65,-26.97 98.98,-30.06 90,-33 81.54,-35.77 72.45,-38.81 63.91,-41.7"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="62.55,-38.46 54.21,-44.99 64.8,-45.09 62.55,-38.46"/>
+<path fill="none" stroke="#00ffff" stroke-dasharray="5,2" d="M117.78,-24.08C108.65,-26.97 98.98,-30.06 90,-33 81.54,-35.77 72.45,-38.81 63.91,-41.7"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="62.55,-38.46 54.21,-44.99 64.8,-45.09 62.55,-38.46"/>
 </g>
 <!-- module~forbenchmark_default&#45;&gt;fortime -->
 <g id="program~~demo~~UsesGraph_edge7" class="edge">
 <title>module~forbenchmark_default&#45;&gt;fortime</title>
-<path fill="none" stroke="#025525" stroke-dasharray="5,2" stroke-opacity="0.019608" d="M91.87,-12C82.37,-12 72.87,-12 64.21,-12"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="64.13,-8.5 54.13,-12 64.13,-15.5 64.13,-8.5"/>
+<path fill="none" stroke="#00ffff" stroke-dasharray="5,2" d="M91.87,-12C82.37,-12 72.87,-12 64.21,-12"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="64.13,-8.5 54.13,-12 64.13,-15.5 64.13,-8.5"/>
 </g>
 </g>
 </svg>
@@ -378,11 +394,11 @@ large graphs.</div>
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: program~~demo~~CallsGraph Pages: 1 -->
-<svg id="programdemoCallsGraph" width="641pt" height="505pt"
- viewBox="0.00 0.00 641.00 504.77" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="program~~demo~~CallsGraph" class="graph" transform="scale(1.15 1.15) rotate(0) translate(4 574)">
+<svg id="programdemoCallsGraph" width="482pt" height="578pt"
+ viewBox="0.00 0.00 482.00 578.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="program~~demo~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 574)">
 <title>program~~demo~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-574 730,-574 730,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-574 478,-574 478,4 -4,4"/>
 <!-- program~demo -->
 <g id="program~~demo~~CallsGraph_node1" class="node">
 <title>program~demo</title>
@@ -392,247 +408,243 @@ large graphs.</div>
 <!-- proc~finalize -->
 <g id="program~~demo~~CallsGraph_node2" class="node">
 <title>proc~finalize</title>
-<g id="a_program~~demo~~CallsGraph_node2"><a xlink:href="../proc/finalize.html" xlink:title="forbenchmark_default::benchmark%finalize">
-<polygon fill="#d9534f" stroke="#d9534f" points="363,-549 116,-549 116,-525 363,-525 363,-549"/>
-<text text-anchor="middle" x="239.5" y="-534.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default::benchmark%finalize</text>
+<g id="a_program~~demo~~CallsGraph_node2"><a xlink:href="../proc/finalize.html" xlink:title="benchmark%finalize">
+<polygon fill="#d9534f" stroke="#d9534f" points="237,-549 116,-549 116,-525 237,-525 237,-549"/>
+<text text-anchor="middle" x="176.5" y="-534.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">benchmark%finalize</text>
 </a>
 </g>
 </g>
 <!-- program~demo&#45;&gt;proc~finalize -->
 <g id="program~~demo~~CallsGraph_edge1" class="edge">
 <title>program~demo&#45;&gt;proc~finalize</title>
-<path fill="none" stroke="#255000" d="M33.75,-423.29C42.98,-441.69 62.87,-476.23 90,-495 107.78,-507.31 129.12,-516.03 149.99,-522.2"/>
-<polygon fill="#255000" stroke="#255000" points="149.29,-525.64 159.86,-524.95 151.16,-518.89 149.29,-525.64"/>
+<path fill="none" stroke="#ff0000" d="M34.53,-423.28C44.48,-441.05 64.96,-474.09 90,-495 102.6,-505.52 118.28,-514.2 132.76,-520.88"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="131.5,-524.15 142.06,-524.98 134.32,-517.74 131.5,-524.15"/>
 </g>
 <!-- proc~init -->
 <g id="program~~demo~~CallsGraph_node3" class="node">
 <title>proc~init</title>
-<g id="a_program~~demo~~CallsGraph_node3"><a xlink:href="../proc/init.html" xlink:title="forbenchmark_default::benchmark%init">
-<polygon fill="#d9534f" stroke="#d9534f" points="352.5,-486 126.5,-486 126.5,-462 352.5,-462 352.5,-486"/>
-<text text-anchor="middle" x="239.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default::benchmark%init</text>
+<g id="a_program~~demo~~CallsGraph_node3"><a xlink:href="../proc/init.html" xlink:title="benchmark%init">
+<polygon fill="#d9534f" stroke="#d9534f" points="226.5,-486 126.5,-486 126.5,-462 226.5,-462 226.5,-486"/>
+<text text-anchor="middle" x="176.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">benchmark%init</text>
 </a>
 </g>
 </g>
 <!-- program~demo&#45;&gt;proc~init -->
 <g id="program~~demo~~CallsGraph_edge2" class="edge">
 <title>program~demo&#45;&gt;proc~init</title>
-<path fill="none" stroke="#255000" d="M54.23,-418.85C87.7,-428.87 146.28,-446.4 188.42,-459.01"/>
-<polygon fill="#255000" stroke="#255000" points="187.63,-462.43 198.22,-461.94 189.64,-455.72 187.63,-462.43"/>
+<path fill="none" stroke="#ff0000" d="M54.03,-422.12C77.31,-432.06 111.7,-446.75 137.95,-457.96"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="136.64,-461.21 147.22,-461.92 139.39,-454.77 136.64,-461.21"/>
 </g>
 <!-- proc~start_benchmark -->
 <g id="program~~demo~~CallsGraph_node4" class="node">
 <title>proc~start_benchmark</title>
-<g id="a_program~~demo~~CallsGraph_node4"><a xlink:href="../proc/start_benchmark.html" xlink:title="forbenchmark_default::benchmark%start_benchmark">
-<polygon fill="#d9534f" stroke="#d9534f" points="389,-402 90,-402 90,-378 389,-378 389,-402"/>
-<text text-anchor="middle" x="239.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default::benchmark%start_benchmark</text>
+<g id="a_program~~demo~~CallsGraph_node4"><a xlink:href="../proc/start_benchmark.html" xlink:title="benchmark%start_benchmark">
+<polygon fill="#d9534f" stroke="#d9534f" points="263,-402 90,-402 90,-378 263,-378 263,-402"/>
+<text text-anchor="middle" x="176.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">benchmark%start_benchmark</text>
 </a>
 </g>
 </g>
 <!-- program~demo&#45;&gt;proc~start_benchmark -->
 <g id="program~~demo~~CallsGraph_edge3" class="edge">
 <title>program~demo&#45;&gt;proc~start_benchmark</title>
-<path fill="none" stroke="#255000" d="M54.23,-408.38C68.63,-406.95 87.68,-405.05 108.06,-403.01"/>
-<polygon fill="#255000" stroke="#255000" points="108.56,-406.48 118.16,-402.01 107.86,-399.52 108.56,-406.48"/>
+<path fill="none" stroke="#ff0000" d="M54.03,-407.29C62.03,-406.15 71.35,-404.83 81.19,-403.43"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="81.78,-406.88 91.19,-402 80.79,-399.95 81.78,-406.88"/>
 </g>
 <!-- proc~stop_benchmark -->
 <g id="program~~demo~~CallsGraph_node5" class="node">
 <title>proc~stop_benchmark</title>
-<g id="a_program~~demo~~CallsGraph_node5"><a xlink:href="../proc/stop_benchmark.html" xlink:title="forbenchmark_default::benchmark%stop_benchmark">
-<polygon fill="#d9534f" stroke="#d9534f" points="388.5,-150 90.5,-150 90.5,-126 388.5,-126 388.5,-150"/>
-<text text-anchor="middle" x="239.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default::benchmark%stop_benchmark</text>
+<g id="a_program~~demo~~CallsGraph_node5"><a xlink:href="../proc/stop_benchmark.html" xlink:title="benchmark%stop_benchmark">
+<polygon fill="#d9534f" stroke="#d9534f" points="262.5,-150 90.5,-150 90.5,-126 262.5,-126 262.5,-150"/>
+<text text-anchor="middle" x="176.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">benchmark%stop_benchmark</text>
 </a>
 </g>
 </g>
 <!-- program~demo&#45;&gt;proc~stop_benchmark -->
 <g id="program~~demo~~CallsGraph_edge4" class="edge">
 <title>program~demo&#45;&gt;proc~stop_benchmark</title>
-<path fill="none" stroke="#255000" d="M37.32,-398.92C70.25,-356.2 181.44,-212 222.82,-158.34"/>
-<polygon fill="#255000" stroke="#255000" points="225.72,-160.31 229.05,-150.25 220.17,-156.03 225.72,-160.31"/>
+<path fill="none" stroke="#ff0000" d="M34.53,-398.92C57.46,-356.47 134.56,-213.78 163.97,-159.35"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="167.21,-160.71 168.88,-150.25 161.05,-157.39 167.21,-160.71"/>
 </g>
 <!-- proc~finalize_mark -->
 <g id="program~~demo~~CallsGraph_node16" class="node">
 <title>proc~finalize_mark</title>
-<g id="a_program~~demo~~CallsGraph_node16"><a xlink:href="../proc/finalize_mark.html" xlink:title="forbenchmark_default::mark%finalize_mark">
-<polygon fill="#d9534f" stroke="#d9534f" points="699,-570 452,-570 452,-546 699,-546 699,-570"/>
-<text text-anchor="middle" x="575.5" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default::mark%finalize_mark</text>
+<g id="a_program~~demo~~CallsGraph_node16"><a xlink:href="../proc/finalize_mark.html" xlink:title="mark%finalize_mark">
+<polygon fill="#d9534f" stroke="#d9534f" points="447,-570 326,-570 326,-546 447,-546 447,-570"/>
+<text text-anchor="middle" x="386.5" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mark%finalize_mark</text>
 </a>
 </g>
 </g>
 <!-- proc~finalize&#45;&gt;proc~finalize_mark -->
 <g id="program~~demo~~CallsGraph_edge5" class="edge">
 <title>proc~finalize&#45;&gt;proc~finalize_mark</title>
-<path fill="none" stroke="#255000" d="M363.45,-544.73C388.9,-546.33 415.82,-548.02 441.61,-549.64"/>
-<polygon fill="#255000" stroke="#255000" points="441.61,-553.15 451.81,-550.29 442.05,-546.17 441.61,-553.15"/>
+<path fill="none" stroke="#ff0000" d="M237.1,-543.02C261.69,-545.5 290.35,-548.39 315.9,-550.97"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="315.59,-554.46 325.89,-551.98 316.29,-547.49 315.59,-554.46"/>
 </g>
 <!-- proc~current_date_and_time -->
 <g id="program~~demo~~CallsGraph_node15" class="node">
 <title>proc~current_date_and_time</title>
-<g id="a_program~~demo~~CallsGraph_node15"><a xlink:href="../proc/current_date_and_time.html" xlink:title="forbenchmark_default::current_date_and_time">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="706,-528 445,-528 445,-504 706,-504 706,-528"/>
-<text text-anchor="middle" x="575.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default::current_date_and_time</text>
+<g id="a_program~~demo~~CallsGraph_node15"><a xlink:href="../proc/current_date_and_time.html" xlink:title="current_date_and_time">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="454,-528 319,-528 319,-504 454,-504 454,-528"/>
+<text text-anchor="middle" x="386.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">current_date_and_time</text>
 </a>
 </g>
 </g>
 <!-- proc~init&#45;&gt;proc~current_date_and_time -->
 <g id="program~~demo~~CallsGraph_edge6" class="edge">
 <title>proc~init&#45;&gt;proc~current_date_and_time</title>
-<path fill="none" stroke="transparent" d="M336.21,-486.04C377.7,-491.25 426.42,-497.38 468.96,-502.73"/>
-<polygon fill="transparent" stroke="transparent" points="468.71,-506.22 479.06,-504 469.58,-499.28 468.71,-506.22"/>
+<path fill="none" stroke="#7fff00" d="M226.53,-483.9C253.17,-489.28 286.57,-496.02 315.87,-501.94"/>
+<polygon fill="#7fff00" stroke="#7fff00" points="315.55,-505.45 326.05,-504 316.94,-498.59 315.55,-505.45"/>
 </g>
 <!-- colorize -->
 <g id="program~~demo~~CallsGraph_node6" class="node">
 <title>colorize</title>
-<polygon fill="#777777" stroke="#777777" points="603,-486 548,-486 548,-462 603,-462 603,-486"/>
-<text text-anchor="middle" x="575.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">colorize</text>
+<polygon fill="#777777" stroke="#777777" points="414,-486 359,-486 359,-462 414,-462 414,-486"/>
+<text text-anchor="middle" x="386.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">colorize</text>
 </g>
 <!-- proc~start_benchmark&#45;&gt;colorize -->
 <g id="program~~demo~~CallsGraph_edge7" class="edge">
 <title>proc~start_benchmark&#45;&gt;colorize</title>
-<path fill="none" stroke="#025525" stroke-opacity="0.019608" d="M270.03,-402.03C306.04,-416.24 369.03,-439.64 425,-453 462.86,-462.04 507.1,-467.65 537.58,-470.78"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="537.46,-474.29 547.75,-471.78 538.14,-467.32 537.46,-474.29"/>
+<path fill="none" stroke="#00ffff" d="M197.03,-402C220.49,-415.97 261.39,-438.92 299,-453 315.03,-459 333.37,-463.74 349.04,-467.19"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="348.38,-470.62 358.89,-469.26 349.83,-463.77 348.38,-470.62"/>
 </g>
 <!-- ctimer_start -->
 <g id="program~~demo~~CallsGraph_node7" class="node">
 <title>ctimer_start</title>
-<polygon fill="#777777" stroke="#777777" points="613.5,-444 537.5,-444 537.5,-420 613.5,-420 613.5,-444"/>
-<text text-anchor="middle" x="575.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ctimer_start</text>
+<polygon fill="#777777" stroke="#777777" points="424.5,-444 348.5,-444 348.5,-420 424.5,-420 424.5,-444"/>
+<text text-anchor="middle" x="386.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ctimer_start</text>
 </g>
 <!-- proc~start_benchmark&#45;&gt;ctimer_start -->
 <g id="program~~demo~~CallsGraph_edge8" class="edge">
 <title>proc~start_benchmark&#45;&gt;ctimer_start</title>
-<path fill="none" stroke="#025525" stroke-opacity="0.019608" d="M336.21,-402.04C398.84,-409.91 477.93,-419.86 527.38,-426.07"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="527.11,-429.57 537.46,-427.34 527.98,-422.62 527.11,-429.57"/>
+<path fill="none" stroke="#00ffff" d="M237.1,-402.04C269.35,-408.55 308.61,-416.47 338.65,-422.54"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="337.96,-425.97 348.46,-424.52 339.35,-419.11 337.96,-425.97"/>
 </g>
 <!-- dtimer_start -->
 <g id="program~~demo~~CallsGraph_node9" class="node">
 <title>dtimer_start</title>
-<polygon fill="#777777" stroke="#777777" points="614,-402 537,-402 537,-378 614,-378 614,-402"/>
-<text text-anchor="middle" x="575.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dtimer_start</text>
+<polygon fill="#777777" stroke="#777777" points="425,-402 348,-402 348,-378 425,-378 425,-402"/>
+<text text-anchor="middle" x="386.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dtimer_start</text>
 </g>
 <!-- proc~start_benchmark&#45;&gt;dtimer_start -->
 <g id="program~~demo~~CallsGraph_edge9" class="edge">
 <title>proc~start_benchmark&#45;&gt;dtimer_start</title>
-<path fill="none" stroke="#025525" stroke-opacity="0.019608" d="M389.43,-390C438.83,-390 490.36,-390 526.46,-390"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="526.69,-393.5 536.69,-390 526.69,-386.5 526.69,-393.5"/>
+<path fill="none" stroke="#00ffff" d="M263,-390C288.54,-390 315.61,-390 337.8,-390"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="337.94,-393.5 347.94,-390 337.94,-386.5 337.94,-393.5"/>
 </g>
 <!-- mtimer_start -->
 <g id="program~~demo~~CallsGraph_node11" class="node">
 <title>mtimer_start</title>
-<polygon fill="#777777" stroke="#777777" points="616,-360 535,-360 535,-336 616,-336 616,-360"/>
-<text text-anchor="middle" x="575.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mtimer_start</text>
+<polygon fill="#777777" stroke="#777777" points="427,-360 346,-360 346,-336 427,-336 427,-360"/>
+<text text-anchor="middle" x="386.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mtimer_start</text>
 </g>
 <!-- proc~start_benchmark&#45;&gt;mtimer_start -->
 <g id="program~~demo~~CallsGraph_edge10" class="edge">
 <title>proc~start_benchmark&#45;&gt;mtimer_start</title>
-<path fill="none" stroke="#025525" stroke-opacity="0.019608" d="M336.21,-377.96C397.76,-370.22 475.21,-360.49 524.8,-354.25"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="525.45,-357.7 534.94,-352.97 524.58,-350.75 525.45,-357.7"/>
+<path fill="none" stroke="#00ffff" d="M237.1,-377.96C268.35,-371.65 306.19,-364.02 335.83,-358.03"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="336.84,-361.4 345.95,-355.99 335.45,-354.53 336.84,-361.4"/>
 </g>
 <!-- otimer_start -->
 <g id="program~~demo~~CallsGraph_node13" class="node">
 <title>otimer_start</title>
-<polygon fill="#777777" stroke="#777777" points="614,-318 537,-318 537,-294 614,-294 614,-318"/>
-<text text-anchor="middle" x="575.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">otimer_start</text>
+<polygon fill="#777777" stroke="#777777" points="425,-318 348,-318 348,-294 425,-294 425,-318"/>
+<text text-anchor="middle" x="386.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">otimer_start</text>
 </g>
 <!-- proc~start_benchmark&#45;&gt;otimer_start -->
 <g id="program~~demo~~CallsGraph_edge11" class="edge">
 <title>proc~start_benchmark&#45;&gt;otimer_start</title>
-<path fill="none" stroke="#025525" stroke-opacity="0.019608" d="M270.03,-377.97C306.04,-363.76 369.03,-340.36 425,-327 458.64,-318.97 497.31,-313.64 526.9,-310.36"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="527.39,-313.83 536.96,-309.28 526.65,-306.87 527.39,-313.83"/>
+<path fill="none" stroke="#00ffff" d="M197.03,-378C220.49,-364.03 261.39,-341.08 299,-327 311.33,-322.38 325.04,-318.51 337.84,-315.4"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="338.92,-318.75 347.87,-313.07 337.34,-311.93 338.92,-318.75"/>
 </g>
 <!-- timer_start -->
 <g id="program~~demo~~CallsGraph_node18" class="node">
 <title>timer_start</title>
-<polygon fill="#777777" stroke="#777777" points="610.5,-276 540.5,-276 540.5,-252 610.5,-252 610.5,-276"/>
-<text text-anchor="middle" x="575.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">timer_start</text>
+<polygon fill="#777777" stroke="#777777" points="421.5,-276 351.5,-276 351.5,-252 421.5,-252 421.5,-276"/>
+<text text-anchor="middle" x="386.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">timer_start</text>
 </g>
 <!-- proc~start_benchmark&#45;&gt;timer_start -->
 <g id="program~~demo~~CallsGraph_edge12" class="edge">
 <title>proc~start_benchmark&#45;&gt;timer_start</title>
-<path fill="none" stroke="#025525" stroke-opacity="0.019608" d="M256.77,-377.87C287.73,-355.48 358.02,-307.83 425,-285 459.18,-273.35 499.86,-268.16 530.15,-265.85"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="530.67,-269.32 540.41,-265.14 530.19,-262.34 530.67,-269.32"/>
+<path fill="none" stroke="#00ffff" d="M187.86,-377.84C207.32,-355.83 251.66,-309.37 299,-285 312.05,-278.28 327.31,-273.66 341.36,-270.5"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="342.24,-273.9 351.33,-268.45 340.83,-267.04 342.24,-273.9"/>
 </g>
 <!-- ctimer_stop -->
 <g id="program~~demo~~CallsGraph_node8" class="node">
 <title>ctimer_stop</title>
-<polygon fill="#777777" stroke="#777777" points="613,-234 538,-234 538,-210 613,-210 613,-234"/>
-<text text-anchor="middle" x="575.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ctimer_stop</text>
+<polygon fill="#777777" stroke="#777777" points="424,-234 349,-234 349,-210 424,-210 424,-234"/>
+<text text-anchor="middle" x="386.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ctimer_stop</text>
 </g>
 <!-- proc~stop_benchmark&#45;&gt;ctimer_stop -->
 <g id="program~~demo~~CallsGraph_edge13" class="edge">
 <title>proc~stop_benchmark&#45;&gt;ctimer_stop</title>
-<path fill="none" stroke="#127025" stroke-opacity="0.019608" d="M270.03,-150.03C306.04,-164.24 369.03,-187.64 425,-201 458.98,-209.11 498.1,-214.47 527.8,-217.74"/>
-<polygon fill="#127025" fill-opacity="0.019608" stroke="#127025" stroke-opacity="0.019608" points="527.57,-221.24 537.89,-218.81 528.31,-214.28 527.57,-221.24"/>
+<path fill="none" stroke="#7f00ff" d="M197.03,-150C220.49,-163.97 261.39,-186.92 299,-201 311.69,-205.75 325.83,-209.71 338.94,-212.86"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="338.19,-216.28 348.72,-215.12 339.76,-209.46 338.19,-216.28"/>
 </g>
 <!-- dtimer_stop -->
 <g id="program~~demo~~CallsGraph_node10" class="node">
 <title>dtimer_stop</title>
-<polygon fill="#777777" stroke="#777777" points="613.5,-192 537.5,-192 537.5,-168 613.5,-168 613.5,-192"/>
-<text text-anchor="middle" x="575.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dtimer_stop</text>
+<polygon fill="#777777" stroke="#777777" points="424.5,-192 348.5,-192 348.5,-168 424.5,-168 424.5,-192"/>
+<text text-anchor="middle" x="386.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dtimer_stop</text>
 </g>
 <!-- proc~stop_benchmark&#45;&gt;dtimer_stop -->
 <g id="program~~demo~~CallsGraph_edge14" class="edge">
 <title>proc~stop_benchmark&#45;&gt;dtimer_stop</title>
-<path fill="none" stroke="#127025" stroke-opacity="0.019608" d="M336.21,-150.04C398.84,-157.91 477.93,-167.86 527.38,-174.07"/>
-<polygon fill="#127025" fill-opacity="0.019608" stroke="#127025" stroke-opacity="0.019608" points="527.11,-177.57 537.46,-175.34 527.98,-170.62 527.11,-177.57"/>
+<path fill="none" stroke="#7f00ff" d="M237.1,-150.04C269.35,-156.55 308.61,-164.47 338.65,-170.54"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="337.96,-173.97 348.46,-172.52 339.35,-167.11 337.96,-173.97"/>
 </g>
 <!-- mtimer_stop -->
 <g id="program~~demo~~CallsGraph_node12" class="node">
 <title>mtimer_stop</title>
-<polygon fill="#777777" stroke="#777777" points="615,-150 536,-150 536,-126 615,-126 615,-150"/>
-<text text-anchor="middle" x="575.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mtimer_stop</text>
+<polygon fill="#777777" stroke="#777777" points="426,-150 347,-150 347,-126 426,-126 426,-150"/>
+<text text-anchor="middle" x="386.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mtimer_stop</text>
 </g>
 <!-- proc~stop_benchmark&#45;&gt;mtimer_stop -->
 <g id="program~~demo~~CallsGraph_edge15" class="edge">
 <title>proc~stop_benchmark&#45;&gt;mtimer_stop</title>
-<path fill="none" stroke="#127025" stroke-opacity="0.019608" d="M388.94,-138C438.1,-138 489.43,-138 525.61,-138"/>
-<polygon fill="#127025" fill-opacity="0.019608" stroke="#127025" stroke-opacity="0.019608" points="525.86,-141.5 535.86,-138 525.86,-134.5 525.86,-141.5"/>
+<path fill="none" stroke="#7f00ff" d="M262.7,-138C287.88,-138 314.59,-138 336.64,-138"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="336.74,-141.5 346.74,-138 336.74,-134.5 336.74,-141.5"/>
 </g>
 <!-- otimer_stop -->
 <g id="program~~demo~~CallsGraph_node14" class="node">
 <title>otimer_stop</title>
-<polygon fill="#777777" stroke="#777777" points="613.5,-108 537.5,-108 537.5,-84 613.5,-84 613.5,-108"/>
-<text text-anchor="middle" x="575.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">otimer_stop</text>
+<polygon fill="#777777" stroke="#777777" points="424.5,-108 348.5,-108 348.5,-84 424.5,-84 424.5,-108"/>
+<text text-anchor="middle" x="386.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">otimer_stop</text>
 </g>
 <!-- proc~stop_benchmark&#45;&gt;otimer_stop -->
 <g id="program~~demo~~CallsGraph_edge16" class="edge">
 <title>proc~stop_benchmark&#45;&gt;otimer_stop</title>
-<path fill="none" stroke="#127025" stroke-opacity="0.019608" d="M336.21,-125.96C398.84,-118.09 477.93,-108.14 527.38,-101.93"/>
-<polygon fill="#127025" fill-opacity="0.019608" stroke="#127025" stroke-opacity="0.019608" points="527.98,-105.38 537.46,-100.66 527.11,-98.43 527.98,-105.38"/>
+<path fill="none" stroke="#7f00ff" d="M237.1,-125.96C269.35,-119.45 308.61,-111.53 338.65,-105.46"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="339.35,-108.89 348.46,-103.48 337.96,-102.03 339.35,-108.89"/>
 </g>
 <!-- proc~write_benchmark -->
 <g id="program~~demo~~CallsGraph_node17" class="node">
 <title>proc~write_benchmark</title>
-<g id="a_program~~demo~~CallsGraph_node17"><a xlink:href="../proc/write_benchmark.html" xlink:title="forbenchmark_default::benchmark%write_benchmark">
-<polygon fill="#d9534f" stroke="#d9534f" points="726,-66 425,-66 425,-42 726,-42 726,-66"/>
-<text text-anchor="middle" x="575.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">forbenchmark_default::benchmark%write_benchmark</text>
+<g id="a_program~~demo~~CallsGraph_node17"><a xlink:href="../proc/write_benchmark.html" xlink:title="benchmark%write_benchmark">
+<polygon fill="#d9534f" stroke="#d9534f" points="474,-66 299,-66 299,-42 474,-42 474,-66"/>
+<text text-anchor="middle" x="386.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">benchmark%write_benchmark</text>
 </a>
 </g>
 </g>
 <!-- proc~stop_benchmark&#45;&gt;proc~write_benchmark -->
 <g id="program~~demo~~CallsGraph_edge17" class="edge">
 <title>proc~stop_benchmark&#45;&gt;proc~write_benchmark</title>
-<path fill="none" stroke="#127025" stroke-opacity="0.019608" d="M270.03,-125.97C306.04,-111.76 369.03,-88.36 425,-75 436.35,-72.29 448.28,-69.89 460.24,-67.77"/>
-<polygon fill="#127025" fill-opacity="0.019608" stroke="#127025" stroke-opacity="0.019608" points="461.01,-71.19 470.28,-66.05 459.83,-64.29 461.01,-71.19"/>
+<path fill="none" stroke="#7f00ff" d="M197.03,-126C220.49,-112.03 261.39,-89.08 299,-75 304.89,-72.8 311.09,-70.76 317.36,-68.9"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="318.55,-72.2 327.22,-66.11 316.65,-65.46 318.55,-72.2"/>
 </g>
 <!-- timer_stop -->
 <g id="program~~demo~~CallsGraph_node19" class="node">
 <title>timer_stop</title>
-<polygon fill="#777777" stroke="#777777" points="610,-24 541,-24 541,0 610,0 610,-24"/>
-<text text-anchor="middle" x="575.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">timer_stop</text>
+<polygon fill="#777777" stroke="#777777" points="421,-24 352,-24 352,0 421,0 421,-24"/>
+<text text-anchor="middle" x="386.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">timer_stop</text>
 </g>
 <!-- proc~stop_benchmark&#45;&gt;timer_stop -->
 <g id="program~~demo~~CallsGraph_edge18" class="edge">
 <title>proc~stop_benchmark&#45;&gt;timer_stop</title>
-<path fill="none" stroke="#127025" stroke-opacity="0.019608" d="M256.77,-125.87C287.73,-103.48 358.02,-55.83 425,-33 459.29,-21.31 500.13,-16.13 530.45,-13.82"/>
-<polygon fill="#127025" fill-opacity="0.019608" stroke="#127025" stroke-opacity="0.019608" points="530.97,-17.3 540.71,-13.13 530.49,-10.31 530.97,-17.3"/>
+<path fill="none" stroke="#7f00ff" d="M187.86,-125.84C207.32,-103.83 251.66,-57.37 299,-33 312.16,-26.23 327.57,-21.58 341.72,-18.42"/>
+<polygon fill="#7f00ff" stroke="#7f00ff" points="342.65,-21.8 351.74,-16.37 341.25,-14.95 342.65,-21.8"/>
 </g>
 </g>
 </svg>
-</div>                <script>
-                  var panprogramdemoCallsGraph = svgPanZoom('#programdemoCallsGraph',
-                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
-                  );
-                </script>          <div>
+</div>          <div>
             <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
           </div>
           <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
@@ -652,7 +664,7 @@ large graphs.</div>
 <!-- Title: Graph Key Pages: 1 -->
 <svg width="641pt" height="28pt"
  viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1.16 1.16) rotate(0) translate(4 28)">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
 <title>Graph Key</title>
 <polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
 <!-- Subroutine -->
@@ -825,7 +837,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-i"></span>
+              <span class="anchor" id="variable-i~2"></span>
               integer(kind=ik)
             </td>
             <td>
@@ -904,7 +916,7 @@ large graphs.</div>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-argi"></span>
+              <span class="anchor" id="variable-argi~7"></span>
               integer(kind=ik),
             </td>
 <td>intent(in),</td>
@@ -919,7 +931,7 @@ large graphs.</div>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-argr"></span>
+              <span class="anchor" id="variable-argr~7"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -1076,40 +1088,21 @@ large graphs.</div>
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>ForBenchmark was developed by Seyed Ali Ghasemi<br>&copy; 2023 BSD 3-Clause License
+          <div class="col">
+            <p>
+              ForBenchmark
+ was developed by Seyed Ali Ghasemi<br>              &copy; 2023 BSD 3-Clause License
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-31T10:26:06.528857             </p>
+ on 2025-05-26T12:45:38.859344+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

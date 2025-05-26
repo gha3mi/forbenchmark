@@ -13,14 +13,29 @@
     <title>All Types &ndash; ForBenchmark
 </title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -135,8 +150,8 @@
 <!-- type~benchmark&#45;&gt;type~mark -->
 <g id="type~~graph~~TypeGraph_edge2" class="edge">
 <title>type~benchmark&#45;&gt;type~mark</title>
-<path fill="none" stroke="#255000" stroke-dasharray="5,2" d="M251.91,-80.14C229.54,-83.37 200.76,-87.52 178.26,-90.77"/>
-<polygon fill="#255000" stroke="#255000" points="177.5,-87.34 168.1,-92.23 178.5,-94.27 177.5,-87.34"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M251.91,-80.14C229.54,-83.37 200.76,-87.52 178.26,-90.77"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="177.5,-87.34 168.1,-92.23 178.5,-94.27 177.5,-87.34"/>
 <text text-anchor="middle" x="211" y="-91.4" font-family="Helvetica,sans-Serif" font-size="9.50">marks</text>
 </g>
 <!-- type~mark_co -->
@@ -151,8 +166,8 @@
 <!-- type~benchmark&#45;&gt;type~mark_co -->
 <g id="type~~graph~~TypeGraph_edge1" class="edge">
 <title>type~benchmark&#45;&gt;type~mark_co</title>
-<path fill="none" stroke="#255000" stroke-dasharray="5,2" d="M251.9,-67.19C245.94,-66.03 239.81,-64.91 234,-64 216.55,-61.26 197.13,-59.03 180.64,-57.38"/>
-<polygon fill="#255000" stroke="#255000" points="180.57,-53.86 170.28,-56.38 179.89,-60.82 180.57,-53.86"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M251.9,-67.19C245.94,-66.03 239.81,-64.91 234,-64 216.55,-61.26 197.13,-59.03 180.64,-57.38"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="180.57,-53.86 170.28,-56.38 179.89,-60.82 180.57,-53.86"/>
 <text text-anchor="middle" x="211" y="-66.4" font-family="Helvetica,sans-Serif" font-size="9.50">marks_co</text>
 </g>
 <!-- type~benchmark~2 -->
@@ -176,8 +191,8 @@
 <!-- type~benchmark~2&#45;&gt;type~mark~2 -->
 <g id="type~~graph~~TypeGraph_edge3" class="edge">
 <title>type~benchmark~2&#45;&gt;type~mark~2</title>
-<path fill="none" stroke="transparent" stroke-dasharray="5,2" d="M251.91,-12C229.54,-12 200.76,-12 178.26,-12"/>
-<polygon fill="transparent" stroke="transparent" points="178.1,-8.5 168.1,-12 178.1,-15.5 178.1,-8.5"/>
+<path fill="none" stroke="#cbff00" stroke-dasharray="5,2" d="M251.91,-12C229.54,-12 200.76,-12 178.26,-12"/>
+<polygon fill="#cbff00" stroke="#cbff00" points="178.1,-8.5 168.1,-12 178.1,-15.5 178.1,-8.5"/>
 <text text-anchor="middle" x="211" y="-14.4" font-family="Helvetica,sans-Serif" font-size="9.50">marks</text>
 </g>
 <!-- timer -->
@@ -189,15 +204,15 @@
 <!-- type~mark_co&#45;&gt;timer -->
 <g id="type~~graph~~TypeGraph_edge4" class="edge">
 <title>type~mark_co&#45;&gt;timer</title>
-<path fill="none" stroke="#010225" stroke-dasharray="5,2" stroke-opacity="0.019608" d="M111.74,-48.45C97.42,-45.64 79.86,-42.19 64.52,-39.17"/>
-<polygon fill="#010225" fill-opacity="0.019608" stroke="#010225" stroke-opacity="0.019608" points="64.82,-35.67 54.33,-37.17 63.47,-42.53 64.82,-35.67"/>
+<path fill="none" stroke="#0066ff" stroke-dasharray="5,2" d="M111.74,-48.45C97.42,-45.64 79.86,-42.19 64.52,-39.17"/>
+<polygon fill="#0066ff" stroke="#0066ff" points="64.82,-35.67 54.33,-37.17 63.47,-42.53 64.82,-35.67"/>
 <text text-anchor="middle" x="83" y="-46.4" font-family="Helvetica,sans-Serif" font-size="9.50">time</text>
 </g>
 <!-- type~mark~2&#45;&gt;timer -->
 <g id="type~~graph~~TypeGraph_edge5" class="edge">
 <title>type~mark~2&#45;&gt;timer</title>
-<path fill="none" stroke="#204025" stroke-dasharray="5,2" stroke-opacity="0.019608" d="M113.68,-13.57C101,-14.62 85.62,-16.31 72,-19 69.38,-19.52 66.69,-20.12 64,-20.78"/>
-<polygon fill="#204025" fill-opacity="0.019608" stroke="#204025" stroke-opacity="0.019608" points="63.09,-17.4 54.33,-23.36 64.89,-24.17 63.09,-17.4"/>
+<path fill="none" stroke="#cc00ff" stroke-dasharray="5,2" d="M113.68,-13.57C101,-14.62 85.62,-16.31 72,-19 69.38,-19.52 66.69,-20.12 64,-20.78"/>
+<polygon fill="#cc00ff" stroke="#cc00ff" points="63.09,-17.4 54.33,-23.36 64.89,-24.17 63.09,-17.4"/>
 <text text-anchor="middle" x="83" y="-21.4" font-family="Helvetica,sans-Serif" font-size="9.50">time</text>
 </g>
 </g>
@@ -258,40 +273,21 @@ large graphs.</div>
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>ForBenchmark was developed by Seyed Ali Ghasemi<br>&copy; 2023 BSD 3-Clause License
+          <div class="col">
+            <p>
+              ForBenchmark
+ was developed by Seyed Ali Ghasemi<br>              &copy; 2023 BSD 3-Clause License
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-31T10:26:06.528857             </p>
+ on 2025-05-26T12:45:38.859344+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

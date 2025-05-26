@@ -12,14 +12,29 @@
 
     <title>forbenchmark &ndash; ForBenchmark</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -77,8 +92,7 @@
             <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> BSD 3-Clause License</li>
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
-              <a data-bs-toggle="tooltip"
-                 data-bs-placement="bottom" data-html="true"
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
                  title=" 0.8% of total for modules and submodules.">5 statements</a>
             </li>
 
@@ -99,9 +113,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -179,8 +195,8 @@
 <!-- module~forbenchmark&#45;&gt;module~forbenchmark_coarray -->
 <g id="module~~forbenchmark~~UsesGraph_edge1" class="edge">
 <title>module~forbenchmark&#45;&gt;module~forbenchmark_coarray</title>
-<path fill="none" stroke="#255000" stroke-dasharray="5,2" d="M260.74,-39.24C252.58,-40.42 243.83,-41.68 235.01,-42.96"/>
-<polygon fill="#255000" stroke="#255000" points="234.44,-39.5 225.04,-44.4 235.44,-46.43 234.44,-39.5"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M260.74,-39.24C252.58,-40.42 243.83,-41.68 235.01,-42.96"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="234.44,-39.5 225.04,-44.4 235.44,-46.43 234.44,-39.5"/>
 </g>
 <!-- module~forbenchmark_default -->
 <g id="module~~forbenchmark~~UsesGraph_node3" class="node">
@@ -194,8 +210,8 @@
 <!-- module~forbenchmark&#45;&gt;module~forbenchmark_default -->
 <g id="module~~forbenchmark~~UsesGraph_edge2" class="edge">
 <title>module~forbenchmark&#45;&gt;module~forbenchmark_default</title>
-<path fill="none" stroke="#255000" stroke-dasharray="5,2" d="M260.74,-26.76C252.07,-25.5 242.72,-24.16 233.32,-22.8"/>
-<polygon fill="#255000" stroke="#255000" points="233.54,-19.29 223.14,-21.33 232.54,-26.22 233.54,-19.29"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M260.74,-26.76C252.07,-25.5 242.72,-24.16 233.32,-22.8"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="233.54,-19.29 223.14,-21.33 232.54,-26.22 233.54,-19.29"/>
 </g>
 <!-- fortime -->
 <g id="module~~forbenchmark~~UsesGraph_node4" class="node">
@@ -206,8 +222,8 @@
 <!-- module~forbenchmark_coarray&#45;&gt;fortime -->
 <g id="module~~forbenchmark~~UsesGraph_edge3" class="edge">
 <title>module~forbenchmark_coarray&#45;&gt;fortime</title>
-<path fill="none" stroke="#255000" stroke-dasharray="5,2" d="M89.99,-54C81.13,-54 72.34,-54 64.27,-54"/>
-<polygon fill="#255000" stroke="#255000" points="64.14,-50.5 54.14,-54 64.14,-57.5 64.14,-50.5"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M89.99,-54C81.13,-54 72.34,-54 64.27,-54"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="64.14,-50.5 54.14,-54 64.14,-57.5 64.14,-50.5"/>
 </g>
 <!-- kinds -->
 <g id="module~~forbenchmark~~UsesGraph_node5" class="node">
@@ -218,20 +234,20 @@
 <!-- module~forbenchmark_coarray&#45;&gt;kinds -->
 <g id="module~~forbenchmark~~UsesGraph_edge4" class="edge">
 <title>module~forbenchmark_coarray&#45;&gt;kinds</title>
-<path fill="none" stroke="#255000" stroke-dasharray="5,2" d="M117.78,-41.92C108.65,-39.03 98.98,-35.94 90,-33 81.54,-30.23 72.45,-27.19 63.91,-24.3"/>
-<polygon fill="#255000" stroke="#255000" points="64.8,-20.91 54.21,-21.01 62.55,-27.54 64.8,-20.91"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M117.78,-41.92C108.65,-39.03 98.98,-35.94 90,-33 81.54,-30.23 72.45,-27.19 63.91,-24.3"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="64.8,-20.91 54.21,-21.01 62.55,-27.54 64.8,-20.91"/>
 </g>
 <!-- module~forbenchmark_default&#45;&gt;fortime -->
 <g id="module~~forbenchmark~~UsesGraph_edge5" class="edge">
 <title>module~forbenchmark_default&#45;&gt;fortime</title>
-<path fill="none" stroke="#025525" stroke-dasharray="5,2" stroke-opacity="0.019608" d="M117.78,-24.08C108.65,-26.97 98.98,-30.06 90,-33 81.54,-35.77 72.45,-38.81 63.91,-41.7"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="62.55,-38.46 54.21,-44.99 64.8,-45.09 62.55,-38.46"/>
+<path fill="none" stroke="#00ffff" stroke-dasharray="5,2" d="M117.78,-24.08C108.65,-26.97 98.98,-30.06 90,-33 81.54,-35.77 72.45,-38.81 63.91,-41.7"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="62.55,-38.46 54.21,-44.99 64.8,-45.09 62.55,-38.46"/>
 </g>
 <!-- module~forbenchmark_default&#45;&gt;kinds -->
 <g id="module~~forbenchmark~~UsesGraph_edge6" class="edge">
 <title>module~forbenchmark_default&#45;&gt;kinds</title>
-<path fill="none" stroke="#025525" stroke-dasharray="5,2" stroke-opacity="0.019608" d="M91.87,-12C82.37,-12 72.87,-12 64.21,-12"/>
-<polygon fill="#025525" fill-opacity="0.019608" stroke="#025525" stroke-opacity="0.019608" points="64.13,-8.5 54.13,-12 64.13,-15.5 64.13,-8.5"/>
+<path fill="none" stroke="#00ffff" stroke-dasharray="5,2" d="M91.87,-12C82.37,-12 72.87,-12 64.21,-12"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="64.13,-8.5 54.13,-12 64.13,-15.5 64.13,-8.5"/>
 </g>
 </g>
 </svg>
@@ -346,8 +362,8 @@ large graphs.</div>
 <!-- program~demo&#45;&gt;module~forbenchmark -->
 <g id="module~~forbenchmark~~UsedByGraph_edge1" class="edge">
 <title>program~demo&#45;&gt;module~forbenchmark</title>
-<path fill="none" stroke="#255000" stroke-dasharray="5,2" d="M123.77,-12C115.92,-12 107.01,-12 98.07,-12"/>
-<polygon fill="#255000" stroke="#255000" points="98.03,-8.5 88.03,-12 98.03,-15.5 98.03,-8.5"/>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M123.77,-12C115.92,-12 107.01,-12 98.07,-12"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="98.03,-8.5 88.03,-12 98.03,-15.5 98.03,-8.5"/>
 </g>
 </g>
 </svg>
@@ -448,40 +464,21 @@ large graphs.</div>
     <footer>
       <div class="container">
         <div class="row justify-content-between">
-          <div class="col"><p>ForBenchmark was developed by Seyed Ali Ghasemi<br>&copy; 2023 BSD 3-Clause License
+          <div class="col">
+            <p>
+              ForBenchmark
+ was developed by Seyed Ali Ghasemi<br>              &copy; 2023 BSD 3-Clause License
 </p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-01-31T10:26:06.528857             </p>
+ on 2025-05-26T12:45:38.859344+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>
