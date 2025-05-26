@@ -39,10 +39,11 @@ fpd.plot_performance_tot(file_path, benchmark_data, x_data,
                                    ylabel='Performance [GFLOPS]')
 
 # Plot the performance
-fpd.plot_speedup_max(file_path, benchmark_data,
-                                   title='MatMul Benchmark - Max. Speedup',
-                                   xlabel='Number of Elements',
-                                   ylabel='Max. Speedup [-]')
+fpd.plot_speedup_max(file_path, benchmark_data, x_data,
+                     title='MatMul Benchmark - Max. Speedup',
+                     xlabel='Number of Elements',
+                     ylabel='Max. Speedup [-]',
+                     bar_width=0.2)
 
 fh.generate_html(file_path, benchmark_data,
                   title='MatMul Benchmark')
