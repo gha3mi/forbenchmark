@@ -69,7 +69,11 @@ def read_benchmark_data(directory):
     columns = ['method', 'elapsed_time_image', 'gflops_image', 'nloops'] + [f'arg{i}' for i in range(1, num_arguments + 1)]
 
     # Convert data to a DataFrame and apply numeric conversion to appropriate columns
-    benchmark_data = pd.DataFrame(data_rows, columns=columns).apply(pd.to_numeric, errors='ignore')
+    benchmark_data = pd.DataFrame(data_rows, columns=columns)
+
+    # Explicitly handle numeric conversion
+    for col in benchmark_data.columns:
+        benchmark_data[col] = pd.to_numeric(benchmark_data[col], errors='coerce').fillna(benchmark_data[col])
 
     # Subset of benchmark data containing argument values
     arg_data = benchmark_data.iloc[:, 4:]
