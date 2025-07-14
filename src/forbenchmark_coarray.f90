@@ -4,7 +4,6 @@ module forbenchmark_coarray
    !! A Fortran module for benchmarking and performance evaluation for coarray codes.
    !!
 
-#if defined(USE_COARRAY)
 
    use kinds
    use fortime, only: timer
@@ -12,6 +11,8 @@ module forbenchmark_coarray
    implicit none
 
    private
+
+#if defined(USE_COARRAY)
 
    public benchmark
 
@@ -301,6 +302,7 @@ contains
       interface
          impure function Fun(argi, argr)
             import rk, ik
+            implicit none
             integer(ik), dimension(:), intent(in), optional :: argi
             real(rk),    dimension(:), intent(in), optional :: argr
             real(rk)                                        :: Fun

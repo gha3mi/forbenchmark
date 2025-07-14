@@ -147,7 +147,7 @@ To generate the API documentation for `ForBenchmark` using
 command:
 
 ```shell
-ford ford.yml
+ford README.md
 ```
 
 ## Contributing

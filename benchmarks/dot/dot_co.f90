@@ -94,7 +94,7 @@ contains
    ! end function cmp_gflops
    ! !===============================================================================
 
-   
+
    !===============================================================================
    ! to prevent compiler from optimizing (loop-invariant)
    subroutine prevent_optimization(a, nl)

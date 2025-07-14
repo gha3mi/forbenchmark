@@ -128,7 +128,7 @@ program benchmark_matmul_mm
         end do
         call bench%stop_benchmark()
         !===============================================================================
-    
+
     end do
 
     call bench%finalize()

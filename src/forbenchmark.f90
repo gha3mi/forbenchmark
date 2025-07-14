@@ -10,6 +10,7 @@ module forbenchmark
    use forbenchmark_default
 #endif
 
+   private
    public benchmark
 
 end module forbenchmark
