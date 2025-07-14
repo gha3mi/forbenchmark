@@ -12,9 +12,9 @@ module forbenchmark_coarray
 
    private
 
-   public benchmark
-
 #if defined(USE_COARRAY)
+
+   public benchmark
 
    !===============================================================================
    type :: mark_co
