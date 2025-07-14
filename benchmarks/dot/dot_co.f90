@@ -45,7 +45,7 @@ program benchmark_dot_coarray
          a = dot_product(u,v)
          call prevent_optimization(a,nl) ! loop-invariant
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
 
@@ -55,7 +55,7 @@ program benchmark_dot_coarray
          a = fdot_product(u,v,'m1',coarray=.true.)
          call prevent_optimization(a,nl) ! loop-invariant
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
 
@@ -65,7 +65,7 @@ program benchmark_dot_coarray
          a = fdot_product(u,v,'m2',coarray=.true.)
          call prevent_optimization(a,nl) ! loop-invariant
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
 
@@ -75,7 +75,7 @@ program benchmark_dot_coarray
          a = fdot_product(u,v,'m3',coarray=.true.)
          call prevent_optimization(a,nl) ! loop-invariant
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
    end do
@@ -84,15 +84,15 @@ program benchmark_dot_coarray
 
 contains
 
-   !===============================================================================
-   function cmp_gflops(argi,argr) result(gflops)
-      integer(ik), dimension(:), intent(in), optional :: argi
-      real(rk),    dimension(:), intent(in), optional :: argr
-      real(rk)                                        :: gflops
+   ! !===============================================================================
+   ! function cmp_gflops(argi,argr) result(gflops)
+   !    integer(ik), dimension(:), intent(in), optional :: argi
+   !    real(rk),    dimension(:), intent(in), optional :: argr
+   !    real(rk)                                        :: gflops
 
-      gflops = real(argi(1),kind=rk)*1.0e-9_rk
-   end function cmp_gflops
-   !===============================================================================
+   !    gflops = real(argi(1),kind=rk)*1.0e-9_rk
+   ! end function cmp_gflops
+   ! !===============================================================================
 
    
    !===============================================================================

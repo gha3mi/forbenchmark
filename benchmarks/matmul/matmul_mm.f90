@@ -38,7 +38,7 @@ program benchmark_matmul_mm
             C = matmul(A,B)
             call prevent_optimization(C,nl) ! loop-invariant
         end do
-        call bench%stop_benchmark(cmp_gflops)
+        call bench%stop_benchmark()
         !===============================================================================
 
         call init_matrices(m,n,o,seed_array,A,B,C)
@@ -49,7 +49,7 @@ program benchmark_matmul_mm
             C = fmatmul(A,B,option='m2')
             call prevent_optimization(C,nl) ! loop-invariant
         end do
-        call bench%stop_benchmark(cmp_gflops)
+        call bench%stop_benchmark()
         !===============================================================================
 
         call init_matrices(m,n,o,seed_array,A,B,C)
@@ -60,7 +60,7 @@ program benchmark_matmul_mm
             C = fmatmul(A,B,option='m1',nblock=32)
             call prevent_optimization(C,nl) ! loop-invariant
         end do
-        call bench%stop_benchmark(cmp_gflops)
+        call bench%stop_benchmark()
         !===============================================================================
 
         call init_matrices(m,n,o,seed_array,A,B,C)
@@ -71,7 +71,7 @@ program benchmark_matmul_mm
             C = fmatmul(A,B,option='m3',nblock=32)
             call prevent_optimization(C,nl) ! loop-invariant
         end do
-        call bench%stop_benchmark(cmp_gflops)
+        call bench%stop_benchmark()
         !===============================================================================
 
         call init_matrices(m,n,o,seed_array,A,B,C)
@@ -82,7 +82,7 @@ program benchmark_matmul_mm
             C = fmatmul(A,B,option='m4',nblock=32)
             call prevent_optimization(C,nl) ! loop-invariant
         end do
-        call bench%stop_benchmark(cmp_gflops)
+        call bench%stop_benchmark()
         !===============================================================================
 
         call init_matrices(m,n,o,seed_array,A,B,C)
@@ -93,7 +93,7 @@ program benchmark_matmul_mm
             C = fmatmul(A,B,option='m5',nblock=32)
             call prevent_optimization(C,nl) ! loop-invariant
         end do
-        call bench%stop_benchmark(cmp_gflops)
+        call bench%stop_benchmark()
         !===============================================================================
 
         call init_matrices(m,n,o,seed_array,A,B,C)
@@ -104,7 +104,7 @@ program benchmark_matmul_mm
             C = fmatmul(A,B,option='m6',nblock=32)
             call prevent_optimization(C,nl) ! loop-invariant
         end do
-        call bench%stop_benchmark(cmp_gflops)
+        call bench%stop_benchmark()
         !===============================================================================
 
         call init_matrices(m,n,o,seed_array,A,B,C)
@@ -115,7 +115,7 @@ program benchmark_matmul_mm
             C = fmatmul(A,B,option='m7',nblock=32)
             call prevent_optimization(C,nl) ! loop-invariant
         end do
-        call bench%stop_benchmark(cmp_gflops)
+        call bench%stop_benchmark()
         !===============================================================================
 
         call init_matrices(m,n,o,seed_array,A,B,C)
@@ -126,7 +126,7 @@ program benchmark_matmul_mm
             C = fmatmul(A,B,option='m8',nblock=32)
             call prevent_optimization(C,nl) ! loop-invariant
         end do
-        call bench%stop_benchmark(cmp_gflops)
+        call bench%stop_benchmark()
         !===============================================================================
     
     end do
@@ -154,15 +154,15 @@ contains
     !===============================================================================
 
 
-    !===============================================================================
-    function cmp_gflops(argi,argr) result(gflops)
-        integer(ik), dimension(:), intent(in), optional :: argi
-        real(rk),    dimension(:), intent(in), optional :: argr
-        real(rk)                                        :: gflops
+    ! !===============================================================================
+    ! function cmp_gflops(argi,argr) result(gflops)
+    !     integer(ik), dimension(:), intent(in), optional :: argi
+    !     real(rk),    dimension(:), intent(in), optional :: argr
+    !     real(rk)                                        :: gflops
 
-        gflops = 2.0_rk*real(argi(1),kind=rk)*1.0e-9_rk
-    end function cmp_gflops
-    !===============================================================================
+    !     gflops = 2.0_rk*real(argi(1),kind=rk)*1.0e-9_rk
+    ! end function cmp_gflops
+    ! !===============================================================================
 
 
     !===============================================================================

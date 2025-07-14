@@ -60,7 +60,7 @@ program demo
       end do
       ! stop benchmark for method 1
       ! flops is an optional function to compute flops
-      call bench%stop_benchmark(flops=cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
 
@@ -81,7 +81,7 @@ program demo
          end do
 
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
       ! you can add more methods ...
@@ -98,18 +98,18 @@ program demo
    ! python results/export_im.py demo_im1.data
    ! python results/export_im.py demo_im2.data
    ! ...
-   
-contains
 
-   !===============================================================================
-   ! define an optional function to compute gflops
-   function cmp_gflops(argi,argr) result(gflops)
-      integer(ik), dimension(:), intent(in), optional :: argi
-      real(rk),    dimension(:), intent(in), optional :: argr
-      real(rk)                                        :: gflops
+! contains
 
-      gflops = real(argi(1),rk) * real(argi(2),rk) * real(argi(3),rk) * 1.0e-9_rk
-   end function cmp_gflops
-   !===============================================================================
+!    !===============================================================================
+!    ! define an optional function to compute gflops
+!    function cmp_gflops(argi,argr) result(gflops)
+!       integer(ik), dimension(:), intent(in), optional :: argi
+!       real(rk),    dimension(:), intent(in), optional :: argr
+!       real(rk)                                        :: gflops
+
+!       gflops = real(argi(1),rk) * real(argi(2),rk) * real(argi(3),rk) * 1.0e-9_rk
+!    end function cmp_gflops
+!    !===============================================================================
 
 end program demo

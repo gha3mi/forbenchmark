@@ -38,7 +38,7 @@ program benchmark_matmul_mv_coarray
       do nl = 1,bench%nloops
          w = matmul(A,v,coarray=.true.,option='m1')
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
 
@@ -47,7 +47,7 @@ program benchmark_matmul_mv_coarray
       do nl = 1,bench%nloops
          w = matmul(A,v,coarray=.true.,option='m2')
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
 
@@ -56,7 +56,7 @@ program benchmark_matmul_mv_coarray
       do nl = 1,bench%nloops
          w = matmul(A,v,coarray=.true.,option='m3')
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
 
@@ -65,7 +65,7 @@ program benchmark_matmul_mv_coarray
       do nl = 1,bench%nloops
          w = matmul(A,v,coarray=.true.,option='m4')
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
 
@@ -74,7 +74,7 @@ program benchmark_matmul_mv_coarray
       do nl = 1,bench%nloops
          w = matmul(A,v,coarray=.true.,option='m5')
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
 
@@ -83,23 +83,23 @@ program benchmark_matmul_mv_coarray
       do nl = 1,bench%nloops
          w = matmul(A,v,coarray=.true.,option='m6')
       end do
-      call bench%stop_benchmark(cmp_gflops)
+      call bench%stop_benchmark()
       !===============================================================================
 
    end do
 
    call bench%finalize()
 
-contains
+! contains
 
-   !===============================================================================
-   function cmp_gflops(argi,argr) result(gflops)
-      integer(ik), dimension(:), intent(in), optional :: argi
-      real(rk),    dimension(:), intent(in), optional :: argr
-      real(rk)                                        :: gflops
+!    !===============================================================================
+!    function cmp_gflops(argi,argr) result(gflops)
+!       integer(ik), dimension(:), intent(in), optional :: argi
+!       real(rk),    dimension(:), intent(in), optional :: argr
+!       real(rk)                                        :: gflops
 
-      gflops = 2.0_rk*real(argi(1),kind=rk)*1.0e-9_rk
-   end function cmp_gflops
-   !===============================================================================
+!       gflops = 2.0_rk*real(argi(1),kind=rk)*1.0e-9_rk
+!    end function cmp_gflops
+!    !===============================================================================
 
 end program benchmark_matmul_mv_coarray
