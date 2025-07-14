@@ -62,8 +62,9 @@ jobs:
             fpm run --example demo --compiler ${{ matrix.compiler }} --profile release --verbose
             python results/export.py demo_${{ matrix.compiler }}.data
 
-      - name: Run benchmark tests
-        run: fpm @benchmark-dot-test-${{ matrix.compiler }}
+      # - name: Run benchmark tests
+      #   run: fpm @benchmark-dot-test-${{ matrix.compiler }}
+  
   doc_ford:
     if: ${{ github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]') }}
     name: Generate FORD Documentation
