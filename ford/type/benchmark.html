@@ -1,0 +1,1022 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Documentation for ForBenchmark">
+    <meta name="author" content="Seyed Ali Ghasemi" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>benchmark &ndash; ForBenchmark </title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
+    <link href="../css/local.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">ForBenchmark <small>0.2.0</small></a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>benchmark
+      <small>Derived Type</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+            <li class="list-inline-item" id="meta-author"><i class="fa fa-pencil"></i> Seyed Ali Ghasemi</li>
+            <li class="list-inline-item" id="meta-license"><i class="fa fa-legal"></i> BSD 3-Clause License</li>
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title="<p>29.3% of total for derived types.</p>Including implementation: 310 statements, 55.1% of total for derived types.">17 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/forbenchmark_coarray.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/forbenchmark_coarray.f90.html'>forbenchmark_coarray.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/forbenchmark_coarray.html'>forbenchmark_coarray</a></li>
+            <li class="breadcrumb-item active" aria-current="page">benchmark</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#vars-0"
+         aria-expanded="false" aria-controls="vars-0">
+         <h4 class="card-header bg-primary text-white">Variables</h4>
+      </a>
+      <div id="vars-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../type/benchmark.html#variable-argi">argi</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-argr">argr</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-filename">filename</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-filename_image">filename_image</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-imark">imark</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-marks">marks</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-marks_co">marks_co</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-nloops">nloops</a>
+            <a class="list-group-item" href="../type/benchmark.html#variable-timer">timer</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#boundprocs-0"
+         aria-expanded="false" aria-controls="boundprocs-0">
+         <h4 class="card-header bg-primary text-white">Type-Bound Procedures</h4>
+      </a>
+      <div id="boundprocs-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-finalize">finalize</a>
+            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-init">init</a>
+            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-start_benchmark">start_benchmark</a>
+            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-stop_benchmark">stop_benchmark</a>
+            <a class="list-group-item" href="../type/benchmark.html#boundprocedure-write_benchmark">write_benchmark</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../type/benchmark.html#src">benchmark</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2 id="type-def-statement">
+        type, public :: benchmark</h2>
+    <p>Derived type for benchmarking and performance evaluation.</p>
+<br>      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Inherits</h3>
+        </div>
+        <div class="card-body">
+          <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.0 (20250701.1702)
+ -->
+<!-- Title: type~~benchmark~~InheritsGraph Pages: 1 -->
+<svg id="typebenchmarkInheritsGraph" width="330pt" height="74pt"
+ viewBox="0.00 0.00 330.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~benchmark~~InheritsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70.27)">
+<title>type~~benchmark~~InheritsGraph</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-70.27 326.29,-70.27 326.29,4 -4,4"/>
+<!-- type~benchmark -->
+<g id="type~~benchmark~~InheritsGraph_node1" class="node">
+<title>type~benchmark</title>
+<polygon fill="none" stroke="black" points="322.29,-45.27 250.02,-45.27 250.02,-21 322.29,-21 322.29,-45.27"/>
+<text xml:space="preserve" text-anchor="middle" x="286.15" y="-29.53" font-family="Helvetica,sans-Serif" font-size="10.50">benchmark</text>
+</g>
+<!-- type~mark -->
+<g id="type~~benchmark~~InheritsGraph_node2" class="node">
+<title>type~mark</title>
+<g id="a_type~~benchmark~~InheritsGraph_node2"><a xlink:href="../type/mark.html" xlink:title="mark">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="167.38,-66.27 113.38,-66.27 113.38,-42 167.38,-42 167.38,-66.27"/>
+<text xml:space="preserve" text-anchor="middle" x="140.38" y="-50.53" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mark</text>
+</a>
+</g>
+</g>
+<!-- type~benchmark&#45;&gt;type~mark -->
+<g id="type~~benchmark~~InheritsGraph_edge2" class="edge">
+<title>type~benchmark&#45;&gt;type~mark</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M249.62,-38.33C228.05,-41.48 200.56,-45.49 178.68,-48.69"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="178.38,-45.19 168.99,-50.1 179.39,-52.12 178.38,-45.19"/>
+<text xml:space="preserve" text-anchor="middle" x="209.52" y="-49.57" font-family="Helvetica,sans-Serif" font-size="9.50">marks</text>
+</g>
+<!-- type~mark_co -->
+<g id="type~~benchmark~~InheritsGraph_node3" class="node">
+<title>type~mark_co</title>
+<g id="a_type~~benchmark~~InheritsGraph_node3"><a xlink:href="../type/mark_co.html" xlink:title="mark_co">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="169.02,-24.27 111.75,-24.27 111.75,0 169.02,0 169.02,-24.27"/>
+<text xml:space="preserve" text-anchor="middle" x="140.38" y="-8.53" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mark_co</text>
+</a>
+</g>
+</g>
+<!-- type~benchmark&#45;&gt;type~mark_co -->
+<g id="type~~benchmark~~InheritsGraph_edge1" class="edge">
+<title>type~benchmark&#45;&gt;type~mark_co</title>
+<path fill="none" stroke="#ff0000" stroke-dasharray="5,2" d="M249.55,-24.26C243.72,-22.99 237.72,-21.81 232.02,-20.88 215.2,-18.15 196.46,-16.16 180.42,-14.78"/>
+<polygon fill="#ff0000" stroke="#ff0000" points="181.03,-11.32 170.78,-14 180.47,-18.3 181.03,-11.32"/>
+<text xml:space="preserve" text-anchor="middle" x="209.52" y="-23.11" font-family="Helvetica,sans-Serif" font-size="9.50">marks_co</text>
+</g>
+<!-- timer -->
+<g id="type~~benchmark~~InheritsGraph_node4" class="node">
+<title>timer</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-24.27 0,-24.27 0,0 54,0 54,-24.27"/>
+<text xml:space="preserve" text-anchor="middle" x="27" y="-8.53" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">timer</text>
+</g>
+<!-- type~mark_co&#45;&gt;timer -->
+<g id="type~~benchmark~~InheritsGraph_edge3" class="edge">
+<title>type~mark_co&#45;&gt;timer</title>
+<path fill="none" stroke="#00ffff" stroke-dasharray="5,2" d="M111.28,-12.13C97.45,-12.13 80.58,-12.13 65.65,-12.13"/>
+<polygon fill="#00ffff" stroke="#00ffff" points="65.7,-8.64 55.7,-12.14 65.7,-15.64 65.7,-8.64"/>
+<text xml:space="preserve" text-anchor="middle" x="82.88" y="-14.36" font-family="Helvetica,sans-Serif" font-size="9.50">time</text>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#InheritsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="InheritsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 13.1.0 (20250701.1702)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="184pt" height="32pt"
+ viewBox="0.00 0.00 184.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28.27)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-28.27 179.88,-28.27 179.88,4 -4,4"/>
+<!-- Type -->
+<g id="node1" class="node">
+<title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-24.27 0,-24.27 0,0 54,0 54,-24.27"/>
+<text xml:space="preserve" text-anchor="middle" x="27" y="-8.53" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="175.88,-24.27 72.12,-24.27 72.12,0 175.88,0 175.88,-24.27"/>
+<text xml:space="preserve" text-anchor="middle" x="124" y="-8.53" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a derived type to the parent type which it
+extends. Dashed arrows point from a derived type to the other
+types it contains as a components, with a label listing the name(s) of
+said component(s).
+</p>
+ Where possible, edges connecting nodes are
+given different colours to make them easier to distinguish in
+large graphs.</div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    <br>
+
+    <section>
+    <h2>Components</h2>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Visibility</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+<th></th><th scope="col">Initial</th>        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-argi"></span>
+              integer(kind=ik),
+            </td>
+              <td>public,</td>
+            <td>
+              dimension(:), allocatable
+            </td>
+            <td>::</td>
+            <td><strong>argi</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>Integer arguments for benchmarks</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-argr"></span>
+              real(kind=rk),
+            </td>
+              <td>public,</td>
+            <td>
+              dimension(:), allocatable
+            </td>
+            <td>::</td>
+            <td><strong>argr</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>Real arguments for benchmarks</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-filename"></span>
+              character(len=:),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>filename</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>Filename for storing the benchmark data in all images</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-filename_image"></span>
+              character(len=:),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>filename_image</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>Filename for storing the benchmark data in each image</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-imark"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>imark</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>Index of the current benchmark</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-marks"></span>
+              type(<a href='mark.html'>mark</a>),
+            </td>
+              <td>public,</td>
+            <td>
+              dimension(:), allocatable
+            </td>
+            <td>::</td>
+            <td><strong>marks</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>Array of mark type for each method being benchmarked in all images</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-marks_co"></span>
+              type(<a href='mark_co.html'>mark_co</a>),
+            </td>
+              <td>public,</td>
+            <td>
+              dimension(:), allocatable
+            </td>
+            <td>::</td>
+            <td><strong>marks_co</strong>[:]</td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>Array of mark_co type for each method being benchmarked in each image</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nloops"></span>
+              integer,
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nloops</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>Number of loops for each benchmark</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-timer"></span>
+              character(len=:),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>timer</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                <p>Timer object for measuring time</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    </section>
+    <br>
+    
+
+
+      <section>
+        <h2>Type-Bound Procedures</h2>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-finalize"></span>
+      <h3>
+          procedure, public ::
+  <strong>finalize</strong>
+        
+      </h3>
+    </div>
+        <div class="card-body">
+          
+          <p>Finalize the benchmark object</p>
+        </div>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
+    private impure elemental subroutine <a href='../proc/finalize.html'>finalize</a>(this)  
+</h3>
+        <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
+        <dt>License</dt><dd>BSD 3-Clause License</dd>
+    </dl>
+
+
+  <p>Finalizes the benchmark object by deallocating memory and performs necessary cleanup.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='benchmark.html'>benchmark</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>this</strong></td>
+            <td>
+<p>Benchmark object to be finalized</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+      </ul>
+  </div>
+
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-init"></span>
+      <h3>
+          procedure, public ::
+  <strong>init</strong>
+        
+      </h3>
+    </div>
+        <div class="card-body">
+          
+          <p>Initialization the benchmark object</p>
+        </div>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
+    private impure elemental subroutine <a href='../proc/init.html'>init</a>(this, nmarks, title, filename, nloops, timer)  
+</h3>
+        <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
+        <dt>License</dt><dd>BSD 3-Clause License</dd>
+    </dl>
+
+
+  <p>Initialize the benchmark object.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='benchmark.html'>benchmark</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>this</strong></td>
+            <td>
+<p>Benchmark object</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nmarks</strong></td>
+            <td>
+<p>Number of methods being benchmarked</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>title</strong></td>
+            <td>
+<p>Title of the benchmark</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>filename</strong></td>
+            <td>
+<p>Filename for storing the benchmark data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nloops</strong></td>
+            <td>
+<p>Number of loops for each benchmark (default: 10)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>timer</strong></td>
+            <td>
+<p>Timer object for measuring time (default: wall)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+      </ul>
+  </div>
+
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-start_benchmark"></span>
+      <h3>
+          procedure, public ::
+  <strong>start_benchmark</strong>
+        
+      </h3>
+    </div>
+        <div class="card-body">
+          
+          <p>Start a benchmark</p>
+        </div>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
+    private impure subroutine <a href='../proc/start_benchmark.html'>start_benchmark</a>(this, imark, method, description, argi, argr)  
+</h3>
+        <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
+        <dt>License</dt><dd>BSD 3-Clause License</dd>
+    </dl>
+
+
+  <p>Start a specific benchmark.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='benchmark.html'>benchmark</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>this</strong></td>
+            <td>
+<p>Benchmark object</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>imark</strong></td>
+            <td>
+<p>Index of the current method</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>method</strong></td>
+            <td>
+<p>Name of the method being benchmarked</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>description</strong></td>
+            <td>
+<p>Description of the method being benchmarked (optional)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              integer(kind=ik),
+            </td>
+<td>intent(in),</td>
+              <td>optional,</td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>argi</strong></td>
+            <td>
+<p>Integer arguments for benchmarks (optional)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional,</td>            <td>
+              dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>argr</strong></td>
+            <td>
+<p>Real arguments for benchmarks (optional)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+      </ul>
+  </div>
+
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-stop_benchmark"></span>
+      <h3>
+          procedure, public ::
+  <strong>stop_benchmark</strong>
+        
+      </h3>
+    </div>
+        <div class="card-body">
+          
+          <p>Stop a benchmark</p>
+        </div>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
+    private impure subroutine <a href='../proc/stop_benchmark.html'>stop_benchmark</a>(this, flops)  
+</h3>
+        <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
+        <dt>License</dt><dd>BSD 3-Clause License</dd>
+    </dl>
+
+
+  <p>Stops the currently active benchmark, calculates performance metrics, and writes the results to the file and terminal.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='benchmark.html'>benchmark</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>this</strong></td>
+            <td>
+<p>Benchmark object</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              procedure(Fun),
+            </td>
+<td></td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flops</strong></td>
+            <td>
+<p>Function to calculate Floating Point Operations Per Second (optional)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+      </ul>
+  </div>
+
+          </div>
+          <div class="row">
+              <div class="card mt-3">
+    <div class="card-header codesum">
+      <span class="anchor" id="boundprocedure-write_benchmark"></span>
+      <h3>
+          procedure, private ::
+  <strong>write_benchmark</strong>
+        
+      </h3>
+    </div>
+        <div class="card-body">
+          
+          <p>Write benchmark data to file</p>
+        </div>
+      <ul class="list-group">
+          <li class="list-group-item">
+                    <h3>
+    private impure subroutine <a href='../proc/write_benchmark.html'>write_benchmark</a>(this)  
+</h3>
+        <dl class="dl-horizontal">
+        <dt>Author</dt><dd>Seyed Ali Ghasemi</dd>
+        <dt>License</dt><dd>BSD 3-Clause License</dd>
+    </dl>
+
+
+  <p>Writes the benchmark data to a specified file, including method, speedup, elapsed time, flops, and other details.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              class(<a href='benchmark.html'>benchmark</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>this</strong></td>
+            <td>
+<p>Benchmark object</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+          </li>
+      </ul>
+  </div>
+
+          </div>
+      </section>
+
+    <section>
+    <h3><span class="anchor" id="src"></span>Source Code</h3>
+    <div class="hl codehilite"><pre><span></span><span class="w">   </span><span class="k">type</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">benchmark</span><span class="w"></span>
+<span class="w">      </span><span class="c">!! author: Seyed Ali Ghasemi</span>
+<span class="w">      </span><span class="c">!! Derived type for benchmarking and performance evaluation.</span>
+<span class="w">      </span><span class="c">!!</span>
+<span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">mark_co</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">marks_co</span><span class="p">[:]</span><span class="w">     </span><span class="c">!! Array of mark_co type for each method being benchmarked in each image</span>
+<span class="w">      </span><span class="k">type</span><span class="p">(</span><span class="n">mark</span><span class="p">),</span><span class="w">    </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">marks</span><span class="w">           </span><span class="c">!! Array of mark type for each method being benchmarked in all images</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w">                </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">filename</span><span class="w">        </span><span class="c">!! Filename for storing the benchmark data in all images</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w">                </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">filename_image</span><span class="w">  </span><span class="c">!! Filename for storing the benchmark data in each image</span>
+<span class="w">      </span><span class="kt">integer</span><span class="w">                                  </span><span class="kd">::</span><span class="w"> </span><span class="n">nloops</span><span class="w">          </span><span class="c">!! Number of loops for each benchmark</span>
+<span class="w">      </span><span class="kt">integer</span><span class="p">(</span><span class="n">ik</span><span class="p">),</span><span class="w">   </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">argi</span><span class="w">            </span><span class="c">!! Integer arguments for benchmarks</span>
+<span class="w">      </span><span class="kt">real</span><span class="p">(</span><span class="n">rk</span><span class="p">),</span><span class="w">      </span><span class="k">dimension</span><span class="p">(:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">argr</span><span class="w">            </span><span class="c">!! Real arguments for benchmarks</span>
+<span class="w">      </span><span class="kt">character</span><span class="p">(:),</span><span class="w">                </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">timer</span><span class="w">           </span><span class="c">!! Timer object for measuring time</span>
+<span class="w">      </span><span class="kt">integer</span><span class="w">                                  </span><span class="kd">::</span><span class="w"> </span><span class="n">imark</span><span class="w">           </span><span class="c">!! Index of the current benchmark</span>
+<span class="w">   </span><span class="k">contains</span>
+<span class="k">      procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">init</span><span class="w">             </span><span class="c">!! Initialization the benchmark object</span>
+<span class="w">      </span><span class="k">procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">start_benchmark</span><span class="w">  </span><span class="c">!! Start a benchmark</span>
+<span class="w">      </span><span class="k">procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">stop_benchmark</span><span class="w">   </span><span class="c">!! Stop a benchmark</span>
+<span class="w">      </span><span class="k">procedure</span><span class="p">,</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">write_benchmark</span><span class="w">  </span><span class="c">!! Write benchmark data to file</span>
+<span class="w">      </span><span class="k">procedure</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">finalize</span><span class="w">         </span><span class="c">!! Finalize the benchmark object</span>
+<span class="w">   </span><span class="k">end type </span><span class="n">benchmark</span><span class="w"></span>
+</pre></div>
+
+    </section>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              ForBenchmark
+ was developed by Seyed Ali Ghasemi<br>              &copy; 2025 BSD 3-Clause License
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2025-07-14T08:36:37.207388+0000             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+  </body>
+</html>

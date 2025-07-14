@@ -242,6 +242,7 @@ contains
       interface
          impure function Fun(argi, argr)
             import rk, ik
+            implicit none
             integer(ik), dimension(:), intent(in), optional :: argi
             real(rk),    dimension(:), intent(in), optional :: argr
             real(rk)                                        :: Fun
