@@ -3,7 +3,7 @@ program test_dot
    use kinds
    use fordot, only: fdot_product => dot_product
    use fast_math, only: fprod, fprod_kahan
-   use forunittest
+   use forunittest, only: unit_test
 
    implicit none
 
