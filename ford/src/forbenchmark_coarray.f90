@@ -5,7 +5,7 @@ module forbenchmark_coarray
    !!
 
 
-   use kinds
+   use kinds, only: rk, ik
    use fortime, only: timer
 
    implicit none
@@ -218,7 +218,7 @@ contains
       !! author: Seyed Ali Ghasemi
       !! Start a specific benchmark.
       !!
-      use face
+      use face, only: colorize
 
       class(benchmark),          intent(inout)        :: this         !! Benchmark object
       integer,                   intent(in)           :: imark        !! Index of the current method
@@ -297,7 +297,7 @@ contains
       !! author: Seyed Ali Ghasemi
       !! Stops the currently active benchmark, calculates performance metrics, and writes the results to the file and terminal.
       !!
-      use face
+      use face, only: colorize
 
       interface
          impure function Fun(argi, argr)

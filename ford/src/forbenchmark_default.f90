@@ -4,7 +4,7 @@ module forbenchmark_default
    !! A Fortran module for benchmarking and performance evaluation for non-coarray codes.
    !!
 
-   use kinds
+   use kinds, only: rk, ik
    use fortime, only: timer
 
    implicit none
@@ -163,7 +163,7 @@ contains
       !! author: Seyed Ali Ghasemi
       !! Start a specific benchmark
       !!
-      use face
+      use face, only: colorize
 
       class(benchmark),          intent(inout)        :: this          !! Benchmark object
       integer,                   intent(in)           :: imark         !! Index of the current method
