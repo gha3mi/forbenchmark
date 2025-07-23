@@ -1,9 +1,9 @@
 program benchmark_dot
 
-   use kinds
+   use kinds, only: rk, ik
    use fordot, only: fdot_product => dot_product ! to avoid overloading
    use fast_math, only: fprod, fprod_kahan
-   use forbenchmark
+   use forbenchmark, only: benchmark
 
    implicit none
 

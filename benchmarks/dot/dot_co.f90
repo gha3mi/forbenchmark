@@ -1,12 +1,12 @@
 program benchmark_dot_coarray
 
-#if defined(USE_COARRAY)
-
-   use kinds
+   use kinds, only: rk, ik
    use fordot, only: fdot_product => dot_product ! to avoid overloading
-   use forbenchmark
+   use forbenchmark, only: benchmark
 
    implicit none
+
+#if defined(USE_COARRAY)
 
    type(benchmark)          :: bench
    real(rk), allocatable    :: u(:)

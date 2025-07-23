@@ -1,8 +1,8 @@
 program benchmark_matmul_mv
 
-   use kinds
-   use formatmul
-   use forbenchmark
+   use kinds, only: rk, ik
+   use formatmul, only: matmul
+   use forbenchmark, only: benchmark
 
    implicit none
 

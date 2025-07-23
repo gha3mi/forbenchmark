@@ -5,10 +5,12 @@ module forbenchmark
    !!
 
 #if defined(USE_COARRAY)
-   use forbenchmark_coarray
+   use forbenchmark_coarray, only: benchmark
 #else
-   use forbenchmark_default
+   use forbenchmark_default, only: benchmark
 #endif
+
+   implicit none
 
    private
    public benchmark

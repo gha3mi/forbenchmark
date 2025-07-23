@@ -1,8 +1,8 @@
 program benchmark_matmul_mm
 
-    use kinds
+    use kinds, only: rk, ik
     use formatmul, only: fmatmul => matmul ! use fmatmul instead of matmul to avoid overloading for reference implementation
-    use forbenchmark
+    use forbenchmark, only: benchmark
 
     implicit none
 
