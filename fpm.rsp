@@ -17,7 +17,7 @@ options run --example
 options --target dot
 options --profile release
 options --compiler gfortran
-options --flag "-O3 -march=native -lblas -fopenmp -flto -DINT64"
+options --flag "-O3 -march=native -lblas -fopenmp -flto -DINT64 -DUSE_DO_CONCURRENT -ftree-parallelize-loops=8"
 
 @benchmark-dot-nvfortran
 options run --example
@@ -62,7 +62,7 @@ options test
 options --target test_dot
 options --profile release
 options --compiler gfortran
-options --flag "-O3 -march=native -lblas -fopenmp -flto -DINT64"
+options --flag "-O3 -march=native -lblas -fopenmp -flto -DINT64 -DUSE_DO_CONCURRENT -ftree-parallelize-loops=8"
 
 @benchmark-dot-test-nvfortran
 options test
@@ -93,7 +93,7 @@ options run --example
 options --target matmul_mm
 options --profile release
 options --compiler gfortran
-options --flag "-O3 -march=native -lblas -fopenmp -flto -DINT64"
+options --flag "-O3 -march=native -lblas -fopenmp -flto -DINT64 -DUSE_DO_CONCURRENT -ftree-parallelize-loops=8"
 
 @benchmark-matmul-mm-nvfortran
 options run --example
@@ -138,7 +138,7 @@ options run --example
 options --target matmul_mv
 options --profile release
 options --compiler gfortran
-options --flag "-O3 -march=native -lblas -fopenmp -flto -DINT64"
+options --flag "-O3 -march=native -lblas -fopenmp -flto -DINT64 -DUSE_DO_CONCURRENT -ftree-parallelize-loops=8"
 
 @benchmark-matmul-mv-nvfortran
 options run --example
